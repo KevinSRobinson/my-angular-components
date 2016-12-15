@@ -10,20 +10,19 @@ var myTextareaField = {
     controllerAs: 'vm',
     controller: function () {
         var vm = this;
+        vm.fieldLabel = 'Change the with the field-label property';
+       
+        //defautlts
+        vm.showToolTip = false;
+        vm.required = false;
 
-        if (vm.toolTip) {
-            vm.showToolTip = true;
-        }
-
-        if (vm.fieldName == null) {
+        //Set the field name using the fieldLabel
+        if (vm.fieldName === null) {
             vm.fieldName = vm.fieldLabel.replace(' ', '');
         }
 
-        if (vm.required == null) {
-            vm.required = false;
-        }
     },
-   templateUrl: 'app/Fields/TextArea/textAreaFieldTemplate.html'
+   templateUrl: 'src/client/app/Components/Fields/TextArea/textAreaFieldTemplate.html'
 };
 
 

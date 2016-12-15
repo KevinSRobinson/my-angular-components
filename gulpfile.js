@@ -250,6 +250,21 @@ gulp.task('styles',  function(){
                 .pipe(gulp.dest(config.build));
 
 });
+
+gulp.task('styles-dev',  function(){
+    log('Compiling Less Dev ->> Css');
+
+    return gulp
+                .src(config.less)
+                .pipe($.debug())
+                .pipe($.less())
+                .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
+                .pipe(gulp.dest(config.temp));
+
+});
+
+
+
 gulp.task('less-watcher', function(){
     log('Watching ' + config.less);
     gulp.watch([config.less], ['styles']);
