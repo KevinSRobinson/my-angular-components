@@ -7,10 +7,9 @@
     <!--Input-->
     <div class="input-group" style="width: 80% !important;">
         <input type="text" class="form-control" id="{{vm.fieldName}}" ng-model="vm.ngModel" ng-required="{{ vm.required }}">
-
-        <!--ToolTip-->
-        <div class="input-group-addon style=line-height: 0 !important;" ng-show=vm.showToolTip>
-            <my-popover ng-model=vm.toolTip></my-popover>
-        </div>
+{{vm.showHelpText}}
+{{vm.helpText}}
+       <span id="helpBlock" class="help-block" ng-if="vm.showHelpText">{{vm.helpText}}</span>
     </div>
 </div>
+

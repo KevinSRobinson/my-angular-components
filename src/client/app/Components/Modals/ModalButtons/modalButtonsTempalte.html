@@ -1,12 +1,15 @@
+{{vm.save}}
 <div class='modal-footer'>
   <span>
     <!--Save Button-->
     <button class='btn btn-primary btn-large pull-left'
+            ng-if='vm.saveVisible'
             id='save'
             ng-click='vm.save()'
             type='submit'>{{vm.saveText}}</button>
     <!--Close Button-->
     <button class='btn btn-default pull-left'
+            ng-if='vm.closeVisible'
             id='close'
             ng-click='vm.close()'
             type='button'>{{vm.closeText}}</button>

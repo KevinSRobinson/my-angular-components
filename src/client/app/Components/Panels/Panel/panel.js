@@ -24,14 +24,10 @@ var myPanel = {
         'use strict';
 
         var vm = this;
+        
 
-
-        vm.init = function () {
-            vm.setDefaults();
-        };
-
-        vm.setDefaults = function () {
-            vm.height = 150;
+         vm.$onInit = function() {
+             vm.height = 150;
             vm.showVerticalScrollBar = false;
             vm.showAddButton = false;
             vm.showEditButton = false;
@@ -40,7 +36,11 @@ var myPanel = {
             vm.showFooter = false;
             vm.footerLeftLabel = '';
             vm.footerRightLabel = '';
+            vm.theme = "success";
         };
+
+        
+     
 
 
         vm.getPanelStyle = function () {
@@ -80,7 +80,6 @@ var myPanel = {
             return 'margin-left: 5px; padding: 10px;';
         };
 
-        vm.init();
 
     },
     templateUrl:'src/client/app/Components/Panels/Panel/panelTemplate.html'

@@ -4,16 +4,24 @@ var myTextField = {
         fieldName: '@',
         ngModel: '=',
         required: '@',
-        toolTip:'@'
+        toolTip:'@',
+        helpText:'@',
     },
     controllerAs:'vm',
     controller: function () {
         var vm = this;
-        
+        vm.showToolTip = false;
+       
         if(vm.toolTip)
         {
             vm.showToolTip = true;
         }
+
+        if(vm.helpText !== undefined)
+        {
+            vm.showHelpText = true;
+        }
+         vm.showToolTip = true;
         
         if (vm.fieldName === null) {
             //vm.fieldName = vm.fieldLabel.replace(' ', '');            

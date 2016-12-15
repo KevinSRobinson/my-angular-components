@@ -1,4 +1,4 @@
-var modalButtons = {
+var myModalButtons = {
     bindings: {
         save: '&',
         close: '&',
@@ -10,14 +10,18 @@ var modalButtons = {
     controller: function(){
         var vm = this;
         
-        //defaults        
-        vm.saveText= 'Save';
-        vm.closeText= 'Close';
+         vm.$onInit = function() {
+            //defaults        
+            vm.saveText= 'Save';
+            vm.closeText= 'Close';
 
-        vm.saveVisible=true;
-        vm.closeVisible = true;        
+            vm.saveVisible = true;
+            vm.closeVisible = true;
+
+         }
+              
       },
-    templateUrl: 'app/Modals/ModalButtons/modalButtonsTemplate.html'
+    templateUrl: 'src/client/app/Components/Modals/ModalButtons/modalButtonsTempalte.html'
 };
 
-angular.module('myComponents').component('modalButtons', modalButtons);
+angular.module('myComponents').component('myModalButtons', myModalButtons);
