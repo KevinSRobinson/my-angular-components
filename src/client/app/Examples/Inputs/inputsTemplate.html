@@ -1,16 +1,43 @@
- <div class="example">
-        <h5>Text Field</h5>
-        <hr>
-      
-        <div class="usage">
-            <code>
-            <b>
-                <span class="tag"> &lt;my-text-field </span>
-                <span class="attrib">field-label=</span>"Firstname"  
-                <span class="attrib">ng-model=</span>"vm.firstName"&gt;
-                <span class="tag">&lt;/my-text-field&gt;</span>
-            </b>
-            </code>
-         </div>
-        <my-text-field field-label="Firstname"  ng-model="vm.firstName"></my-text-field>
+<div class="example">
+    <h5>Text Field</h5>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <my-text-field field-label="Firstname" ng-model="vm.firstName"></my-text-field>
+        </div>
+        <div class="col-md-6">
+            <div class="usage">
+                <code>
+                    <b>
+                        <span class="tag"> &lt;my-text-field </span>
+                        <span class="attrib">field-label=</span>"Firstname"  
+                        <span class="attrib">ng-model=</span>"vm.firstName"&gt;
+                        <span class="tag">&lt;/my-text-field&gt;</span>
+                    </b>
+                </code>                
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td>Property</td>
+                        <td>Required</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>field-label</td>
+                    <td>Yes</td>
+                    <td>Set the label value</td>
+                </tr>
+                <tr>
+                    <td>field-name</td>
+                   <td>No</td>
+                    <td>Set the Name and ID values of the input.<br>
+                        Default:  Uses the field-label to create a value
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>

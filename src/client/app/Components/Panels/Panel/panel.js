@@ -3,7 +3,7 @@ var myPanel = {
     bindings: {
         title: '@',
         fieldName: '@',
-        style: '@',
+        theme: '@',
         icon: '@',
         iconSize: '@',
         smallHeading: '@',
@@ -83,7 +83,7 @@ var myPanel = {
         vm.init();
 
     },
-    templateUrl:'app/Panels/Panel/panelTemplate.html'
+    templateUrl:'src/client/app/Components/Panels/Panel/panelTemplate.html'
 };
 
 
