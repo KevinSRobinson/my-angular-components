@@ -1,0 +1,20 @@
+<div class='panel panel-{{vm.style}}' style='{{vm.getPanelStyle()}}'>
+    <div class='panel-heading' style='{{vm.getPanelHeadingStyle()}}' id='{{vm.fieldName}}'><i class='fa fa-{{vm.icon}} fa-{{vm.iconSize}}x'></i>
+
+        <span style='padding-left: 10px; font-weight: 700'>{{vm.title}}</span>
+
+        <div ng-show='vm.showAddButton' id='{{vm.addButtonId}}' ng-click='vm.add()' style='{{vm.getButtonStyle()}}' class='btn btn-default pull-right' style='padding: 3px;'><i class='fa fa-plus'></i> </div>
+        <div ng-show='vm.showEditButton' id='{{vm.editButtonId}}' ng-click='vm.edit()' style='{{vm.getButtonStyle()}}' class='btn btn-default pull-right' style='padding: 3px;'><i class='fa fa-bars'></i> </div>
+    </div>
+
+    <div class='panel-body' ng-transclude style='{{vm.getPanelContentStyle()}}'  ng-if="!vm.isCollapsed">
+         {{vm.ngModel}}
+    </div>
+
+    <div class='panel-footer' ng-if='vm.showFooter' style='{{vm.getPanelStyle()}}'>
+        <div class='row'>
+            <div class='col-md-6'><span class='pull-left'>{{vm.footerLeftLabel}}</span></div>
+            <div class='col-md-6'><span class='pull-right'>{{vm.footerRightLabel}}</span></div>
+        </div>
+    </div>
+</div>

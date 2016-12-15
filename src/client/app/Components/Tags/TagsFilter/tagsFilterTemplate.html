@@ -1,0 +1,11 @@
+<div class='form-group'>
+    <!--label-->
+    <label class='control-label' style='min-width: 110px; text-align: left'>Tags</label>
+
+    <!--Tags-->
+    <div class='form-control'>
+        <span ng-repeat='tag in vm.tagList track by $index'>
+            <span class='badge' ng-click='vm.tagClicked(tag)' style='cursor: pointer' >{{tag}}</span>
+        </span>
+    </div>
+</div>

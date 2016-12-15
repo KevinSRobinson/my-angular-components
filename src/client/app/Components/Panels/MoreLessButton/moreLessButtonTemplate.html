@@ -1,0 +1,11 @@
+<button type='button' class='{{vm.cssClass}' 
+        id="{{vm.id}}"
+        ng-click='vm.isCollapsed = !vm.isCollapsed'>
+
+        <!--icon -->
+        <i ng-class='vm.getButtonIcon()' aria-hidden='true'></i>
+
+        <!--button text-->
+        {{vm.getButtonText() }} 
+</button>
+
