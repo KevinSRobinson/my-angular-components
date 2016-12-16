@@ -17,7 +17,7 @@ gulp.task('help', $.taskListing);
 
 gulp.task('vet', function(){
     log('Analyzing source with jsHint and JSCS');
-
+    log(config.alljs);
     gulp.src(config.alljs)
     .pipe($.if(args.verbose, $.print()))
     .pipe($.jscs())
