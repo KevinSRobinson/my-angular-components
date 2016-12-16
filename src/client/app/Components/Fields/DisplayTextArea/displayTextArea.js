@@ -1,15 +1,19 @@
-var myDispalyTextarea= {
-   bindings: {
+var myDispalyTextarea = {
+    bindings: {
         fieldLabel: '@',
         ngModel: '='
     },
-    controllerAs:'vm',
-    controller: function(){
-      var vm = this;
-      vm.fieldLabel = 'You can set this text using field-label=';
-      
-      },
-    templateUrl: 'app/Fields/DisplayField/displayFieldTemplate.html'
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            //defaults
+            vm.fieldLabel = 'You can set this text using field-label=';
+        };
+
+    },
+    templateUrl: 'src/client/app/Components/Fields/DisplayTextArea/displayTextAreaTemplate.html'
 };
 
 

@@ -17,8 +17,7 @@ var myModalButtons = {
 
             vm.saveVisible = true;
             vm.closeVisible = true;
-
-         }
+         };
               
       },
     templateUrl: 'src/client/app/Components/Modals/ModalButtons/modalButtonsTempalte.html'

@@ -3,35 +3,38 @@ var myMoreLessButton = {
         id: '@',
         buttonText: '@',
         click: '&',
-        cssClass:'@',
+        cssClass: '@',
         isCollapsed: '='
     },
     controllerAs: 'vm',
     controller: function () {
         'use strict';
         var vm = this;
-        vm.buttonText = '';
+
+
+        vm.$onInit = function () {
+            //defaults
+            vm.buttonText = 'More Search Options';
+        };
+
 
         vm.getButtonText = function () {
             if (vm.isCollapsed) {
                 return 'More Search Options';
-            }
-            else {
+            } else {
                 return 'Fewer Search Options';
             }
         };
 
         vm.getButtonIcon = function () {
-
             if (vm.isCollapsed) {
                 return 'fa fa-arrow-down';
-            }
-            else {
+            } else {
                 return 'fa fa-arrow-up';
             }
         };
     },
-    templateUrl: 'app/Panels/Panel/moreLessButtonTemplate.html' 
+    templateUrl: 'src/client/app/Components/Panels/MoreLessButton/moreLessButtonTemplate.html'
 };
 
 angular.module('myComponents').component('myMoreLessButton', myMoreLessButton);

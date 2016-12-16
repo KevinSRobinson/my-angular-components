@@ -12,6 +12,9 @@ var myTagsMultiSelect = {
         
         var vm = this;
          
+         vm.$onInit = function(){
+
+         };
 
       $scope.itemArray = [
         {id: 1, name: 'first'},
@@ -25,7 +28,8 @@ var myTagsMultiSelect = {
     
         
     },
-    templateUrl: 'app/Tags/TagsField/tagsFieldTemplate.html'
+    templateUrl: 'src/client/app/Components/Tags/TagsField/tagsFieldTemplate.html'
+
 };
 
 angular.module('myComponents').component('myTagsMultiSelect', myTagsMultiSelect);

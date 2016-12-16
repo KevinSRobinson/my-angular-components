@@ -6,13 +6,13 @@ var myInfoPanel = {
     },
     controllerAs: 'vm',
     controller: function () {
-        'use strict';
         var vm = this;
 
-        //deafults
-        vm.icon = 'fa fa-info fa-2x';
-        vm.color = '#64518A';
-        
+        vm.$onInit = function () {
+            //deafults
+            vm.icon = 'fa fa-info fa-2x';
+            vm.color = '#64518A';
+        };
 
 
         //TODO: Improve this
@@ -24,10 +24,9 @@ var myInfoPanel = {
                 ' font-size: 1.65rem; !important; margin: 0;  !important; ' +
                 ' color: ' + vm.color + ' !important;';
         };
-    
 
     },
-    templateUrl: 'app/Panels/InfoPanel/infoPanelTemplate.html'
+    templateUrl: 'asrc/client/app/Components/Panels/InfoPanel/infoPanelTemplate.html'
 };
 
 

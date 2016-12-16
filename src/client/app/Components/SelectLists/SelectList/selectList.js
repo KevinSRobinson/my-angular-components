@@ -6,18 +6,18 @@ var mySelectList = {
         fieldName: '@'
     },
     controllerAs: 'vm',
-    controller: function() {
+    controller: function () {
         var vm = this;
-        
-        vm.items = [];
-        
-        vm.fieldLabel = 'You can set this text using field-label';
-        vm.fieldName = 'mySelectField';
-        vm.ngModel = 'null';
-        
+
+        vm.$onInit = function () {
+            vm.items = [];
+            vm.fieldLabel = 'You can set this text using field-label';
+            vm.fieldName = 'mySelectField';
+            vm.ngModel = 'null';
+        };
 
     },
-    templateUrl:'app/SelectLists/panelTemplate.html'
+    templateUrl: 'src/client/app/Components/SelectLists/SelectList/selectListTemplate.html'
 
 };
 

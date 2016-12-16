@@ -2,20 +2,20 @@ var myEditButton = {
     bindings: {
         click: '&',
         id: '@',
-         cssClass:'@'
-        
+        cssClass:'@'        
     },
     controllerAs: 'vm',
     controller: function () {
         var vm = this;
 
-         //default options
-        vm.id = 'delete';
-        vm.buttonText = 'Delete';
-        vm.icon = 'bars';
-    
+        vm.$onInit = function () {
+            //default options
+            vm.id = 'delete';
+            vm.buttonText = 'Delete';
+            vm.icon = 'bars';
+        };
     },
-    template: 'editButtonTemplate.html'
+    template: 'src/client/app/Components/Buttons/EditButton/editButtonTemplate.html'
 };
 
 angular.module('myComponents').component('myEditButton', myEditButton);

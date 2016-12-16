@@ -1,7 +1,7 @@
 /**
  * This component displays a list of clickable tags.
  * It extracts out unique Tag values from the supplied list *
-  */
+ */
 var myTagsFilterList = {
     bindings: {
         items: '=',
@@ -13,16 +13,14 @@ var myTagsFilterList = {
         'use strict';
 
         var vm = this;
-        vm.selected = {};
 
-
-        //use the default field for tags if none is specified
-        if (vm.tagsFieldName === undefined) {
+        vm.$onInit = function () {
+            //defaults
+            vm.selected = {};
             vm.tagsFieldName = 'Tags';
-        }
+            vm.tagList = [];
+        };
 
-
-        vm.tagList = [];
 
         var isJson = function isJson(str) {
             try {
@@ -37,8 +35,7 @@ var myTagsFilterList = {
 
             if (isJson(tags)) {
                 return angular.fromJson(tags);
-            }
-            else {
+            } else {
                 return tags.split(',');
             }
 
@@ -52,7 +49,7 @@ var myTagsFilterList = {
             if (vm.items !== undefined) {
 
                 vm.tagList.push('All');
-                
+
                 // loop through all the tags in the list
                 angular.forEach(vm.items, function (key, value) {
                     if (key[vm.tagsFieldName] !== undefined) {

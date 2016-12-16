@@ -8,7 +8,7 @@ var myDisplayDateField = {
     controller: function () {
         'use strict';
         
-        
+         // todo:tidy this
         var vm = this;
        
         

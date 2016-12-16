@@ -17,7 +17,7 @@ var myCategorySelect = {
 
         var vm = this;
         vm.cats = [];
-
+ // todo:tidy this
         vm.init = function () {
             if(vm.fieldLabel === undefined){
                 vm.fieldLabel = 'Category';

@@ -1,13 +1,15 @@
 var myPageTitle = {
     bindings: {
-        title: '@'
+        ngModel: '@'
     },
     controllerAs: 'vm',
-    templateUrl: 'app/Dates/DateField/dateFieldTemplate.html'
+    controller: function () {
+
+        vm.$onInit = function () {
+            vm.ngModel = 'Set this text using ngModel';
+        };
+    },
+    templateUrl: 'src/client/app/Components/Headers/PageHeader/pageHeaderTemplate.html'
 };
 
-
 angular.module('myComponents').component('myPageTitle', myPageTitle);
-
-
-

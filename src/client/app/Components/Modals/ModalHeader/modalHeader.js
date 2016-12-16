@@ -5,12 +5,14 @@ var myModalHeader = {
         title: '@'
     },
     controllerAs: 'vm',
-    controller: function(){
+    controller: function () {
         var vm = this;
 
-        //defaults
-        vm.title = 'Title not set';
-        vm.id = 'modalHeader';
+        vm.$onInit = function () {
+            //defaults
+            vm.title = 'Set this text using the title property';
+            vm.id = 'modalHeader';
+        };
 
 
     },

@@ -3,19 +3,20 @@ var myDeleteButton = {
         id: '@',
         buttonText: '@',
         click: '&',
-          cssClass:'@'
+        cssClass:'@'
     },
     controllerAs: 'vm',
     controller: function(){
         var vm = this;
 
-        //default options
-        vm.id = 'delete';
-        vm.buttonText = 'Delete';
-        vm.icon = 'cross';
-
+        vm.$onInit = function () {
+            //default options
+            vm.id = 'delete';
+            vm.buttonText = 'Delete';
+            vm.icon = 'cross';
+        };
     },
-    templateUrl: 'app/Buttons/DeleteButton/deleteButtonTemplate.html'
+    templateUrl: 'src/client/app/Components/Buttons/DeleteButton/deleteButton.js'
 
 };
 

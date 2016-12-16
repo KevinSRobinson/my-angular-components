@@ -1,3 +1,6 @@
+/**
+ * T
+ */
 var myCheckboxField = {
   bindings: {
     checked: '@',
@@ -7,9 +10,13 @@ var myCheckboxField = {
   controllerAs:'vm',
   controller:function(){
     var vm = this;
-    vm.checked = true;
+   // todo:tidy this
+    vm.$onInit = function () {
+      //default options
+      vm.checked = false;
+    };
   },
-  templateUrl: 'app/CheckBoxes/CheckboxField/checkboxField.html'
+  templateUrl: 'src/client/app/Components/CheckBoxes/CheckboxField/checkboxField.html'
 
 };
 

@@ -16,7 +16,7 @@ var myDateField = {
 
 
         vm.fieldLabel = 'Set this Text using field-label';
-        
+         // todo:tidy this
 
         this.$onInit = function() {
           

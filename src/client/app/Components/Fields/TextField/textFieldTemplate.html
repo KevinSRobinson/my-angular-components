@@ -3,13 +3,9 @@
     <label class="control-label" style="min-width: 80px !important;">
         {{vm.fieldLabel}}
     </label>
-
     <!--Input-->
     <div class="input-group" style="width: 80% !important;">
-        <input type="text" class="form-control" id="{{vm.fieldName}}" ng-model="vm.ngModel" ng-required="{{ vm.required }}">
-{{vm.showHelpText}}
-{{vm.helpText}}
-       <span id="helpBlock" class="help-block" ng-if="vm.showHelpText">{{vm.helpText}}</span>
+        <input type="text" class="form-control" id="{{vm.fieldName}}" ng-model="vm.ngModel" ng-required="{{ vm.required }}">        {{vm.showHelpText}} {{vm.helpText}}
+        <span id="helpBlock" class="help-block" ng-if="vm.showHelpText">{{vm.helpText}}</span>
     </div>
 </div>
-

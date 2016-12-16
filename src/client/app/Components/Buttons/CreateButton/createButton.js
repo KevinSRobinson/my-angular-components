@@ -8,18 +8,16 @@ var myCreateButton = {
     controllerAs: 'vm',
     controller: function(){
         var vm = this;
-       vm.cssClass = 'btn btn-success';
+      
         vm.$onInit = function () {
             //default options
             vm.id = 'create';
             vm.buttonText = 'Create';
             vm.icon = 'plus';
             vm.cssClass = 'btn btn-success';
-        };
-
-       
+        };       
     },
-    templateUrl: 'app/Buttons/CreateButton/createButtonTemplate.html'
+    templateUrl: 'src/client/app/Components/Buttons/CreateButton/createButtonTemplate.html'
 };
 
 
