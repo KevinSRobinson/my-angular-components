@@ -7,13 +7,14 @@ var myDisplayDateField = {
     controllerAs:'vm',
     controller: function () {
         'use strict';
-        
-         // todo:tidy this
-        var vm = this;
-       
+         var vm = this;
+
+        vm.$onInit = function() {
+            //defaults
+        };
         
     },
-   templateUrl: 'app/Dates/DisplayDate/displayDateTemplate.html'
+   templateUrl: 'src/client/app/Components/Dates/DisplayDate/displayDateTemplate.html'
 };
 
 angular.module('myComponents').component('myDisplayDateField', myDisplayDateField);

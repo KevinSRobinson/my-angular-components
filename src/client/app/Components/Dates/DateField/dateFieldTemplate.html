@@ -1,12 +1,15 @@
- 
-  <div class='form-group'>
+<div class='form-group'>
 
-        <!--label-->
-        
+        <!--label-->        
         <label class='control-label' style='min-width: 110px; text-align: left'>{{vm.fieldLabel}}</label>
-                <!--datepicker-->
-        <!--<div class='input-group'>
-                <input type='text' class='form-control' id='{{vm.fieldName}}' ej-datepicker
-               e-value='vm.ngModel'  />                
-        </div>-->
+        
+        <!--datepicker-->       
+        <p class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" 
+          is-open="vm.isOpened" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close"  />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="vm.open()">
+                    <i class="fa fa-bars"></i></button>
+          </span>
+        </p>     
 </div>

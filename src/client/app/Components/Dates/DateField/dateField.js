@@ -7,60 +7,45 @@ var myDateField = {
         fieldName: '@',
         fieldLabel: '@',
         toolTip: '@',
-        showToolTip: '@'
+        showToolTip: '@',
+        dateOptions: '@'
     },
     controllerAs: 'vm',
     controller: function($log) {
         'use strict';
         var vm = this;
-
+        
 
         vm.fieldLabel = 'Set this Text using field-label';
          // todo:tidy this
 
-        this.$onInit = function() {
-          
-            
-           //'initializeDate();
-
-            // if the field name is not specified set the field name to the label text 
-            if (vm.fieldName == null) {
-                vm.fieldName = vm.fieldLabel.replace(' ', '');
-            }
-
-            // if the tooltip text is specified show the tooltip
-            if (vm.toolTip) {
-                vm.showToolTip = true;
-            }
-
-            // start with the date popup closed
-            vm.popup1 = {
-                opened: false
-            };
-
+        vm.$onInit = function() {
+           
+               //defaults
+               vm.locale = 'en-GB';               
+               vm.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+               vm.format = vm.formats[0];
+               vm.isOpened = false;
+               vm.dateOptions = {
+                    dateDisabled: disabled,
+                    formatYear: 'yy',
+                    maxDate: new Date(2020, 5, 22),
+                    minDate: new Date(),
+                    startingDay: 1
+                };
         };
-
-
-
-
-
-         vm.dateValue = new Date('2/3/2013');
-               vm.locale = 'en-US';
-
-
-
 
 
 
         // open the date popup
         vm.open = function() {
-            vm.popup1.opened = true;
+            vm.isOpened = true;
         };
 
 
 
     },
-    templateUrl: 'app/Dates/DateField/dateFieldTemplate.html'
+    templateUrl: 'src/client/app/Components/Dates/DateField/dateFieldTemplate.html'
 };
 
 
