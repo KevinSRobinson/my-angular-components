@@ -1,24 +1,10 @@
-var myPanel = {
+var myMorelessPanel = {
     transclude: true,
     bindings: {
-        title: '@',
-        fieldName: '@',
-        style: '@',
-        icon: '@',
-        iconSize: '@',
-        smallHeading: '@',
-        showAddButton: '@',
-        showEditButton: '@',
-        addButtonId: '@',
-        editButtonId: '@',
-        add: '&',
-        edit: '&',
-        showFooter: '@',
-        footerLeftLabel: '@',
-        footerRightLabel: '@',
-        height: '@',
-        showVerticalScrollBar: '@',
-        buttonText: '@'
+         isCollapsed: '@',
+         buttonText: '@',
+         expandButtonText: '@',
+         collapseButtonText: '@'
     },
     controllerAs: 'vm',
     controller: function () {
@@ -28,30 +14,18 @@ var myPanel = {
 
         vm.$onInit = function () {
             vm.buttonText = '';
-            vm.isCollapsed = false;
-            vm.ngModel = 'You can set this text using ng-model';
-            vm.height = 150;
-            vm.showVerticalScrollBar = false;
-
-            //buttons
-            vm.showAddButton = false;
-            vm.showEditButton = false;
-            vm.editButtonId = 'panelEditButton';
-            vm.addButtonId = 'panelAddButton';
-
-            //footer
-            vm.showFooter = false;
-            vm.footerLeftLabel = '';
-            vm.footerRightLabel = '';
+            vm.isCollapsed = true;
+            vm.collapseButtonText = "Less";
+            vm.expandButtonText = "More";
         };
 
 
         //TODO: Allow chaning of Button text
         vm.getButtonText = function () {
             if (vm.isCollapsed) {
-                return 'More Search Options';
+                return vm.expandButtonText;
             } else {
-                return 'Fewer Search Options';
+                return vm.collapseButtonText;
             }
         };
 
@@ -100,8 +74,11 @@ var myPanel = {
             return 'margin-left: 5px; padding: 10px;';
         };
 
-        vm.init();
+        
 
     },
     templateUrl: 'src/client/app/Components/Panels/MoreLessPanel/moreLessPanel.html'
 };
+
+
+angular.module('myComponents').component("myMorelessPanel", myMorelessPanel);

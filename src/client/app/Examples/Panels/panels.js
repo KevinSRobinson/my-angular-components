@@ -3,8 +3,20 @@ var panels = {
     controller: function(){
         var vm = this;
 
-        vm.firstName = "Kevin";
-        
+        vm.testTable = {
+            Headers:['Titel 1', 'Title2'],
+            Body:['Titel 1', 'Title2']
+        };
+
+
+
+        vm.add = function(){
+                alert('Add Clicked');
+        };
+
+        vm.edit = function(){
+                alert('Edit Clicked');
+        };
     },
     templateUrl: "src/client/app/Examples/Panels/panelsTemplate.html"
 };

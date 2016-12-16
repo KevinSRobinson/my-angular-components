@@ -16,6 +16,7 @@
         }
 
     </style>
+     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" />
     <!-- build:css /assets/styles/lib.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/angular-ui-select/dist/select.css" />
@@ -66,11 +67,14 @@
         <p>A collection of components wraping boorstrap components into more compact usable pieces</p>
     </div>
 
-    <h1>Inputs</h1>
+<panel-examples></panel-examples>
+
+
+  
     <hr>
-    <input-examples></input-examples>
+    <input-examples ></input-examples>
     <hr>
-    <panel-examples></panel-examples>
+    
     <hr>
      <modal-examples></modal-examples>
  
@@ -95,6 +99,7 @@
             <script src="/src/client/app/Examples/Panels/panels.js"></script>
             <script src="/src/client/app/Components/Buttons/CreateButton/createButton.js"></script>
             <script src="/src/client/app/Components/Buttons/DeleteButton/deleteButton.js"></script>
+            <script src="/src/client/app/Components/Buttons/EditButton/editButton.js"></script>
             <script src="/src/client/app/Components/CheckBoxes/CheckboxField/checkboxField.js"></script>
             <script src="/src/client/app/Components/CheckBoxes/DisplayCheckField/displayCheckField.js"></script>
             <script src="/src/client/app/Components/ComboBoxes/CategorySelect/categorySelect.js"></script>
@@ -104,15 +109,15 @@
             <script src="/src/client/app/Components/Fields/DisplayTextArea/displayTextArea.js"></script>
             <script src="/src/client/app/Components/Fields/TextArea/textAreaField.js"></script>
             <script src="/src/client/app/Components/Fields/TextField/textField.js"></script>
-            <script src="/src/client/app/Components/Buttons/EditButton/editButton.js"></script>
             <script src="/src/client/app/Components/Filters/FilterTextbox/filterTextbox.js"></script>
             <script src="/src/client/app/Components/Headers/PageHeader/pageHeader.js"></script>
+            <script src="/src/client/app/Components/Layout/Table/table.js"></script>
             <script src="/src/client/app/Components/Modals/ModalButtons/modalButtons.js"></script>
             <script src="/src/client/app/Components/Modals/ModalHeader/modalHeader.js"></script>
             <script src="/src/client/app/Components/Other/Spinner/spinner.js"></script>
             <script src="/src/client/app/Components/Panels/InfoPanel/infoPanel.js"></script>
-            <script src="/src/client/app/Components/Panels/MoreLessButton/moreLessButton.js"></script>
             <script src="/src/client/app/Components/Panels/MoreLessPanel/moreLessPanel.js"></script>
+            <script src="/src/client/app/Components/Panels/MoreLessButton/moreLessButton.js"></script>
             <script src="/src/client/app/Components/Panels/Panel/panel.js"></script>
             <script src="/src/client/app/Components/SelectLists/SelectList/selectList.js"></script>
             <script src="/src/client/app/Components/StatusAlerts/StatusAlert/statusAlert.js"></script>
@@ -122,12 +127,7 @@
             <!-- inject:templates:js -->
             <!--endinject-->
             <!--endbuild-->
-            <script>
-                angular.module('myComponents').controller("exController", function ($scope) {
-                    $scope.firstName = "Kevin";
-                })
-
-            </script>
+            
 </body>
 
 </html>

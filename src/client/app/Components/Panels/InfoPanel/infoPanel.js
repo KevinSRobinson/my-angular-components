@@ -1,6 +1,6 @@
 var myInfoPanel = {
     bindings: {
-        info: '@',
+        infoText: '@',
         icon: '@',
         color: '@'
     },
@@ -10,6 +10,7 @@ var myInfoPanel = {
 
         vm.$onInit = function () {
             //deafults
+            vm.ngModel = "Set this Text using ngModel";
             vm.icon = 'fa fa-info fa-2x';
             vm.color = '#64518A';
         };
@@ -26,7 +27,7 @@ var myInfoPanel = {
         };
 
     },
-    templateUrl: 'asrc/client/app/Components/Panels/InfoPanel/infoPanelTemplate.html'
+    templateUrl: 'src/client/app/Components/Panels/InfoPanel/infoPanelTemplate.html'
 };
 
 

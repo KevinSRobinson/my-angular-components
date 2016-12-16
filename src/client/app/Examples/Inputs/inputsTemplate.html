@@ -1,19 +1,18 @@
 <div class="example">
-
-
-
+    <h1>Inputs</h1>
+    <hr>
     <h3>Text Field</h3>
-        <hr>
-        <div class="row">
-            <div class="col-md-6">
-                <h5>Basic</h5>
-                <my-text-field field-label="First Name" ng-model="vm.firstName"></my-text-field>
-                <h4>With Help Text</h4>
-                <my-text-field field-label="First Name" ng-model="vm.firstName" help-text="Enter your First Name"></my-text-field>
-            </div>
-            <div class="col-md-6">
-                <div class="usage">
-                    <code>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <h5>Basic</h5>
+            <my-text-field field-label="First Name" ng-model="vm.firstName"></my-text-field>
+            <h4>With Help Text</h4>
+            <my-text-field field-label="First Name" ng-model="vm.firstName" help-text="Enter your First Name"></my-text-field>
+        </div>
+        <div class="col-md-6">
+            <div class="usage">
+                <code>
                     <b>
                         <span class="tag"> &lt;my-text-field </span>
                         <span class="attrib">field-label=</span>
@@ -23,42 +22,39 @@
                         <span class="tag">&lt;/my-text-field&gt;</span>
                     </b>
                 </code>
-                </div>
-                <my-panel title="Options" theme="success">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <td>Property</td>
-                                <td>Required</td>
-                                <td>Description</td>
-                            </tr>
-                        </thead>
-                        <tr>
-                            <td>field-label</td>
-                            <td>Yes</td>
-                            <td>Set the label value</td>
-                        </tr>
-                        <tr>
-                            <td>field-name</td>
-                            <td>No</td>
-                            <td>Set the Name and ID values of the input.<br>
-                                <small>Default:  Uses the field-label to create a value</small>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>help-text</td>
-                            <td>No</td>
-                            <td>Set the information text to appear under the control<br>
-                                <small> Default: empty</small>
-                            </td>
-                        </tr>
-                    </table>
-                </my-panel>
             </div>
+            <my-panel title="Options" theme="success">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Property</td>
+                            <td>Required</td>
+                            <td>Description</td>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <td>field-label</td>
+                        <td>Yes</td>
+                        <td>Set the label value</td>
+                    </tr>
+                    <tr>
+                        <td>field-name</td>
+                        <td>No</td>
+                        <td>Set the Name and ID values of the input.<br>
+                            <small>Default:  Uses the field-label to create a value</small>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>help-text</td>
+                        <td>No</td>
+                        <td>Set the information text to appear under the control<br>
+                            <small> Default: empty</small>
+                        </td>
+                    </tr>
+                </table>
+            </my-panel>
         </div>
-
-
-
+    </div>
     <h3>Text Area</h3>
-     <my-textarea-field field-label="Firstname" field-name="Firstname" ng-model="firstName"></my-textarea-field>
+    <my-textarea-field field-label="Firstname" field-name="Firstname" ng-model="firstName"></my-textarea-field>
 </div>
