@@ -15,17 +15,47 @@ gulp.task('default', ['help']);
 
 gulp.task('help', $.taskListing);
 
+gulp.task('test', ['templatecache'], function(done){
+    startTests(true, done);
+})
+
+function startTests(singleRun, done){
+    var karma = require('karma').server;
+    var excludeFiles = [];
+    var serverSpecs = config.serverInegrationSpecs;
+
+    excludeFiles = serverSpecs;
+
+    karma.start({
+        configFile: __dirname + '/karma.conf.js',
+        exclude: excludeFiles,
+        singleRun: singleRun
+    }, function(){  done();});
+    
+    function karmaCompleted(karmaResult){
+        log('Karma Completed');
+        if(karmaResult === 1){
+            done('karma: tests failed with code: ' + karmaResult);
+        }
+        else{
+            done();
+        }
+    }
+}
+
+
 gulp.task('vet', function(){
     log('Analyzing source with jsHint and JSCS');
     log(config.alljs);
+
+
     gulp.src(config.alljs)
     .pipe($.if(args.verbose, $.print()))
     .pipe($.jscs())
-    .pipe($.jshint())
-    .pipe($.jshint.reporter('jshint-stylish', {verbose: true})
-    .pipe($.jshint.reporter('fail'))
+    .pipe($.jshint()
+    //.pipe($.jshint.reporter('jshint-stylish', {verbose: true})
+    //.pipe($.jshint.reporter('fail'))
     );
-    
 });
 
 
@@ -166,13 +196,11 @@ gulp.task('bump', function(){
         .pipe($.print())
         .pipe($.bump(options))
         .pipe(gulp.dest(config.root));
-
 });
 
+
+
 //////////////////////////////////////////////
-
-
-
 gulp.task('templatecache', function(){
 
     log('Creating templatecache');
@@ -247,7 +275,7 @@ gulp.task('styles',  function(){
                 .pipe($.debug())
                 .pipe($.less())
                 .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
-                .pipe(gulp.dest(config.build));
+                .pipe(gulp.dest(config.temp));
 
 });
 

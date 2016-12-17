@@ -1,13 +1,12 @@
 <div ng-show='vm.show'>
-        <div id='errorMessage' style='margin-top: 10px;' ng-show='vm.isError'>
-                <div class='well' style='color: white; background:lightcoral;' role='alert'>
-                        <i class='fa fa-warning fa-2x'></i>{{vm.errorMessage}}<br>
-                </div>
+    <div id='errorMessage' ng-show='vm.isError'>
+        <div class="errorMessage">
+            <i class='fa fa-warning fa-2x'></i> {{vm.errorMessage}}
         </div>
-        
-        <div id='successMessage' style='margin-top: 10px;' ng-show='vm.isSuccess'>
-                <div class='well' style='color: white; background: lightgreen; ' role='alert'>
-                        <i class='fa fa-check fa-2x'></i>{{vm.successMessage}}
-                </div>
+    </div>
+    <div id='successMessage' ng-show='vm.isSuccess'>
+        <div class='successMessage'>
+            <i class='fa fa-check fa-2x'></i>{{vm.successMessage}}
         </div>
+    </div>
 </div>

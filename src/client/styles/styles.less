@@ -1,3 +1,46 @@
-
 @import "../../../bower_components/bootstrap/less/bootstrap.less";
 
+
+
+
+// --------------------------------------------------
+// Alerts
+// --------------------------------------------------
+@alert-height: 20px;
+@alert-padding: 19px;
+@alert-maiginbottom: 19px;
+.errorMessage {
+    min-height: @alert-height;
+    padding: @alert-padding;
+    margin-bottom: @alert-maiginbottom;
+    background: lightcoral;
+    color: white !important;
+}
+.successMessage {
+    min-height: @alert-height;
+    padding: @alert-padding;
+    margin-bottom: @alert-maiginbottom;
+    color: white;
+    background: lightgreen !Important;
+}
+
+.strike {
+    text-decoration: line-through;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.red {
+    color: red;
+}
+
+.has-error {
+    color: red;
+    background-color: yellow;
+}
+
+.orange {
+    color: orange;
+}

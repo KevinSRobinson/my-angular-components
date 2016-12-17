@@ -4979,7 +4979,7 @@ a.thumbnail.active {
   color: #333333;
 }
 .alert {
-  padding: 15px;
+  padding: 19px;
   margin-bottom: 20px;
   border: 1px solid transparent;
   border-radius: 4px;
@@ -5000,7 +5000,7 @@ a.thumbnail.active {
 }
 .alert-dismissable,
 .alert-dismissible {
-  padding-right: 35px;
+  padding-right: 39px;
 }
 .alert-dismissable .close,
 .alert-dismissible .close {
@@ -6672,4 +6672,34 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+.errorMessage {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 19px;
+  background: lightcoral;
+  color: white !important;
+}
+.successMessage {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 19px;
+  color: white;
+  background: lightgreen !Important;
+}
+.strike {
+  text-decoration: line-through;
+}
+.bold {
+  font-weight: bold;
+}
+.red {
+  color: red;
+}
+.has-error {
+  color: red;
+  background-color: yellow;
+}
+.orange {
+  color: orange;
 }

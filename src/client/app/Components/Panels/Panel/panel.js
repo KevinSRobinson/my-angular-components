@@ -75,9 +75,9 @@ var myPanel = {
 
         vm.getButtonStyle = function () {
             if (vm.smallHeading !== undefined) {
-                return 'margin-left: 5px; padding: 3px;';
+                return '';
             }
-            return 'margin-left: 5px; padding: 10px;';
+            return '';
         };
 
 
