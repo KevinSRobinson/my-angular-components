@@ -8,24 +8,25 @@ var myDateField = {
         fieldLabel: '@',
         toolTip: '@',
         showToolTip: '@',
-        dateOptions: '@'
+        dateOptions: '@',
+        helpText: '@',
+        readOnly:'@'
     },
     controllerAs: 'vm',
-    controller: function($log) {
+    controller: function() {
         'use strict';
         var vm = this;
-        
 
-        vm.fieldLabel = 'Set this Text using field-label';
-         // todo:tidy this
 
         vm.$onInit = function() {
            
                //defaults
+               vm.fieldLabel= "Date";
                vm.locale = 'en-GB';               
                vm.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
                vm.format = vm.formats[0];
                vm.isOpened = false;
+               vm.readOnly = false;
                vm.dateOptions = {
                     formatYear: 'yy',
                     maxDate: new Date(2020, 5, 22),

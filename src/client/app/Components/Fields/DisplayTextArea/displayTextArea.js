@@ -1,4 +1,4 @@
-var myDispalyTextarea = {
+var myDisplayTextarea = {
     bindings: {
         fieldLabel: '@',
         ngModel: '='
@@ -17,4 +17,4 @@ var myDispalyTextarea = {
 };
 
 
-angular.module('myComponents').component('myDisplayTextarea', myDispalyTextarea);
+angular.module('myComponents').component('myDisplayTextareaField', myDisplayTextareaField);

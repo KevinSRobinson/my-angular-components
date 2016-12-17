@@ -23,40 +23,74 @@
                     </b>
                 </code>
             </div>
-            <my-panel title="Options" theme="success">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <td>Property</td>
-                            <td>Required</td>
-                            <td>Description</td>
-                        </tr>
-                    </thead>
-                    <tr>
-                        <td>field-label</td>
-                        <td>Yes</td>
-                        <td>Set the label value</td>
-                    </tr>
-                    <tr>
-                        <td>field-name</td>
-                        <td>No</td>
-                        <td>Set the Name and ID values of the input.<br>
-                            <small>Default:  Uses the field-label to create a value</small>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>help-text</td>
-                        <td>No</td>
-                        <td>Set the information text to appear under the control<br>
-                            <small> Default: empty</small>
-                        </td>
-                    </tr>
-                </table>
-            </my-panel>
         </div>
     </div>
-    <h3>Text Area</h3>
-    <my-textarea-field field-label="Firstname" field-name="Firstname" ng-model="firstName"></my-textarea-field>
+    <h3>Text Area Field</h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <my-textarea-field field-label="Description" ng-model="firstName"></my-textarea-field>
+        </div>
+        <div class="col-md-6">
+            <div class="usage">
+                <code>
+                    <b>
+                        <span class="tag"> &lt;my-textarea-field </span>
+                        <span class="attrib">field-label=</span>
+                        <spam class="value">"Description"</span>
+                        <span class="attrib">ng-model=</span>
+                        <span class="value">"vm.description"&gt;</span>
+                        <span class="tag">&lt;/my-textarea-field&gt;</span>
+                    </b>
+                </code>
+            </div>
+        </div>
+    </div>
 </div>
 
 
+<h3>Display Field</h3>
+<hr>
+<div class="row">
+    <div class="col-md-6">
+        <my-display-field field-label="FirstName" ng-model="vm.firstName"></my-display-field>
+    </div>
+    <div class="col-md-6">
+        <div class="usage">
+            <code>
+                    <b>
+                        <span class="tag"> &lt;my-textarea-field </span>
+                        <span class="attrib">field-label=</span>
+                        <spam class="value">"Description"</span>
+                        <span class="attrib">ng-model=</span>
+                        <span class="value">"vm.description"&gt;</span>
+                        <span class="tag">&lt;/my-textarea-field&gt;</span>
+                    </b>
+                </code>
+        </div>
+    </div>
+</div>
+
+
+
+<h3>Display TextArea Field</h3>
+<hr>
+<div class="row">
+    <div class="col-md-6">
+        <my-display-textarea-field field-label="FirstName" ng-model="vm.firstName"></my-display-field>
+    </div>
+    <div class="col-md-6">
+        <div class="usage">
+            <code>
+                    <b>
+                        <span class="tag"> &lt;my-textarea-field </span>
+                        <span class="attrib">field-label=</span>
+                        <spam class="value">"Description"</span>
+                        <span class="attrib">ng-model=</span>
+                        <span class="value">"vm.description"&gt;</span>
+                        <span class="tag">&lt;/my-textarea-field&gt;</span>
+                    </b>
+                </code>
+        </div>
+    </div>
+</div>

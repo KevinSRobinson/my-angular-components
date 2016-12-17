@@ -16,7 +16,7 @@ var myTextField = {
 
             //defaults
             vm.showToolTip = false;
-            vm.showHelpText = true;
+            vm.showHelpText = false;
             vm.required = false;
         };
 

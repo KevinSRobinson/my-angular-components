@@ -17,7 +17,7 @@ var myTextareaField = {
             //defaults
             vm.showToolTip = false;
             vm.required = false;
-            vm.fieldLabel = 'Change the with the field-label property';
+            vm.fieldLabel = '';
             vm.fieldName = vm.fieldLabel.replace(' ', '');           
         };
 

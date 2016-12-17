@@ -29,8 +29,7 @@
     <!-- endbuild -->
     <style>
         .example {
-            color: lightslategrey;
-            font-size: 12px;
+            color: lightslategrey;           
         }
         
         .tag {
@@ -39,21 +38,25 @@
         
         .attrib {
             color: royalblue;
+            margin: 0px !important;
+            padding: 0px !important;
         }
-        
-        .usage {
-            color: lightslategrey;
-            font-size: 12px;
-        }
+              
         
         .value {
-            color: black;
-            font-size: 12px;
+            color: black;           
         }
         
         h5 {
             font-size: 15px;
         }
+
+code{
+    margin-bottom:0px !important;
+    padding-top:0px !important;
+    padding-bottom:0px !important;
+    font-size: medium;
+}
 
     </style>
 </head>
@@ -67,15 +70,18 @@
         <p>A collection of components wraping boorstrap components into more compact usable pieces</p>
     </div>
 
+
+<dates-examples></dates-examples>
+
 <status-alerts></status-alerts>
 
 
-<dates-examples></dates-examples>
+
 
 <panel-examples></panel-examples>
 
 
-  
+  <common></common>
     <hr>
     <input-examples ></input-examples>
     <hr>
@@ -99,18 +105,19 @@
             <script src="/src/client/app/Components/app.module.js"></script>
             <script src="/src/client/app/Examples/app.js"></script>
             <script src="/src/client/app/Components/Reports/reportViewer.js"></script>
+            <script src="/src/client/app/Examples/Common/common.js"></script>
             <script src="/src/client/app/Examples/Dates/dates.js"></script>
-            <script src="/src/client/app/Examples/Modals/modals.js"></script>
             <script src="/src/client/app/Examples/Inputs/inputs.js"></script>
+            <script src="/src/client/app/Examples/Modals/modals.js"></script>
             <script src="/src/client/app/Examples/Panels/panels.js"></script>
             <script src="/src/client/app/Examples/StatusAlerts/statusAlerts.js"></script>
             <script src="/src/client/app/Components/Buttons/CreateButton/createButton.js"></script>
             <script src="/src/client/app/Components/Buttons/DeleteButton/deleteButton.js"></script>
             <script src="/src/client/app/Components/Buttons/EditButton/editButton.js"></script>
+            <script src="/src/client/app/Components/ComboBoxes/CategorySelect/categorySelect.js"></script>
             <script src="/src/client/app/Components/CheckBoxes/CheckboxField/checkboxField.js"></script>
             <script src="/src/client/app/Components/CheckBoxes/DisplayCheckField/displayCheckField.js"></script>
             <script src="/src/client/app/Components/Dates/DateField/dateField.js"></script>
-            <script src="/src/client/app/Components/ComboBoxes/CategorySelect/categorySelect.js"></script>
             <script src="/src/client/app/Components/Dates/DisplayDate/displayDate.js"></script>
             <script src="/src/client/app/Components/Fields/DisplayField/displayField.js"></script>
             <script src="/src/client/app/Components/Fields/DisplayTextArea/displayTextArea.js"></script>

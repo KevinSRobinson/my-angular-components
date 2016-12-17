@@ -1,15 +1,22 @@
 <div class='form-group'>
-
-        <!--label-->        
-        <label class='control-label' style='min-width: 110px; text-align: left'>{{vm.fieldLabel}}</label>
-        
-        <!--datepicker-->       
+    <!--label-->
+    <label class='control-label'>{{vm.fieldLabel}}</label>
+    <div ng-show="!vm.readOnly">
         <p class="input-group">
-          <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" 
-          is-open="vm.isOpened" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close"  />
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="vm.open()">
-                    <i class="fa fa-bars"></i></button>
+            <!--datepicker-->
+            <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened"
+                datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" />
+            <!--openbutton-->
+            <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="vm.open()">
+                  <i class="fa fa-bars"></i>
+              </button>
           </span>
-        </p>     
+        </div>
+    </div>
+    <div ng-show="vm.readOnly">
+        {{vm.ngModel | date:'medium' }}
+    </div>
+    <span id="helpBlock" class="help-block" ng-if="vm.showHelpText">{{vm.helpText}}</span>
+    </p>
 </div>

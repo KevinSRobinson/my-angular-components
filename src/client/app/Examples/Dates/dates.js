@@ -3,6 +3,8 @@ var dates = {
     controller: function(){
         var vm = this;
 
+    
+
         vm.$onInit = function(){
             vm.sampleDate = new Date();
         };

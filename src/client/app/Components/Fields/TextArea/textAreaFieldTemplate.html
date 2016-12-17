@@ -10,5 +10,8 @@
 
          <!--ToolTip   -->
         <div class='input-group-addon' style='line-height: 0 !important;'  ng-show='vm.showToolTip'><my-popover ng-model='vm.toolTip'></my-popover></div>
+
+        <!--helptext-->
+        <span id="helpBlock" class="help-block" ng-if="vm.showHelpText">{{vm.helpText}}</span>
      </div>
 </div>
