@@ -2,8 +2,16 @@
 
 <form class="form-horizontal">
 
+
 <my-input-field field-label="First44 Name" 
                 ng-model="vm.firstName"  read-only="true"
+                help-text="Enter your First Name">
+</my-input-field>
+
+<my-input-field field-label="Agree" 
+                input-type="date"
+                horizontal="true"
+                ng-model="vm.agree"  
                 help-text="Enter your First Name">
 </my-input-field>
 

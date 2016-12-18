@@ -1,22 +1,17 @@
-<div class='form-group'>
-    <!--label-->
-    <label class='control-label'>{{vm.fieldLabel}}</label>
-    <div ng-show="!vm.readOnly">
-        <p class="input-group">
-            <!--datepicker-->
-            <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened"
-                datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" />
-            <!--openbutton-->
-            <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="vm.open()">
-                  <i class="fa fa-bars"></i>
-              </button>
+<div class="form-group">
+    <label ng-class="vm.labelClass" for="email">{{vm.fieldLabel}}</label>
+    <div ng-class="vm.inputClass">
+        <span ng-if="!vm.readOnly">
+          <p class="input-group">
+          <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" 
+          is-open="vm.isOpened" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+          <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></button>
           </span>
-        </div>
+        </p>
     </div>
     <div ng-show="vm.readOnly">
-        {{vm.ngModel | date:'medium' }}
+        <p>{{vm.ngModel}}</p>
     </div>
-    <span id="helpBlock" class="help-block" ng-if="vm.showHelpText">{{vm.helpText}}</span>
-    </p>
+</div>
 </div>

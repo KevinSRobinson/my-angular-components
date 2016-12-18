@@ -54,9 +54,6 @@ var myInputField = {
 
 
         vm.setlabelClass = function(){
-               console.log('setlabelClass');
-            console.log(vm.horizontal);
-
             if(vm.horizontal === "true"){
                vm.labelClass = "control-label col-sm-2";              
             }
