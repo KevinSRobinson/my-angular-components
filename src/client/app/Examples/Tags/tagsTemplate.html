@@ -1,0 +1,28 @@
+<div class="example">
+    <h1>Tags</h1>
+    <hr>
+
+    <my-select-field field-label="Categories" 
+                ng-model="vm.cats"  
+                help-text="Enter your First Name">
+</my-select-field>
+
+    <my-select-field field-label="Categories" 
+                ng-model="vm.cats" 
+                read-only="true"   horizontal="true"
+                help-text="Enter your First Name">
+</my-select-field>
+
+ 
+<my-select-field field-label="Select A Skill" 
+                ng-model="vm.items"  
+                horizontal="true"
+                help-text="Enter your First Name">
+</my-select-field>
+  <!--<ui-select multiple ng-model="vm.selected"  theme="bootstrap">
+          <ui-select-match placeholder="Select a Tag...">{{$item.name}}</ui-select-match>
+        <ui-select-choices repeat="item in (vm.items | filter: $select.search) track by item.id">
+            <span ng-bind="item.name"></span>
+        </ui-select-choices>
+    </ui-select>-->
+</div>

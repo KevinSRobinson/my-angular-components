@@ -1,0 +1,18 @@
+<div class="form-group">
+    <label ng-class="vm.labelClass" for="email">{{vm.fieldLabel}}</label>
+    <div ng-class="vm.inputClass">
+        <div ng-if="!vm.readOnly">
+            <ui-select multiple ng-model="vm.selected" theme="bootstrap">
+                <ui-select-match placeholder="Select a Tag...">{{$item.name}}</ui-select-match>
+                <ui-select-choices repeat="item in (vm.ngModel | filter: $select.search) track by item.id">
+                    <span ng-bind="item.name"></span>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div ng-show="vm.readOnly">
+            <span ng-repeat="tag in vm.ngModel" class="badge">
+                {{tag.name}}
+            <span>
+        </div>
+    </div>
+</div>

@@ -22,7 +22,7 @@ var myInputField = {
             
         $scope.$watch("vm.horizontal", function(){
            vm.setlabelClass ();
-           
+           vm.setInputClass();
         });
 
         $scope.$watch("vm.readOnly", function(){
