@@ -1,96 +1,16 @@
-<div class="example">
-    <h1>Inputs</h1>
-    <hr>
-    <h3>Text Field</h3>
-    <hr>
-    <div class="row">
-        <div class="col-md-6">
-            <h5>Basic</h5>
-            <my-text-field field-label="First Name" ng-model="vm.firstName"></my-text-field>
-            <h4>With Help Text</h4>
-            <my-text-field field-label="First Name" ng-model="vm.firstName" help-text="Enter your First Name"></my-text-field>
-        </div>
-        <div class="col-md-6">
-            <div class="usage">
-                <code>
-                    <b>
-                        <span class="tag"> &lt;my-text-field </span>
-                        <span class="attrib">field-label=</span>
-                        <spam class="value">"Firstname"</span>
-                        <span class="attrib">ng-model=</span>
-                        <span class="value">"vm.firstName"&gt;</span>
-                        <span class="tag">&lt;/my-text-field&gt;</span>
-                    </b>
-                </code>
-            </div>
-        </div>
-    </div>
-    <h3>Text Area Field</h3>
-    <hr>
-    <div class="row">
-        <div class="col-md-6">
-            <my-textarea-field field-label="Description" ng-model="firstName"></my-textarea-field>
-        </div>
-        <div class="col-md-6">
-            <div class="usage">
-                <code>
-                    <b>
-                        <span class="tag"> &lt;my-textarea-field </span>
-                        <span class="attrib">field-label=</span>
-                        <spam class="value">"Description"</span>
-                        <span class="attrib">ng-model=</span>
-                        <span class="value">"vm.description"&gt;</span>
-                        <span class="tag">&lt;/my-textarea-field&gt;</span>
-                    </b>
-                </code>
-            </div>
-        </div>
-    </div>
-</div>
+<h1>Inputs1</h1>
 
+<form class="form-horizontal">
 
-<h3>Display Field</h3>
-<hr>
-<div class="row">
-    <div class="col-md-6">
-        <my-display-field field-label="FirstName" ng-model="vm.firstName"></my-display-field>
-    </div>
-    <div class="col-md-6">
-        <div class="usage">
-            <code>
-                    <b>
-                        <span class="tag"> &lt;my-textarea-field </span>
-                        <span class="attrib">field-label=</span>
-                        <spam class="value">"Description"</span>
-                        <span class="attrib">ng-model=</span>
-                        <span class="value">"vm.description"&gt;</span>
-                        <span class="tag">&lt;/my-textarea-field&gt;</span>
-                    </b>
-                </code>
-        </div>
-    </div>
-</div>
+<my-input-field field-label="First44 Name" 
+                ng-model="vm.firstName"  read-only="true"
+                help-text="Enter your First Name">
+</my-input-field>
 
+</form>
+<!--<my-input-field field-label="Description" 
+                ng-model="vm.description" 
+                read-only="true"         
+                help-text="Enter your Last Name">
+</my-input-field>-->
 
-
-<h3>Display TextArea Field</h3>
-<hr>
-<div class="row">
-    <div class="col-md-6">
-        <my-display-textarea-field field-label="FirstName" ng-model="vm.firstName"></my-display-field>
-    </div>
-    <div class="col-md-6">
-        <div class="usage">
-            <code>
-                    <b>
-                        <span class="tag"> &lt;my-textarea-field </span>
-                        <span class="attrib">field-label=</span>
-                        <spam class="value">"Description"</span>
-                        <span class="attrib">ng-model=</span>
-                        <span class="value">"vm.description"&gt;</span>
-                        <span class="tag">&lt;/my-textarea-field&gt;</span>
-                    </b>
-                </code>
-        </div>
-    </div>
-</div>

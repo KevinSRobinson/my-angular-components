@@ -1,11 +1,20 @@
-<div class="form-group">
-    <!--Label-->
-    <label class="control-label" style="min-width: 80px !important;">
-        {{vm.fieldLabel}}
-    </label>
-    <!--Input-->
-    <div class="input-group" style="width: 80% !important;">
-        <input type="text" class="form-control" id="{{vm.fieldName}}" ng-model="vm.ngModel" ng-required="{{ vm.required }}">        {{vm.showHelpText}} {{vm.helpText}}
-        <span id="helpBlock" class="help-block" ng-if="vm.showHelpText">{{vm.helpText}}</span>
+{{vm.horizontal}}
+<h2>{{vm.getInputWidth()}}</h2>
+<div ng-class="vm.getOrientation()">
+    <div class="form-group">
+        <!--Label-->
+        <label style="min-width: 80px !important;" class="control-label" ng-class="getLabelWidth()" class="col-sm-2">
+            {{vm.fieldLabel}}
+         </label>
+        <!--Input-->
+        <div ng-class="getInputWidth()" >
+            <div ng-show="!vm.displayOnly" >
+                <input type="text" class="form-control" id="{{vm.fieldName}}" ng-model="vm.ngModel" ng-required="vm.required" >
+            </div>
+            <div ng-show="vm.displayOnly" ng-class="getInputWidth()">
+                {{vm.ngModel}}
+            </div>
+            <span id="helpBlock" class="help-block" ng-if="vm.showHelpText">{{vm.helpText}}</span>
+        </div>
     </div>
 </div>

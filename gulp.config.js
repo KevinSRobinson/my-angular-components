@@ -24,7 +24,7 @@ module.exports = function () {
         index: client + 'index.html',
         client: client,
         js: [
-            clientApp + '**/*.module.js',
+            clientApp + '**/*.module.js',            
             clientApp + '**/*.js',
             '!' + clientApp + '**/*spec.js',
             '!' + './bower_components/**'
@@ -96,6 +96,7 @@ module.exports = function () {
             files: [].concat(
                 bowerFiles,
                 config.specHelpers,
+                client + 'app/Components/templateService.js',
                 client + 'app/Components/app.module.js',
                 client + 'app/Components/**/*.js',
                 client + 'tests/**/*.js',
