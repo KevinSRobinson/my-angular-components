@@ -7,10 +7,12 @@
                 ng-model="vm.cats"  input-type="tags" selected="vm.selectedTags"
                 help-text="Enter your First Name">
 </my-select-field>
+ <pre>model = {{vm.selectedCats | json}}</pre><br/>
 
-    <my-select-field field-label="Categorieds" 
+    <my-select-field field-label="Categorieds" size="7"
+                multi-select="false"
                 ng-model="vm.cats"  input-type="combobox"
-                 horizontal="true" selected="vm.selected"
+                 horizontal="true" selected="vm.selectedCats"
                 help-text="Enter your First Name">
 </my-select-field>
 

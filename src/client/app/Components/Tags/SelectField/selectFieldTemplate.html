@@ -9,8 +9,8 @@
                     <span ng-bind="item.name"></span>
                 </ui-select-choices>
             </ui-select>
-            <select ng-if="vm.inputType==='combobox'" ng-model='vm.selected' class='form-control' id='{{vm.fieldName}}'>
-                <option ng-repeat='option in vm.ngModel' value='{{option.id}}'>{{option.name}}</option>
+            <select ng-if="vm.inputType==='combobox'" size="vm.size" multiple="vm.multiSelect" ng-model='vm.selected' class='form-control' id='{{vm.fieldName}}'>
+                <option ng-repeat='option in vm.ngModel' ng-value='{{option.id}}'>{{option.name}}</option>
             </select>
         </div>
         <div ng-show="vm.readOnly">

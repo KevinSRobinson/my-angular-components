@@ -3,7 +3,7 @@ var tags = {
     controller: function(){
         var vm = this;
 
-        vm.selected = {};
+        vm.selectedCats = {};
 vm.selectedTags = {};
  vm.cats = [{
             id: 1,

@@ -12,7 +12,9 @@ var mySelectField = {
         horizontal: '@',
         items: '=',
         inputType: '@',
-        selected: '='
+        selected: '=',
+        size:"@",
+        multiSelect:"@"
     },
     controllerAs: 'vm',
     controller: function ($scope) {
@@ -51,6 +53,8 @@ var mySelectField = {
             vm.horizontal = false;
             vm.setlabelClass();
             vm.setInputClass();
+            vm.selected = null;
+            vm.multiSelect = false;
         };
 
 
