@@ -6,29 +6,17 @@ var myDateField = {
         ngModel: '=',
         fieldName: '@',
         fieldLabel: '@',
-        toolTip: '@',
-        showToolTip: '@',
+        tooltip: '@',
         dateOptions: '@',
         helpText: '@',
         readOnly: '@',
         horizontal: '@'
     },
     controllerAs: 'vm',
-    controller: function ($scope) {
+    controller: function (cssClassService) {
         'use strict';
         var vm = this;
-
-  $scope.$watch("vm.horizontal", function(){
-           vm.setlabelClass ();
-           
-        });
-
-        $scope.$watch("vm.readOnly", function(){
-           vm.setlabelClass ();
-
-           
-        });
-
+        vm.cssClassService= cssClassService;
         vm.$onInit = function () {
 
             //defaults
@@ -38,6 +26,7 @@ var myDateField = {
             vm.format = vm.formats[0];
             vm.isOpened = false;
             vm.readOnly = false;
+            vm.tooltip = "";
             vm.horizontal = false;
             vm.dateOptions = {
                 formatYear: 'yy',
@@ -53,35 +42,6 @@ var myDateField = {
         vm.open = function () {
             vm.isOpened = true;
         };
-
-        vm.setlabelClass = function () {
-            console.log('setlabelClass');
-            console.log(vm.horizontal);
-
-            if (vm.horizontal === "true") {
-                vm.labelClass = "control-label col-sm-2";
-            } else {
-                vm.labelClass = "";
-            }
-
-        };
-
-        vm.setInputClass = function () {
-            if (vm.horizontal) {
-                vm.inputClass = "col-sm-10";
-            } else {
-                vm.inputClass = "";
-            }
-        };
-
-        vm.getOrientation = function () {
-            if (vm.horizontal) {
-                return "form-horizontal";
-            } else {
-                return "";
-            }
-        };
-
 
     },
     templateUrl: 'src/client/app/Components/Inputs/DatesField/DateField/dateFieldTemplate.html'

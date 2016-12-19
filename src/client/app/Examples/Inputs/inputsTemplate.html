@@ -1,45 +1,67 @@
-<h1>Inputs</h1>
+<div class="col-md-6 center-block">
+    <h1>Textbox</h1>
+    <div class="well">
+        <h4>Text Box With Placeholder</h4>
+        <my-input-field field-label="First Name" 
+                        placeholder="Enter Your First name" ng-model="vm.firstName">
+        </my-input-field>
+    </div>
+    <div class="well">
+        <h4>Textbox With ToolTip</h4>
+        <my-input-field field-label="First Name" ng-model="vm.firstName" tooltip="Please Enter your fristname">
+        </my-input-field>
+    </div>
 
-<form class="form-horizontal">
-<h2>Text Box</h2>
-<my-input-field field-label="First Name" 
-                horizontal="true"
-                
-                ng-model="vm.firstName" >
-</my-input-field>
-<my-input-field field-label="First44 Name" 
-                horizontal="true"
-                read-only="true"
-                ng-model="vm.firstName" 
-                help-text="Enter your First Name">
-</my-input-field>
+    <div class="well">
+        <h4>Textbox Horizontal</h4>
+        <my-input-field field-label="First Name" horizontal="true"        
+        ng-model="vm.firstName" tooltip="Please Enter your fristname">
+        </my-input-field>
+        <br>
+    </div>
 
+    <div class="well">
+        <h4>Textbox Read-only</h4>
+        <my-input-field field-label="First Name" read-only="true"  horizontal="true"   
+        ng-model="vm.firstName" tooltip="Please Enter your fristname">
+        </my-input-field>
+        <br>
+    </div>
+    
+    <h1>Textarea</h1>
 
+     <div class="well">
+        <h4>TextArea</h4>
+        <my-input-field field-label="Description" input-type="textarea"
+        ng-model="vm.description" tooltip="Please Enter a description">
+        </my-input-field>
+        <br>
+    </div>
 
+    <div class="well">
+        <h4>TextArea Read-only</h4>
+        <my-input-field field-label="Description" input-type="textarea" read-only="true"
+        ng-model="vm.description" tooltip="Please Enter a description">
+        </my-input-field>
+        <br>
+    </div>
 
-<my-input-field field-label="Agree" 
-                  input-type="checkbox" 
-                  read-only="true"
-                horizontal="true"
-                ng-model="vm.agree"  
-                help-text="Enter your First Name">
-</my-input-field>
+    <h1>Checkboxes</h1>
 
+     <div class="well">
+        <h4>Checkbox</h4>
+        <my-input-field field-label="I Agree" input-type="checkbox"
+        ng-model="vm.agree" >
+        </my-input-field>
+        <br>
+    </div>
 
-
-<my-input-field field-label="Start Date" 
-                  input-type="date" 
-              
-                horizontal="true"
-                ng-model="vm.startDate"  
-                help-text="Enter your First Name">
-</my-input-field>
-
-
-</form>
-<!--<my-input-field field-label="Description" 
-                ng-model="vm.description" 
-                read-only="true"         
-                help-text="Enter your Last Name">
-</my-input-field>-->
+    <div class="well">
+        <h4>Checkbox Read-only</h4>
+        <my-input-field field-label="I Agree" input-type="checkbox" read-only="true"
+        ng-model="vm.agree" tooltip="Please Enter a description">
+        </my-input-field>
+        <br>
+    </div>
+</div>
 

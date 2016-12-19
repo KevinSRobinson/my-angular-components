@@ -10,7 +10,8 @@ var myInputField = {
         helpText: '@',
         readOnly: '@',
         horizontal: '@',
-        inputType: '@'
+        inputType: '@',
+        placeholder: '@'
     },
     controllerAs: 'vm',
     controller: function (cssClassService) {
@@ -22,18 +23,18 @@ var myInputField = {
         vm.$onInit = function () {
 
             //defaults
-            vm.showToolTip = false;
-            vm.showHelpText = false;
+            
+            vm.inputType = 'textbox';
+
             vm.required = false;
             vm.horizontal = false;
-            vm.labelWidth = 2;
-            vm.inputWidth = 10;
-            vm.labelClass = "";
-            vm.inputClass = "";
-            vm.readOnly = false;
-            vm.inputType = 'textbox';
+            vm.labelWidth = 3;
+            vm.inputWidth = 9;
+            vm.readOnly = false;           
             vm.horizontal = false;
             vm.tooltip = "";
+            vm.placeholder = "";
+            vm.helpText = "";
         };
 
 

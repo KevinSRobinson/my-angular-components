@@ -1,18 +1,37 @@
+<style>
+    .popover {
+        min-width: 200px;
+    }
+    
+    .input-group {
+        width: 40% !important;
+    }
+
+</style>
 <div class="form-group">
-    <label ng-class="vm.labelClass" for="email">{{vm.fieldLabel}}</label>
-    <div ng-class="vm.inputClass">
-        <span ng-if="!vm.readOnly">
-          <p class="input-group">
-          <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" 
-          is-open="vm.isOpened" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
-          <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></button>
-          </span>
-        </p>
-             </span>
+    <!--field label-->
+    <label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label>
+    <div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)">
+        <!--Input-->
+        <div ng-if="!vm.readOnly" class="input-group">
+            <!--DatePicker-->
+            <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}"
+                 ng-model="vm.ngModel" is-open="vm.isOpened" 
+                datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"/>
+            <!--DatePicker Open Button-->
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></button>
+            </span>
+            <!--ToolTip-->
+            <span ng-show="vm.tooltip!==''" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover"
+                popover-trigger="'mouseenter'"><i class="fa fa-info"></i>
+            </span>
+        </div>
+        <!--Read Only display-->
+        <div ng-show="vm.readOnly">
+            {{vm.ngModel | date}}
+        </div>
+        <!--HelpText-->
+        <p class="help-block">{{vm.helpText}}</p>
     </div>
-    <div ng-show="vm.readOnly">
-        <p>{{vm.ngModel}}</p>
-    </div>
-</div>
 </div>
