@@ -1,13 +1,17 @@
+{{vm.ngModel}}
 <div class="form-group">
     <label ng-class="vm.labelClass" for="email">{{vm.fieldLabel}}</label>
     <div ng-class="vm.inputClass">
         <div ng-if="!vm.readOnly">
-            <ui-select multiple ng-model="vm.selected" theme="bootstrap">
+            <ui-select ng-if="vm.inputType==='tags'" multiple ng-model="vm.selected" theme="bootstrap">
                 <ui-select-match placeholder="Select a Tag...">{{$item.name}}</ui-select-match>
                 <ui-select-choices repeat="item in (vm.ngModel | filter: $select.search) track by item.id">
                     <span ng-bind="item.name"></span>
                 </ui-select-choices>
             </ui-select>
+            <select ng-if="vm.inputType==='combobox'" ng-model='vm.selected' class='form-control' id='{{vm.fieldName}}'>
+                <option ng-repeat='option in vm.ngModel' value='{{option.id}}'>{{option.name}}</option>
+            </select>
         </div>
         <div ng-show="vm.readOnly">
             <span ng-repeat="tag in vm.ngModel" class="badge">
