@@ -3,6 +3,7 @@ var inputs = {
     controller: function () {
         var vm = this;
 
+        vm.startDate = new Date();
         vm.firstName = "Kevin";
         vm.description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud e";
         vm.item = {
@@ -10,6 +11,7 @@ var inputs = {
             "title": "Video 00",
             "data": "http://player.vimeo.com/video/37176398"
         };
+        vm.agree = true;
     },
     templateUrl: "src/client/app/Examples/Inputs/inputsTemplate.html"
 };

@@ -84,7 +84,7 @@ var myDateField = {
 
 
     },
-    templateUrl: 'src/client/app/Components/Dates/DateField/dateFieldTemplate.html'
+    templateUrl: 'src/client/app/Components/Inputs/DatesField/DateField/dateFieldTemplate.html'
 };
 
 

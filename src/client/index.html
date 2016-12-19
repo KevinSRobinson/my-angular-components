@@ -64,7 +64,14 @@
             padding-bottom: 0px !important;
             font-size: medium;
         }
+        
+        .popover-title {
+            background: cornflowerblue;
+            color: white;
+            font-weight: bold;
+        }
 
+    </style>
     </style>
 </head>
 
@@ -76,11 +83,12 @@
         </div>
         <p>A collection of components wraping boorstrap components into more compact usable pieces</p>
     </div>
+    <input-examples></input-examples>
     <tags></tags>
-   <br> <hr><br>
+    <br>
+    <hr><br>
     <hr>
     <dates-examples></dates-examples>
-    <input-examples></input-examples>
     <!--<status-alerts></status-alerts>-->
     <!--
 <panel-examples></panel-examples>-->
@@ -105,6 +113,7 @@
     <!-- build:js js/app.js -->
     <!-- inject:js -->
     <script src="/src/client/app/Components/app.module.js"></script>
+    <script src="/src/client/app/Components/cssClassService..js"></script>
     <script src="/src/client/app/Components/templateService.js"></script>
     <script src="/src/client/app/Examples/app.js"></script>
     <script src="/src/client/app/Components/Reports/reportViewer.js"></script>
@@ -118,16 +127,15 @@
     <script src="/src/client/app/Components/Buttons/CreateButton/createButton.js"></script>
     <script src="/src/client/app/Components/Buttons/DeleteButton/deleteButton.js"></script>
     <script src="/src/client/app/Components/Buttons/EditButton/editButton.js"></script>
-    <script src="/src/client/app/Components/ComboBoxes/CategorySelect/categorySelect.js"></script>
     <script src="/src/client/app/Components/CheckBoxes/CheckboxField/checkboxField.js"></script>
     <script src="/src/client/app/Components/CheckBoxes/DisplayCheckField/displayCheckField.js"></script>
-    <script src="/src/client/app/Components/Dates/DateField/dateField.js"></script>
-    <script src="/src/client/app/Components/Dates/DisplayDate/displayDate.js"></script>
-    <script src="/src/client/app/Components/Fields/InputField/inputField.js"></script>
-    <script src="/src/client/app/Components/Fields/TextField/textField.js"></script>
+    <script src="/src/client/app/Components/ComboBoxes/CategorySelect/categorySelect.js"></script>
     <script src="/src/client/app/Components/Filters/FilterTextbox/filterTextbox.js"></script>
     <script src="/src/client/app/Components/Headers/PageHeader/pageHeader.js"></script>
     <script src="/src/client/app/Components/HtmlHelpers/DisplayHtmlTag/displayHtmlTag.js"></script>
+    <script src="/src/client/app/Components/Inputs/InputField/inputField.js"></script>
+    <script src="/src/client/app/Components/Inputs/SelectField/selectField.js"></script>
+    <script src="/src/client/app/Components/Inputs/ToolTip/toolTip.js"></script>
     <script src="/src/client/app/Components/Modals/ModalButtons/modalButtons.js"></script>
     <script src="/src/client/app/Components/Modals/ModalHeader/modalHeader.js"></script>
     <script src="/src/client/app/Components/Other/Spinner/spinner.js"></script>
@@ -137,9 +145,8 @@
     <script src="/src/client/app/Components/Panels/Panel/panel.js"></script>
     <script src="/src/client/app/Components/SelectLists/SelectList/selectList.js"></script>
     <script src="/src/client/app/Components/StatusAlerts/StatusAlert/statusAlert.js"></script>
-    <script src="/src/client/app/Components/Tags/SelectField/selectField.js"></script>
-    <script src="/src/client/app/Components/Tags/TagsField/tagsField.js"></script>
     <script src="/src/client/app/Components/Tags/TagsFilter/tagsFilter.js"></script>
+    <script src="/src/client/app/Components/Inputs/DatesField/DateField/dateField.js"></script>
     <!--endinject-->
     <!-- inject:templates:js -->
     <!--endinject-->

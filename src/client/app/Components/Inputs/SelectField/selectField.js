@@ -65,14 +65,10 @@ var mySelectField = {
             } else {
                 vm.labelClass = "";
             }
-
         };
 
         vm.setInputClass = function () {
-            console.log('setInputClass');
-            console.log(vm.horizontal);
             if (Boolean(vm.horizontal)) {
-                console.log("2");
                 vm.inputClass = "col-sm-10";
             } else {
                 vm.inputClass = "";
@@ -82,7 +78,7 @@ var mySelectField = {
 
 
     },
-    templateUrl: 'src/client/app/Components/Tags/SelectField/selectFieldTemplate.html'
+    templateUrl: 'src/client/app/Components/Inputs/SelectField/selectField.js'
 };
 
 angular.module('myComponents').component('mySelectField', mySelectField);

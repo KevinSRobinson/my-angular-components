@@ -1,19 +1,40 @@
-<h1>Inputs1</h1>
+<h1>Inputs</h1>
 
 <form class="form-horizontal">
-
-
+<h2>Text Box</h2>
+<my-input-field field-label="First Name" 
+                horizontal="true"
+                
+                ng-model="vm.firstName" >
+</my-input-field>
 <my-input-field field-label="First44 Name" 
-                ng-model="vm.firstName"  read-only="true"
+                horizontal="true"
+                read-only="true"
+                ng-model="vm.firstName" 
                 help-text="Enter your First Name">
 </my-input-field>
 
+
+
+
 <my-input-field field-label="Agree" 
-                input-type="date"
+                  input-type="checkbox" 
+                  read-only="true"
                 horizontal="true"
                 ng-model="vm.agree"  
                 help-text="Enter your First Name">
 </my-input-field>
+
+
+
+<my-input-field field-label="Start Date" 
+                  input-type="date" 
+              
+                horizontal="true"
+                ng-model="vm.startDate"  
+                help-text="Enter your First Name">
+</my-input-field>
+
 
 </form>
 <!--<my-input-field field-label="Description" 
