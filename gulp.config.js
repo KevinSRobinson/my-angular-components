@@ -4,7 +4,6 @@ module.exports = function () {
     var clientApp = client + 'app/';
     var temp = './.tmp/';
     var server = './src/server/';
-    var root = './';
     var report = './report/';
     var wiredep = require('wiredep');
     var bowerFiles = wiredep({devDependencies: true})['js'];
@@ -33,7 +32,7 @@ module.exports = function () {
         less: client + 'styles/styles.less',
         server: server,
         temp: temp,
-        browserReloadDelay: 1000,
+        browserReloadDelay: 3000,
         bower: {
             json: require('./bower.json'),
             directory: './bower_components/',

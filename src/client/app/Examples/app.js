@@ -1,2 +1,1 @@
-angular.module('examples', ['myComponents']);
-
+angular.module('examples', ['myComponents', 'ngFabForm']);

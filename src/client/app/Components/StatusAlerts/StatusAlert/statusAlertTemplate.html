@@ -1,12 +1,3 @@
-<div ng-show='vm.show'>
-    <div id='errorMessage' ng-show='vm.isError'>
-        <div class="errorMessage">
-            <i class='fa fa-warning fa-2x'></i> {{vm.errorMessage}}
-        </div>
-    </div>
-    <div id='successMessage' ng-show='vm.isSuccess'>
-        <div class='successMessage'>
-            <i class='fa fa-check fa-2x'></i>{{vm.successMessage}}
-        </div>
-    </div>
+<div ng-class="vm.getClass()" id="getId()">
+    <i class='vm.getIcon()'></i>{{vm.message}}
 </div>

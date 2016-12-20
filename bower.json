@@ -18,6 +18,7 @@
     "angular-bootstrap": "^2.3.1",
     "angular-sanitize": "^1.6.0",
     "angular-ui-select": "^0.19.6",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "ng-fab-form": "^1.2.20"
   }
 }
