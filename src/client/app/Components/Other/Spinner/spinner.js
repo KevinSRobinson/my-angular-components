@@ -6,7 +6,7 @@ var mySpinner = {
     templateUrl: 'app/Other/Spinner/spinnerTemplate.html'
 };
 
-angular.module('myComponents').component('mySpinner', mySpinner);
+angular.module('my-angular-components').component('mySpinner', mySpinner);
 
 
 

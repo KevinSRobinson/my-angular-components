@@ -21,7 +21,7 @@ var myCreateButton = {
 };
 
 
-angular.module('myComponents').component('myCreateButton', myCreateButton);
+angular.module('my-angular-components').component('myCreateButton', myCreateButton);
 
 
 

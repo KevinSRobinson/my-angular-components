@@ -22,4 +22,4 @@ var mySelectList = {
 };
 
 
-angular.module('myComponents').component('mySelectList', mySelectList);
+angular.module('my-angular-components').component('mySelectList', mySelectList);

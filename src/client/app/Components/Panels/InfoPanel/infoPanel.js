@@ -31,4 +31,4 @@ var myInfoPanel = {
 };
 
 
-angular.module('myComponents').component('myInfoPanel', myInfoPanel);
+angular.module('my-angular-components').component('myInfoPanel', myInfoPanel);

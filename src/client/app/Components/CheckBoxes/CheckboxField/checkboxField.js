@@ -20,5 +20,5 @@ var myCheckboxField = {
 
 };
 
-angular.module('myComponents').component('myCheckboxField', myCheckboxField);
+angular.module('my-angular-components').component('myCheckboxField', myCheckboxField);
   

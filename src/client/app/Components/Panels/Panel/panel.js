@@ -90,4 +90,4 @@ var myPanel = {
 // ' <div class='col-md-6'>{{vm.footerLeftLabel}}</div>'+
 // ' <div class='col-md-6'>{{vm.footerRightLabel}}</div>'+
 // '</div>' +
-angular.module('myComponents').component('myPanel', myPanel);
+angular.module('my-angular-components').component('myPanel', myPanel);

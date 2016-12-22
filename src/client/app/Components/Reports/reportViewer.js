@@ -42,4 +42,4 @@ var myReportViewer = {
 };
 
 
-angular.module('myComponents').component('myReportViewer', myReportViewer);
+angular.module('my-angular-components').component('myReportViewer', myReportViewer);

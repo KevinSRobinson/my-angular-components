@@ -103,4 +103,4 @@ var buildList = function () {
 
 myCategorySelect.$inject = ['$scope'];
 
-angular.module('myComponents').component('myCategorySelect', myCategorySelect);
+angular.module('my-angular-components').component('myCategorySelect', myCategorySelect);

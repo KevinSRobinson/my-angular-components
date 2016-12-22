@@ -59,7 +59,7 @@ module.exports = function () {
         templateCache: {
             file: 'templates.js',
             options: {
-                module: 'myComponents',
+                module: 'my-angular-components',
                 standalone: false,
                 root: 'app/'
             }

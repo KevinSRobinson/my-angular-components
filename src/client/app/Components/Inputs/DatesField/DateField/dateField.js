@@ -48,5 +48,5 @@ var myDateField = {
 };
 
 
-var app = angular.module('myComponents')
+var app = angular.module('my-angular-components')
     .component('myDateField', myDateField);

@@ -8,4 +8,4 @@ var templateService =  function ($http) {
     };
 };
 
-angular.module("myComponents").factory("templateService", templateService);
+angular.module("my-angular-components").factory("templateService", templateService);

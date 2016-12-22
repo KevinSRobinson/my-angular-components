@@ -19,4 +19,4 @@ var myFilterTextbox = {
 };
 
 
-angular.module('myComponents').component('myFilterTextbox', myFilterTextbox);
+angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);

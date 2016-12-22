@@ -81,4 +81,4 @@ var myMorelessPanel = {
 };
 
 
-angular.module('myComponents').component("myMorelessPanel", myMorelessPanel);
+angular.module('my-angular-components').component("myMorelessPanel", myMorelessPanel);

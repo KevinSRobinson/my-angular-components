@@ -1,6 +1,6 @@
 var exampleForm = {
     controllerAs: 'vm',
-    controller: function (ngFabForm) {
+    controller: function (ngFabForm, $timeout) {
         var vm = this;
         vm.simulateError = false;
         vm.customerForm = {};
@@ -10,19 +10,33 @@ var exampleForm = {
             show: false
         };
 
-        vm.selectedCats = {};
-        vm.selectedTags = {};
-        vm.customFormOptions = angular.copy(ngFabForm.config);
+
+        vm.$onInit = function () {
+            vm.sampleDate = new Date();
+            vm.saving = true;
+            vm.selectedCats = {};
+            vm.selectedTags = {};
+            vm.customFormOptions = angular.copy(ngFabForm.config);
+        };
+
 
         vm.submit = function () {
             vm.status.isError = vm.simulateError;
 
-            if (vm.status.isError)
-                vm.status.message = "Something went wrong!";
-            else
-                vm.status.message = "Form Submitted";
+            vm.saving = true;
 
-            vm.status.show = true;
+            $timeout(function () {
+                if (vm.status.isError)
+                    vm.status.message = "Something went wrong!";
+                else
+                    vm.status.message = "Form Submitted";
+
+                vm.status.show = true;
+                vm.saving = false;
+            }, 2000);
+
+
+
         };
 
         vm.cats = [{

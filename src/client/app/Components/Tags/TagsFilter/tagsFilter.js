@@ -84,4 +84,4 @@ var myTagsFilterList = {
 myTagsFilterList.$inject = ['$scope'];
 
 
-angular.module('myComponents').component('myTagsFilterList', myTagsFilterList);
+angular.module('my-angular-components').component('myTagsFilterList', myTagsFilterList);

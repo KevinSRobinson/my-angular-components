@@ -12,4 +12,4 @@ var myPageTitle = {
     templateUrl: 'src/client/app/Components/Headers/PageHeader/pageHeaderTemplate.html'
 };
 
-angular.module('myComponents').component('myPageTitle', myPageTitle);
+angular.module('my-angular-components').component('myPageTitle', myPageTitle);

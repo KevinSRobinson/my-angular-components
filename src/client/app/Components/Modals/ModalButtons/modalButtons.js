@@ -23,4 +23,4 @@ var myModalButtons = {
     templateUrl: 'src/client/app/Components/Modals/ModalButtons/modalButtonsTempalte.html'
 };
 
-angular.module('myComponents').component('myModalButtons', myModalButtons);
+angular.module('my-angular-components').component('myModalButtons', myModalButtons);

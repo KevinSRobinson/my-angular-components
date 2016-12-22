@@ -16,4 +16,4 @@ var myDisplayCheckField = {
     },
     templateUrl: 'app/CheckBoxes/DisplayCheckField/displayCheckField.js' 
 };
-angular.module('myComponents').component('myDisplayCheckField', myDisplayCheckField);
+angular.module('my-angular-components').component('myDisplayCheckField', myDisplayCheckField);

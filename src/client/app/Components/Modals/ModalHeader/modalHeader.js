@@ -20,4 +20,4 @@ var myModalHeader = {
 };
 
 
-var app = angular.module('myComponents').component('myModalHeader', myModalHeader);
+var app = angular.module('my-angular-components').component('myModalHeader', myModalHeader);

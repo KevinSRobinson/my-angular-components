@@ -41,4 +41,4 @@ var myStatusAlert = {
 };
 
 
-angular.module('myComponents').component('myStatusAlert', myStatusAlert);
+angular.module('my-angular-components').component('myStatusAlert', myStatusAlert);

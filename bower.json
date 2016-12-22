@@ -19,6 +19,7 @@
     "angular-sanitize": "^1.6.0",
     "angular-ui-select": "^0.19.6",
     "font-awesome": "^4.7.0",
-    "ng-fab-form": "^1.2.20"
+    "ng-fab-form": "^1.2.20",
+    "angular-promise-buttons": "^0.1.18"
   }
 }

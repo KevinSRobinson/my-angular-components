@@ -18,4 +18,4 @@ var myEditButton = {
     template: 'src/client/app/Components/Buttons/EditButton/editButtonTemplate.html'
 };
 
-angular.module('myComponents').component('myEditButton', myEditButton);
+angular.module('my-angular-components').component('myEditButton', myEditButton);

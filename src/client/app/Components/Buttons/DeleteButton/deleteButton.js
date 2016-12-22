@@ -21,7 +21,7 @@ var myDeleteButton = {
 };
 
 
-angular.module('myComponents').component('myDeleteButton', myDeleteButton);
+angular.module('my-angular-components').component('myDeleteButton', myDeleteButton);
 
 
 

@@ -4,7 +4,7 @@
     'use strict';
 
 
-     angular.module('myComponents', ['ngAnimate', 'ui.bootstrap', 'ngSanitize', 'ui.select']);
+     angular.module('my-angular-components', ['ngAnimate', 'ui.bootstrap', 'ngSanitize', 'ui.select']);
 
 
 

@@ -47,4 +47,4 @@ var mySelectField = {
     templateUrl: 'src/client/app/Components/Inputs/SelectField/selectFieldTemplate.html'
 };
 
-angular.module('myComponents').component('mySelectField', mySelectField);
+angular.module('my-angular-components').component('mySelectField', mySelectField);

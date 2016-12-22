@@ -23,4 +23,4 @@ var cssClassService =  function () {
     };
 };
 
-angular.module("myComponents").factory("cssClassService", cssClassService);
+angular.module("my-angular-components").factory("cssClassService", cssClassService);

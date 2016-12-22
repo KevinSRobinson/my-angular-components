@@ -19,4 +19,4 @@ var myDisplayHtmlTag = {
 };
 
 
-angular.module('myComponents').component("myDisplayHtmlTag", myDisplayHtmlTag);
+angular.module('my-angular-components').component("myDisplayHtmlTag", myDisplayHtmlTag);

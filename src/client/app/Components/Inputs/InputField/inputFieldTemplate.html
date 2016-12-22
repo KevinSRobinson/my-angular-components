@@ -1,35 +1,45 @@
 <style>
-.popover
-{
-    min-width: 200px;
-}
-.input-group{
-    width: 100% !important; 
-}
-.input-group .form-control{
-    z-index: 100;
-}
-</style>
+    .popover {
+        min-width: 200px;
+    }
+    
+    .input-group {
+        width: 100% !important;
+    }
+    
+    .input-group .form-control {
+        z-index: 100;
+    }
 
+</style>
 <div class="form-group">
     <!--field label-->
-    <label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label>
-
+    <label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}       
+        
+    </label>
     <div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)">
         <!--Input Types-->
         <div ng-if="!vm.readOnly" class="input-group">
             <!--TextBox-->
-            <input ng-if="vm.inputType==='textbox'"  ng-model="vm.ngModel" type="text" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}" required="true">
+            <input ng-if="vm.inputType==='textbox'" ng-model="vm.ngModel" type="text" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"
+                required="true">
             <!--TextBox-->
             <input ng-if="vm.inputType==='email'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}">
             <!--TextArea-->
             <textarea ng-if="vm.inputType==='textarea'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea>
             <!--CheckBox-->
-            <input ng-if="vm.inputType==='checkbox'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel"/>           
-
-            <span ng-show="vm.tooltip!==''" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info"
-                popover-class="popover"
-                popover-trigger="'mouseenter'" ><i class="fa fa-info"></i>
+            <input ng-if="vm.inputType==='checkbox'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel" />
+            <!--Date-->
+            <span ng-if="vm.inputType==='date'">
+                <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}"
+                 ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%"
+                datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats">
+                 <span class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></span>
+            </input>
+            <!--DatePicker Open Button-->
+            </span>
+            <span ng-show="vm.tooltip!==''" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover"
+                popover-trigger="'mouseenter'"><i class="fa fa-info"></i>
             </span>
         </div>
         <!--Read Only display-->
@@ -37,7 +47,6 @@
             <p ng-if="vm.inputType!=='checkbox'">{{vm.ngModel}}</p>
             <i ng-if="vm.inputType==='checkbox'" ng-show='vm.ngModel' class='fa fa-check fa-2x'></i>
         </div>
- 
         <!--HelpText-->
         <p class="help-block">{{vm.helpText}}</p>
     </div>
