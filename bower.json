@@ -1,11 +1,11 @@
 {
   "name": "my-angular-components",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Angular components for business applicaitons",
   "authors": [
     "Kevin Robinson"
   ],
-   "main": [ "lib/lib-387646ffe7.js", "js/app-f8c5d4a02b"],
+   "main": [ "./lib-387646ffe7.js", "./js/app-f8c5d4a02b.js"],
   "license": "MIT",
   "ignore": [
     "node_modules",
