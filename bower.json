@@ -5,6 +5,7 @@
   "authors": [
     "Kevin Robinson"
   ],
+   "main": [ "lib/lib-387646ffe7.js", "js/app-f8c5d4a02b"],
   "license": "MIT",
   "ignore": [
     "node_modules",
