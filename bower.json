@@ -13,13 +13,12 @@
   ],
   "dependencies": {
     "angular": "1.5.8",
-    "angular-animate": "^1.6.0",
+    "angular-animate": "^1.5.8",
     "ui-bootstrap": "^2.3.1",
     "angular-bootstrap": "^2.3.1",
-    "angular-sanitize": "^1.6.0",
+    "angular-sanitize": "^1.5.8",
     "angular-ui-select": "^0.19.6",
     "font-awesome": "^4.7.0",
-    "ng-fab-form": "^1.2.20",
-    "angular-promise-buttons": "^0.1.18"
+    "ng-fab-form": "^1.2.20"
   }
 }
