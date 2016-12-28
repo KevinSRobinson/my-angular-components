@@ -1,5 +1,6 @@
 {
     "directory": "bower_components",
+     "registry": "https://seamusjunior:Eastwood44@www.myget.org/F/my-angular-components/bower/",
     "scripts": {
         "postinstall": "gulp wiredep"
     }
