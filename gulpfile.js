@@ -122,7 +122,7 @@ gulp.task('optimize', ['inject'], function(){
     
     var cssFilter = $.filter('**/*.css', { restore: true });
     var jsLibFilter = $.filter('**/' + config.optimized.lib, { restore: true });
-    var jsAppFilter = $.filter('**/' + config.optimized.app, { restore: true });
+    var jsAppFilter = $.filter('./src/client/app/Components/**/' + config.optimized.app, { restore: true });
 
     var templateCache = config.temp + config.templateCache.file;
     
