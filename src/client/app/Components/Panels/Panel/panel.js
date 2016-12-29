@@ -86,8 +86,4 @@ var myPanel = {
 };
 
 
-// ' <div class='row'>' +
-// ' <div class='col-md-6'>{{vm.footerLeftLabel}}</div>'+
-// ' <div class='col-md-6'>{{vm.footerRightLabel}}</div>'+
-// '</div>' +
 angular.module('my-angular-components').component('myPanel', myPanel);

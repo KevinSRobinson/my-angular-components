@@ -47,4 +47,6 @@ var mySelectField = {
     templateUrl: 'src/client/app/Components/Inputs/SelectField/selectFieldTemplate.html'
 };
 
+mySelectField.$inject = ['cssClassService'];
+
 angular.module('my-angular-components').component('mySelectField', mySelectField);
