@@ -19,6 +19,8 @@ gulp.task('test', ['templatecache'], function(done){
     startTests(true, done);
 })
 
+
+
 function startTests(singleRun, done){
     var karma = require('karma').server;
     var excludeFiles = [];
@@ -129,9 +131,9 @@ gulp.task('optimize', ['inject'], function(){
    
       return gulp
         .src(config.index)
-        .pipe($.inject(gulp.src(templateCache, { read: false}), {
-            starttag: '<!-- inject:templates:js -->'
-        }))
+        // .pipe($.inject(gulp.src(templateCache, { read: false}), {
+        //     starttag: '<!-- inject:templates:js -->'
+        // }))
         .pipe(assets)
         //css
         .pipe(cssFilter)
@@ -142,14 +144,14 @@ gulp.task('optimize', ['inject'], function(){
          //js
          //minify vendor librarys 
         .pipe(jsLibFilter)
-        .pipe($.uglify())
+       // .pipe($.uglify())
         .pipe(jsLibFilter.restore)
 
 
         //minify appr librarys
         .pipe(jsAppFilter)
         .pipe($.ngAnnotate()) //di helper
-        .pipe($.uglify())
+        //.pipe($.uglify())
         .pipe(jsAppFilter.restore)
 
         //revisions
@@ -386,6 +388,12 @@ function  startBrowserSync(isDev){
                 forms: true,
                 scroll: true
             },
+            ui: {
+    port: 8080,
+    weinre: {
+        port: 9090
+    }
+},
             injectChangees: true,
             logFileChanges: true,
             logLevel: 'debug',

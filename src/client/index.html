@@ -84,10 +84,10 @@
         <p>A collection of components wraping boorstrap components into more compact usable pieces</p>
     </div>-->
 
-<my-panel title="User Details">
+<!--<my-panel title="User Details">
     <example-form></example-form>
 </my-panel>
-    
+    -->
 
 <!--    
       <tags></tags>
@@ -101,7 +101,7 @@
     <hr><br>
     <hr>-->
 
-    
+    <admin-layout-example></admin-layout-example>
    
     <!--<status-alerts></status-alerts>-->
     <!--
@@ -127,6 +127,7 @@
     <script src="/bower_components/ng-fab-form/dist/ng-fab-form.js"></script>
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!--endbower-->
     <!-- endbuild -->
     <!-- build:js js/app.js -->
@@ -139,21 +140,22 @@
     <script src="/src/client/app/Examples/Dates/dates.js"></script>
     <script src="/src/client/app/Examples/ExampleForm/exampleForm.js"></script>
     <script src="/src/client/app/Examples/Inputs/inputs.js"></script>
+    <script src="/src/client/app/Examples/Layout/adminLayoutExample.js"></script>
     <script src="/src/client/app/Examples/Modals/modals.js"></script>
     <script src="/src/client/app/Examples/Panels/panels.js"></script>
     <script src="/src/client/app/Examples/StatusAlerts/statusAlerts.js"></script>
     <script src="/src/client/app/Examples/Tags/tags.js"></script>
     <script src="/src/client/app/Components/Buttons/CreateButton/createButton.js"></script>
-    <script src="/src/client/app/Components/Buttons/DeleteButton/deleteButton.js"></script>
     <script src="/src/client/app/Components/Buttons/EditButton/editButton.js"></script>
+    <script src="/src/client/app/Components/Buttons/DeleteButton/deleteButton.js"></script>
     <script src="/src/client/app/Components/Buttons/SpinnerButton/spinnerButton.js"></script>
     <script src="/src/client/app/Components/ComboBoxes/CategorySelect/categorySelect.js"></script>
-    <script src="/src/client/app/Components/Headers/PageHeader/pageHeader.js"></script>
     <script src="/src/client/app/Components/Filters/FilterTextbox/filterTextbox.js"></script>
+    <script src="/src/client/app/Components/Headers/PageHeader/pageHeader.js"></script>
     <script src="/src/client/app/Components/Inputs/InputField/inputField.js"></script>
     <script src="/src/client/app/Components/Inputs/SelectField/selectField.js"></script>
-    <script src="/src/client/app/Components/Modals/ModalButtons/modalButtons.js"></script>
     <script src="/src/client/app/Components/Modals/ModalHeader/modalHeader.js"></script>
+    <script src="/src/client/app/Components/Modals/ModalButtons/modalButtons.js"></script>
     <script src="/src/client/app/Components/Other/Spinner/spinner.js"></script>
     <script src="/src/client/app/Components/Panels/InfoPanel/infoPanel.js"></script>
     <script src="/src/client/app/Components/Panels/MoreLessButton/moreLessButton.js"></script>
@@ -164,6 +166,13 @@
     <script src="/src/client/app/Components/Tags/TagsFilter/tagsFilter.js"></script>
     <script src="/src/client/app/Examples/ExampleForm/CreateButton/createButton.js"></script>
     <script src="/src/client/app/Components/Inputs/DatesField/DateField/dateField.js"></script>
+    <script src="/src/client/app/Components/Layout/AdminLayout/AdminLayoutCore/adminLayout.js"></script>
+    <script src="/src/client/app/Components/Layout/AdminLayout/Header/AlertsDropDown/alertsDropDownMenu.js"></script>
+    <script src="/src/client/app/Components/Layout/AdminLayout/Header/HeaderBar/headerBar.js"></script>
+    <script src="/src/client/app/Components/Layout/AdminLayout/Header/UserOptionsDropDown/userOptionsDropDownMenu.js"></script>
+    <script src="/src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenu/sideMenu.js"></script>
+    <script src="/src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenuFooter/sideMenuFooter.js"></script>
+    <script src="/src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenuItems/sideMenuItems.js"></script>
     <!--endinject-->
     <!-- inject:templates:js -->
     <!--endinject-->
