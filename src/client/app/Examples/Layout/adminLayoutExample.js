@@ -4,7 +4,7 @@ var adminLayoutExample = {
         var vm = this;
 
         vm.userName = "Test Username";
-        
+
         vm.sideMenuItems = [{
             state: "hello",
             linkText: "hello",
@@ -23,6 +23,14 @@ var adminLayoutExample = {
             state: "useroptions",
             linkText: "User Options",
             icon: "cogs"
+        }, {
+            state: "logout",
+            linkText: "Logout",
+            icon: "cogs"
+        }, {
+            state: "login",
+            linkText: "Login",
+            icon: "check"
         }];
 
         vm.alertMenuItems = [{
@@ -35,10 +43,16 @@ var adminLayoutExample = {
             icon: "bell"
         }];
 
-        vm.footerLinks = [
-            {state: 'link1', linkText: "Link 1"},
-            {state: 'link2', linkText: "Link 2"},
-            {state: 'link3', linkText: "Link 3"},
+        vm.footerLinks = [{
+                state: 'link1',
+                linkText: "Link 1"
+            }, {
+                state: 'link2',
+                linkText: "Link 2"
+            }, {
+                state: 'link3',
+                linkText: "Link 3"
+            },
 
         ]
     },
