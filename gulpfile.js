@@ -127,14 +127,12 @@ gulp.task('optimize', ['inject'], function(){
     var appFilter = $.filter('**/' + config.optimized.app, { restore: true });
     var examplesFilter = $.filter('**/' + config.optimized.examples, { restore: true });
 
-    var templateCache = config.temp + config.templateCache.file;
+   
     
    
       return gulp
         .src(config.index)
-        .pipe($.inject(gulp.src(templateCache, { read: false}), {
-            starttag: '<!-- inject:templates:js -->'
-        }))
+        
         .pipe(assets)
         //css
         .pipe(cssFilter)
@@ -156,7 +154,7 @@ gulp.task('optimize', ['inject'], function(){
         .pipe(examplesFilter.restore)
 
 
-         .pipe(appFilter)
+        .pipe(appFilter)
         .pipe($.ngAnnotate()) //di helper
         //.pipe($.uglify())
         .pipe(appFilter.restore)
@@ -211,11 +209,7 @@ gulp.task('bump', function(){
 //////////////////////////////////////////////
 gulp.task('templatecache', function(){
 
-    log('Creating templatecache');
-    log(config.htmltemplates);
-    log(config.templateCache.file);
-    log(config.templateCache.options);
-    log(config.temp);
+     var templateCache = config.temp + config.templateCache.file;
 
     return gulp.src(config.htmltemplates)
             .pipe($.minifyHtml({empty: true}))
@@ -223,6 +217,12 @@ gulp.task('templatecache', function(){
                 config.templateCache.file,
                 config.templateCache.options
             ))
+            .pipe($.inject(gulp.src(templateCache, { read: false}), {
+            starttag: '<!-- inject:templates:js -->'
+        }))
+        .pipe($.inject(gulp.src(templateCache, { read: false}), {
+            starttag: '<!-- inject:exampletemplates:js -->'
+        }))
             .pipe(gulp.dest(config.temp));
 
 });
