@@ -1,4 +1,12 @@
-var app = angular.module('my-angular-components', ['ngAnimate', 'ui.bootstrap', 'ngSanitize', 'ui.select']);
+var app = angular.module('my-angular-components', [
+    //angular
+    'ngAnimate',
+    'ngSanitize',
 
-app.$inject = ['ngAnimate', 'ui.bootstrap', 'ngSanitize', 'ui.select'];
+    //angular ui
+    'ui.ace',
+    'ui.bootstrap',
+    'ui.select'
+]);
 
+app.$inject = ['ngAnimate', 'ngSanitize', 'ui.ace', 'ui.bootstrap', 'ui.select'];

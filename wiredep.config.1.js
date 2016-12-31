@@ -91,11 +91,9 @@ module.exports = function () {
             bowerJson: config.bower.json,
             directory: config.bower.directory,
             ignorePath: config.bower.ignorePath,
-            "overrides": {
-                "ace-builds": {
-                    "main": [
-                        "./bower_components/ace-builds/src-noconflict/ace.js",
-                    ]
+            overrides: {
+                "syncfusion-javascript": {
+                    "main": ["./bower_components/syncfusion-javascript/Scripts/ej/web/ej.reportviewer.min.js"]
                 }
             },
             onError: function (err) {
@@ -112,9 +110,9 @@ module.exports = function () {
 
             onFileUpdated: function (filePath) {
                 // filePath = 'name-of-file-that-was-updated' 
-                console.log("onFileUpdated ");
+                 console.log("onFileUpdated ");
                 console.log("-----------------------");
-                console.log(filePath);
+                  console.log(filePath);
             },
 
             onPathInjected: function (fileObject) {
@@ -124,7 +122,7 @@ module.exports = function () {
                 //console.log(fileObject);
             },
 
-            onMainNotFound: function (pkg) {
+            onMainNotFound: function (pkg) {                
                 console.log('No Main Found');
                 console.log(pkg);
             },

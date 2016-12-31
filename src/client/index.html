@@ -98,7 +98,9 @@
     <br>
     <hr><br>
     <hr>-->
-    <admin-layout-example></admin-layout-example>
+<text-editor-example></text-editor-example>
+    
+    <!--<admin-layout-example></admin-layout-example>-->
     <!--<status-alerts></status-alerts>-->
     <!--
 <panel-examples></panel-examples>-->
@@ -111,6 +113,7 @@
      <modal-examples></modal-examples>
  -->
     </div>
+    <script src="bower_components/ace-builds/src-noconflict/ace.js"></script>
     <!-- build:js /lib.js -->
     <!--bower:js -->
     <script src="/bower_components/angular/angular.js"></script>
@@ -126,11 +129,8 @@
     <script src="/bower_components/auth0-lock/build/lock.js"></script>
     <script src="/bower_components/angular-lock/angular-lock.js"></script>
     <script src="/bower_components/angular-jwt/dist/angular-jwt.js"></script>
-    <script src="/bower_components/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="/bower_components/jsrender/jsrender.js"></script>
-    <script src="/bower_components/Microsoft.jQuery.Unobtrusive.Ajax/jquery.unobtrusive-ajax.js"></script>
-    <script src="/bower_components/jquery.validation/dist/jquery.validate.js"></script>
-    <script src="/bower_components/Microsoft.jQuery.Unobtrusive.Validation/jquery.validate.unobtrusive.js"></script>
+    <script src="/bower_components/angular-ui-ace/ui-ace.js"></script>
+    <script src="/bower_components/angular-showdown/showdown.js"></script>
     <!--endbower-->
     <!-- endbuild -->
     <!-- build:js js/app.js -->
@@ -147,6 +147,8 @@
     <script src="/src/Client/app/Components/Headers/PageHeader/pageHeader.js"></script>
     <script src="/src/Client/app/Components/Inputs/InputField/inputField.js"></script>
     <script src="/src/Client/app/Components/Inputs/SelectField/selectField.js"></script>
+    <script src="/src/Client/app/Components/Inputs/TextEditor/markdown.directive.js"></script>
+    <script src="/src/Client/app/Components/Inputs/TextEditor/textEditor.js"></script>
     <script src="/src/Client/app/Components/Modals/ModalButtons/modalButtons.js"></script>
     <script src="/src/Client/app/Components/Modals/ModalHeader/modalHeader.js"></script>
     <script src="/src/Client/app/Components/Other/Spinner/spinner.js"></script>
@@ -159,12 +161,12 @@
     <script src="/src/Client/app/Components/Tags/TagsFilter/tagsFilter.js"></script>
     <script src="/src/Client/app/Components/Inputs/DatesField/DateField/dateField.js"></script>
     <script src="/src/Client/app/Components/Layout/AdminLayout/AdminLayoutCore/adminLayout.js"></script>
-    <script src="/src/Client/app/Components/Layout/AdminLayout/SideMenu/SideMenu/sideMenu.js"></script>
-    <script src="/src/Client/app/Components/Layout/AdminLayout/SideMenu/SideMenuFooter/sideMenuFooter.js"></script>
-    <script src="/src/Client/app/Components/Layout/AdminLayout/SideMenu/SideMenuItems/sideMenuItems.js"></script>
     <script src="/src/Client/app/Components/Layout/AdminLayout/Header/AlertsDropDown/alertsDropDownMenu.js"></script>
     <script src="/src/Client/app/Components/Layout/AdminLayout/Header/HeaderBar/headerBar.js"></script>
     <script src="/src/Client/app/Components/Layout/AdminLayout/Header/UserOptionsDropDown/userOptionsDropDownMenu.js"></script>
+    <script src="/src/Client/app/Components/Layout/AdminLayout/SideMenu/SideMenu/sideMenu.js"></script>
+    <script src="/src/Client/app/Components/Layout/AdminLayout/SideMenu/SideMenuFooter/sideMenuFooter.js"></script>
+    <script src="/src/Client/app/Components/Layout/AdminLayout/SideMenu/SideMenuItems/sideMenuItems.js"></script>
     <!--endinject-->
     <!-- inject:templates:js -->
     <!--endinject-->
@@ -184,6 +186,7 @@
     <script src="/src/Client/app/Examples/Panels/panels.js"></script>
     <script src="/src/Client/app/Examples/StatusAlerts/statusAlerts.js"></script>
     <script src="/src/Client/app/Examples/Tags/tags.js"></script>
+    <script src="/src/Client/app/Examples/TextEditor/textEditorExample.js"></script>
     <script src="/src/Client/app/Examples/ExampleForm/CreateButton/createButton.js"></script>
     <!--endinject-->
      <!-- inject:exampletemplates:js -->
