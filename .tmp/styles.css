@@ -6676,6 +6676,13 @@ button.close {
 .ace_editor {
   height: 200px;
 }
+.myGrid {
+  width: 500px;
+  height: 250px;
+}
+.angular-google-map-container {
+  height: 400px;
+}
 .errorMessage {
   min-height: 20px;
   padding: 19px;

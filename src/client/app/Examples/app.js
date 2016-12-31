@@ -5,6 +5,8 @@ var app = angular.module('examples', ['my-angular-components', 'ngFabForm',
         'auth0.lock', 'angular-jwt']);
 
 app.config(function ($stateProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
+  
+  
     var helloState = {
         name: 'hello',
         url: '/hello',
