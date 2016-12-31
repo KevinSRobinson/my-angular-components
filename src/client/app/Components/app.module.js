@@ -6,7 +6,8 @@ var app = angular.module('my-angular-components', [
     //angular ui
     'ui.ace',
     'ui.bootstrap',
-    'ui.select'
+    'ui.select',
+    'ui.grid'
 ]);
 
 app.$inject = ['ngAnimate', 'ngSanitize', 'ui.ace', 'ui.bootstrap', 'ui.select'];

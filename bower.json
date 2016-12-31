@@ -25,6 +25,7 @@
     "angular-lock": "^1.0.5",
     "angular-jwt": "^0.1.8",
     "angular-ui-ace": "bower",
-    "angular-showdown": "^0.3.2"
+    "angular-showdown": "^0.3.2",
+    "angular-ui-grid": "^4.0.2"
   }
 }

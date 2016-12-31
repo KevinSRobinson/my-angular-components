@@ -20,6 +20,7 @@
     <!-- build:css /assets/styles/lib.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="/bower_components/angular-ui-select/dist/select.css" />
+    <link rel="stylesheet" href="/bower_components/angular-ui-grid/ui-grid.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css /assets/styles/main.css -->
@@ -98,8 +99,8 @@
     <br>
     <hr><br>
     <hr>-->
-<text-editor-example></text-editor-example>
-    
+<!--<text-editor-example></text-editor-example>-->
+    <grid-example></grid-example>
     <!--<admin-layout-example></admin-layout-example>-->
     <!--<status-alerts></status-alerts>-->
     <!--
@@ -131,12 +132,14 @@
     <script src="/bower_components/angular-jwt/dist/angular-jwt.js"></script>
     <script src="/bower_components/angular-ui-ace/ui-ace.js"></script>
     <script src="/bower_components/angular-showdown/showdown.js"></script>
+    <script src="/bower_components/angular-ui-grid/ui-grid.js"></script>
     <!--endbower-->
     <!-- endbuild -->
     <!-- build:js js/app.js -->
     <!-- inject:js -->
     <script src="/src/Client/app/Components/app.module.js"></script>
     <script src="/src/Client/app/Components/cssClassService..js"></script>
+    <script src="/src/Client/app/Components/Grid/grid.js"></script>
     <script src="/src/Client/app/Components/Reports/reportViewer.js"></script>
     <script src="/src/Client/app/Components/Buttons/CreateButton/createButton.js"></script>
     <script src="/src/Client/app/Components/Buttons/DeleteButton/deleteButton.js"></script>
@@ -152,6 +155,8 @@
     <script src="/src/Client/app/Components/Modals/ModalButtons/modalButtons.js"></script>
     <script src="/src/Client/app/Components/Modals/ModalHeader/modalHeader.js"></script>
     <script src="/src/Client/app/Components/Other/Spinner/spinner.js"></script>
+    <script src="/src/Client/app/Components/Other/TextEditor/markdown.directive.js"></script>
+    <script src="/src/Client/app/Components/Other/TextEditor/textEditor.js"></script>
     <script src="/src/Client/app/Components/Panels/InfoPanel/infoPanel.js"></script>
     <script src="/src/Client/app/Components/Panels/MoreLessButton/moreLessButton.js"></script>
     <script src="/src/Client/app/Components/Panels/MoreLessPanel/moreLessPanel.js"></script>
@@ -180,6 +185,7 @@
     <script src="/src/Client/app/Examples/Common/common.js"></script>
     <script src="/src/Client/app/Examples/Dates/dates.js"></script>
     <script src="/src/Client/app/Examples/ExampleForm/exampleForm.js"></script>
+    <script src="/src/Client/app/Examples/Grid/gridExample.js"></script>
     <script src="/src/Client/app/Examples/Inputs/inputs.js"></script>
     <script src="/src/Client/app/Examples/Layout/adminLayoutExample.js"></script>
     <script src="/src/Client/app/Examples/Modals/modals.js"></script>
