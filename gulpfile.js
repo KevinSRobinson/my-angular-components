@@ -124,16 +124,17 @@ gulp.task('optimize', ['inject'], function(){
     
     var cssFilter = $.filter('**/*.css', { restore: true });
     var jsLibFilter = $.filter('**/' + config.optimized.lib, { restore: true });
-    var jsAppFilter = $.filter('**/' + config.optimized.app, { restore: true });
+    var appFilter = $.filter('**/' + config.optimized.app, { restore: true });
+    var examplesFilter = $.filter('**/' + config.optimized.examples, { restore: true });
 
     var templateCache = config.temp + config.templateCache.file;
     
    
       return gulp
         .src(config.index)
-        // .pipe($.inject(gulp.src(templateCache, { read: false}), {
-        //     starttag: '<!-- inject:templates:js -->'
-        // }))
+        .pipe($.inject(gulp.src(templateCache, { read: false}), {
+            starttag: '<!-- inject:templates:js -->'
+        }))
         .pipe(assets)
         //css
         .pipe(cssFilter)
@@ -144,16 +145,21 @@ gulp.task('optimize', ['inject'], function(){
          //js
          //minify vendor librarys 
         .pipe(jsLibFilter)
-       // .pipe($.uglify())
+        .pipe($.uglify())
         .pipe(jsLibFilter.restore)
 
 
         //minify appr librarys
-        .pipe(jsAppFilter)
+        .pipe(examplesFilter)
         .pipe($.ngAnnotate()) //di helper
         //.pipe($.uglify())
-        .pipe(jsAppFilter.restore)
+        .pipe(examplesFilter.restore)
 
+
+         .pipe(appFilter)
+        .pipe($.ngAnnotate()) //di helper
+        //.pipe($.uglify())
+        .pipe(appFilter.restore)
         //revisions
         .pipe($.rev())
 
@@ -232,7 +238,11 @@ gulp.task('wiredep',  function(){
     return gulp
             .src(config.index)
             .pipe(wiredep(options))
-            .pipe($.inject(gulp.src(config.js)))
+            .pipe($.inject(gulp.src(config.componentSourceFiles)))
+            //inject the clientexamples js files
+            .pipe($.inject(gulp.src(config.examplesSourceFiles), {
+                starttag: '<!-- inject:examples:js -->'
+            }))
             .pipe(gulp.dest(config.client));
 });
 

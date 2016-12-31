@@ -7,7 +7,12 @@ module.exports = function () {
     var report = './report/';
     var wiredep = require('wiredep');
     var bowerFiles = wiredep({devDependencies: true})['js'];
+       var clientFolderRoot = './src/Client/app/';
 
+    //app module paths
+    var componetsSource = clientFolderRoot + 'Components/**/*.js';
+    var componetTemplates = clientFolderRoot + 'Components/**/*.html';
+    var examplesSource = clientFolderRoot + 'Examples/**/*.js';
     var config = {
 
         //all js to vet
@@ -28,6 +33,8 @@ module.exports = function () {
             '!' + clientApp + '**/*spec.js',
             '!' + './bower_components/**'
         ],
+        componentSourceFiles: componetsSource,
+        examplesSourceFiles : examplesSource,
         html: clientApp + "**/",
         less: client + 'styles/styles.less',
         server: server,
@@ -44,7 +51,8 @@ module.exports = function () {
         //optimized files
         optimized: {
             app: "app.js",
-            lib: "lib.js"
+            lib: "lib.js",
+            examples: "examples.js",
         },
 
         //packages

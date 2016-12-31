@@ -83,13 +83,11 @@
         </div>
         <p>A collection of components wraping boorstrap components into more compact usable pieces</p>
     </div>-->
-
-<!--<my-panel title="User Details">
+    <!--<my-panel title="User Details">
     <example-form></example-form>
 </my-panel>
     -->
-
-<!--    
+    <!--    
       <tags></tags>
       <hr>
     <dates-examples></dates-examples>
@@ -100,9 +98,7 @@
     <br>
     <hr><br>
     <hr>-->
-
     <admin-layout-example></admin-layout-example>
-   
     <!--<status-alerts></status-alerts>-->
     <!--
 <panel-examples></panel-examples>-->
@@ -115,7 +111,6 @@
      <modal-examples></modal-examples>
  -->
     </div>
-    
     <!-- build:js /lib.js -->
     <!--bower:js -->
     <script src="/bower_components/angular/angular.js"></script>
@@ -128,58 +123,63 @@
     <script src="/bower_components/jquery/dist/jquery.js"></script>
     <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="/bower_components/auth0-lock/build/lock.js"></script>
+    <script src="/bower_components/angular-lock/angular-lock.js"></script>
+    <script src="/bower_components/angular-jwt/dist/angular-jwt.js"></script>
     <!--endbower-->
     <!-- endbuild -->
-    <script src="bower_components/auth0-lock/build/lock.js"></script>
-<script src="bower_components/angular-lock/dist/angular-lock.js"></script>
-<script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
     <!-- build:js js/app.js -->
     <!-- inject:js -->
-    <script src="/src/client/app/Components/app.module.js"></script>
-    <script src="/src/client/app/Components/cssClassService..js"></script>
-    <script src="/src/client/app/Examples/app.js"></script>
-    <script src="/src/client/app/Examples/auth.service.js"></script>
-    <script src="/src/client/app/Examples/login.controller.js"></script>
-    <script src="/src/client/app/Components/Reports/reportViewer.js"></script>
-    <script src="/src/client/app/Examples/Common/common.js"></script>
-    <script src="/src/client/app/Examples/Dates/dates.js"></script>
-    <script src="/src/client/app/Examples/ExampleForm/exampleForm.js"></script>
-    <script src="/src/client/app/Examples/Inputs/inputs.js"></script>
-    <script src="/src/client/app/Examples/Layout/adminLayoutExample.js"></script>
-    <script src="/src/client/app/Examples/Modals/modals.js"></script>
-    <script src="/src/client/app/Examples/StatusAlerts/statusAlerts.js"></script>
-    <script src="/src/client/app/Examples/Panels/panels.js"></script>
-    <script src="/src/client/app/Examples/Tags/tags.js"></script>
-    <script src="/src/client/app/Components/Buttons/CreateButton/createButton.js"></script>
-    <script src="/src/client/app/Components/Buttons/DeleteButton/deleteButton.js"></script>
-    <script src="/src/client/app/Components/Buttons/EditButton/editButton.js"></script>
-    <script src="/src/client/app/Components/Buttons/SpinnerButton/spinnerButton.js"></script>
-    <script src="/src/client/app/Components/ComboBoxes/CategorySelect/categorySelect.js"></script>
-    <script src="/src/client/app/Components/Filters/FilterTextbox/filterTextbox.js"></script>
-    <script src="/src/client/app/Components/Headers/PageHeader/pageHeader.js"></script>
-    <script src="/src/client/app/Components/Inputs/InputField/inputField.js"></script>
-    <script src="/src/client/app/Components/Inputs/SelectField/selectField.js"></script>
-    <script src="/src/client/app/Components/Modals/ModalButtons/modalButtons.js"></script>
-    <script src="/src/client/app/Components/Modals/ModalHeader/modalHeader.js"></script>
-    <script src="/src/client/app/Components/Panels/InfoPanel/infoPanel.js"></script>
-    <script src="/src/client/app/Components/Other/Spinner/spinner.js"></script>
-    <script src="/src/client/app/Components/Panels/MoreLessButton/moreLessButton.js"></script>
-    <script src="/src/client/app/Components/Panels/MoreLessPanel/moreLessPanel.js"></script>
-    <script src="/src/client/app/Components/Panels/Panel/panel.js"></script>
-    <script src="/src/client/app/Components/SelectLists/SelectList/selectList.js"></script>
-    <script src="/src/client/app/Components/StatusAlerts/StatusAlert/statusAlert.js"></script>
-    <script src="/src/client/app/Components/Tags/TagsFilter/tagsFilter.js"></script>
-    <script src="/src/client/app/Examples/ExampleForm/CreateButton/createButton.js"></script>
-    <script src="/src/client/app/Components/Inputs/DatesField/DateField/dateField.js"></script>
-    <script src="/src/client/app/Components/Layout/AdminLayout/AdminLayoutCore/adminLayout.js"></script>
-    <script src="/src/client/app/Components/Layout/AdminLayout/Header/AlertsDropDown/alertsDropDownMenu.js"></script>
-    <script src="/src/client/app/Components/Layout/AdminLayout/Header/HeaderBar/headerBar.js"></script>
-    <script src="/src/client/app/Components/Layout/AdminLayout/Header/UserOptionsDropDown/userOptionsDropDownMenu.js"></script>
-    <script src="/src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenu/sideMenu.js"></script>
-    <script src="/src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenuFooter/sideMenuFooter.js"></script>
-    <script src="/src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenuItems/sideMenuItems.js"></script>
+    <script src="/src/Client/app/Components/app.module.js"></script>
+    <script src="/src/Client/app/Components/cssClassService..js"></script>
+    <script src="/src/Client/app/Components/Reports/reportViewer.js"></script>
+    <script src="/src/Client/app/Components/Buttons/CreateButton/createButton.js"></script>
+    <script src="/src/Client/app/Components/Buttons/DeleteButton/deleteButton.js"></script>
+    <script src="/src/Client/app/Components/Buttons/EditButton/editButton.js"></script>
+    <script src="/src/Client/app/Components/Buttons/SpinnerButton/spinnerButton.js"></script>
+    <script src="/src/Client/app/Components/ComboBoxes/CategorySelect/categorySelect.js"></script>
+    <script src="/src/Client/app/Components/Filters/FilterTextbox/filterTextbox.js"></script>
+    <script src="/src/Client/app/Components/Headers/PageHeader/pageHeader.js"></script>
+    <script src="/src/Client/app/Components/Inputs/InputField/inputField.js"></script>
+    <script src="/src/Client/app/Components/Inputs/SelectField/selectField.js"></script>
+    <script src="/src/Client/app/Components/Modals/ModalButtons/modalButtons.js"></script>
+    <script src="/src/Client/app/Components/Modals/ModalHeader/modalHeader.js"></script>
+    <script src="/src/Client/app/Components/Other/Spinner/spinner.js"></script>
+    <script src="/src/Client/app/Components/Panels/InfoPanel/infoPanel.js"></script>
+    <script src="/src/Client/app/Components/Panels/MoreLessButton/moreLessButton.js"></script>
+    <script src="/src/Client/app/Components/Panels/MoreLessPanel/moreLessPanel.js"></script>
+    <script src="/src/Client/app/Components/Panels/Panel/panel.js"></script>
+    <script src="/src/Client/app/Components/SelectLists/SelectList/selectList.js"></script>
+    <script src="/src/Client/app/Components/StatusAlerts/StatusAlert/statusAlert.js"></script>
+    <script src="/src/Client/app/Components/Tags/TagsFilter/tagsFilter.js"></script>
+    <script src="/src/Client/app/Components/Inputs/DatesField/DateField/dateField.js"></script>
+    <script src="/src/Client/app/Components/Layout/AdminLayout/AdminLayoutCore/adminLayout.js"></script>
+    <script src="/src/Client/app/Components/Layout/AdminLayout/SideMenu/SideMenu/sideMenu.js"></script>
+    <script src="/src/Client/app/Components/Layout/AdminLayout/SideMenu/SideMenuFooter/sideMenuFooter.js"></script>
+    <script src="/src/Client/app/Components/Layout/AdminLayout/SideMenu/SideMenuItems/sideMenuItems.js"></script>
+    <script src="/src/Client/app/Components/Layout/AdminLayout/Header/HeaderBar/headerBar.js"></script>
+    <script src="/src/Client/app/Components/Layout/AdminLayout/Header/AlertsDropDown/alertsDropDownMenu.js"></script>
+    <script src="/src/Client/app/Components/Layout/AdminLayout/Header/UserOptionsDropDown/userOptionsDropDownMenu.js"></script>
     <!--endinject-->
     <!-- inject:templates:js -->
+    <!--endinject-->
+    <!--endbuild-->
+     
+    <!-- build:js js/examples.js -->
+    <!-- inject:examples:js -->
+    <script src="/src/Client/app/Examples/app.js"></script>
+    <script src="/src/Client/app/Examples/auth.service.js"></script>
+    <script src="/src/Client/app/Examples/login.controller.js"></script>
+    <script src="/src/Client/app/Examples/Common/common.js"></script>
+    <script src="/src/Client/app/Examples/ExampleForm/exampleForm.js"></script>
+    <script src="/src/Client/app/Examples/Dates/dates.js"></script>
+    <script src="/src/Client/app/Examples/Inputs/inputs.js"></script>
+    <script src="/src/Client/app/Examples/Layout/adminLayoutExample.js"></script>
+    <script src="/src/Client/app/Examples/Modals/modals.js"></script>
+    <script src="/src/Client/app/Examples/Panels/panels.js"></script>
+    <script src="/src/Client/app/Examples/StatusAlerts/statusAlerts.js"></script>
+    <script src="/src/Client/app/Examples/Tags/tags.js"></script>
+    <script src="/src/Client/app/Examples/ExampleForm/CreateButton/createButton.js"></script>
     <!--endinject-->
     <!--endbuild-->
 </body>
