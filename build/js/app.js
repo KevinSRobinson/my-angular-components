@@ -1,7 +1,28 @@
-var app = angular.module('my-angular-components', ['ngAnimate', 'ui.bootstrap', 'ngSanitize', 'ui.select']);
+var app = angular.module('my-angular-components', [
+    //angular
+    'ngAnimate',
+    'ngSanitize',
+
+    //angular ui
+    'ui.ace',
+    'ui.bootstrap',
+    'ui.select',
+    'ui.grid',
+    'uiGmapgoogle-maps'
+]);
+app.$inject = ['ngAnimate', 'ngSanitize', 'ui.ace', 'ui.bootstrap', 'ui.select',  'ui.grid',
+    'uiGmapgoogle-maps'];
+
+app.config(
+    ['uiGmapGoogleMapApiProvider', function(uiGmapGoogleMapApiProvider) {
+        uiGmapGoogleMapApiProvider.configure({
+            key: 'AIzaSyBLwVRSezE3I1cYZki0qcCuCy18u9wOVQ4',
+            v: '3.1.7'
+        });
+    }]
+);
 
 
-app.$inject = ['ngAnimate', 'ui.bootstrap', 'ngSanitize', 'ui.select'];
 
 
 var cssClassService =  function () {
@@ -30,6 +51,49 @@ var cssClassService =  function () {
 };
 
 angular.module("my-angular-components").factory("cssClassService", cssClassService);
+var myGrid = {
+    bindings: {
+        ngModel: '=',
+        options: '<'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            vm.options = {
+                enableFiltering: true,
+                data: vm.ngModel,
+                enablePaginationControls: false,
+                paginationPageSize: 2,
+            };
+        };
+
+
+    },
+    templateUrl: 'src/client/app/Components/Grid/gridTemplate.html'
+};
+
+angular.module('my-angular-components').component('myGrid', myGrid);
+
+var myMap = {
+    bindings: {
+        ngModel: '=',
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+
+            
+        
+
+    },
+    templateUrl: 'src/client/app/Components/Map/mapTemplate.html'
+};
+
+angular.module('my-angular-components').component('myMap', myMap);
+
 var myReportViewer = {
     bindings: {
         reportUrl: '@',
@@ -447,6 +511,45 @@ mySelectField.$inject = ['cssClassService'];
 
 angular.module('my-angular-components').component('mySelectField', mySelectField);
 
+angular.module('my-angular-components').directive('markdown', ["$window", function ($window) {
+    //ar Showdown = require('showdown');
+    var converter = new Showdown.converter();
+
+
+    var link = function (scope, element, attrs) {
+        attrs.$observe('markdown', function (value) {
+            var markup = converter.makeHtml(value);
+            element.html(markup);
+        });
+    };
+
+    return {
+        restrict: 'A',
+        link: link
+    };
+}]);
+
+var myTextEditor = {
+    bindings: {
+        ngModel: '=',
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.options = {
+            useWrapMode: true,
+            showGutter: false,
+            mode: 'markdown',
+            firstLineNumber: 5,
+        };
+    },
+    templateUrl: 'src/client/app/Components/Inputs/TextEditor/textEditorTemplate.html'
+};
+
+
+angular.module('my-angular-components').component('myTextEditor', myTextEditor);
+
 var myModalButtons = {
     bindings: {
         save: '&',
@@ -510,6 +613,45 @@ angular.module('my-angular-components').component('mySpinner', mySpinner);
 
 
 
+
+angular.module('my-angular-components').directive('markdown', ["$window", function ($window) {
+    //ar Showdown = require('showdown');
+    var converter = new Showdown.converter();
+
+
+    var link = function (scope, element, attrs) {
+        attrs.$observe('markdown', function (value) {
+            var markup = converter.makeHtml(value);
+            element.html(markup);
+        });
+    };
+
+    return {
+        restrict: 'A',
+        link: link
+    };
+}]);
+
+var myTextEditor = {
+    bindings: {
+        ngModel: '=',
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.options = {
+            useWrapMode: true,
+            showGutter: false,
+            mode: 'markdown',
+            firstLineNumber: 5,
+        };
+    },
+    templateUrl: 'src/client/app/Components/Inputs/TextEditor/textEditorTemplate.html'
+};
+
+
+angular.module('my-angular-components').component('myTextEditor', myTextEditor);
 
 var myInfoPanel = {
     bindings: {
@@ -1038,52 +1180,6 @@ var adminLayout = {
 
 angular.module('my-angular-components').component('adminLayout', adminLayout);
 
-var alertsDropDownMenu = {
-    bindings: {
-        menuItems:'=',
-    },
-    controllerAs: 'vm',
-    templateUrl: 'src/client/app/Components/Layout/AdminLayout/Header/AlertsDropDown/alertsDropDownMenuTemplate.html'
-};
-
-
-angular.module('my-angular-components').component('alertsDropDownMenu', alertsDropDownMenu);
-
-var adminHeaderBar = {
-    transclude: true,
-    bindings: {
-        title: '@',
-        theme: '@',
-        userMenuItems: "=",
-        alertMenuItems: "=",
-        userName: '@'
-    },
-    controllerAs: 'vm',
-    templateUrl:'src/client/app/Components/Layout/AdminLayout/Header/HeaderBar/headerBarTemplate.html'
-};
-
-
-angular.module('my-angular-components').component('adminHeaderBar', adminHeaderBar);
-var userOptionsDropDownMenu = {
-    bindings: {
-        menuItems:'=',
-        userName: '@'
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        'use strict';
-
-        var vm = this;
-        
-       
-
-    },
-    templateUrl: 'src/client/app/Components/Layout/AdminLayout/Header/UserOptionsDropDown/userOptionsDropDownMenuTemplate.html'
-};
-
-
-angular.module('my-angular-components').component('userOptionsDropDownMenu', userOptionsDropDownMenu);
-
 var adminSideMenu = {
     transclude: true,
     bindings: {
@@ -1138,3 +1234,49 @@ var adminSideMenuItems = {
 
 
 angular.module('my-angular-components').component('adminSideMenuItems', adminSideMenuItems);
+
+var alertsDropDownMenu = {
+    bindings: {
+        menuItems:'=',
+    },
+    controllerAs: 'vm',
+    templateUrl: 'src/client/app/Components/Layout/AdminLayout/Header/AlertsDropDown/alertsDropDownMenuTemplate.html'
+};
+
+
+angular.module('my-angular-components').component('alertsDropDownMenu', alertsDropDownMenu);
+
+var adminHeaderBar = {
+    transclude: true,
+    bindings: {
+        title: '@',
+        theme: '@',
+        userMenuItems: "=",
+        alertMenuItems: "=",
+        userName: '@'
+    },
+    controllerAs: 'vm',
+    templateUrl:'src/client/app/Components/Layout/AdminLayout/Header/HeaderBar/headerBarTemplate.html'
+};
+
+
+angular.module('my-angular-components').component('adminHeaderBar', adminHeaderBar);
+var userOptionsDropDownMenu = {
+    bindings: {
+        menuItems:'=',
+        userName: '@'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        'use strict';
+
+        var vm = this;
+        
+       
+
+    },
+    templateUrl: 'src/client/app/Components/Layout/AdminLayout/Header/UserOptionsDropDown/userOptionsDropDownMenuTemplate.html'
+};
+
+
+angular.module('my-angular-components').component('userOptionsDropDownMenu', userOptionsDropDownMenu);

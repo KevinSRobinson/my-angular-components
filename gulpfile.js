@@ -159,20 +159,20 @@ gulp.task('optimize', ['inject'], function(){
         //.pipe($.uglify())
         .pipe(appFilter.restore)
         //revisions
-        .pipe($.rev())
+       // .pipe($.rev())
 
         //assets
         .pipe(assets.restore())
         .pipe($.useref())
 
         //renameing
-        .pipe($.revReplace())
+        //.pipe($.revReplace())
         
         //finish
         .pipe(gulp.dest(config.build))
 
         //revision manifest
-        .pipe($.rev.manifest())
+        //.pipe($.rev.manifest())
         .pipe(gulp.dest(config.build));
         
 
