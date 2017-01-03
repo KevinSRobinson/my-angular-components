@@ -7,19 +7,19 @@ var myModalButtons = {
         closeVisible: '@',
     },
     controllerAs: 'vm',
-    controller: function(){
+    controller: function () {
         var vm = this;
-        
-         vm.$onInit = function() {
+
+        vm.$onInit = function () {
             //defaults        
-            vm.saveText= 'Save';
-            vm.closeText= 'Close';
+            vm.saveText = 'Save';
+            vm.closeText = 'Close';
 
             vm.saveVisible = true;
             vm.closeVisible = true;
-         };
-              
-      },
+        };
+
+    },
     templateUrl: 'src/client/app/Components/Modals/ModalButtons/modalButtonsTempalte.html'
 };
 

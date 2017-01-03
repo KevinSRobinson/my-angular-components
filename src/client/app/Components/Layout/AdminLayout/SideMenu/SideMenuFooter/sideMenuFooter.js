@@ -1,6 +1,6 @@
 var sideMenuFooter = {
     bindings: {
-        links:'='
+        links: '='
     },
     controllerAs: 'vm',
     templateUrl: 'src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenuFooter/sideFooterTemplate.html'

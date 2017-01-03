@@ -150,17 +150,19 @@ gulp.task('optimize', ['inject'], function(){
 
 
         //minify appr librarys
-        .pipe(examplesFilter)
-        .pipe($.ngAnnotate()) //di helper
-        .pipe($.uglify())
-        .pipe(examplesFilter.restore)
+       // .pipe(examplesFilter)
+        //.pipe($.iife())
+        //.pipe($.ngAnnotate()) //di helper
+        //.pipe($.uglify())
+        //.pipe(examplesFilter.restore)
 
 
         .pipe(appFilter)
+        .pipe($.iife())
         .pipe($.ngAnnotate()) //di helper
         .pipe($.uglify())
         .pipe(appFilter.restore)
-        //revisions
+        //revisions npm install --save-dev gulp-iife
        // .pipe($.rev())
 
         //assets

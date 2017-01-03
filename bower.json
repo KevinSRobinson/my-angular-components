@@ -1,6 +1,6 @@
 {
   "name": "my-angular-components",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Angular components for business applicaitons",
   "authors": [
     "Kevin Robinson"
@@ -9,7 +9,11 @@
   "license": "MIT",
   "ignore": [
     "node_modules",
-    "bower_components"
+    "bower_components",
+    "node_modules",
+    ".vscode",
+    ".tmp",
+    "report"
   ],
   "dependencies": {
     "angular": "1.5.9",

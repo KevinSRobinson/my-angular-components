@@ -15,9 +15,9 @@
         <!--Input-->
         <div ng-if="!vm.readOnly" class="input-group">
             <!--DatePicker-->
-            <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}"
-                 ng-model="vm.ngModel" is-open="vm.isOpened" 
-                datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"/>
+            <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened"
+                datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"
+            />
             <!--DatePicker Open Button-->
             <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></button>

@@ -1,10 +1,10 @@
 var myMorelessPanel = {
     transclude: true,
     bindings: {
-         isCollapsed: '@',
-         buttonText: '@',
-         expandButtonText: '@',
-         collapseButtonText: '@'
+        isCollapsed: '@',
+        buttonText: '@',
+        expandButtonText: '@',
+        collapseButtonText: '@'
     },
     controllerAs: 'vm',
     controller: function () {
@@ -74,7 +74,7 @@ var myMorelessPanel = {
             return 'margin-left: 5px; padding: 10px;';
         };
 
-        
+
 
     },
     templateUrl: 'src/client/app/Components/Panels/MoreLessPanel/moreLessPanel.html'
