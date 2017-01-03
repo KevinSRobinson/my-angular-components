@@ -39,6 +39,7 @@ module.exports = function () {
             '!' + './bower_components/**'
         ],
         componentSourceFiles: componetsSource,
+        componetTemplates: componetTemplates,
         examplesSourceFiles: examplesSource,
         html: clientApp + "**/",
         less: client + 'styles/styles.less',
