@@ -1,11 +1,11 @@
 {
   "name": "my-angular-components",
-  "version": "0.6.8",
+  "version": "0.6.9",
   "description": "Angular components for business applicaitons",
   "authors": [
     "Kevin Robinson"
   ],
-  "main": "./build/js/app.js",
+  "main": "./build/scripts/app.js",
   "license": "MIT",
   "ignore": [
     "bower_components",
