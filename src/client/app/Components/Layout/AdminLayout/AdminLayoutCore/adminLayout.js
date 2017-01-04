@@ -61,5 +61,6 @@ var adminLayout = {
     templateUrl: 'adminLayoutTemplate.html'
 };
 
+adminLayout.$inject = ['$scope'];
 
 angular.module('my-angular-components').component('adminLayout', adminLayout);

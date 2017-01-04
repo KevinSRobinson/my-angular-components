@@ -11,5 +11,6 @@ var adminSideMenuItems = {
     templateUrl: 'sideMenuItemsTemplate.html'
 };
 
+adminSideMenuItems.$inject = ['$rootScope'];
 
 angular.module('my-angular-components').component('adminSideMenuItems', adminSideMenuItems);

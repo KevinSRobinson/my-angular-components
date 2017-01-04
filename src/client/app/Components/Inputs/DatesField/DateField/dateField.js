@@ -47,6 +47,7 @@ var myDateField = {
     templateUrl: 'dateFieldTemplate.html'
 };
 
+myDateField.$inject = ['cssClassService'];
 
 var app = angular.module('my-angular-components')
     .component('myDateField', myDateField);
