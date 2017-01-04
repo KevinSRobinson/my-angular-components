@@ -7,7 +7,9 @@ var browserSync = require('browser-sync');
 var useref = require('gulp-useref');
 var $ = require('gulp-load-plugins')({lazy : true});
 var lazypipe = require('lazypipe');
-
+var concat = require('gulp-concat');
+var addStream = require('add-stream');
+var angularTemplateCache = require('gulp-angular-templatecache');
 
 var port = 7203;
 
@@ -132,9 +134,9 @@ gulp.task('optimize', ['inject'], function(){
    
       return gulp
         .src(config.index)
-         .pipe($.inject(gulp.src(templateCache, { read: false}), {
-            starttag: '<!-- inject:templates:js -->'
-        }))
+        //  .pipe($.inject(gulp.src(templateCache, { read: false}), {
+        //     starttag: '<!-- inject:templates:js -->'
+        // }))
         .pipe(assets)
         //css
         .pipe(cssFilter)
@@ -171,7 +173,7 @@ gulp.task('optimize', ['inject'], function(){
 
         //renameing
         //.pipe($.revReplace())
-        
+
         //finish
         .pipe(gulp.dest(config.build))
 
@@ -211,18 +213,40 @@ gulp.task('bump', function(){
 
 
 //////////////////////////////////////////////
+
+function prepareTemplates() {
+    return gulp.src('src/client/app/Components/**/*.html')
+        //.pipe(minify and preprocess the template html here)
+        .pipe(angularTemplateCache());
+}
+
+gulp.task('build-app.js', function() {
+    return gulp.src('src/client/app/Components/**/*.js')
+        //.pipe(concat your app js files somehow)
+
+        // append the template js onto app.js
+        .pipe(addStream.obj(prepareTemplates()))
+        .pipe(concat('app.js'))
+
+        //.pipe(ng annotate, minify, etc)
+        .pipe(gulp.dest('build/scripts'));
+});
+
 gulp.task('templatecache', function(){
 
-     var templateCache = config.temp + config.templateCache.file;
+    var templateCache = config.temp + config.templateCache.file;
+
+    console.log(templateCache);
 
     return gulp.src(templateCache)
-            .pipe($.minifyHtml({empty: true}))
+            //.pipe($.minifyHtml({empty: true}))
             .pipe($.angularTemplatecache(
                 config.templateCache.file,
                 config.templateCache.options
             ))
-            .pipe($.inject(gulp.src(templateCache, { read: false}), {
-            starttag: '<!-- inject:templates:js -->'
+            .pipe($.inject(gulp.src(templateCache,
+                { read: false}), {
+                 starttag: '<!-- inject:templates:js -->'
         }))
         .pipe($.inject(gulp.src(templateCache, { read: false}), {
             starttag: '<!-- inject:exampletemplates:js -->'
@@ -403,11 +427,11 @@ function  startBrowserSync(isDev){
                 scroll: true
             },
             ui: {
-    port: 8080,
-    weinre: {
-        port: 9090
-    }
-},
+                port: 8080,
+                weinre: {
+                    port: 9090
+                }
+            },
             injectChangees: true,
             logFileChanges: true,
             logLevel: 'debug',

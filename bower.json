@@ -8,11 +8,9 @@
   "main": "./build/js/app.js",
   "license": "MIT",
   "ignore": [
-    "node_modules",
     "bower_components",
     "node_modules",
     ".vscode",
-    ".tmp",
     "report"
   ],
   "dependencies": {

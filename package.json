@@ -26,6 +26,7 @@
     "serve-favicon": "^2.0.1"
   },
   "devDependencies": {
+    "add-stream": "^1.0.0",
     "browser-sync": "^2.18.2",
     "chai": "^3.5.0",
     "del": "^2.2.2",
