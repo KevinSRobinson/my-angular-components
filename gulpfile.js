@@ -70,7 +70,7 @@ gulp.task('vet', function(){
 
 
 
-gulp.task('serve-build', ['optimize'], function(){
+gulp.task('serve-build', ['js:build','optimize'], function(){
    serve(false);
 });
 
@@ -160,8 +160,8 @@ gulp.task('optimize', ['inject'], function(){
 
         .pipe(appFilter)
         .pipe($.iife())
-        .pipe($.ngAnnotate()) //di helper
-        .pipe($.uglify())
+        //.pipe($.ngAnnotate()) //di helper
+        //.pipe($.uglify())
         .pipe(appFilter.restore)
         //revisions npm install --save-dev gulp-iife
        // .pipe($.rev())

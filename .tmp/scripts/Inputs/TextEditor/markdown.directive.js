@@ -1,5 +1,4 @@
-angular.module('my-angular-components').directive('markdown', function ($window) {
-    //ar Showdown = require('showdown');
+angular.module('my-angular-components').directive('markdown', function () {
     var converter = new Showdown.converter();
 
 
