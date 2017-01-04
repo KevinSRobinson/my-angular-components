@@ -9,7 +9,7 @@ var myPageTitle = {
             vm.ngModel = 'Set this text using ngModel';
         };
     },
-    templateUrl: 'src/client/app/Components/Headers/PageHeader/pageHeaderTemplate.html'
+    templateUrl: 'pageHeaderTemplate.html'
 };
 
 angular.module('my-angular-components').component('myPageTitle', myPageTitle);

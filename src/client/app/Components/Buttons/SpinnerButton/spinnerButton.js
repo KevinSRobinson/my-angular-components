@@ -18,7 +18,7 @@ var mySpinnerButton = {
              vm.isDisabled = false;
         };       
     },
-    templateUrl: 'src/client/app/Components/Buttons/SpinnerButton/spinnerButtonTemplate.html'
+    templateUrl: 'spinnerButtonTemplate.html'
 };
 
 

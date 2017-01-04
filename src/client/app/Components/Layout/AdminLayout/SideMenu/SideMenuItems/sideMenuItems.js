@@ -8,7 +8,7 @@ var adminSideMenuItems = {
         
         vm.isAuthenticated = $rootScope.isAuthenticated;
     },
-    templateUrl: 'src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenuItems/sideMenuItemsTemplate.html'
+    templateUrl: 'sideMenuItemsTemplate.html'
 };
 
 

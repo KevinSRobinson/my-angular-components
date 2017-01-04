@@ -10,6 +10,8 @@ var lazypipe = require('lazypipe');
 var concat = require('gulp-concat');
 var addStream = require('add-stream');
 var angularTemplateCache = require('gulp-angular-templatecache');
+var embedTemplates = require('gulp-angular-embed-templates');
+
 
 var port = 7203;
 
@@ -127,10 +129,7 @@ gulp.task('optimize', ['inject'], function(){
     var cssFilter = $.filter('**/*.css', { restore: true });
     var jsLibFilter = $.filter('**/' + config.optimized.lib, { restore: true });
     var appFilter = $.filter('**/' + config.optimized.app, { restore: true });
-    var examplesFilter = $.filter('**/' + config.optimized.examples, { restore: true });
 
-     var templateCache = config.temp + config.templateCache.file;
-    
    
       return gulp
         .src(config.index)
@@ -217,8 +216,13 @@ gulp.task('bump', function(){
 function prepareTemplates() {
     return gulp.src('src/client/app/Components/**/*.html')
         //.pipe(minify and preprocess the template html here)
-        .pipe(angularTemplateCache());
+        .pipe(angularTemplateCache({base: "/src/eeeeee/"}));
 }
+gulp.task('js:build', function () {
+    gulp.src('src/client/app/Components/**/*.js')
+        .pipe(embedTemplates())
+        .pipe(gulp.dest('./.tmp/scripts/'));
+});
 
 gulp.task('build-app.js', function() {
     return gulp.src('src/client/app/Components/**/*.js')
@@ -232,28 +236,28 @@ gulp.task('build-app.js', function() {
         .pipe(gulp.dest('build/scripts'));
 });
 
-gulp.task('templatecache', function(){
-
-    var templateCache = config.temp + config.templateCache.file;
-
-    console.log(templateCache);
-
-    return gulp.src(templateCache)
-            //.pipe($.minifyHtml({empty: true}))
-            .pipe($.angularTemplatecache(
-                config.templateCache.file,
-                config.templateCache.options
-            ))
-            .pipe($.inject(gulp.src(templateCache,
-                { read: false}), {
-                 starttag: '<!-- inject:templates:js -->'
-        }))
-        .pipe($.inject(gulp.src(templateCache, { read: false}), {
-            starttag: '<!-- inject:exampletemplates:js -->'
-        }))
-            .pipe(gulp.dest(config.temp));
-
-});
+// gulp.task('templatecache', function(){
+//
+//     var templateCache = config.temp + config.templateCache.file;
+//
+//     console.log(templateCache);
+//
+//     return gulp.src(templateCache)
+//             //.pipe($.minifyHtml({empty: true}))
+//             .pipe($.angularTemplatecache(
+//                 config.templateCache.file,
+//                 config.templateCache.options
+//             ))
+//             .pipe($.inject(gulp.src(templateCache,
+//                 { read: false}), {
+//                  starttag: '<!-- inject:templates:js -->'
+//         }))
+//         .pipe($.inject(gulp.src(templateCache, { read: false}), {
+//             starttag: '<!-- inject:exampletemplates:js -->'
+//         }))
+//             .pipe(gulp.dest(config.temp));
+//
+// });
 
 
 
@@ -274,7 +278,7 @@ gulp.task('wiredep',  function(){
             .pipe(gulp.dest(config.client));
 });
 
-gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function(){
+gulp.task('inject', ['wiredep', 'styles'], function(){
 
     log('inject starting');
 

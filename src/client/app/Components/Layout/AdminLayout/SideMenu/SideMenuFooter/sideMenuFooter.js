@@ -3,7 +3,7 @@ var sideMenuFooter = {
         links: '='
     },
     controllerAs: 'vm',
-    templateUrl: 'src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenuFooter/sideFooterTemplate.html'
+    templateUrl: 'sideFooterTemplate.html'
 };
 
 

@@ -44,7 +44,7 @@ var mySelectField = {
 
 
     },
-    templateUrl: 'src/client/app/Components/Inputs/SelectField/selectFieldTemplate.html'
+    templateUrl: 'selectFieldTemplate.html'
 };
 
 mySelectField.$inject = ['cssClassService'];

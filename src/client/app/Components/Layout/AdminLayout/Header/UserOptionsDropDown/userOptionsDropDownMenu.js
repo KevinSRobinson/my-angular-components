@@ -12,7 +12,7 @@ var userOptionsDropDownMenu = {
        
 
     },
-    templateUrl: 'src/client/app/Components/Layout/AdminLayout/Header/UserOptionsDropDown/userOptionsDropDownMenuTemplate.html'
+    templateUrl: 'userOptionsDropDownMenuTemplate.html'
 };
 
 

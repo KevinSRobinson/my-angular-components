@@ -3,7 +3,7 @@ var alertsDropDownMenu = {
         menuItems:'=',
     },
     controllerAs: 'vm',
-    templateUrl: 'src/client/app/Components/Layout/AdminLayout/Header/AlertsDropDown/alertsDropDownMenuTemplate.html'
+    templateUrl: 'alertsDropDownMenuTemplate.html'
 };
 
 

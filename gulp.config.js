@@ -1,7 +1,7 @@
 module.exports = function () {
 
     var client = './src/client/';
-    var clientApp = client + 'app/';
+  
     var temp = './.tmp/';
     var server = './src/server/';
     var report = './report/';
@@ -10,14 +10,15 @@ module.exports = function () {
         devDependencies: true
     })['js'];
 
-    var clientFolderRoot = './src/Client/app/';
+    var builtComponetsSource = './.tmp/scripts/';
     // var syncFusionFiles = clientFolderRoot + 'Components/**/*.html';
 
     //app module paths
-    var componetsSource = clientFolderRoot + 'Components/**/*.js';
-    var componetTemplates = clientFolderRoot + 'Components/**/*.html';
+    //var componetsSource = clientFolderRoot + 'Components/**/*.js';
+    //var builtComponetsSource = temp + 'scripts/**/*.js';
+    //var componetTemplates = clientFolderRoot + 'Components/**/*.html';
 
-    var examplesSource = clientFolderRoot + 'Examples/**/*.js';
+    var examplesSource = builtComponetsSource + 'Examples/**/*.js';
     var config = {
 
         //all js to vet
@@ -33,15 +34,13 @@ module.exports = function () {
         index: client + 'index.html',
         client: client,
         js: [
-            clientApp + '**/*.module.js',
-            clientApp + '**/*.js',
-            '!' + clientApp + '**/*spec.js',
+            client + '**/*.js',
+            '!' + client + '**/*spec.js',
             '!' + './bower_components/**'
         ],
-        componentSourceFiles: componetsSource,
-        componetTemplates: componetTemplates,
+        componentSourceFiles: './.tmp/scripts/**/*.js',
         examplesSourceFiles: examplesSource,
-        html: clientApp + "**/",
+        html: client + "**/",
         less: client + 'styles/styles.less',
         server: server,
         temp: temp,
@@ -69,7 +68,7 @@ module.exports = function () {
         ],
         root: '',
 
-        htmltemplates: clientApp + '**/*.html',
+        htmltemplates: client + '**/*.html',
         templateCache: {
             file: 'templates.js',
             options: {
@@ -167,7 +166,7 @@ module.exports = function () {
             },
             preprocessors: {}
         };
-        options.preprocessors[clientApp + '**/!(*.spec)*(.js)'] = ['coverage'];
+        options.preprocessors[client + '**/!(*.spec)*(.js)'] = ['coverage'];
         return options;
     }
 

@@ -27,7 +27,7 @@ var myInfoPanel = {
         };
 
     },
-    templateUrl: 'src/client/app/Components/Panels/InfoPanel/infoPanelTemplate.html'
+    templateUrl: 'infoPanelTemplate.html'
 };
 
 

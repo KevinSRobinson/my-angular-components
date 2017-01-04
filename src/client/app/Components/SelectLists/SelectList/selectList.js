@@ -17,7 +17,7 @@ var mySelectList = {
         };
 
     },
-    templateUrl: 'src/client/app/Components/SelectLists/SelectList/selectListTemplate.html'
+    templateUrl: 'selectListTemplate.html'
 
 };
 

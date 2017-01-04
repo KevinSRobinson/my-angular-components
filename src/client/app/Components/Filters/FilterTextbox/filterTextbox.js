@@ -15,7 +15,7 @@ var myFilterTextbox = {
 
 
     },
-    templateUrl: 'src/client/app/Components/Filters/FilterTextbox/filterTextbox.js'
+    templateUrl: 'filterTextboxTemplate.html'
 };
 
 

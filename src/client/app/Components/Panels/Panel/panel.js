@@ -82,7 +82,7 @@ var myPanel = {
 
 
     },
-    templateUrl:'src/client/app/Components/Panels/Panel/panelTemplate.html'
+    templateUrl:'panelTemplate.html'
 };
 
 

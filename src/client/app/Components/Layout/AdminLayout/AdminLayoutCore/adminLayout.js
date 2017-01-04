@@ -58,7 +58,7 @@ var adminLayout = {
 
 
     },
-    templateUrl: 'src/client/app/Components/Layout/AdminLayout/AdminLayoutCore/adminLayoutTemplate.html'
+    templateUrl: 'adminLayoutTemplate.html'
 };
 
 

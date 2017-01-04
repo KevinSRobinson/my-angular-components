@@ -57,7 +57,7 @@ var myInputField = {
 
 
     },
-    templateUrl: 'src/client/app/Components/Inputs/InputField/inputFieldTemplate.html'
+    templateUrl: 'inputFieldTemplate.html'
 };
 
 myInputField.$inject = ['cssClassService'];

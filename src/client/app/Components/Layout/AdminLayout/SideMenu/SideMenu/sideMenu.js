@@ -20,7 +20,7 @@ var adminSideMenu = {
         };
 
     },
-    templateUrl: 'src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenu/sideMenuTemplate.html'
+    templateUrl: 'sideMenuTemplate.html'
 };
 
 

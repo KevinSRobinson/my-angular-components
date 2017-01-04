@@ -20,7 +20,7 @@ var myModalButtons = {
         };
 
     },
-    templateUrl: 'src/client/app/Components/Modals/ModalButtons/modalButtonsTempalte.html'
+    templateUrl: 'modalButtonsTempalte.html'
 };
 
 angular.module('my-angular-components').component('myModalButtons', myModalButtons);

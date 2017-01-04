@@ -44,7 +44,7 @@ var myDateField = {
         };
 
     },
-    templateUrl: 'src/client/app/Components/Inputs/DatesField/DateField/dateFieldTemplate.html'
+    templateUrl: 'dateFieldTemplate.html'
 };
 
 

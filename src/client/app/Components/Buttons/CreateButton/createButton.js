@@ -17,7 +17,7 @@ var myCreateButton = {
             vm.cssClass = 'btn btn-success';
         };       
     },
-    templateUrl: 'src/client/app/Components/Buttons/CreateButton/createButtonTemplate.html'
+    templateUrl: 'createButtonTemplate.html'
 };
 
 

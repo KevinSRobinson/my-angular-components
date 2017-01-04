@@ -16,7 +16,7 @@ var myModalHeader = {
 
 
     },
-    templateUrl: 'src/client/app/Components/Modals/ModalHeader/modalHeaderTempalte.html'
+    templateUrl: 'modalHeaderTempalte.html'
 };
 
 

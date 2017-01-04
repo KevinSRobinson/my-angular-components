@@ -13,7 +13,7 @@ var myTextEditor = {
             firstLineNumber: 5,
         };
     },
-    templateUrl: 'src/client/app/Components/Inputs/TextEditor/textEditorTemplate.html'
+    templateUrl: 'textEditorTemplate.html'
 };
 
 

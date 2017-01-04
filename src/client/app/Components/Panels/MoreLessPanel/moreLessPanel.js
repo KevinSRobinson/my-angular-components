@@ -77,7 +77,7 @@ var myMorelessPanel = {
 
 
     },
-    templateUrl: 'src/client/app/Components/Panels/MoreLessPanel/moreLessPanel.html'
+    templateUrl: 'moreLessPanel.html'
 };
 
 
