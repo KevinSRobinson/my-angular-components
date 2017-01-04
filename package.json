@@ -1,6 +1,6 @@
 {
   "name": "Pluralsight-Gulp",
-  "version": "2.4.7",
+  "version": "2.4.8",
   "description": "Starter Code for Pluralsight Course JavaScript Build Automation with Gulp.js",
   "authors": [
     "John Papa"
@@ -21,6 +21,7 @@
     "compression": "^1.1.0",
     "cors": "^2.2.0",
     "express": "^4.9.3",
+    "lazypipe": "^1.0.1",
     "morgan": "^1.1.1",
     "serve-favicon": "^2.0.1"
   },
