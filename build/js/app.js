@@ -1,4 +1,4 @@
-(function() {
+;(function() {
 "use strict";
 
 var app = angular.module('my-angular-components', [
@@ -43,34 +43,6 @@ var cssClassService =  function () {
 };
 
 angular.module("my-angular-components").factory("cssClassService", cssClassService);
-var myCreateButton = {
-    bindings: {
-        id: '@',
-        buttonText: '@',
-        click: '&',
-        cssClass:'@'
-    },
-    controllerAs: 'vm',
-    controller: function(){
-        var vm = this;
-      
-        vm.$onInit = function () {
-            //default options
-            vm.id = 'create';
-            vm.buttonText = 'Create';
-            vm.icon = 'plus';
-            vm.cssClass = 'btn btn-success';
-        };       
-    },
-    template:'<div class="{{vm.cssClass}" id="{{vm.id}}" ng-click="vm.click()">{{vm.buttonText}}<i class="fa fa-{{vm.icon}}"></i></div>'
-};
-
-
-angular.module('my-angular-components').component('myCreateButton', myCreateButton);
-
-
-
-
 var mySpinnerButton = {
     bindings: {
         buttonText:'@',
@@ -206,29 +178,6 @@ var buildList = function () {
 myCategorySelect.$inject = ['$scope'];
 
 angular.module('my-angular-components').component('myCategorySelect', myCategorySelect);
-var myFilterTextbox = {
-    bindings: {
-        placeholder: '@',
-        ngModel: '=',
-        fieldName: '@'
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.$onInit = function () {
-            vm.fieldName = 'filterTextBox';
-            vm.placeholder = 'Filter';
-        };
-
-
-    },
-    template:'<div class="input-group" style="display: flex"><input type="text" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}" id="{{vm.fieldName}}" class="form-control"> <button class="btn btn-default" id="searchFilter"><i class="glyphicon glyphicon-search"></i></button></div>'
-};
-
-
-angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
-
 var myPageTitle = {
     bindings: {
         ngModel: '@'
@@ -310,6 +259,29 @@ var myInputField = {
 myInputField.$inject = ['cssClassService'];
 
 angular.module('my-angular-components').component('myInputField', myInputField);
+
+var myFilterTextbox = {
+    bindings: {
+        placeholder: '@',
+        ngModel: '=',
+        fieldName: '@'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            vm.fieldName = 'filterTextBox';
+            vm.placeholder = 'Filter';
+        };
+
+
+    },
+    template:'<div class="input-group" style="display: flex"><input type="text" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}" id="{{vm.fieldName}}" class="form-control"> <button class="btn btn-default" id="searchFilter"><i class="glyphicon glyphicon-search"></i></button></div>'
+};
+
+
+angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
 
 var mySelectField = {
     bindings: {
@@ -704,32 +676,6 @@ var myPanel = {
 
 
 angular.module('my-angular-components').component('myPanel', myPanel);
-var mySelectList = {
-    bindings: {
-        ngModel: '=',
-        items: '=',
-        fieldLabel: '@',
-        fieldName: '@'
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.$onInit = function () {
-            vm.items = [];
-            vm.fieldLabel = 'You can set this text using field-label';
-            vm.fieldName = 'mySelectField';
-            vm.ngModel = 'null';
-        };
-
-    },
-    template:'<div class="form-group"><label class="control-label" style="min-width: 110px; text-align: left">{{vm.fieldLabel}}</label><select ng-model="vm.ngModel" class="form-control" id="{{vm.fieldName}}"><option ng-repeat="option in vm.items" value="{{option.Id}}">{{option.Id}}</option></select></div>'
-
-};
-
-
-angular.module('my-angular-components').component('mySelectList', mySelectList);
-
 var myStatusAlert = {
     bindings: {
         message: "@",
@@ -774,6 +720,60 @@ var myStatusAlert = {
 
 
 angular.module('my-angular-components').component('myStatusAlert', myStatusAlert);
+
+var mySelectList = {
+    bindings: {
+        ngModel: '=',
+        items: '=',
+        fieldLabel: '@',
+        fieldName: '@'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            vm.items = [];
+            vm.fieldLabel = 'You can set this text using field-label';
+            vm.fieldName = 'mySelectField';
+            vm.ngModel = 'null';
+        };
+
+    },
+    template:'<div class="form-group"><label class="control-label" style="min-width: 110px; text-align: left">{{vm.fieldLabel}}</label><select ng-model="vm.ngModel" class="form-control" id="{{vm.fieldName}}"><option ng-repeat="option in vm.items" value="{{option.Id}}">{{option.Id}}</option></select></div>'
+
+};
+
+
+angular.module('my-angular-components').component('mySelectList', mySelectList);
+
+var myCreateButton = {
+    bindings: {
+        id: '@',
+        buttonText: '@',
+        click: '&',
+        cssClass:'@'
+    },
+    controllerAs: 'vm',
+    controller: function(){
+        var vm = this;
+      
+        vm.$onInit = function () {
+            //default options
+            vm.id = 'create';
+            vm.buttonText = 'Create';
+            vm.icon = 'plus';
+            vm.cssClass = 'btn btn-success';
+        };       
+    },
+    template:'<div class="{{vm.cssClass}" id="{{vm.id}}" ng-click="vm.click()">{{vm.buttonText}}<i class="fa fa-{{vm.icon}}"></i></div>'
+};
+
+
+angular.module('my-angular-components').component('myCreateButton', myCreateButton);
+
+
+
 
 /**
  * Date field component with Field Label, Date Popup, Help Popup

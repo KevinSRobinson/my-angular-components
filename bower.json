@@ -1,6 +1,6 @@
 {
   "name": "my-angular-components",
-  "version": "0.6.15",
+  "version": "0.6.16",
   "description": "Angular components for business applicaitons",
   "authors": [
     "Kevin Robinson"
@@ -29,7 +29,6 @@
     "angular-ui-ace": "bower",
     "angular-showdown": "^0.3.2",
     "angular-ui-grid": "^4.0.2",
-    "angular-google-maps": "^2.4.0",
     "bootstrap": "^3.3.7"
   }
 }
