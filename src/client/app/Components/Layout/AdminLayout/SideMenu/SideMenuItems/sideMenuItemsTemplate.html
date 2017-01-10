@@ -1,5 +1,5 @@
 <li class="sidebar-list" ng-repeat="item in vm.menuItems">
-    <a ui-sref="{{item.state}}" ng-if="vm.isAuthenticated">{{item.linkText}}
+    <a ui-sref="{{item.state}}" ng-if="vm.showItem(item)">{{item.linkText}}
         <span class="menu-icon fa fa-{{item.icon}}"></span>
     </a>
 </li>

@@ -273,11 +273,13 @@ var adminLayoutExample = {
         vm.sideMenuItems = [{
             state: "hello",
             linkText: "hello",
-            icon: "check"
+            icon: "check",
+            requiresLogin: false
         }, {
             state: "about",
             linkText: "about",
-            icon: "users"
+            icon: "users",
+            requiresLogin: false
         }];
 
         vm.userMenuItems = [{

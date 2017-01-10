@@ -6,7 +6,19 @@ var adminSideMenuItems = {
     controller: function($rootScope){
         var vm = this;
         
-        vm.isAuthenticated = $rootScope.isAuthenticated;
+       vm.isAuthenticated = $rootScope.isAuthenticated;
+
+       vm.showItem = function(item){
+           console.log(item);
+           if(item.requiresLogin){
+               if(vm.isAuthenticated){
+                   return true;
+                }
+           }
+           else
+                return true;
+           
+       };
     },
     templateUrl: 'sideMenuItemsTemplate.html'
 };

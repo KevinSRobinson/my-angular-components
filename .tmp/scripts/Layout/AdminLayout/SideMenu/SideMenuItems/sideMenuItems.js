@@ -6,9 +6,21 @@ var adminSideMenuItems = {
     controller: function($rootScope){
         var vm = this;
         
-        vm.isAuthenticated = $rootScope.isAuthenticated;
+       vm.isAuthenticated = $rootScope.isAuthenticated;
+
+       vm.showItem = function(item){
+           console.log(item);
+           if(item.requiresLogin){
+               if(vm.isAuthenticated){
+                   return true;
+                }
+           }
+           else
+                return true;
+           
+       };
     },
-    template:'<li class="sidebar-list" ng-repeat="item in vm.menuItems"><a ui-sref="{{item.state}}" ng-if="vm.isAuthenticated">{{item.linkText}} <span class="menu-icon fa fa-{{item.icon}}"></span></a></li>'
+    template:'<li class="sidebar-list" ng-repeat="item in vm.menuItems"><a ui-sref="{{item.state}}" ng-if="vm.showItem(item)">{{item.linkText}} <span class="menu-icon fa fa-{{item.icon}}"></span></a></li>'
 };
 
 adminSideMenuItems.$inject = ['$rootScope'];
