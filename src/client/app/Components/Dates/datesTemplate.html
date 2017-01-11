@@ -1,0 +1,68 @@
+<form class="for-horizontal">
+    <div class="col-md-8 center-block">
+    <h1>Dates</h1>
+
+    <div class="well">
+        <h4>Date Field</h4>
+        <my-date-field ng-model="vm.sampleDate"  horizontal="true"  tooltip="Please Enter a Date"
+        label-width="4"
+        inout-width="8"
+                        field-label="Start Date" ></my-date-field>
+        <br>
+    </div>
+
+    <div class="well">
+        <h4>Date Field</h4>
+        <my-date-field ng-model="vm.sampleDate"  horizontal="true"  tooltip="ddfgdfgdf"
+                        field-label="Start Date" help-text="Enter a Date"></my-date-field>
+        <br>
+    </div>
+    
+    <div class="well">
+        <h4>Date Field  Read-only</h4>
+        <my-date-field ng-model="vm.sampleDate" 
+        read-only="true"
+         horizontal="true" field-label="Start Date" ></my-date-field>
+        <br>
+    </div>    
+
+</div>
+
+</form>
+
+
+
+
+
+    <!--<hr>
+    <div class="row">
+        <div class="col-md-4">
+            <my-date-field ng-model="vm.sampleDate"  horizontal="true" field-label="Start Date" help-text="Enter a Date"></my-date-field>
+        </div>
+        <div class="col-md-8">
+            <br>
+            <code>
+            <span class="tag"> &lt;my-date-field </span>
+            <span class="attrib">ng-model=</span>
+            <span class="value">"vm.sampleDate"&gt;</span>
+            <span class="tag">&lt;/my-date-field&gt;</span>
+            </code>
+        </div>
+    </div>
+     <hr>
+    <div class="row">
+        <div class="col-md-4">
+            <my-date-field ng-model="vm.sampleDate"  horizontal="true"
+            help-text="Enter a Date" read-only="true"></my-date-field>
+        </div>
+        <div class="col-md-8">
+            <code>
+                    <span class="tag"> &lt;my-date-field </span>
+                    <span class="attrib">ng-model=</span>
+                    <span class="value">&quot;vm.sampleDate&quot;</span>
+                    <span class="attrib">read-only=</span>
+                    <span class="value">"true"&gt;</span>
+                    <span class="tag">&lt;/my-date-field&gt;</span>
+              </code>
+        </div>
+    </div>-->

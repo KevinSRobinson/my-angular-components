@@ -9,7 +9,6 @@ var adminSideMenuItems = {
        vm.isAuthenticated = $rootScope.isAuthenticated;
 
        vm.showItem = function(item){
-           console.log(item);
            if(item.requiresLogin){
                if(vm.isAuthenticated){
                    return true;
