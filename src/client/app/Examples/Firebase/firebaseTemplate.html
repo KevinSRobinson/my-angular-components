@@ -1,2 +1,8 @@
 
-<h1>{{vm.profile.user_id}}</h1>
+<h1>Firebase</h1>
+{{messages}}
+<ul>
+    <li ng-repeat="message in messages">{{message}}</li>
+</ul>
+<input type="text"  ng-model="vm.message" >
+<div class="btn btn-success" ng-click="addMessage(vm.message)">Add</div>

@@ -26,12 +26,14 @@
     "font-awesome": "^4.7.0",
     "ng-fab-form": "^1.2.20",
     "angular-ui-router": "^0.3.2",
-     "angular-lock": "~1.0.2",
+    "angular-lock": "~1.0.2",
     "angular-jwt": "~0.1.0",
     "angular-ui-ace": "bower",
     "angular-showdown": "^0.3.2",
     "angular-ui-grid": "^4.0.2",
     "bootstrap": "^3.3.7",
-    "stormpath-sdk-angularjs": "^1.1.1"
+    "stormpath-sdk-angularjs": "^1.1.1",
+    "angularfire": "^2.2.0",
+    "firebase": "^3.6.5"
   }
 }

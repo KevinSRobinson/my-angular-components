@@ -1,7 +1,7 @@
 var app = angular.module('examples', ['my-angular-components', 'ngFabForm',
 
     'ui.router',
-    'auth0.lock', 'angular-jwt',
+    'auth0.lock', 'angular-jwt', 'firebase',
 ]);
 
 app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
@@ -24,14 +24,29 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
     var firebaseState = {
         name: 'firebase',
         url: '/firebase',
-        controller: function(authService){
+        controller: function ($scope, authService, $firebaseObject, $firebaseArray) {
             var vm = this;
- vm.authService = authService;
+            var ref = firebase.database().ref();
+            //var ref = new Firebase("https://quiz-fd4f2.firebaseio.com/");
+            vm.array = $firebaseObject(ref);
+            var ref = firebase.database().ref().child("Contacts");
+            $scope.messages = $firebaseArray(ref);
+            // add new items to the array
+            // the message is automatically added to our Firebase database!
+            $scope.addMessage = function (message) {
+                console.log(message);
+                $scope.messages.$add({
+                    firstname: message
+                });
+            };
+            //            
 
-    authService.getProfileDeferred().then(function (profile) {
-        console.log(angular.toJson(profile.email));
-      vm.profile = profile;
-    });
+            //  vm.authService = authService;
+
+            //     authService.getProfileDeferred().then(function (profile) {
+            //         console.log(angular.toJson(profile.email));
+            //       vm.profile = profile;
+            //     });
         },
         templateUrl: 'src/client/app/Examples/Firebase/firebaseTemplate.html'
     };
@@ -55,35 +70,35 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
     };
 
 
-  
+
     lockProvider.init({
         clientID: 'UY5BHrujRwp7y1TZQl1Bif88aeeVRkrU',
         domain: 'volunteernow.auth0.com',
-         options: {
-          auth: {
-            params: {
-              scope: 'openid'
+        options: {
+            auth: {
+                params: {
+                    scope: 'openid'
+                }
             }
-          }
         }
     });
 
- // Configuration for angular-jwt
-      jwtOptionsProvider.config({
-        tokenGetter: function() {
-          return localStorage.getItem('id_token');
+    // Configuration for angular-jwt
+    jwtOptionsProvider.config({
+        tokenGetter: function () {
+            return localStorage.getItem('id_token');
         },
         whiteListedDomains: ['localhost'],
         unauthenticatedRedirectPath: '/login'
-      });
+    });
 
-      $locationProvider.html5Mode(true);
-      
-      // Add the jwtInterceptor to the array of HTTP interceptors
-      // so that JWTs are attached as Authorization headers
-      $httpProvider.interceptors.push('jwtInterceptor');
+    $locationProvider.html5Mode(true);
 
-  $stateProvider.state(homeState);
+    // Add the jwtInterceptor to the array of HTTP interceptors
+    // so that JWTs are attached as Authorization headers
+    $httpProvider.interceptors.push('jwtInterceptor');
+
+    $stateProvider.state(homeState);
     $stateProvider.state(firebaseState);
     $stateProvider.state(aboutState);
     $stateProvider.state(login);

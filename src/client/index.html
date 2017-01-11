@@ -114,6 +114,8 @@
     <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="/bower_components/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.min.js"></script>
     <script src="/bower_components/stormpath-sdk-angularjs/dist/stormpath-sdk-angularjs.tpls.min.js"></script>
+    <script src="/bower_components/firebase/firebase.js"></script>
+    <script src="/bower_components/angularfire/dist/angularfire.js"></script>
     <!--endbower-->
     <!-- endbuild -->
     <!-- build:js js/app.js -->
@@ -126,17 +128,17 @@
     <script src="/.tmp/scripts/Filters/FilterTextbox/filterTextbox.js"></script>
     <script src="/.tmp/scripts/Headers/PageHeader/pageHeader.js"></script>
     <script src="/.tmp/scripts/Inputs/InputField/inputField.js"></script>
+    <script src="/.tmp/scripts/Inputs/SelectField/selectField.js"></script>
     <script src="/.tmp/scripts/Inputs/TextEditor/markdown.directive.js"></script>
     <script src="/.tmp/scripts/Inputs/TextEditor/textEditor.js"></script>
-    <script src="/.tmp/scripts/Inputs/SelectField/selectField.js"></script>
     <script src="/.tmp/scripts/Modals/ModalButtons/modalButtons.js"></script>
     <script src="/.tmp/scripts/Modals/ModalHeader/modalHeader.js"></script>
     <script src="/.tmp/scripts/Panels/InfoPanel/infoPanel.js"></script>
-    <script src="/.tmp/scripts/Panels/MoreLessPanel/moreLessPanel.js"></script>
     <script src="/.tmp/scripts/Panels/MoreLessButton/moreLessButton.js"></script>
+    <script src="/.tmp/scripts/Panels/MoreLessPanel/moreLessPanel.js"></script>
     <script src="/.tmp/scripts/Panels/Panel/panel.js"></script>
-    <script src="/.tmp/scripts/SelectLists/SelectList/selectList.js"></script>
     <script src="/.tmp/scripts/StatusAlerts/StatusAlert/statusAlert.js"></script>
+    <script src="/.tmp/scripts/SelectLists/SelectList/selectList.js"></script>
     <script src="/.tmp/scripts/Inputs/DatesField/DateField/dateField.js"></script>
     <script src="/.tmp/scripts/Layout/AdminLayout/AdminLayoutCore/adminLayout.js"></script>
     <script src="/.tmp/scripts/Layout/AdminLayout/Header/AlertsDropDown/alertsDropDownMenu.js"></script>
@@ -149,7 +151,18 @@
     <!-- inject:templates:js -->
     <!--endinject-->
     <!--endbuild-->
-
+<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyABFYQbCjV5My6h7g_Wrn55J3Qjs3qdsi8",
+    authDomain: "quiz-fd4f2.firebaseapp.com",
+    databaseURL: "https://quiz-fd4f2.firebaseio.com",
+    storageBucket: "quiz-fd4f2.appspot.com",
+    messagingSenderId: "218645290850"
+  };
+  firebase.initializeApp(config);
+</script>
     <!-- build:js js/examples.js -->
     <!-- inject:examples:js -->
     <script src="/src/Client/app/Examples/app.js"></script>
