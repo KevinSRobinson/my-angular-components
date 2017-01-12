@@ -18,7 +18,7 @@ module.exports = function () {
     //var builtComponetsSource = temp + 'scripts/**/*.js';
     //var componetTemplates = clientFolderRoot + 'Components/**/*.html';
 
-    var examplesSource = builtComponetsSource + 'Examples/**/**/*.js';
+    var examplesSource = client + 'Examples/**/*.js';
     var config = {
 
         //all js to vet

@@ -21,6 +21,13 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
         template: '<div sp-login-form></div>'
     };
 
+    var userProfileState = {
+        name: 'userprofile',
+        url: '/userprofile',
+        controller: 'userProfileController',
+        templateUrl: 'src/client/app/Examples/UserProfile/userProfileTemplate.html'
+    };
+
     var firebaseState = {
         name: 'firebase',
         url: '/firebase',
@@ -103,6 +110,7 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
     $stateProvider.state(aboutState);
     $stateProvider.state(login);
     $stateProvider.state(logout);
+    $stateProvider.state(userProfileState);
 
     $urlRouterProvider.otherwise('/');
 });

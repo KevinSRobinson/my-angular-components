@@ -1,125 +1,202 @@
-var app = angular.module('examples', ['my-angular-components', 'ngFabForm', 
-      
-        'ui.router', 
-        //auth0
-        'auth0.lock', 'angular-jwt']);
+var app = angular.module('examples', ['my-angular-components', 'ngFabForm',
 
-app.config(function ($stateProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
-  
-  
-    var helloState = {
-        name: 'hello',
-        url: '/hello',
+    'ui.router',
+    'auth0.lock', 'angular-jwt', 'firebase',
+]);
+
+app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
+
+    $locationProvider.html5Mode(true);
+
+    var homeState = {
+        name: 'home',
+        url: '/',
         controllerAs: "vm",
-        controller: function ($rootScope) {
-            var vm = this;
-            vm.isAuthenticated = $rootScope.isAuthenticated;
-
-        },
-        template: '<h3>{{vm.isAuthenticated}}</h3>'
+        template: '<h3>Home</h3>'
     };
 
     var aboutState = {
         name: 'about',
         url: '/about',
-        template: '<h3>Its the UI-Router hello world app!</h3>'
+        template: '<div sp-login-form></div>'
+    };
+
+    var userProfileState = {
+        name: 'userprofile',
+        url: '/userprofile',
+        controller: 'userProfileController',
+        templateUrl: 'src/client/app/Examples/UserProfile/userProfileTemplate.html'
+    };
+
+    var firebaseState = {
+        name: 'firebase',
+        url: '/firebase',
+        controller: function ($scope, authService, $firebaseObject, $firebaseArray) {
+            var vm = this;
+            var ref = firebase.database().ref();
+            //var ref = new Firebase("https://quiz-fd4f2.firebaseio.com/");
+            vm.array = $firebaseObject(ref);
+            var ref = firebase.database().ref().child("Contacts");
+            $scope.messages = $firebaseArray(ref);
+            // add new items to the array
+            // the message is automatically added to our Firebase database!
+            $scope.addMessage = function (message) {
+                console.log(message);
+                $scope.messages.$add({
+                    firstname: message
+                });
+            };
+            //            
+
+            //  vm.authService = authService;
+
+            //     authService.getProfileDeferred().then(function (profile) {
+            //         console.log(angular.toJson(profile.email));
+            //       vm.profile = profile;
+            //     });
+        },
+        templateUrl: 'src/client/app/Examples/Firebase/firebaseTemplate.html'
     };
 
     var login = {
         name: 'login',
         url: '/login',
+        controllerAs: 'vm',
         controller: 'LoginController',
         templateUrl: 'src/client/app/Examples/login.html',
-        controllerAs: 'vm'
     };
 
     var logout = {
         name: 'logout',
         url: '/logout',
-        controller: function(authService){
-          authService.logout();
+        controller: function (authService) {
+            authService.logout();
         },
         template: '<h1>You have logged Out</h1>',
         controllerAs: 'vm'
     };
 
 
-    $stateProvider.state(helloState);
-    $stateProvider.state(aboutState);
-    $stateProvider.state(login);
-     $stateProvider.state(logout);
+
+    lockProvider.init({
+        clientID: 'UY5BHrujRwp7y1TZQl1Bif88aeeVRkrU',
+        domain: 'volunteernow.auth0.com',
+        options: {
+            auth: {
+                params: {
+                    scope: 'openid'
+                }
+            }
+        }
+    });
 
     // Configuration for angular-jwt
     jwtOptionsProvider.config({
         tokenGetter: function () {
             return localStorage.getItem('id_token');
-        }
+        },
+        whiteListedDomains: ['localhost'],
+        unauthenticatedRedirectPath: '/login'
     });
 
-    lockProvider.init({
-        clientID: 'UY5BHrujRwp7y1TZQl1Bif88aeeVRkrU',
-        domain: 'volunteernow.auth0.com'
-    });
+    $locationProvider.html5Mode(true);
 
-    $urlRouterProvider.otherwise('/hello');
+    // Add the jwtInterceptor to the array of HTTP interceptors
+    // so that JWTs are attached as Authorization headers
+    $httpProvider.interceptors.push('jwtInterceptor');
+
+    $stateProvider.state(homeState);
+    $stateProvider.state(firebaseState);
+    $stateProvider.state(aboutState);
+    $stateProvider.state(login);
+    $stateProvider.state(logout);
+    $stateProvider.state(userProfileState);
+
+    $urlRouterProvider.otherwise('/');
 });
 
-app.run(run);
-
-run.$inject = ['$rootScope', 'authService', 'lock', 'authManager'];
-
-function run($rootScope, authService, lock, authManager) {
-    // Put the authService on $rootScope so its methods
-    // can be accessed from the nav bar
-    $rootScope.authService = authService;
-
-    // Register the authentication listener that is
-    // set up in auth.service.js
-    authService.registerAuthenticationListener();
-
-    // Use the authManager from angular-jwt to check for
-    // the user's authentication state when the page is
-    // refreshed and maintain authentication
-    authManager.checkAuthOnRefresh();
-
-    // Register the synchronous hash parser
-    // when using UI Router
-    lock.interceptHash();
-}
 
 
-function authService(lock, authManager, $rootScope) {
 
-    function login() {
-        lock.show();
+app.run(function ($rootScope, authService, lock) {
+
+    run.$inject = ['$rootScope', 'authService', 'lock'];
+
+    function run($rootScope, authService, lock) {
+        // Put the authService on $rootScope so its methods
+        // can be accessed from the nav bar
+        $rootScope.authService = authService;
+
+        // Register the authentication listener that is
+        // set up in auth.service.js
+        authService.registerAuthenticationListener();
+
+        // Register the synchronous hash parser
+        // when using UI Router
+        lock.interceptHash();
     }
+});
+
+(function () {
+
+    'use strict';
+
+    angular
+        .module('examples')
+        .service('authService', authService);
+
+    function authService(lock, authManager, $q) {
+
+      
+
+
+        function login() {
+            lock.show();
+        }
 
 
 
-    function logout() {
-        localStorage.removeItem('id_token');
-        authManager.unauthenticate();
+        function getProfileDeferred() {            
+            var userProfile = JSON.parse(localStorage.getItem('profile')) || null;
+            var deferredProfile = $q.defer();
+            if (userProfile) {
+                deferredProfile.resolve(userProfile);
+            }
+            return deferredProfile.promise;
+        }
+
+
+        // Set up the logic for when a user authenticates
+        // This method is called from app.run.js
+        function registerAuthenticationListener() {
+            lock.on('authenticated', function (authResult) {
+                console.log('----------------------');
+                console.log('-----------authenticated-----------');
+                localStorage.setItem('id_token', authResult.idToken);
+                authManager.authenticate();
+            });
+
+            lock.on('authenticated', function (authResult) {
+
+                lock.getProfile(authResult.idToken, function (error, profile) {
+                    if (error) {
+                        return console.log(error);
+                    }
+
+                    localStorage.setItem('profile', JSON.stringify(profile));
+                    deferredProfile.resolve(profile);
+                });
+
+            });
+        }
+
+        return {
+            login: login,
+            registerAuthenticationListener: registerAuthenticationListener,
+            getProfileDeferred: getProfileDeferred
+        }
     }
-
-    // Set up the logic for when a user authenticates
-    // This method is called from app.run.js
-    function registerAuthenticationListener() {
-        lock.on('authenticated', function (authResult) {
-            localStorage.setItem('id_token', authResult.idToken);
-            authManager.authenticate();
-        });
-    }
-
-    return {
-        login: login,
-        logout: logout,
-        isAuthenticated: $rootScope.isAuthenticated,
-        registerAuthenticationListener: registerAuthenticationListener
-    };
-}
-
-app.service('authService', authService);
-
+})();
 
 
 (function () {
@@ -223,6 +300,7 @@ var exampleForm = {
 
 angular.module('examples').component('exampleForm', exampleForm);
 
+
 var gridExample = {
     controllerAs: 'vm',
     controller: function () {
@@ -271,8 +349,13 @@ var adminLayoutExample = {
         vm.userName = "Test Username";
 
         vm.sideMenuItems = [{
-            state: "hello",
-            linkText: "hello",
+            state: "home",
+            linkText: "home",
+            icon: "check",
+            requiresLogin: false
+        },{
+            state: "firebase",
+            linkText: "firebase",
             icon: "check",
             requiresLogin: false
         }, {
@@ -422,6 +505,25 @@ var textEditorExample = {
 };
 
 angular.module('examples').component('textEditorExample', textEditorExample);
+
+var userProfileController = function (authService) {
+    var vm = this;
+    vm.profile = {
+        email : ''
+    };
+
+    vm.authService = authService;
+
+    authService.getProfileDeferred().then(function (profile) {
+        console.log(angular.fromJson(profile));
+        console.log(angular.isString(profile.email));
+        vm.profile = angular.fromJson(profile);
+    });
+
+
+};
+
+angular.module('examples').controller('userProfileController', userProfileController);
 
 var tags = {
     controllerAs: 'vm',
