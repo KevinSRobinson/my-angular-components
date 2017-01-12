@@ -23,7 +23,10 @@
             <!--TextBox-->
             <input ng-if="vm.inputType==='textbox'" ng-model="vm.ngModel" type="text" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"
                 required="true">
-            <!--TextBox-->
+             <!--TextBox-->
+            <input ng-if="vm.inputType==='number'" ng-model="vm.ngModel" type="number" min="0" max="99" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"
+                required="true">
+            <!--Email-->
             <input ng-if="vm.inputType==='email'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}">
             <!--TextArea-->
             <textarea ng-if="vm.inputType==='textarea'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea>

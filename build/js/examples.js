@@ -523,7 +523,7 @@ var userProfileController = function (authService) {
 
 };
 
-angular.module('examples').controller('userProfileController', userProfileController);
+angular.module('app').controller('userProfileController', userProfileController);
 
 var tags = {
     controllerAs: 'vm',
