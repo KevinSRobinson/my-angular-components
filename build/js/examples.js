@@ -20,6 +20,17 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
         url: '/about',
         template: '<div sp-login-form></div>'
     };
+    
+    var inputsState = {
+        name: 'inputs',
+        url: '/inputs',
+        template: '<input-examples></input-examples>'
+    };
+    var formsState = {
+        name: 'forms',
+        url: '/forms',
+        template: '<example-form></example-form>'
+    };
 
     var userProfileState = {
         name: 'userprofile',
@@ -105,12 +116,15 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
     // so that JWTs are attached as Authorization headers
     $httpProvider.interceptors.push('jwtInterceptor');
 
+
+    $stateProvider.state(inputsState);
     $stateProvider.state(homeState);
     $stateProvider.state(firebaseState);
     $stateProvider.state(aboutState);
     $stateProvider.state(login);
     $stateProvider.state(logout);
     $stateProvider.state(userProfileState);
+    $stateProvider.state(formsState);
 
     $urlRouterProvider.otherwise('/');
 });
@@ -244,6 +258,8 @@ var exampleForm = {
         var vm = this;
         vm.simulateError = false;
         vm.customerForm = {};
+        vm.age = 99;
+        
         vm.status = {
             message: "",
             isError: false,
@@ -359,8 +375,13 @@ var adminLayoutExample = {
             icon: "check",
             requiresLogin: false
         }, {
-            state: "about",
-            linkText: "about",
+            state: "inputs",
+            linkText: "Inputs",
+            icon: "users",
+            requiresLogin: false
+        },{
+            state: "forms",
+            linkText: "Example Form",
             icon: "users",
             requiresLogin: false
         }];
@@ -523,7 +544,7 @@ var userProfileController = function (authService) {
 
 };
 
-angular.module('app').controller('userProfileController', userProfileController);
+angular.module('examples').controller('userProfileController', userProfileController);
 
 var tags = {
     controllerAs: 'vm',

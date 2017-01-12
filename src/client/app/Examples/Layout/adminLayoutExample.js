@@ -16,8 +16,13 @@ var adminLayoutExample = {
             icon: "check",
             requiresLogin: false
         }, {
-            state: "about",
-            linkText: "about",
+            state: "inputs",
+            linkText: "Inputs",
+            icon: "users",
+            requiresLogin: false
+        },{
+            state: "forms",
+            linkText: "Example Form",
             icon: "users",
             requiresLogin: false
         }];

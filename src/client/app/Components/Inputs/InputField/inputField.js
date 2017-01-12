@@ -24,7 +24,7 @@ var myInputField = {
 
             //defaults
 
-            vm.inputType = 'textbox';
+            //vm.inputType = 'textbox';
 
             vm.required = false;
             vm.horizontal = false;

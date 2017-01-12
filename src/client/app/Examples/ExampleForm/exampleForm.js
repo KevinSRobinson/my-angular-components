@@ -4,6 +4,8 @@ var exampleForm = {
         var vm = this;
         vm.simulateError = false;
         vm.customerForm = {};
+        vm.age = 99;
+        
         vm.status = {
             message: "",
             isError: false,

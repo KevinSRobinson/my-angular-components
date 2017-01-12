@@ -12,6 +12,7 @@
     }
 
 </style>
+ <h1>{{vm.inputType}}</h1>
 <div class="form-group">
     <!--field label-->
     <label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}       
@@ -19,12 +20,13 @@
     </label>
     <div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)">
         <!--Input Types-->
+       
         <div ng-if="!vm.readOnly" class="input-group">
             <!--TextBox-->
             <input ng-if="vm.inputType==='textbox'" ng-model="vm.ngModel" type="text" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"
                 required="true">
-             <!--TextBox-->
-            <input ng-if="vm.inputType==='number'" ng-model="vm.ngModel" type="number" min="0" max="99" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"
+             <!--Number-->
+            <input  ng-model="vm.ngModel" type="number"  class="form-control" id="vm.fieldName"
                 required="true">
             <!--Email-->
             <input ng-if="vm.inputType==='email'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}">

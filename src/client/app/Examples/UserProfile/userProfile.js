@@ -15,4 +15,4 @@ var userProfileController = function (authService) {
 
 };
 
-angular.module('app').controller('userProfileController', userProfileController);
+angular.module('examples').controller('userProfileController', userProfileController);
