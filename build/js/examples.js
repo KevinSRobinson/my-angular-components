@@ -15,6 +15,27 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
         template: '<h3>Home</h3>'
     };
 
+
+var statusExamplesState = {
+        name: 'status',
+        url: '/status',
+        controllerAs: "vm",
+        template: '<status-alert-examples></status-alert-examples>'
+    };
+var textEditorExampleState = {
+        name: 'texteditor',
+        url: '/texteditor',
+        controllerAs: "vm",
+        template: '<text-editor-example></text-editor-example>'
+    };
+
+ var tagsState = {
+        name: 'tags',
+        url: '/tags',
+        controllerAs: "vm",
+        template: '<tags-examples>Home</tags-examples>'
+    };
+
     var aboutState = {
         name: 'about',
         url: '/about',
@@ -38,7 +59,11 @@ var panelExamplesState = {
     };
 
 
-
+var modalsState = {
+        name: 'modalsstate',
+        url: '/modalsstate',
+        template: '<modal-examples></modal-examples>'
+    };
     var userProfileState = {
         name: 'userprofile',
         url: '/userprofile',
@@ -122,6 +147,10 @@ var panelExamplesState = {
     // so that JWTs are attached as Authorization headers
     $httpProvider.interceptors.push('jwtInterceptor');
 
+
+
+$stateProvider.state(textEditorExampleState);
+    $stateProvider.state(statusExamplesState);
     $stateProvider.state(panelExamplesState);
     $stateProvider.state(inputsState);
     $stateProvider.state(homeState);
@@ -130,8 +159,10 @@ var panelExamplesState = {
     $stateProvider.state(login);
     $stateProvider.state(logout);
     $stateProvider.state(userProfileState);
-    $stateProvider.state(formsState);
-
+     $stateProvider.state(formsState);
+ $stateProvider.state(modalsState);
+ $stateProvider.state(tagsState);
+ 
     $urlRouterProvider.otherwise('/');
 });
 
@@ -234,6 +265,7 @@ app.run(function ($rootScope, authService, lock) {
 
   }
 })();
+
 var common = {
     templateUrl: "src/client/app/Examples/Common/commonTemplate.html"
 };
@@ -395,7 +427,31 @@ var adminLayoutExample = {
             linkText: "Example Form",
             icon: "users",
             requiresLogin: false
-        }];
+        },{
+            state: "modalsstate",
+            linkText: "Modals",
+            icon: "users",
+            requiresLogin: false
+        },
+        {
+            state: "tags",
+            linkText: "Tags",
+            icon: "users",
+            requiresLogin: false
+        },
+        {
+            state: "status",
+            linkText: "Status Alerts",
+            icon: "users",
+            requiresLogin: false
+        },
+        {
+            state: "texteditor",
+            linkText: "Text Editor",
+            icon: "users",
+            requiresLogin: false
+        }
+        ];
 
         vm.userMenuItems = [{
             state: "userprofile",
@@ -443,6 +499,24 @@ var adminLayoutExample = {
 
 angular.module("examples").component("adminLayoutExample", adminLayoutExample)
 
+var mapExample = {
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.mapOptions = {
+                center: {
+                    latitude: 45,
+                    longitude: -73
+                },
+                zoom: 8
+            };
+    },
+    templateUrl: "src/client/app/Examples/Map/mapExampleTemplate.html"
+};
+
+angular.module('examples').component('mapExample', mapExample);
+
 var modals = {
     controllerAs: 'vm',
     controller: function ($uibModal) {
@@ -465,24 +539,6 @@ var modals = {
 };
 
 angular.module('examples').component('modalExamples', modals);
-
-var mapExample = {
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.mapOptions = {
-                center: {
-                    latitude: 45,
-                    longitude: -73
-                },
-                zoom: 8
-            };
-    },
-    templateUrl: "src/client/app/Examples/Map/mapExampleTemplate.html"
-};
-
-angular.module('examples').component('mapExample', mapExample);
 
 var panels = {
     controllerAs: 'vm',
@@ -508,19 +564,6 @@ var panels = {
 };
 
 angular.module('examples').component('panelExamples', panels);
-
-
-var statusAlerts = {
-    controllerAs: 'vm',
-    controller: function(){
-        var vm = this;
-
- 
-    },
-    templateUrl: "src/client/app/Examples/StatusAlerts/statusAlertsTemplate.html"
-};
-
-angular.module('examples').component('statusAlerts', statusAlerts);
 
 
 var tags = {
@@ -550,7 +593,20 @@ var tags = {
     templateUrl: "src/client/app/Examples/Tags/tagsTemplate.html"
 };
 
-angular.module('examples').component('tags', tags);
+angular.module('examples').component('tagsExamples', tags);
+
+var statusAlerts = {
+    controllerAs: 'vm',
+    controller: function(){
+        var vm = this;
+
+ 
+    },
+    templateUrl: "src/client/app/Examples/StatusAlerts/statusAlertsTemplate.html"
+};
+
+angular.module('examples').component('statusAlertExamples', statusAlerts);
+
 
 var textEditorExample = {
     controllerAs: 'vm',
