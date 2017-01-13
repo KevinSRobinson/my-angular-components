@@ -38,7 +38,11 @@ var panelExamplesState = {
     };
 
 
-
+var modalsState = {
+        name: 'modalsstate',
+        url: '/modalsstate',
+        template: '<modal-examples></modal-examples>'
+    };
     var userProfileState = {
         name: 'userprofile',
         url: '/userprofile',
@@ -130,8 +134,8 @@ var panelExamplesState = {
     $stateProvider.state(login);
     $stateProvider.state(logout);
     $stateProvider.state(userProfileState);
-    $stateProvider.state(formsState);
-
+     $stateProvider.state(formsState);
+ $stateProvider.state(modalsState);
     $urlRouterProvider.otherwise('/');
 });
 

@@ -30,6 +30,11 @@ var adminLayoutExample = {
             linkText: "Example Form",
             icon: "users",
             requiresLogin: false
+        },{
+            state: "modalsstate",
+            linkText: "Modals",
+            icon: "users",
+            requiresLogin: false
         }];
 
         vm.userMenuItems = [{
