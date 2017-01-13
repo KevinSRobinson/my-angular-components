@@ -35,7 +35,26 @@ var adminLayoutExample = {
             linkText: "Modals",
             icon: "users",
             requiresLogin: false
-        }];
+        },
+        {
+            state: "tags",
+            linkText: "Tags",
+            icon: "users",
+            requiresLogin: false
+        },
+        {
+            state: "status",
+            linkText: "Status Alerts",
+            icon: "users",
+            requiresLogin: false
+        },
+        {
+            state: "texteditor",
+            linkText: "Text Editor",
+            icon: "users",
+            requiresLogin: false
+        }
+        ];
 
         vm.userMenuItems = [{
             state: "userprofile",

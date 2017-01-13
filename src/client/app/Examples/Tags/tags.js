@@ -25,4 +25,4 @@ var tags = {
     templateUrl: "src/client/app/Examples/Tags/tagsTemplate.html"
 };
 
-angular.module('examples').component('tags', tags);
+angular.module('examples').component('tagsExamples', tags);

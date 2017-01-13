@@ -1,4 +1,4 @@
-var myTextEditor = {
+var myRichTextEditor = {
     bindings: {
         ngModel: '=',
     },
@@ -17,4 +17,4 @@ var myTextEditor = {
 };
 
 
-angular.module('my-angular-components').component('myTextEditor', myTextEditor);
+angular.module('my-angular-components').component('myRichTextEditor', myRichTextEditor);

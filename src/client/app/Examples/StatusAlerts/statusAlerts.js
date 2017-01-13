@@ -8,5 +8,5 @@ var statusAlerts = {
     templateUrl: "src/client/app/Examples/StatusAlerts/statusAlertsTemplate.html"
 };
 
-angular.module('examples').component('statusAlerts', statusAlerts);
+angular.module('examples').component('statusAlertExamples', statusAlerts);
 

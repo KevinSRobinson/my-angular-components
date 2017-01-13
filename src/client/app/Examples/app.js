@@ -15,6 +15,27 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
         template: '<h3>Home</h3>'
     };
 
+
+var statusExamplesState = {
+        name: 'status',
+        url: '/status',
+        controllerAs: "vm",
+        template: '<status-alert-examples></status-alert-examples>'
+    };
+var textEditorExampleState = {
+        name: 'texteditor',
+        url: '/texteditor',
+        controllerAs: "vm",
+        template: '<text-editor-example></text-editor-example>'
+    };
+
+ var tagsState = {
+        name: 'tags',
+        url: '/tags',
+        controllerAs: "vm",
+        template: '<tags-examples>Home</tags-examples>'
+    };
+
     var aboutState = {
         name: 'about',
         url: '/about',
@@ -126,6 +147,10 @@ var modalsState = {
     // so that JWTs are attached as Authorization headers
     $httpProvider.interceptors.push('jwtInterceptor');
 
+
+
+$stateProvider.state(textEditorExampleState);
+    $stateProvider.state(statusExamplesState);
     $stateProvider.state(panelExamplesState);
     $stateProvider.state(inputsState);
     $stateProvider.state(homeState);
@@ -136,6 +161,8 @@ var modalsState = {
     $stateProvider.state(userProfileState);
      $stateProvider.state(formsState);
  $stateProvider.state(modalsState);
+ $stateProvider.state(tagsState);
+ 
     $urlRouterProvider.otherwise('/');
 });
 
