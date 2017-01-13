@@ -1,61 +1,59 @@
 var utils = require('./gulp.Utils');
 var config = require('../gulp.config')();
 var gulp = require('gulp');
+
 var $ = require('gulp-load-plugins')({
     lazy: true
 });
 
-var getWiredepDefaultOptions = function () {
-    return {
-        bowerJson: require('../bower.json'),
-        directory:  '../../bower_components/',
-        ignorePath:  '../..',
-        "overrides": {
-            "ace-builds": {
-                "main": [
-                    "./bower_components/ace-builds/src-noconflict/ace.js",
-                ]
-            }
-        },
-        onError: function (err) {
-            console.log("error !!! ");
-            console.log("-----------------------");
-            console.log(err);
-        },
 
-        onFileUpdated: function (filePath) {
-            console.log("onFileUpdated ");
-            console.log("-----------------------");
-            console.log(filePath);
-        },
 
-        onPathInjected: function (fileObject) {
-        },
 
-        onMainNotFound: function (pkg) {
-            console.log('No Main Found');
-            console.log(pkg);
-        },
-    };
+var inject = function(){
+    utils.log('inject starting');
+
+    return gulp
+            //use index.html as source
+            .src(config.index)
+
+            //inject css files
+            .pipe($.inject(gulp.src(config.css)))
+
+            //save in temp
+            .pipe(gulp.dest(config.src));
 };
 
+
 var wiredep = function () {
+utils.log('------------------------------------------------------');
+    utils.log('wiredep starting');    
+       utils.log("index = " + config.index);
+    utils.log("Examples = " + config.examplesSourceFiles);
+    utils.log("Components = " + config.componentSourceFiles);
+    utils.log('------------------------------------------------------');
 
-    utils.log('wiredep starting');
+    var options = {
+        bowerJson: require('../bower.json')
+    };
 
-    var options = getWiredepDefaultOptions();
-    utils.log(config.componentSourceFiles);
-
-   
     return gulp
-        .src('./src/client/index.html')
-        .pipe(wiredep(options))
-        .pipe($.inject(gulp.src(config.componentSourceFiles)))
-        // //inject the clientexamples js files
-        // .pipe($.inject(gulp.src(config.examplesSourceFiles), {
-        //     starttag: '<!-- inject:examples:js -->'
-        // }))
-        .pipe(gulp.dest('../src/client/'));
+
+            .src('./src/client/app/Components/**/*.js')
+
+            // init wiredep
+            .pipe(wiredep(options))
+            
+            //inject the component js files
+            //.pipe($.inject(gulp.src(config.componentSourceFiles)))
+
+            // //inject the client examples js files
+            // .pipe($.inject(gulp.src(config.examplesSourceFiles), {
+            //     starttag: '<!-- inject:examples:js -->'
+            // }))
+
+            //save in temp
+            .pipe(gulp.dest(config.temp));
 }
 
 module.exports.wiredep = wiredep;
+module.exports.inject = inject;

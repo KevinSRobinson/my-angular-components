@@ -15,8 +15,8 @@ var startBrowserSync = function  (isDev, port){
 
     if(isDev)
     {
-       // gulp.watch([config.less], ['styles'])
-         //   .on('change', function(event) { changeEvent(event); });
+       gulp.watch([config.less, config.htmltemplates, config.examplesSourceFiles], ['styles'])
+           .on('change', function(event) { changeEvent(event); });
     }
     else{
          //gulp.watch([config.less, config.js, config.html], ['optimize', browserSync.reload])
@@ -89,6 +89,15 @@ var serve = function (isDev, port){
            utils.log('noode server exit');
         });
 }
+
+function changeEvent(event){
+    var srcPattern = new RegExp('./.*(?=/' + config.source + ')/');
+
+    utils.log('file ' + event.path.replace(srcPattern, '') + ' ' + event.type);
+
+}
+
+
 
 module.exports.startBrowserSync = startBrowserSync;
 module.exports.serve = serve;

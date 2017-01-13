@@ -22,7 +22,7 @@ var myGulp_Build = require('./gulptasks/gulp.Build');
 var myGulp_DevBuild = require('./gulptasks/gulp.DevBuild');
 var myGulp_CodeQuality = require('./gulptasks/gulp.CodeQuality');
 
-var port = 7203;
+var port = 7205;
 
 gulp.task('default', ['help']);
 
@@ -35,11 +35,11 @@ gulp.task('test', ['js:build'], function(done){
 gulp.task('vet', myGulp_CodeQuality.analyze);
 
 
-gulp.task('serve-build', ['js:build','optimize'], function(){
+gulp.task('serve-build', ['optimize'], function(){
    myGulp_BrowserSync.serve(false, port);
 });
 
-gulp.task('serve-dev', ['inject'], function(){
+gulp.task('serve-dev', ['inject', 'embedTemplates'], function(){
    myGulp_BrowserSync.serve(true, port);
 });
 
@@ -54,38 +54,20 @@ gulp.task('serve-dev', ['inject'], function(){
 //////////////////////////////////////////////
 // optimize
 //////////////////////////////////////////////
-gulp.task('optimize', ['inject', 'js:build'], myGulp_Build.optimize);
-
+gulp.task('optimize', ['inject', 'embedTemplates'], myGulp_Build.optimize);
 
 gulp.task('bump', versioning.bump);
 
-
-
-gulp.task('js:build', function () {
-    gulp.src('src/client/app/Components/**/*.js')
+gulp.task('embedTemplates', function () {
+    gulp.src('./src/client/app/components/**/*.js')
         .pipe(embedTemplates())
         .pipe(gulp.dest('./.tmp/scripts/'));
 });
 
-// gulp.task('build-app.js', function() {
-//     return gulp.src('src/client/app/Components/**/*.js')
-//         //.pipe(concat your app js files somehow)
-
-//         // append the template js onto app.js
-//         .pipe(addStream.obj(prepareTemplates()))
-//         .pipe(concat('app.js'))
-
-//         //.pipe(ng annotate, minify, etc)
-//         .pipe(gulp.dest('build/scripts'));
-// });
-
 
 gulp.task('wiredep',  function(){
 
-    utils.log('wiredep starting');
-
     var options = config.getWiredepDefaultOptions();
-    utils.log(config.componentSourceFiles);
 
     return gulp
             .src(config.index)
@@ -99,30 +81,19 @@ gulp.task('wiredep',  function(){
 });
 
 gulp.task('inject', ['wiredep', 'styles'], function(){
-
-    utils.log('inject starting');
-
-    return gulp
+  return gulp
             .src(config.index)
             .pipe($.inject(gulp.src(config.css)))
             .pipe(gulp.dest(config.client));
 });
 
-
-
-
-
 //////////////////////////////////////////////
 // fonts images and styles
 //////////////////////////////////////////////
 gulp.task('images', fontsAndImageOptimizer.images);
-
 gulp.task('fonts', fontsAndImageOptimizer.fonts);
-
 gulp.task('styles',  myGulp_Styles.styles);
-
 gulp.task('styles-dev',  myGulp_Styles.stylesDev);
-
 gulp.task('less-watcher', myGulp_Styles.watchStyles);
 ////////////////////////////////////////
 
@@ -140,18 +111,6 @@ gulp.task('clean-code', myGulp_Build.clean);
 
 
 
-
-
-
-// ////////////////////////////////////////
-// // functions
-// ////////////////////////////////////////
-// function changeEvent(event){
-//     var srcPattern = new RegExp('./.*(?=/' + config.source + ')/');
-
-//     utils.log('file ' + event.path.replace(srcPattern, '') + ' ' + event.type);
-
-// }
 
 
 
