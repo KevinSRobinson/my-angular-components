@@ -56,9 +56,16 @@ var adminLayout = {
                 return "";
         };
 
+        vm.getViewCssClass= function(){
+            console.log(vm.colapsed);
 
+            if (vm.colapsed)
+                return "uiView.colapsed";
+            else
+                return "uiView";
+        };
     },
-    template:'<div id="page-wrapper" ng-cloak ng-class="vm.getState()"><div id="sidebar-wrapper"><admin-side-menu colapsed="vm.colapsed" footer-links="vm.footerLinks" side-menu-items="vm.sideMenuItems"></admin-side-menu></div><div id="content-wrapper"><div class="page-content"><admin-header-bar title="Timebanking" alert-menu-items="vm.alertMenuItems" user-menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></admin-header-bar><h1>Page Titel</h1><ng-transclude></ng-transclude></div></div></div>'
+    template:'<style>\r\n.uiView.colapsed{\r\n    margin-left:50px;\r\n}\r\n.uiView{\r\n    margin-left:150px;\r\n}\r\n</style><div id="page-wrapper" ng-cloak ng-class="vm.getState()"><div id="sidebar-wrapper"><admin-side-menu colapsed="vm.colapsed" footer-links="vm.footerLinks" side-menu-items="vm.sideMenuItems"></admin-side-menu></div><div id="content-wrapper"><div class="page-content"><admin-header-bar title="Timebanking" alert-menu-items="vm.alertMenuItems" user-menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></admin-header-bar><div ng-class="vm.getViewCssClass()"><ng-transclude></ng-transclude></div></div></div></div>'
 };
 
 adminLayout.$inject = ['$scope'];

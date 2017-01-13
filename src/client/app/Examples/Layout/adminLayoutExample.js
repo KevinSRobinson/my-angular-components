@@ -16,6 +16,11 @@ var adminLayoutExample = {
             icon: "check",
             requiresLogin: false
         }, {
+            state: "panelexamples",
+            linkText: "Panels",
+            icon: "users",
+            requiresLogin: false
+        },{
             state: "inputs",
             linkText: "Inputs",
             icon: "users",

@@ -1,19 +1,19 @@
 <div class='panel panel-{{vm.theme}}' ng-style='{{vm.getPanelStyle()}}'>
     <!--Header-->
-    <div class='panel-heading' ng-style='{{vm.getPanelHeadingStyle()}}' id='{{vm.fieldName}}'><i class='fa fa-{{vm.icon}} fa-{{vm.iconSize}}x'></i>
+    <div class='panel-heading' ng-style='{{vm.getPanelHeadingStyle()}}' id='{{vm.fieldName}}'><i class='fa fa-glyphicon glyphicon-plus'></i>
         <!--Title-->
         <span style='padding-left: 10px; font-weight: 700' ng-style='{{vm.getTitleStyle()}}'>{{vm.title}}</span>
         <!--Add BUtton-->
         <div ng-show='vm.showAddButton' id='{{vm.addButtonId}}' ng-click='vm.add()' ng-style='{{vm.getButtonStyle()}}' class='btn btn-default pull-right'
-            style='padding: 3px;'><i class='fa fa-plus'></i> </div>
+            style='padding: 3px;'><i class='glyphicon glyphicon-plus'></i> </div>
         <!--Edit BUtton-->
         <div ng-show='vm.showEditButton' id='{{vm.editButtonId}}' ng-click='vm.edit()' ng-style='{{vm.getButtonStyle()}}' class='btn btn-default pull-right'
-            style='padding: 3px;'><i class='fa fa-bars'></i> </div>
+            style='padding: 3px;'><i class='glyphicon glyphicon-plus'></i> </div>
     </div>
     <!--Content-->
-    <div class='panel-body' ng-transclude style='{{vm.getPanelContentStyle()}}'></div>
+    <div class='panel-body' ng-transclude ng-style='{{vm.getPanelContentStyle()}}'></div>
     <!--Footer-->
-    <div class='panel-footer' ng-if='vm.showFooter' style='{{vm.getPanelStyle()}}'>
+    <div class='panel-footer' ng-if='vm.showFooter' ng-style='{{vm.getPanelStyle()}}'>
         <div class='row'>
             <div class='col-md-6'><span class='pull-left'>{{vm.footerLeftLabel}}</span></div>
             <div class='col-md-6'><span class='pull-right'>{{vm.footerRightLabel}}</span></div>

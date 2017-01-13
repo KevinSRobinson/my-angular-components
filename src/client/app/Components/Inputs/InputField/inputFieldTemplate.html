@@ -26,8 +26,7 @@
             <input ng-if="vm.inputType==='textbox'" ng-model="vm.ngModel" type="text" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"
                 required="true">
              <!--Number-->
-            <input  ng-model="vm.ngModel" type="number"  class="form-control" id="vm.fieldName"
-                required="true">
+            <input  ng-if="vm.inputType==='number'" ng-model="vm.ngModel" type="number"  class="form-control" id="vm.fieldName"               required="true">
             <!--Email-->
             <input ng-if="vm.inputType==='email'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}">
             <!--TextArea-->

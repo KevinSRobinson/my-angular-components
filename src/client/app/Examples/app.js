@@ -31,12 +31,18 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
         url: '/forms',
         template: '<example-form></example-form>'
     };
+var panelExamplesState = {
+        name: 'panelexamples',
+        url: '/panelexamples',
+        template: '<panel-examples></panel-examples>'
+    };
+
+
 
     var userProfileState = {
         name: 'userprofile',
         url: '/userprofile',
-        controller: 'userProfileController',
-        templateUrl: 'src/client/app/Examples/UserProfile/userProfileTemplate.html'
+        template: '<user-profile-example></user-profile-example>'
     };
 
     var firebaseState = {
@@ -116,7 +122,7 @@ app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvi
     // so that JWTs are attached as Authorization headers
     $httpProvider.interceptors.push('jwtInterceptor');
 
-
+    $stateProvider.state(panelExamplesState);
     $stateProvider.state(inputsState);
     $stateProvider.state(homeState);
     $stateProvider.state(firebaseState);
