@@ -40,6 +40,11 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         url: '/inputs',
         template: '<input-examples></input-examples>'
     };
+     var selectListExamplesState = {
+        name: 'selectlist',
+        url: '/selectlist',
+        template: '<select-list-examples></select-list-examples>'
+    };
     var formsState = {
         name: 'forms',
         url: '/forms',
@@ -67,7 +72,7 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
     };
 
     $locationProvider.html5Mode(true);
-
+    $stateProvider.state(selectListExamplesState);
     $stateProvider.state(gridExamplesState);
     $stateProvider.state(textEditorExampleState);
     $stateProvider.state(statusExamplesState);

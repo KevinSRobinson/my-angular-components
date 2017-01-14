@@ -53,7 +53,20 @@ var adminLayoutExample = {
             linkText: "Text Editor",
             icon: "users",
             requiresLogin: false
-        }
+        },
+        {
+            state: "selectlist",
+            linkText: "Select List",
+            icon: "check",
+            requiresLogin: false
+        },
+        {
+            state: "grid",
+            linkText: "Grid List",
+            icon: "check",
+            requiresLogin: false
+        },
+        
         ];
 
         vm.userMenuItems = [{
