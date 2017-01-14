@@ -6,6 +6,12 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         controllerAs: "vm",
         template: '<h3>Home</h3>'
     };
+     var gridExamplesState = {
+        name: 'grid',
+        url: '/grid',
+        controllerAs: "vm",
+        template: '<grid-examples></grid-examples>'
+    };
     var statusExamplesState = {
         name: 'status',
         url: '/status',
@@ -62,6 +68,7 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
 
     $locationProvider.html5Mode(true);
 
+    $stateProvider.state(gridExamplesState);
     $stateProvider.state(textEditorExampleState);
     $stateProvider.state(statusExamplesState);
     $stateProvider.state(panelExamplesState);

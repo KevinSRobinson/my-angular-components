@@ -1,4 +1,4 @@
-var gridExample = {
+var gridExamples = {
     controllerAs: 'vm',
     controller: function () {
         var vm = this;
@@ -20,4 +20,4 @@ var gridExample = {
     templateUrl: "src/client/app/Examples/Grid/gridExampleTemplate.html"
 };
 
-angular.module('examples').component('gridExample', gridExample);
+angular.module('examples').component('gridExamples', gridExamples);
