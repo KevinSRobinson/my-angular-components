@@ -1,8 +1,7 @@
 
 <h1>Firebase</h1>
-{{messages}}
 <ul>
-    <li ng-repeat="message in messages">{{message}}</li>
+    <li class="badge" ng-repeat="message in messages">{{message.firstname}}</li>
 </ul>
 <input type="text"  ng-model="vm.message" >
 <div class="btn btn-success" ng-click="addMessage(vm.message)">Add</div>

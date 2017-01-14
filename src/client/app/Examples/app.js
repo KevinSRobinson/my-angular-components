@@ -4,10 +4,6 @@ var app = angular.module('examples', ['my-angular-components', 'ngFabForm',
     'auth0.lock', 'angular-jwt', 'firebase',
 ]);
 
-
-
-
-
 app.run(function ($rootScope, authService, lock) {
 
     run.$inject = ['$rootScope', 'authService', 'lock'];

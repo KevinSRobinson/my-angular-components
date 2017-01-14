@@ -1,6 +1,4 @@
-angular.module("examples").config(function ($locationProvider, $stateProvider, $httpProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
-
-    $locationProvider.html5Mode(true);
+angular.module("examples").config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
 
     var homeState = {
         name: 'home',
@@ -8,8 +6,6 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         controllerAs: "vm",
         template: '<h3>Home</h3>'
     };
-
-
     var statusExamplesState = {
         name: 'status',
         url: '/status',
@@ -22,20 +18,17 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         controllerAs: "vm",
         template: '<text-editor-example></text-editor-example>'
     };
-
     var tagsState = {
         name: 'tags',
         url: '/tags',
         controllerAs: "vm",
         template: '<tags-examples>Home</tags-examples>'
     };
-
     var aboutState = {
         name: 'about',
         url: '/about',
         template: '<div sp-login-form></div>'
-    };
-
+    };   
     var inputsState = {
         name: 'inputs',
         url: '/inputs',
@@ -51,8 +44,6 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         url: '/panelexamples',
         template: '<panel-examples></panel-examples>'
     };
-
-
     var modalsState = {
         name: 'modalsstate',
         url: '/modalsstate',
@@ -63,41 +54,13 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         url: '/userprofile',
         template: '<user-profile-example></user-profile-example>'
     };
-
     var firebaseState = {
         name: 'firebase',
         url: '/firebase',
-        controller: function ($scope, authService, $firebaseObject, $firebaseArray) {
-            var vm = this;
-            var ref = firebase.database().ref();
-            //var ref = new Firebase("https://quiz-fd4f2.firebaseio.com/");
-            vm.array = $firebaseObject(ref);
-            var ref = firebase.database().ref().child("Contacts");
-            $scope.messages = $firebaseArray(ref);
-            // add new items to the array
-            // the message is automatically added to our Firebase database!
-            $scope.addMessage = function (message) {
-                console.log(message);
-                $scope.messages.$add({
-                    firstname: message
-                });
-            };
-        },
-        templateUrl: 'src/client/app/Examples/Firebase/firebaseTemplate.html'
+        template: '<firebase-examples></firebase-examples>'
     };
 
-  
-
-
-   
-
     $locationProvider.html5Mode(true);
-
-    // Add the jwtInterceptor to the array of HTTP interceptors
-    // so that JWTs are attached as Authorization headers
-    $httpProvider.interceptors.push('jwtInterceptor');
-
-
 
     $stateProvider.state(textEditorExampleState);
     $stateProvider.state(statusExamplesState);
