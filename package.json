@@ -28,7 +28,8 @@
     "gulp": "^3.9.1",
     "lazypipe": "^1.0.1",
     "morgan": "^1.1.1",
-    "serve-favicon": "^2.0.1"
+    "serve-favicon": "^2.0.1",
+        "yargs": "^6.5.0"
   },
   "devDependencies": {
     "add-stream": "^1.0.0",
