@@ -11,6 +11,9 @@
     "type": "git",
     "url": "https://github.com/johnpapa/pluralsight-gulp.git"
   },
+    "engines": {
+    "node": "4.4.4"
+  },
   "scripts": {
     "init": "npm install",
     "install": "bower install",
