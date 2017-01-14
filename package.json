@@ -1,15 +1,15 @@
 {
-  "name": "Pluralsight-Gulp",
+  "name": "my-angular-components",
   "version": "2.4.16",
-  "description": "Starter Code for Pluralsight Course JavaScript Build Automation with Gulp.js",
+  "description": "Business application components.",
   "authors": [
-    "John Papa"
+    "Kevin Robinson"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/johnpapa/pluralsight-gulp",
+  "homepage": "https://github.com/seamusjunior/my-angular-components",
   "repository": {
     "type": "git",
-    "url": "https://github.com/johnpapa/pluralsight-gulp.git"
+    "url": "https://github.com/seamusjunior/my-angular-components"
   },
     "engines": {
     "node": "4.4.4"
