@@ -7,12 +7,12 @@ var adminLayoutExample = {
 
         vm.sideMenuItems = [{
             state: "home",
-            linkText: "home",
+            linkText: "Home",
             icon: "check",
             requiresLogin: false
         },{
             state: "firebase",
-            linkText: "firebase",
+            linkText: "Firebase",
             icon: "check",
             requiresLogin: false
         }, {
