@@ -32,8 +32,10 @@
     "angular-showdown": "^0.3.2",
     "angular-ui-grid": "^4.0.2",
     "bootstrap": "^3.3.7",
-    "stormpath-sdk-angularjs": "^1.1.1",
     "angularfire": "^2.2.0",
     "firebase": "^3.6.5"
+  },
+  "resolutions": {
+    "angular": "1.5.9"
   }
 }
