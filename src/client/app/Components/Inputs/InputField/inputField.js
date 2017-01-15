@@ -1,17 +1,24 @@
 var myInputField = {
     bindings: {
+        
+       // timePicker
+        hourStep: '@',
+        minStep: '@',
+        showMeridian: '@',
+        
+        // common
+        ngModel: '=',
+        inputType: '@',
+        readOnly: '@',
+        horizontal: '@',
+        placeholder: '@',        
+        required: '@',
+        tooltip: '@',
+        helpText: '@',
         fieldLabel: '@',
         fieldName: '@',
         labelWidth: '@',
         inputWidth: "@",
-        ngModel: '=',
-        required: '@',
-        tooltip: '@',
-        helpText: '@',
-        readOnly: '@',
-        horizontal: '@',
-        inputType: '@',
-        placeholder: '@'
     },
     controllerAs: 'vm',
     controller: function (cssClassService) {

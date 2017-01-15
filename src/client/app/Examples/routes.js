@@ -65,6 +65,11 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         url: '/userprofile',
         template: '<user-profile-example></user-profile-example>'
     };
+     var datesExampleState = {
+        name: 'dates',
+        url: '/dates',
+        template: '<date-examples></date-examples>'
+    };
     var firebaseState = {
         name: 'firebase',
         url: '/firebase',
@@ -72,6 +77,9 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
     };
 
     $locationProvider.html5Mode(true);
+
+    
+    $stateProvider.state(datesExampleState);
     $stateProvider.state(selectListExamplesState);
     $stateProvider.state(gridExamplesState);
     $stateProvider.state(textEditorExampleState);

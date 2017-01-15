@@ -66,7 +66,12 @@ var adminLayoutExample = {
             icon: "check",
             requiresLogin: false
         },
-        
+        {
+            state: "dates",
+            linkText: "Dates",
+            icon: "check",
+            requiresLogin: false
+        },
         ];
 
         vm.userMenuItems = [{
