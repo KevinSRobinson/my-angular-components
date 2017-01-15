@@ -257,20 +257,71 @@ var myPageTitle = {
 
 angular.module('my-angular-components').component('myPageTitle', myPageTitle);
 
+/**
+ * Date field component with Field Label, Date Popup, Help Popup
+ */
+var myDateTimeDifferenceField = {
+    bindings: {
+        ngModel: '=',
+        fieldName: '@',
+        fieldLabel: '@',
+        tooltip: '@',
+        dateOptions: '@',
+        helpText: '@',
+        readOnly: '@',
+        horizontal: '@'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        'use strict';
+        var vm = this;
+        vm.hourStep = 1;
+        vm.minStep = 15;
+        vm.fromDate = new Date();
+        vm.toDate = new Date();
+        vm.showMeridian = true;
+
+        vm.$onInit = function () {
+
+        };
+
+
+        vm.fromTimeChanged = function(){
+            
+        }
+
+        vm.toTimeChanged = function(){
+
+        }
+
+    },
+    template:'<my-input-field field-label="Date From" ng-model="vm.fromDate" input-type"date"><my-input-field field-label="To From" ng-model="vm.toDate" input-type="date">{{vm.fromDate}} {{vm.toDate}}}<my-input-field input-type="time" field-label="From" ng-model="vm.fromDate" ng-change="vm.fromTimeChanged()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"></my-input-field><my-input-field input-type="time" field-label="Date To" ng-model="vm.toDate" ng-change="vm.toTimeChanged()" hour-step="vm.hourStep" " minute-step="vm.minStep" show-meridian="vm.showMeridian"></my-input-field></my-input-field></my-input-field>'
+};
+
+
+angular.module('my-angular-components').component('myDateTimeDifferenceField', myDateTimeDifferenceField);
+
 var myInputField = {
     bindings: {
+        
+       // timePicker
+        hourStep: '@',
+        minStep: '@',
+        showMeridian: '@',
+        
+        // common
+        ngModel: '=',
+        inputType: '@',
+        readOnly: '@',
+        horizontal: '@',
+        placeholder: '@',        
+        required: '@',
+        tooltip: '@',
+        helpText: '@',
         fieldLabel: '@',
         fieldName: '@',
         labelWidth: '@',
         inputWidth: "@",
-        ngModel: '=',
-        required: '@',
-        tooltip: '@',
-        helpText: '@',
-        readOnly: '@',
-        horizontal: '@',
-        inputType: '@',
-        placeholder: '@'
     },
     controllerAs: 'vm',
     controller: function (cssClassService) {
@@ -316,7 +367,7 @@ var myInputField = {
 
 
     },
-    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n    \r\n    .input-group .form-control {\r\n        z-index: 100;\r\n    }\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><input ng-if="vm.inputType===\'textbox\'" ng-model="vm.ngModel" type="text" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}" required><input ng-if="vm.inputType===\'number\'" ng-model="vm.ngModel" type="number" class="form-control" id="vm.fieldName" required><input ng-if="vm.inputType===\'email\'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"><textarea ng-if="vm.inputType===\'textarea\'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea><input ng-if="vm.inputType===\'checkbox\'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel"><span ng-if="vm.inputType===\'date\'"><input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"> <span class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></span></span> <span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><p ng-if="vm.inputType!==\'checkbox\'">{{vm.ngModel}}</p><i ng-if="vm.inputType===\'checkbox\'" ng-show="vm.ngModel" class="fa fa-check fa-2x"></i></div><p class="help-block">{{vm.helpText}}</p></div></div>'
+    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n    \r\n    .input-group .form-control {\r\n        z-index: 100;\r\n    }\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><input ng-if="vm.inputType===\'textbox\'" ng-model="vm.ngModel" type="text" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}" required><input ng-if="vm.inputType===\'number\'" ng-model="vm.ngModel" type="number" class="form-control" id="vm.fieldName" required><input ng-if="vm.inputType===\'email\'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"><textarea ng-if="vm.inputType===\'textarea\'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea><input ng-if="vm.inputType===\'checkbox\'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel"><div ng-if="vm.inputType===\'time\'" uib-timepicker ng-model="vm.ngModel" id="vm.fieldName" ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"><span ng-if="vm.inputType===\'date\'"><input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"> <span class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></span></span> <span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><p ng-if="vm.inputType!==\'checkbox\'">{{vm.ngModel}}</p><i ng-if="vm.inputType===\'checkbox\'" ng-show="vm.ngModel" class="fa fa-check fa-2x"></i></div><p class="help-block">{{vm.helpText}}</p></div></div></div>'
 };
 
 myInputField.$inject = ['cssClassService'];
@@ -442,30 +493,6 @@ var myModalButtons = {
 
 angular.module('my-angular-components').component('myModalButtons', myModalButtons);
 
-//Todo: Allow customize header size
-var myModalHeader = {
-    bindings: {
-        id: '@',
-        title: '@'
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.$onInit = function () {
-            //defaults
-            vm.title = 'Set this text using the title property';
-            vm.id = 'modalHeader';
-        };
-
-
-    },
-    template:'<div class="modal-header" id="vm.id"><h3 class="modal-title">{{vm.title}}</h3></div>'
-};
-
-
-var app = angular.module('my-angular-components').component('myModalHeader', myModalHeader);
-
 var myInfoPanel = {
     bindings: {
         infoText: '@',
@@ -500,6 +527,30 @@ var myInfoPanel = {
 
 
 angular.module('my-angular-components').component('myInfoPanel', myInfoPanel);
+
+//Todo: Allow customize header size
+var myModalHeader = {
+    bindings: {
+        id: '@',
+        title: '@'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            //defaults
+            vm.title = 'Set this text using the title property';
+            vm.id = 'modalHeader';
+        };
+
+
+    },
+    template:'<div class="modal-header" id="vm.id"><h3 class="modal-title">{{vm.title}}</h3></div>'
+};
+
+
+var app = angular.module('my-angular-components').component('myModalHeader', myModalHeader);
 
 var myMoreLessButton = {
     bindings: {

@@ -35,11 +35,11 @@ gulp.task('test', ['js:build'], function(done){
 gulp.task('vet', myGulp_CodeQuality.analyze);
 
 
-gulp.task('serve-build', ['optimize'], function(){
+gulp.task('serve-build', ['embedTemplates', 'optimize'], function(){
    myGulp_BrowserSync.serve(false, port);
 });
 
-gulp.task('serve-dev', ['inject', 'embedTemplates'], function(){
+gulp.task('serve-dev', ['wiredep', 'inject', 'embedTemplates'], function(){
    myGulp_BrowserSync.serve(true, port);
 });
 
@@ -56,7 +56,7 @@ gulp.task('serve-dev', ['inject', 'embedTemplates'], function(){
 //////////////////////////////////////////////
 gulp.task('optimize', ['inject', 'embedTemplates'], myGulp_Build.optimize);
 
-gulp.task('bump', versioning.bump);
+gulp.task('bump', ['optimize'], versioning.bump);
 
 gulp.task('embedTemplates', function () {
     gulp.src('./src/client/app/components/**/*.js')
@@ -80,12 +80,20 @@ gulp.task('wiredep',  function(){
             .pipe(gulp.dest(config.client));
 });
 
-gulp.task('inject', ['embedTemplates', 'wiredep', 'styles'], function(){
+gulp.task('inject', ['embedTemplates', 'wiredep', 'styles','watchTemplates'], function(){
   return gulp
             .src(config.index)
             .pipe($.inject(gulp.src(config.css)))
             .pipe(gulp.dest(config.client));
 });
+
+gulp.task('watchTemplates', watchTemplates);
+
+var watchTemplates = function(){
+    utils.log('Watching Templates');
+    gulp.watch(['./src/client/app/components/**/*.js'], ['embedTemplates']);
+}
+
 
 //////////////////////////////////////////////
 // fonts images and styles

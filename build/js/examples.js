@@ -4,102 +4,28 @@ var app = angular.module('examples', ['my-angular-components', 'ngFabForm',
     'auth0.lock', 'angular-jwt', 'firebase',
 ]);
 
-app.config(function ($locationProvider, $stateProvider, $httpProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
+app.run(function ($rootScope, authService, lock) {
 
-    $locationProvider.html5Mode(true);
+    run.$inject = ['$rootScope', 'authService', 'lock'];
 
-    var homeState = {
-        name: 'home',
-        url: '/',
-        controllerAs: "vm",
-        template: '<h3>Home</h3>'
-    };
+    function run($rootScope, authService, lock) {
+        // Put the authService on $rootScope so its methods
+        // can be accessed from the nav bar
+        $rootScope.authService = authService;
 
+        // Register the authentication listener that is
+        // set up in auth.service.js
+        authService.registerAuthenticationListener();
 
-var statusExamplesState = {
-        name: 'status',
-        url: '/status',
-        controllerAs: "vm",
-        template: '<status-alert-examples></status-alert-examples>'
-    };
-var textEditorExampleState = {
-        name: 'texteditor',
-        url: '/texteditor',
-        controllerAs: "vm",
-        template: '<text-editor-example></text-editor-example>'
-    };
+        // Register the synchronous hash parser
+        // when using UI Router
+        lock.interceptHash();
+    }
+});
 
- var tagsState = {
-        name: 'tags',
-        url: '/tags',
-        controllerAs: "vm",
-        template: '<tags-examples>Home</tags-examples>'
-    };
+angular.module("examples").config(function ($locationProvider, $stateProvider, $httpProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
 
-    var aboutState = {
-        name: 'about',
-        url: '/about',
-        template: '<div sp-login-form></div>'
-    };
     
-    var inputsState = {
-        name: 'inputs',
-        url: '/inputs',
-        template: '<input-examples></input-examples>'
-    };
-    var formsState = {
-        name: 'forms',
-        url: '/forms',
-        template: '<example-form></example-form>'
-    };
-var panelExamplesState = {
-        name: 'panelexamples',
-        url: '/panelexamples',
-        template: '<panel-examples></panel-examples>'
-    };
-
-
-var modalsState = {
-        name: 'modalsstate',
-        url: '/modalsstate',
-        template: '<modal-examples></modal-examples>'
-    };
-    var userProfileState = {
-        name: 'userprofile',
-        url: '/userprofile',
-        template: '<user-profile-example></user-profile-example>'
-    };
-
-    var firebaseState = {
-        name: 'firebase',
-        url: '/firebase',
-        controller: function ($scope, authService, $firebaseObject, $firebaseArray) {
-            var vm = this;
-            var ref = firebase.database().ref();
-            //var ref = new Firebase("https://quiz-fd4f2.firebaseio.com/");
-            vm.array = $firebaseObject(ref);
-            var ref = firebase.database().ref().child("Contacts");
-            $scope.messages = $firebaseArray(ref);
-            // add new items to the array
-            // the message is automatically added to our Firebase database!
-            $scope.addMessage = function (message) {
-                console.log(message);
-                $scope.messages.$add({
-                    firstname: message
-                });
-            };
-            //            
-
-            //  vm.authService = authService;
-
-            //     authService.getProfileDeferred().then(function (profile) {
-            //         console.log(angular.toJson(profile.email));
-            //       vm.profile = profile;
-            //     });
-        },
-        templateUrl: 'src/client/app/Examples/Firebase/firebaseTemplate.html'
-    };
-
     var login = {
         name: 'login',
         url: '/login',
@@ -148,44 +74,10 @@ var modalsState = {
     $httpProvider.interceptors.push('jwtInterceptor');
 
 
-
-$stateProvider.state(textEditorExampleState);
-    $stateProvider.state(statusExamplesState);
-    $stateProvider.state(panelExamplesState);
-    $stateProvider.state(inputsState);
-    $stateProvider.state(homeState);
-    $stateProvider.state(firebaseState);
-    $stateProvider.state(aboutState);
     $stateProvider.state(login);
     $stateProvider.state(logout);
-    $stateProvider.state(userProfileState);
-     $stateProvider.state(formsState);
- $stateProvider.state(modalsState);
- $stateProvider.state(tagsState);
  
     $urlRouterProvider.otherwise('/');
-});
-
-
-
-
-app.run(function ($rootScope, authService, lock) {
-
-    run.$inject = ['$rootScope', 'authService', 'lock'];
-
-    function run($rootScope, authService, lock) {
-        // Put the authService on $rootScope so its methods
-        // can be accessed from the nav bar
-        $rootScope.authService = authService;
-
-        // Register the authentication listener that is
-        // set up in auth.service.js
-        authService.registerAuthenticationListener();
-
-        // Register the synchronous hash parser
-        // when using UI Router
-        lock.interceptHash();
-    }
 });
 
 (function () {
@@ -265,6 +157,104 @@ app.run(function ($rootScope, authService, lock) {
 
   }
 })();
+angular.module("examples").config(function ($locationProvider, $stateProvider, $urlRouterProvider) {
+
+    var homeState = {
+        name: 'home',
+        url: '/',
+        controllerAs: "vm",
+        template: '<h3>Home</h3>'
+    };
+     var gridExamplesState = {
+        name: 'grid',
+        url: '/grid',
+        controllerAs: "vm",
+        template: '<grid-examples></grid-examples>'
+    };
+    var statusExamplesState = {
+        name: 'status',
+        url: '/status',
+        controllerAs: "vm",
+        template: '<status-alert-examples></status-alert-examples>'
+    };
+    var textEditorExampleState = {
+        name: 'texteditor',
+        url: '/texteditor',
+        controllerAs: "vm",
+        template: '<text-editor-example></text-editor-example>'
+    };
+    var tagsState = {
+        name: 'tags',
+        url: '/tags',
+        controllerAs: "vm",
+        template: '<tags-examples>Home</tags-examples>'
+    };
+    var aboutState = {
+        name: 'about',
+        url: '/about',
+        template: '<div sp-login-form></div>'
+    };   
+    var inputsState = {
+        name: 'inputs',
+        url: '/inputs',
+        template: '<input-examples></input-examples>'
+    };
+     var selectListExamplesState = {
+        name: 'selectlist',
+        url: '/selectlist',
+        template: '<select-list-examples></select-list-examples>'
+    };
+    var formsState = {
+        name: 'forms',
+        url: '/forms',
+        template: '<example-form></example-form>'
+    };
+    var panelExamplesState = {
+        name: 'panelexamples',
+        url: '/panelexamples',
+        template: '<panel-examples></panel-examples>'
+    };
+    var modalsState = {
+        name: 'modalsstate',
+        url: '/modalsstate',
+        template: '<modal-examples></modal-examples>'
+    };
+    var userProfileState = {
+        name: 'userprofile',
+        url: '/userprofile',
+        template: '<user-profile-example></user-profile-example>'
+    };
+     var datesExampleState = {
+        name: 'dates',
+        url: '/dates',
+        template: '<date-examples></date-examples>'
+    };
+    var firebaseState = {
+        name: 'firebase',
+        url: '/firebase',
+        template: '<firebase-examples></firebase-examples>'
+    };
+
+    $locationProvider.html5Mode(true);
+
+    
+    $stateProvider.state(datesExampleState);
+    $stateProvider.state(selectListExamplesState);
+    $stateProvider.state(gridExamplesState);
+    $stateProvider.state(textEditorExampleState);
+    $stateProvider.state(statusExamplesState);
+    $stateProvider.state(panelExamplesState);
+    $stateProvider.state(inputsState);
+    $stateProvider.state(homeState);
+    $stateProvider.state(firebaseState);
+    $stateProvider.state(aboutState);
+    $stateProvider.state(userProfileState);
+    $stateProvider.state(formsState);
+    $stateProvider.state(modalsState);
+    $stateProvider.state(tagsState);
+
+    $urlRouterProvider.otherwise('/');
+});
 
 var common = {
     templateUrl: "src/client/app/Examples/Common/commonTemplate.html"
@@ -273,22 +263,17 @@ var common = {
 angular.module('examples').component('statusAlerts', common);
 
 
-var dates = {
+var dateExamples = {
     controllerAs: 'vm',
-    controller: function(){
+    controller: function () {
         var vm = this;
 
     
-
-        vm.$onInit = function(){
-            vm.sampleDate = new Date();
-        };
     },
-    templateUrl: "src/client/app/Examples/Dates/datesTemplate.html"
+    templateUrl: "src/client/app/Examples/Dates/dateExamplesTemplate.html"
 };
 
-angular.module('examples').component('datesExamples', dates);
-
+angular.module('examples').component('dateExamples', dateExamples);
 
 var exampleForm = {
     controllerAs: 'vm',
@@ -354,8 +339,30 @@ var exampleForm = {
 
 angular.module('examples').component('exampleForm', exampleForm);
 
+var firebaseExamples = {
+    controllerAs: 'vm',
+    controller: function ($scope, authService, $firebaseObject, $firebaseArray) {
+        var vm = this;
+        var ref = firebase.database().ref();
+        //var ref = new Firebase("https://quiz-fd4f2.firebaseio.com/");
+        vm.array = $firebaseObject(ref);
+        var ref = firebase.database().ref().child("Contacts");
+        $scope.messages = $firebaseArray(ref);
+        // add new items to the array
+        // the message is automatically added to our Firebase database!
+        $scope.addMessage = function (message) {
+            console.log(message);
+            $scope.messages.$add({
+                firstname: message
+            });
+        };
+    },
+    templateUrl: "src/client/app/Examples/Firebase/firebaseTemplate.html"
+};
 
-var gridExample = {
+angular.module("examples").component('firebaseExamples', firebaseExamples);
+
+var gridExamples = {
     controllerAs: 'vm',
     controller: function () {
         var vm = this;
@@ -377,7 +384,7 @@ var gridExample = {
     templateUrl: "src/client/app/Examples/Grid/gridExampleTemplate.html"
 };
 
-angular.module('examples').component('gridExample', gridExample);
+angular.module('examples').component('gridExamples', gridExamples);
 
 var inputs = {
     controllerAs: 'vm',
@@ -404,12 +411,12 @@ var adminLayoutExample = {
 
         vm.sideMenuItems = [{
             state: "home",
-            linkText: "home",
+            linkText: "Home",
             icon: "check",
             requiresLogin: false
         },{
             state: "firebase",
-            linkText: "firebase",
+            linkText: "Firebase",
             icon: "check",
             requiresLogin: false
         }, {
@@ -450,7 +457,25 @@ var adminLayoutExample = {
             linkText: "Text Editor",
             icon: "users",
             requiresLogin: false
-        }
+        },
+        {
+            state: "selectlist",
+            linkText: "Select List",
+            icon: "check",
+            requiresLogin: false
+        },
+        {
+            state: "grid",
+            linkText: "Grid List",
+            icon: "check",
+            requiresLogin: false
+        },
+        {
+            state: "dates",
+            linkText: "Dates",
+            icon: "check",
+            requiresLogin: false
+        },
         ];
 
         vm.userMenuItems = [{
@@ -566,6 +591,43 @@ var panels = {
 angular.module('examples').component('panelExamples', panels);
 
 
+var selectListExamples = {
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.items = [
+        {
+            "firstName": "Cox",
+            "lastName": "Carney"
+        },
+        {
+            "firstName": "Kevin",
+            "lastName": "Robinons"
+        },
+        {
+            "firstName": "Sean",
+            "lastName": "Robinons"
+        }];
+    },
+    templateUrl: "src/client/app/Examples/SelectLists/selectListExamplesTemplate.html"
+};
+
+angular.module('examples').component('selectListExamples', selectListExamples);
+
+var statusAlerts = {
+    controllerAs: 'vm',
+    controller: function(){
+        var vm = this;
+
+ 
+    },
+    templateUrl: "src/client/app/Examples/StatusAlerts/statusAlertsTemplate.html"
+};
+
+angular.module('examples').component('statusAlertExamples', statusAlerts);
+
+
 var tags = {
     controllerAs: 'vm',
     controller: function () {
@@ -594,19 +656,6 @@ var tags = {
 };
 
 angular.module('examples').component('tagsExamples', tags);
-
-var statusAlerts = {
-    controllerAs: 'vm',
-    controller: function(){
-        var vm = this;
-
- 
-    },
-    templateUrl: "src/client/app/Examples/StatusAlerts/statusAlertsTemplate.html"
-};
-
-angular.module('examples').component('statusAlertExamples', statusAlerts);
-
 
 var textEditorExample = {
     controllerAs: 'vm',
