@@ -7,8 +7,6 @@ var $ = require('gulp-load-plugins')({
 });
 
 
-
-
 var inject = function(){
     utils.log('inject starting');
 
@@ -23,14 +21,7 @@ var inject = function(){
             .pipe(gulp.dest(config.src));
 };
 
-
 var wiredep = function () {
-utils.log('------------------------------------------------------');
-    utils.log('wiredep starting');    
-       utils.log("index = " + config.index);
-    utils.log("Examples = " + config.examplesSourceFiles);
-    utils.log("Components = " + config.componentSourceFiles);
-    utils.log('------------------------------------------------------');
 
     var options = {
         bowerJson: require('../bower.json')
