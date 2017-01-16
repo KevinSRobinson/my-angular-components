@@ -14,7 +14,7 @@ var embedTemplates = require('gulp-angular-embed-templates');
 var requireDir = require('require-dir');
 var utils = require('./gulptasks/gulp.Utils');
 var versioning = require('./gulptasks/gulp.Versioning');
-var tests = require('./gulptasks/gulp.Test');
+var tests = require('./gulp.Test');
 var fontsAndImageOptimizer = require('./gulptasks/gulp.FontsImages');
 var myGulp_Styles = require('./gulptasks/gulp.Styles');
 var myGulp_BrowserSync = require('./gulptasks/gulp.BrowserSync');
@@ -28,7 +28,7 @@ gulp.task('default', ['help']);
 
 gulp.task('help', $.taskListing);
 
-gulp.task('test', ['js:build'], function(done){
+gulp.task('test',  function(done){
     tests.startTests(true, done);
 })
 
@@ -42,11 +42,6 @@ gulp.task('serve-build', ['embedTemplates', 'optimize'], function(){
 gulp.task('serve-dev', ['wiredep', 'inject', 'embedTemplates'], function(){
    myGulp_BrowserSync.serve(true, port);
 });
-
-
-
-
-
 
 
 

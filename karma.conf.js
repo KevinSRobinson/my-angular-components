@@ -1,23 +1,21 @@
 module.exports = function(config) {
     var gulpConfig = require('./gulp.config')();
 
+console.log(gulpConfig.karma.files);
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: './',
-
-        // frameworks to use
-        // some available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: ['mocha', 'chai', 'sinon', 'chai-sinon'],
 
         // list of files / patterns to load in the browser
-        files: gulpConfig.karma.files,
+        files:  gulpConfig.karma.files,
 
         // list of files to exclude
         exclude: gulpConfig.karma.exclude,
 
-        proxies: {
-            '/': 'http://localhost:8888/'
-        },
+        // proxies: {
+        //     '/': 'http://localhost:8888/'
+        // },
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -42,10 +40,10 @@ module.exports = function(config) {
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR ||
         // config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
+        logLevel: config.LOG_DEBUG,
 
         // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: true,
+        //autoWatch: true,
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
@@ -54,7 +52,7 @@ module.exports = function(config) {
 
         // Continuous Integration mode
         // if true, Karma captures browsers, runs the tests and exits
-        singleRun: false
+        singleRun: true
 
        
 

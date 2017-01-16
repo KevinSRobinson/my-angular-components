@@ -144,15 +144,14 @@ module.exports = function () {
         var options = {
             files: [].concat(
                 bowerFiles,
-                config.specHelpers,
-                client + 'app/Components/templateService.js',
-                client + 'app/Components/app.module.js',
-                client + 'app/Components/**/*.js',
-                client + 'tests/**/*.js',
-                temp + config.templateCache.file
+                //config.specHelpers,
+                client + 'app/Components/*.js',
+                client + 'app/Components/**/*.js',                 
+                client + 'tests/**/*.js'
             ),
             exclude: [],
             coverage: {
+                
                 dir: report + 'coverage',
                 reporters: [{
                     type: 'html',
