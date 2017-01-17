@@ -39,16 +39,15 @@ module.exports = function (config) {
     "src/Client/App/Components/Headers/PageHeader/pageHeader.js",
     "src/Client/App/Components/Inputs/DateTimeDifferenceField/dateTimeDifferenceField.js",
     "src/Client/App/Components/Inputs/InputField/inputField.js",
+    "src/Client/App/Components/Inputs/SelectField/selectField.js",
     "src/Client/App/Components/Inputs/TextEditor/markdown.directive.js",
     "src/Client/App/Components/Inputs/TextEditor/textEditor.js",
-    "src/Client/App/Components/Inputs/SelectField/selectField.js",
     "src/Client/App/Components/Modals/ModalButtons/modalButtons.js",
     "src/Client/App/Components/Modals/ModalHeader/modalHeader.js",
     "src/Client/App/Components/Panels/InfoPanel/infoPanel.js",
     "src/Client/App/Components/Panels/MoreLessButton/moreLessButton.js",
     "src/Client/App/Components/Panels/MoreLessPanel/moreLessPanel.js",
     "src/Client/App/Components/Panels/Panel/panel.js",
-    "src/Client/App/Components/SelectLists/SelectList/selectList.js",
     "src/Client/App/Components/StatusAlerts/StatusAlert/statusAlert.js",
     "src/Client/App/Components/Inputs/DatesField/DateField/dateField.js",
     "src/Client/App/Components/Layout/AdminLayout/AdminLayoutCore/adminLayout.js",
@@ -74,9 +73,9 @@ module.exports = function (config) {
     
     "src/Client/App/Examples/Common/common.js",
     
-    "src/Client/App/Examples/Dates/dateExamples.js",
-    
     "src/Client/App/Examples/ExampleForm/exampleForm.js",
+    
+    "src/Client/App/Examples/Dates/dateExamples.js",
     
     "src/Client/App/Examples/Firebase/firebase.js",
     
@@ -117,6 +116,14 @@ module.exports = function (config) {
     "src/Client/tests/Components/Buttons/spinnerButton.spec.js",
    
     "src/Client/tests/Components/Headers/pageHeader.spec.js",
+   
+    "src/Client/tests/Components/Inputs/dateField.spec.js",
+   
+    "src/Client/tests/Components/Inputs/inputField.spec.js",
+   
+    "src/Client/tests/Components/Inputs/selectField.spec.js",
+   
+    "src/Client/tests/Components/Inputs/textEditor.spec.js",
    
     "src/Client/tests/Components/Layout/layoutCore.spec.js",
    
