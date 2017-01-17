@@ -39,9 +39,9 @@ module.exports = function (config) {
     "src/Client/App/Components/Headers/PageHeader/pageHeader.js",
     "src/Client/App/Components/Inputs/DateTimeDifferenceField/dateTimeDifferenceField.js",
     "src/Client/App/Components/Inputs/InputField/inputField.js",
-    "src/Client/App/Components/Inputs/SelectField/selectField.js",
     "src/Client/App/Components/Inputs/TextEditor/markdown.directive.js",
     "src/Client/App/Components/Inputs/TextEditor/textEditor.js",
+    "src/Client/App/Components/Inputs/SelectField/selectField.js",
     "src/Client/App/Components/Modals/ModalButtons/modalButtons.js",
     "src/Client/App/Components/Modals/ModalHeader/modalHeader.js",
     "src/Client/App/Components/Panels/InfoPanel/infoPanel.js",
@@ -74,9 +74,9 @@ module.exports = function (config) {
     
     "src/Client/App/Examples/Common/common.js",
     
-    "src/Client/App/Examples/ExampleForm/exampleForm.js",
-    
     "src/Client/App/Examples/Dates/dateExamples.js",
+    
+    "src/Client/App/Examples/ExampleForm/exampleForm.js",
     
     "src/Client/App/Examples/Firebase/firebase.js",
     
@@ -86,9 +86,9 @@ module.exports = function (config) {
     
     "src/Client/App/Examples/Layout/adminLayoutExample.js",
     
-    "src/Client/App/Examples/Modals/modals.js",
-    
     "src/Client/App/Examples/Map/mapExample.js",
+    
+    "src/Client/App/Examples/Modals/modals.js",
     
     "src/Client/App/Examples/Panels/panels.js",
     
@@ -131,6 +131,8 @@ module.exports = function (config) {
     "src/Client/tests/Components/Panels/moreLessPanel.spec.js",
    
     "src/Client/tests/Components/Panels/panel.spec.js",
+   
+    "src/Client/tests/Components/StatusAlerts/statusAlert.spec.js",
    
     "src/Client/tests/Components/Layout/Header/alertsDropDown.spec.js",
    
