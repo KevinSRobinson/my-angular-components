@@ -4,7 +4,8 @@ var myPageTitle = {
     },
     controllerAs: 'vm',
     controller: function () {
-
+        var vm = this;
+        
         vm.$onInit = function () {
             vm.ngModel = 'Set this text using ngModel';
         };

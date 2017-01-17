@@ -72,9 +72,9 @@ module.exports = function (config) {
     
     "src/Client/App/Examples/routes.js",
     
-    "src/Client/App/Examples/Dates/dateExamples.js",
-    
     "src/Client/App/Examples/Common/common.js",
+    
+    "src/Client/App/Examples/Dates/dateExamples.js",
     
     "src/Client/App/Examples/ExampleForm/exampleForm.js",
     
@@ -114,7 +114,15 @@ module.exports = function (config) {
 
     // spec:js
    
+    "src/Client/tests/Components/Buttons/spinnerButton.spec.js",
+   
+    "src/Client/tests/Components/Headers/pageHeader.spec.js",
+   
     "src/Client/tests/Components/Layout/layoutCore.spec.js",
+   
+    "src/Client/tests/Components/Modals/modalButtons.spec.js",
+   
+    "src/Client/tests/Components/Modals/modalHeader.spec.js",
    
     "src/Client/tests/Components/Layout/Header/alertsDropDown.spec.js",
    
