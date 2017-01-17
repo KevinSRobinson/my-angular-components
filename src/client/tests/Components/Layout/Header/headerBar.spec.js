@@ -2,8 +2,8 @@ describe("Components", function () {
 
     describe("Admin Layout Component", function () {
 
-        describe("Admin Layout Core Component", function () {
 
+        describe("Header", function () {
 
             var vm;
 
@@ -13,7 +13,7 @@ describe("Components", function () {
             //instantiate component controller
             beforeEach(function () {
                 bard.inject(this, '$componentController');
-                vm = $componentController('adminLayout', null);
+                vm = $componentController('adminHeaderBar', null);
             });
 
 

@@ -39,10 +39,10 @@ module.exports = function (config) {
     "src/Client/App/Components/Headers/PageHeader/pageHeader.js",
     "src/Client/App/Components/Inputs/DateTimeDifferenceField/dateTimeDifferenceField.js",
     "src/Client/App/Components/Inputs/InputField/inputField.js",
-    "src/Client/App/Components/Inputs/SelectField/selectField.js",
     "src/Client/App/Components/Inputs/TextEditor/markdown.directive.js",
     "src/Client/App/Components/Inputs/TextEditor/textEditor.js",
     "src/Client/App/Components/Modals/ModalButtons/modalButtons.js",
+    "src/Client/App/Components/Inputs/SelectField/selectField.js",
     "src/Client/App/Components/Modals/ModalHeader/modalHeader.js",
     "src/Client/App/Components/Panels/InfoPanel/infoPanel.js",
     "src/Client/App/Components/Panels/MoreLessButton/moreLessButton.js",
@@ -50,8 +50,8 @@ module.exports = function (config) {
     "src/Client/App/Components/Panels/Panel/panel.js",
     "src/Client/App/Components/SelectLists/SelectList/selectList.js",
     "src/Client/App/Components/StatusAlerts/StatusAlert/statusAlert.js",
-    "src/Client/App/Components/Inputs/DatesField/DateField/dateField.js",
     "src/Client/App/Components/Layout/AdminLayout/AdminLayoutCore/adminLayout.js",
+    "src/Client/App/Components/Inputs/DatesField/DateField/dateField.js",
     "src/Client/App/Components/Layout/AdminLayout/Header/AlertsDropDown/alertsDropDownMenu.js",
     "src/Client/App/Components/Layout/AdminLayout/Header/HeaderBar/headerBar.js",
     "src/Client/App/Components/Layout/AdminLayout/Header/UserOptionsDropDown/userOptionsDropDownMenu.js",
@@ -113,8 +113,18 @@ module.exports = function (config) {
     // endinject
 
     // spec:js
-    "src/Client/tests/statusAlert.spec.js",
-    "src/Client/tests/Components/Layout/layoutCore.spec.js"
+   
+    "src/Client/tests/Components/Layout/layoutCore.spec.js",
+   
+    "src/Client/tests/Components/Layout/Header/alertsDropDown.spec.js",
+   
+    "src/Client/tests/Components/Layout/Header/headerBar.spec.js",
+   
+    "src/Client/tests/Components/Layout/Header/userOptionsDropDown.spec.js"
+   
+    // endinject
+
+    // spec:examplesjs
     // endinject
         ),
         exclude: [],

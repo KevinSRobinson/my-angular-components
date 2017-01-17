@@ -28,7 +28,7 @@ gulp.task('default', ['help']);
 
 gulp.task('help', $.taskListing);
 
-gulp.task('test',  function(done){
+gulp.task('test', ['inject-js-karma-conf'],  function(done){
     tests.startTests(true, done);
 })
 
@@ -57,8 +57,15 @@ gulp.task("inject-js-karma-conf", function () {
                 return "\"" + filepath.substr(1) + "\",";
             }
         }))
-        .pipe($.inject(gulp.src('./src/Client/tests/**/*.spec.js'), {
+        .pipe($.inject(gulp.src('./src/Client/tests/Components/**/*.spec.js'), {
             starttag: "// spec:js",
+            endtag: "// endinject",
+            transform: function (filepath, file, i, length) {
+                return "\"" + filepath.substr(1) + "\"" + (i < length - 1 ? "," : "");
+            }
+        }))
+         .pipe($.inject(gulp.src('./src/Client/tests/Examples/**/*.spec.js'), {
+            starttag: "// spec:examplesjs",
             endtag: "// endinject",
             transform: function (filepath, file, i, length) {
                 return "\"" + filepath.substr(1) + "\"" + (i < length - 1 ? "," : "");
