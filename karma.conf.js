@@ -74,9 +74,9 @@ module.exports = function (config) {
     
     "src/Client/App/Examples/Common/common.js",
     
-    "src/Client/App/Examples/Dates/dateExamples.js",
-    
     "src/Client/App/Examples/ExampleForm/exampleForm.js",
+    
+    "src/Client/App/Examples/Dates/dateExamples.js",
     
     "src/Client/App/Examples/Firebase/firebase.js",
     
@@ -86,9 +86,9 @@ module.exports = function (config) {
     
     "src/Client/App/Examples/Layout/adminLayoutExample.js",
     
-    "src/Client/App/Examples/Map/mapExample.js",
-    
     "src/Client/App/Examples/Modals/modals.js",
+    
+    "src/Client/App/Examples/Map/mapExample.js",
     
     "src/Client/App/Examples/Panels/panels.js",
     
@@ -123,6 +123,14 @@ module.exports = function (config) {
     "src/Client/tests/Components/Modals/modalButtons.spec.js",
    
     "src/Client/tests/Components/Modals/modalHeader.spec.js",
+   
+    "src/Client/tests/Components/Panels/infoPanel.spec.js",
+   
+    "src/Client/tests/Components/Panels/moreLessButton.spec.js",
+   
+    "src/Client/tests/Components/Panels/moreLessPanel.spec.js",
+   
+    "src/Client/tests/Components/Panels/panel.spec.js",
    
     "src/Client/tests/Components/Layout/Header/alertsDropDown.spec.js",
    
