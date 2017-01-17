@@ -18,49 +18,25 @@ var adminLayout = {
      
 
         vm.userName = "";
-
-        $scope.toggle = true;
-
+    
+        var currentWidth = 992;
         var mobileView = 992;
 
-        // // $scope.getWidth = function () {
-        // //     return window.innerWidth;
-        // // };
-
-        // $scope.$watch($scope.getWidth, function (newValue, oldValue) {
-        //     if (newValue >= mobileView) {
-        //         if (angular.isDefined($cookieStore.get('toggle'))) {
-        //             $scope.toggle = !$cookieStore.get('toggle') ? false : true;
-        //         } else {
-        //             $scope.toggle = true;
-        //         }
-        //     } else {
-        //         $scope.toggle = false;
-        //     }
-
-        // });
-
-        $scope.toggleSidebar = function () {
-            $scope.toggle = !$scope.toggle;
-            // $cookieStore.put('toggle', $scope.toggle);
+        vm.getWidth = function () {
+            return window.innerWidth;
         };
+      
 
-        window.onresize = function () {
-            $scope.$apply();
-        };
-
+        //Css Class Helpers
         vm.getState = function () {
             if (vm.colapsed)
                 return "open";
             else
                 return "";
         };
-
         vm.getViewCssClass= function(){
-            console.log(vm.colapsed);
-
-            if (vm.colapsed)
-                return "uiView.colapsed";
+            if (vm.colapsed == true)
+                return "uiViewColapsed";
             else
                 return "uiView";
         };

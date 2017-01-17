@@ -17,6 +17,8 @@ var adminSideMenu = {
 
         vm.toggleSidebar = function () {
             vm.colapsed = !vm.colapsed;
+            //todo: Add to local storage
+            // $cookieStore.put('toggle', $scope.toggle);
         };
 
     },

@@ -73,11 +73,11 @@ module.exports = function (config) {
     
     "src/Client/App/Examples/Common/common.js",
     
-    "src/Client/App/Examples/ExampleForm/exampleForm.js",
-    
     "src/Client/App/Examples/Dates/dateExamples.js",
     
     "src/Client/App/Examples/Firebase/firebase.js",
+    
+    "src/Client/App/Examples/ExampleForm/exampleForm.js",
     
     "src/Client/App/Examples/Grid/gridExample.js",
     
@@ -127,10 +127,6 @@ module.exports = function (config) {
    
     "src/Client/tests/Components/Layout/layoutCore.spec.js",
    
-    "src/Client/tests/Components/Modals/modalButtons.spec.js",
-   
-    "src/Client/tests/Components/Modals/modalHeader.spec.js",
-   
     "src/Client/tests/Components/Panels/infoPanel.spec.js",
    
     "src/Client/tests/Components/Panels/moreLessButton.spec.js",
@@ -138,6 +134,10 @@ module.exports = function (config) {
     "src/Client/tests/Components/Panels/moreLessPanel.spec.js",
    
     "src/Client/tests/Components/Panels/panel.spec.js",
+   
+    "src/Client/tests/Components/Modals/modalButtons.spec.js",
+   
+    "src/Client/tests/Components/Modals/modalHeader.spec.js",
    
     "src/Client/tests/Components/StatusAlerts/statusAlert.spec.js",
    
