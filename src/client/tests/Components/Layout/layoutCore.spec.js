@@ -1,5 +1,3 @@
-
-
 describe("Contact Tests", function () {
 
     describe("Contact List Component", function () {

@@ -21,6 +21,13 @@
         "valid-typeof": "warn"
     },
     "globals": {
-        "angular": true
+        "angular": true,
+        // jasmine testing
+        "describe": true,
+        "it": true,
+        "expect": true,
+        "beforeEach": true,
+        "bard": true,
+        "$componentController": true        
     }
 }
