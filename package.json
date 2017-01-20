@@ -88,6 +88,7 @@
     "yargs": "^6.5.0"
   },
   "devDependencies": {
+    "karma-phantomjs-launcher": "^1.0.2",
     "karma-wiredep": "^1.0.3"
   }
 }
