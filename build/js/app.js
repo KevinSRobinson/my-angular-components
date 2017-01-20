@@ -103,7 +103,7 @@ var mySpinnerButton = {
              vm.isDisabled = false;
         };       
     },
-    template:'<button id="{{vm.id}}" class="btn btn-success" ng-click="vm.click()" n ng-disabled="vm.isDisabled">{{vm.buttonText}}<i class="fa fa-circle-o-notch fa-spin" ng-if="vm.saving"></i></button>'
+    template:'{{vm.isDisabled}} <button id="{{vm.id}}" class="btn btn-success" ng-click="vm.click()" ng-disabled="vm.isDisabled">{{vm.buttonText}}<i class="fa fa-circle-o-notch fa-spin" ng-if="vm.saving"></i></button>'
 };
 
 
@@ -247,7 +247,8 @@ var myPageTitle = {
     },
     controllerAs: 'vm',
     controller: function () {
-
+        var vm = this;
+        
         vm.$onInit = function () {
             vm.ngModel = 'Set this text using ngModel';
         };
@@ -295,7 +296,7 @@ var myDateTimeDifferenceField = {
         }
 
     },
-    template:'<my-input-field field-label="Date From" ng-model="vm.fromDate" input-type"date"><my-input-field field-label="To From" ng-model="vm.toDate" input-type="date">{{vm.fromDate}} {{vm.toDate}}}<my-input-field input-type="time" field-label="From" ng-model="vm.fromDate" ng-change="vm.fromTimeChanged()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"></my-input-field><my-input-field input-type="time" field-label="Date To" ng-model="vm.toDate" ng-change="vm.toTimeChanged()" hour-step="vm.hourStep" " minute-step="vm.minStep" show-meridian="vm.showMeridian"></my-input-field></my-input-field></my-input-field>'
+    template:'<my-input-field input-type="time" field-label="From" ng-model="vm.fromDate" ng-change="vm.fromTimeChanged()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"></my-input-field><my-input-field input-type="time" field-label="To" ng-model="vm.toDate" ng-change="vm.toTimeChanged()" hour-step="vm.hourStep" " minute-step="vm.minStep" show-meridian="vm.showMeridian"></my-input-field>'
 };
 
 
@@ -493,6 +494,30 @@ var myModalButtons = {
 
 angular.module('my-angular-components').component('myModalButtons', myModalButtons);
 
+//Todo: Allow customize header size
+var myModalHeader = {
+    bindings: {
+        id: '@',
+        title: '@'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            //defaults
+            vm.title = 'Set this text using the title property';
+            vm.id = 'modalHeader';
+        };
+
+
+    },
+    template:'<div class="modal-header" id="vm.id"><h3 class="modal-title">{{vm.title}}</h3></div>'
+};
+
+
+var app = angular.module('my-angular-components').component('myModalHeader', myModalHeader);
+
 var myInfoPanel = {
     bindings: {
         infoText: '@',
@@ -527,30 +552,6 @@ var myInfoPanel = {
 
 
 angular.module('my-angular-components').component('myInfoPanel', myInfoPanel);
-
-//Todo: Allow customize header size
-var myModalHeader = {
-    bindings: {
-        id: '@',
-        title: '@'
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.$onInit = function () {
-            //defaults
-            vm.title = 'Set this text using the title property';
-            vm.id = 'modalHeader';
-        };
-
-
-    },
-    template:'<div class="modal-header" id="vm.id"><h3 class="modal-title">{{vm.title}}</h3></div>'
-};
-
-
-var app = angular.module('my-angular-components').component('myModalHeader', myModalHeader);
 
 var myMoreLessButton = {
     bindings: {
@@ -912,54 +913,30 @@ var adminLayout = {
      
 
         vm.userName = "";
-
-        $scope.toggle = true;
-
+    
+        var currentWidth = 992;
         var mobileView = 992;
 
-        // // $scope.getWidth = function () {
-        // //     return window.innerWidth;
-        // // };
-
-        // $scope.$watch($scope.getWidth, function (newValue, oldValue) {
-        //     if (newValue >= mobileView) {
-        //         if (angular.isDefined($cookieStore.get('toggle'))) {
-        //             $scope.toggle = !$cookieStore.get('toggle') ? false : true;
-        //         } else {
-        //             $scope.toggle = true;
-        //         }
-        //     } else {
-        //         $scope.toggle = false;
-        //     }
-
-        // });
-
-        $scope.toggleSidebar = function () {
-            $scope.toggle = !$scope.toggle;
-            // $cookieStore.put('toggle', $scope.toggle);
+        vm.getWidth = function () {
+            return window.innerWidth;
         };
+      
 
-        window.onresize = function () {
-            $scope.$apply();
-        };
-
+        //Css Class Helpers
         vm.getState = function () {
             if (vm.colapsed)
                 return "open";
             else
                 return "";
         };
-
         vm.getViewCssClass= function(){
-            console.log(vm.colapsed);
-
-            if (vm.colapsed)
-                return "uiView.colapsed";
+            if (vm.colapsed == true)
+                return "uiViewColapsed";
             else
                 return "uiView";
         };
     },
-    template:'<style>\r\n.uiView.colapsed{\r\n    margin-left:10px;\r\n}\r\n.uiView{\r\n    margin-left:160px;\r\n}\r\n</style><div id="page-wrapper" ng-cloak ng-class="vm.getState()"><div id="sidebar-wrapper"><admin-side-menu colapsed="vm.colapsed" footer-links="vm.footerLinks" side-menu-items="vm.sideMenuItems"></admin-side-menu></div><div id="content-wrapper"><div class="page-content"><admin-header-bar title="Timebanking" alert-menu-items="vm.alertMenuItems" user-menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></admin-header-bar><div ng-class="vm.getViewCssClass()"><ng-transclude></ng-transclude></div></div></div></div>'
+    template:'<style>\r\n.uiViewColapsed{\r\n    margin-left:100px;\r\n}\r\n.uiView{\r\n    margin-left:20px;\r\n}\r\n</style><div id="page-wrapper" ng-cloak ng-class="vm.getState()"><div id="sidebar-wrapper"><admin-side-menu colapsed="vm.colapsed" footer-links="vm.footerLinks" side-menu-items="vm.sideMenuItems"></admin-side-menu></div><div id="content-wrapper"><div class="page-content"><admin-header-bar title="Timebanking" alert-menu-items="vm.alertMenuItems" user-menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></admin-header-bar><div ng-class="vm.getViewCssClass()"><ng-transclude></ng-transclude></div></div></div></div>'
 };
 
 adminLayout.$inject = ['$scope'];
@@ -1031,6 +1008,8 @@ var adminSideMenu = {
 
         vm.toggleSidebar = function () {
             vm.colapsed = !vm.colapsed;
+            //todo: Add to local storage
+            // $cookieStore.put('toggle', $scope.toggle);
         };
 
     },

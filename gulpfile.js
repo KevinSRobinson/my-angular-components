@@ -80,7 +80,7 @@ gulp.task("inject-js-karma-conf", function () {
 gulp.task('vet', myGulp_CodeQuality.analyze);
 
 
-gulp.task('serve-build', ['embedTemplates', 'optimize'], function(){
+gulp.task('serve-build', ['embedTemplates', 'optimize', 'bump'], function(){
    myGulp_BrowserSync.serve(false, port);
 });
 

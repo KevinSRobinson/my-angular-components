@@ -163,7 +163,7 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         name: 'home',
         url: '/',
         controllerAs: "vm",
-        template: '<h3>Home</h3>'
+        template: '<home></home>'
     };
      var gridExamplesState = {
         name: 'grid',
@@ -385,6 +385,13 @@ var gridExamples = {
 };
 
 angular.module('examples').component('gridExamples', gridExamples);
+
+var home = {
+    templateUrl: "src/client/app/Examples/Home/homeTemplate.html"
+};
+
+angular.module('examples').component('home', home);
+
 
 var inputs = {
     controllerAs: 'vm',

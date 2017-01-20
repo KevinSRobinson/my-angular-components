@@ -2,7 +2,7 @@ var mySpinnerButton = {
     bindings: {
         buttonText:'@',
         saving: '=',
-        isDisabled:'@'
+        isDisabled:'='
     },
     controllerAs: 'vm',
     controller: function(){
@@ -18,7 +18,7 @@ var mySpinnerButton = {
              vm.isDisabled = false;
         };       
     },
-    template:'<button id="{{vm.id}}" class="btn btn-success" ng-click="vm.click()" n ng-disabled="vm.isDisabled">{{vm.buttonText}}<i class="fa fa-circle-o-notch fa-spin" ng-if="vm.saving"></i></button>'
+    template:'{{vm.isDisabled}} <button id="{{vm.id}}" class="btn btn-success" ng-click="vm.click()" ng-disabled="vm.isDisabled">{{vm.buttonText}}<i class="fa fa-circle-o-notch fa-spin" ng-if="vm.saving"></i></button>'
 };
 
 

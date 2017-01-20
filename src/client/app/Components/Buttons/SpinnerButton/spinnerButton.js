@@ -2,7 +2,7 @@ var mySpinnerButton = {
     bindings: {
         buttonText:'@',
         saving: '=',
-        isDisabled:'@'
+        isDisabled:'='
     },
     controllerAs: 'vm',
     controller: function(){

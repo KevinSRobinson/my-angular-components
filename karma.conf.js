@@ -45,8 +45,8 @@ module.exports = function (config) {
             "src/Client/App/Components/Modals/ModalButtons/modalButtons.js",
             "src/Client/App/Components/Modals/ModalHeader/modalHeader.js",
             "src/Client/App/Components/Panels/InfoPanel/infoPanel.js",
-            "src/Client/App/Components/Panels/MoreLessButton/moreLessButton.js",
             "src/Client/App/Components/Panels/MoreLessPanel/moreLessPanel.js",
+            "src/Client/App/Components/Panels/MoreLessButton/moreLessButton.js",
             "src/Client/App/Components/Panels/Panel/panel.js",
             "src/Client/App/Components/StatusAlerts/StatusAlert/statusAlert.js",
             "src/Client/App/Components/Inputs/DatesField/DateField/dateField.js",
@@ -83,9 +83,9 @@ module.exports = function (config) {
 
             "src/Client/App/Examples/Home/home.js",
 
-            "src/Client/App/Examples/Layout/adminLayoutExample.js",
-
             "src/Client/App/Examples/Inputs/inputs.js",
+
+            "src/Client/App/Examples/Layout/adminLayoutExample.js",
 
             "src/Client/App/Examples/Map/mapExample.js",
 
@@ -95,11 +95,11 @@ module.exports = function (config) {
 
             "src/Client/App/Examples/SelectLists/selectListExamples.js",
 
+            "src/Client/App/Examples/StatusAlerts/statusAlerts.js",
+
             "src/Client/App/Examples/Tags/tags.js",
 
             "src/Client/App/Examples/TextEditor/textEditorExample.js",
-
-            "src/Client/App/Examples/StatusAlerts/statusAlerts.js",
 
             "src/Client/App/Examples/UserProfile/userProfile.js",
 
