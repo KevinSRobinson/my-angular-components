@@ -48,8 +48,8 @@ switch (environment) {
         app.use(express.static('./src/client/'));
     app.use(express.static('./src/client/app/Conponents/**'));
         app.use(express.static('./'));
-        app.use(express.static('./tmp/'));
-        app.use('/*', express.static('./src/client/index.html'));
+        app.use(express.static('./.tmp/'));
+        app.use('/*', express.static('./.tmp/index.html'));
         break;
 }
 

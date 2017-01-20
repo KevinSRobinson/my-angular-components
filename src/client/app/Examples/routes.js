@@ -4,7 +4,7 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         name: 'home',
         url: '/',
         controllerAs: "vm",
-        template: '<h3>Home</h3>'
+        template: '<home></home>'
     };
      var gridExamplesState = {
         name: 'grid',
