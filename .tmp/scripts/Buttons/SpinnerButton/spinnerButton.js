@@ -18,7 +18,7 @@ var mySpinnerButton = {
              vm.isDisabled = false;
         };       
     },
-    template:'{{vm.isDisabled}} <button id="{{vm.id}}" class="btn btn-success" ng-click="vm.click()" ng-disabled="vm.isDisabled">{{vm.buttonText}}<i class="fa fa-circle-o-notch fa-spin" ng-if="vm.saving"></i></button>'
+    template:'<button id="{{vm.id}}" class="btn btn-success" ng-click="vm.click()" ng-disabled="vm.isDisabled">{{vm.buttonText}}<i class="fa fa-circle-o-notch fa-spin" ng-if="vm.saving"></i></button>'
 };
 
 

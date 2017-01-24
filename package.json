@@ -88,6 +88,8 @@
     "yargs": "^6.5.0"
   },
   "devDependencies": {
+    "gulp-git": "^1.12.0",
+    "gulp-tag-version": "^1.3.0",
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-wiredep": "^1.0.3"
   }
