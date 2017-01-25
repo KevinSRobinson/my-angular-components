@@ -135,7 +135,10 @@ var watchTemplates = function(){
 }
 
 
-
+gulp.task('gitadd', function(){
+  return gulp.src(config.componentSourceFiles)
+    .pipe($.git.add());
+});
 gulp.task('patch', function() { return inc('patch'); })
 gulp.task('feature', function() { return inc('minor'); })
 gulp.task('release', function() { return inc('major'); })
