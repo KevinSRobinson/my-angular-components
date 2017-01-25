@@ -87,7 +87,7 @@ var mySpinnerButton = {
     bindings: {
         buttonText:'@',
         saving: '=',
-        isDisabled:'@'
+        isDisabled:'='
     },
     controllerAs: 'vm',
     controller: function(){
@@ -103,7 +103,7 @@ var mySpinnerButton = {
              vm.isDisabled = false;
         };       
     },
-    template:'{{vm.isDisabled}} <button id="{{vm.id}}" class="btn btn-success" ng-click="vm.click()" ng-disabled="vm.isDisabled">{{vm.buttonText}}<i class="fa fa-circle-o-notch fa-spin" ng-if="vm.saving"></i></button>'
+    template:'<button id="{{vm.id}}" class="btn btn-success" ng-click="vm.click()" ng-disabled="vm.isDisabled">{{vm.buttonText}}<i class="fa fa-circle-o-notch fa-spin" ng-if="vm.saving"></i></button>'
 };
 
 
@@ -243,17 +243,18 @@ angular.module('my-angular-components').component('myFilterTextbox', myFilterTex
 
 var myPageTitle = {
     bindings: {
-        ngModel: '@'
+        title: '@',
+        icon: "@"
     },
     controllerAs: 'vm',
     controller: function () {
         var vm = this;
         
         vm.$onInit = function () {
-            vm.ngModel = 'Set this text using ngModel';
+            vm.title = 'Set this text using title';
         };
     },
-    template:'<h1 id="pagetitle">{{ vm.title }}</h1>'
+    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.title}}" {{ vm.title }}< H1></i></h1>'
 };
 
 angular.module('my-angular-components').component('myPageTitle', myPageTitle);
@@ -375,6 +376,44 @@ myInputField.$inject = ['cssClassService'];
 
 angular.module('my-angular-components').component('myInputField', myInputField);
 
+angular.module('my-angular-components').directive('markdown', function () {
+    var converter = new Showdown.converter();
+
+
+    var link = function (scope, element, attrs) {
+        attrs.$observe('markdown', function (value) {
+            var markup = converter.makeHtml(value);
+            element.html(markup);
+        });
+    };
+
+    return {
+        restrict: 'A',
+        link: link
+    };
+});
+
+var myRichTextEditor = {
+    bindings: {
+        ngModel: '=',
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.options = {
+            useWrapMode: true,
+            showGutter: false,
+            mode: 'markdown',
+            firstLineNumber: 5,
+        };
+    },
+    template:'<div ui-ace="vm.options" ng-model="vm.ngModel"></div>'
+};
+
+
+angular.module('my-angular-components').component('myRichTextEditor', myRichTextEditor);
+
 var mySelectField = {
     bindings: {
         fieldLabel: '@',
@@ -428,44 +467,6 @@ mySelectField.$inject = ['cssClassService'];
 
 angular.module('my-angular-components').component('mySelectField', mySelectField);
 
-
-angular.module('my-angular-components').directive('markdown', function () {
-    var converter = new Showdown.converter();
-
-
-    var link = function (scope, element, attrs) {
-        attrs.$observe('markdown', function (value) {
-            var markup = converter.makeHtml(value);
-            element.html(markup);
-        });
-    };
-
-    return {
-        restrict: 'A',
-        link: link
-    };
-});
-
-var myRichTextEditor = {
-    bindings: {
-        ngModel: '=',
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.options = {
-            useWrapMode: true,
-            showGutter: false,
-            mode: 'markdown',
-            firstLineNumber: 5,
-        };
-    },
-    template:'<div ui-ace="vm.options" ng-model="vm.ngModel"></div>'
-};
-
-
-angular.module('my-angular-components').component('myRichTextEditor', myRichTextEditor);
 
 var myModalButtons = {
     bindings: {
@@ -943,17 +944,6 @@ adminLayout.$inject = ['$scope'];
 
 angular.module('my-angular-components').component('adminLayout', adminLayout);
 
-var alertsDropDownMenu = {
-    bindings: {
-        menuItems:'=',
-    },
-    controllerAs: 'vm',
-    template:'<div class="item dropdown" uib-dropdown><a href="#" class="dropdown-toggle" uib-dropdown-toggle><i class="fa fa-bell"></i></a><ul class="dropdown-menu dropdown-menu-right"><li class="dropdown-header">Alerts</li><li class="divider"></li><li ng-repeat="item in vm.menuItems"><div class="row"><i class="fa fa-{{item.icon}} col-md-3" style="margin:0"></i> <a ui-sref="{{item.state}}" class="col-md-8">{{item.linkText}}</a></div></li></ul></div>'
-};
-
-
-angular.module('my-angular-components').component('alertsDropDownMenu', alertsDropDownMenu);
-
 var adminHeaderBar = {
     transclude: true,
     bindings: {
@@ -969,6 +959,17 @@ var adminHeaderBar = {
 
 
 angular.module('my-angular-components').component('adminHeaderBar', adminHeaderBar);
+var alertsDropDownMenu = {
+    bindings: {
+        menuItems:'=',
+    },
+    controllerAs: 'vm',
+    template:'<div class="item dropdown" uib-dropdown><a href="#" class="dropdown-toggle" uib-dropdown-toggle><i class="fa fa-bell"></i></a><ul class="dropdown-menu dropdown-menu-right"><li class="dropdown-header">Alerts</li><li class="divider"></li><li ng-repeat="item in vm.menuItems"><div class="row"><i class="fa fa-{{item.icon}} col-md-3" style="margin:0"></i> <a ui-sref="{{item.state}}" class="col-md-8">{{item.linkText}}</a></div></li></ul></div>'
+};
+
+
+angular.module('my-angular-components').component('alertsDropDownMenu', alertsDropDownMenu);
+
 var userOptionsDropDownMenu = {
     bindings: {
         menuItems:'=',

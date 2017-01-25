@@ -312,7 +312,7 @@ var exampleForm = {
 
                 vm.status.show = true;
                 vm.saving = false;
-            }, 2000);
+            }, 0);
 
 
 
