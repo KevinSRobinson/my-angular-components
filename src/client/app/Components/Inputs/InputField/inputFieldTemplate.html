@@ -14,7 +14,7 @@
 <div class="form-group">
     <!--field label-->
     <label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}       
-        
+        {{vm.inputType}}
     </label>
     <div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)">
         <!--Input Types-->
@@ -32,14 +32,14 @@
             <!--CheckBox-->
             <input ng-if="vm.inputType==='checkbox'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel" />
             <!--Time-->
-            <div ng-if="vm.inputType==='time'" uib-timepicker ng-model="vm.ngModel"  id="vm.fieldName"    ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian">
+            <input ng-if="vm.inputType==='time'" uib-timepicker ng-model="vm.ngModel"  id="vm.fieldName"    ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian">
             <!--Date-->
-            <span ng-if="vm.inputType==='date'">
+            <span ng-if="vm.inputType==='datepopup'">
                 <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}"
                  ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%"
                 datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats">
                  <span class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></span>
-            </input>
+            </span>
             <!--DatePicker Open Button-->
             </span>
             <span ng-show="vm.tooltip!==''" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover"

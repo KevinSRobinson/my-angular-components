@@ -1,1 +1,6 @@
-<H1 id='pageTitle'><i class="fa fa-{{vm.title}}"{{ vm.title }}</H1>
+<H1 id='pageTitle'>
+    <i class="fa fa-{{vm.icon}}">
+    <div ng-transclude>
+        <!--content will get injected here-->
+    </div>        
+</H1>
