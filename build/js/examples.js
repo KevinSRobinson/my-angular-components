@@ -622,19 +622,6 @@ var selectListExamples = {
 
 angular.module('examples').component('selectListExamples', selectListExamples);
 
-var statusAlerts = {
-    controllerAs: 'vm',
-    controller: function(){
-        var vm = this;
-
- 
-    },
-    templateUrl: "src/client/app/Examples/StatusAlerts/statusAlertsTemplate.html"
-};
-
-angular.module('examples').component('statusAlertExamples', statusAlerts);
-
-
 var tags = {
     controllerAs: 'vm',
     controller: function () {
@@ -663,6 +650,19 @@ var tags = {
 };
 
 angular.module('examples').component('tagsExamples', tags);
+
+var statusAlerts = {
+    controllerAs: 'vm',
+    controller: function(){
+        var vm = this;
+
+ 
+    },
+    templateUrl: "src/client/app/Examples/StatusAlerts/statusAlertsTemplate.html"
+};
+
+angular.module('examples').component('statusAlertExamples', statusAlerts);
+
 
 var textEditorExample = {
     controllerAs: 'vm',
