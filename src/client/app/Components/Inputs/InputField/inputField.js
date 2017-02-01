@@ -30,9 +30,12 @@ var myInputField = {
         vm.$onInit = function () {
 
             //defaults
+            if(!angular.isDefined(vm.fieldName)){
+               vm.fieldName = vm.fieldLabel.replace(" ", "").toLowerCase();           
+            }
 
             vm.inputType = 'textbox';
-
+            
             vm.required = false;
             vm.horizontal = false;
             vm.labelWidth = 3;
