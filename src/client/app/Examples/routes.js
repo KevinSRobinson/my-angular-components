@@ -10,7 +10,7 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         name: 'buttons',
         url: '/buttons',
         controllerAs: "vm",
-        template: '<buttons></buttons>'
+        template: '<button-examples></button-examples>'
     };
      var gridExamplesState = {
         name: 'grid',
@@ -83,7 +83,9 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
     };
 
     $locationProvider.html5Mode(true);
+ $stateProvider.state(homeState);
 
+ 
      $stateProvider.state(buttonsState);
     $stateProvider.state(datesExampleState);
     $stateProvider.state(selectListExamplesState);
@@ -92,7 +94,7 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
     $stateProvider.state(statusExamplesState);
     $stateProvider.state(panelExamplesState);
     $stateProvider.state(inputsState);
-    $stateProvider.state(homeState);
+   
     $stateProvider.state(firebaseState);
     $stateProvider.state(aboutState);
     $stateProvider.state(userProfileState);

@@ -1,17 +1,8 @@
 var gulp = require('gulp');
-var args = require('yargs').argv;
 var config = require('./gulp.config')();
-var del = require('del');
 var wiredep = require('wiredep').stream;
-var browserSync = require('browser-sync');
-var useref = require('gulp-useref');
 var $ = require('gulp-load-plugins')({lazy : true});
-var lazypipe = require('lazypipe');
-var concat = require('gulp-concat');
-var addStream = require('add-stream');
-var angularTemplateCache = require('gulp-angular-templatecache');
 var embedTemplates = require('gulp-angular-embed-templates');
-var requireDir = require('require-dir');
 var utils = require('./gulptasks/gulp.Utils');
 var versioning = require('./gulptasks/gulp.Versioning');
 var tests = require('./gulp.Test');
@@ -19,7 +10,6 @@ var fontsAndImageOptimizer = require('./gulptasks/gulp.FontsImages');
 var myGulp_Styles = require('./gulptasks/gulp.Styles');
 var myGulp_BrowserSync = require('./gulptasks/gulp.BrowserSync');
 var myGulp_Build = require('./gulptasks/gulp.Build');
-var myGulp_DevBuild = require('./gulptasks/gulp.DevBuild');
 var myGulp_CodeQuality = require('./gulptasks/gulp.CodeQuality');
 
 var port = 7205;
@@ -46,14 +36,14 @@ gulp.task("inject-js-karma-conf", function () {
         .pipe($.inject(gulp.src('./src/Client/App/Components/**/*.js'), {
             starttag: "// inject:js",
             endtag: "// endinject",
-            transform: function (filepath, file, i, length) {
+            transform: function (filepath) {
                 return "\"" + filepath.substr(1) + "\",";
             }
         }))
         .pipe($.inject(gulp.src('./src/Client/App/Examples/**/*.js'), {
             starttag: "// inject:examplesjs",
             endtag: "// endinject",
-            transform: function (filepath, file, i, length) {
+            transform: function (filepath) {
                 return "\"" + filepath.substr(1) + "\",";
             }
         }))

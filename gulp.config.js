@@ -10,7 +10,6 @@ module.exports = function () {
         devDependencies: true
     })['js'];
 
-    var builtComponetsSource = './.tmp/scripts/';
     // var syncFusionFiles = clientFolderRoot + 'Components/**/*.html';
 
     //app module paths
@@ -117,12 +116,7 @@ module.exports = function () {
                 console.log(filePath);
             },
 
-            onPathInjected: function (fileObject) {
-                // fileObject.block = 'type-of-wiredep-block' ('js', 'css', etc) 
-                // fileObject.file = 'name-of-file-that-was-updated' 
-                // fileObject.path = 'path-to-file-that-was-injected' 
-                //console.log(fileObject);
-            },
+      
 
             onMainNotFound: function (pkg) {
                 console.log('No Main Found');

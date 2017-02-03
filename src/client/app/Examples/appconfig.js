@@ -5,8 +5,7 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         name: 'login',
         url: '/login',
         controllerAs: 'vm',
-        controller: 'LoginController',
-        templateUrl: 'src/client/app/Examples/login.html',
+        template: '<login></login>',
     };
 
     var logout = {
