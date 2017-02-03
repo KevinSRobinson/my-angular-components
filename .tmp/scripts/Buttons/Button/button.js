@@ -8,7 +8,7 @@ var myButton1 = {
     controllerAs: 'vm',
     controller: function(){
         var vm = this;
-      
+        
         vm.$onInit = function () {
             //default options
             vm.id = 'create';
@@ -25,7 +25,7 @@ var myButton1 = {
             return 'fa fa-' + vm.icon;   
         } 
     },
-    template:'<div ng-class="vm.getClass()" id="{{vm.id}}" ng-click="vm.click()">{{vm.text}}<i ng-class="vm.getIcon()"></i></div>'
+    template:'<div ng-class="vm.getClass()" id="{{vm.id}}" ng-click="vm.click()">{{vm.getIcon()}}<i ng-class="vm.getIcon()"></i></div>'
 };
 
 angular.module('my-angular-components').component('myButton1', myButton1);

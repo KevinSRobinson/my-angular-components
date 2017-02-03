@@ -3,32 +3,30 @@ var myButton1 = {
         id: '@',
         text: '@',
         click: '&',
-        theme:'@'
+        theme: '@'
     },
     controllerAs: 'vm',
-    controller: function(){
+    controller: function ($scope) {
         var vm = this;
-        
+
         vm.$onInit = function () {
             //default options
             vm.id = 'create';
             vm.buttonText = '';
             vm.icon = 'bars';
             vm.theme = 'success';
-        };  
+        };
 
-        vm.getClass = function(){
-             return 'btn btn-' + vm.theme;   
-        }    
+        $scope.watch('vm.theme', function () {
+            vm._theme += 'btn btn-' + vm.theme;
+        })
 
-        vm.getIcon =function(){
-            return 'fa fa-' + vm.icon;   
-        } 
+        $scope.watch('vm.icon', function () {
+            vm._icon += 'fa fa-' + vm.icon;
+        })
+
     },
     templateUrl: 'buttonTemplate.html'
 };
 
 angular.module('my-angular-components').component('myButton1', myButton1);
-
-
-

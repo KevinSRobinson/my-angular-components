@@ -90,7 +90,6 @@ gulp.task('serve-dev', ['wiredep', 'inject', 'embedTemplates'], function(){
 
 
 
-
 //////////////////////////////////////////////
 // optimize
 //////////////////////////////////////////////
@@ -99,7 +98,7 @@ gulp.task('optimize', ['inject', 'embedTemplates'], myGulp_Build.optimize);
 gulp.task('bump', ['optimize'], versioning.bump);
 
 gulp.task('embedTemplates', function () {
-    gulp.src('./src/client/app/components/**/*.js')
+    gulp.src('./src/client/app/**/*.js')
         .pipe(embedTemplates())
         .pipe(gulp.dest('./.tmp/scripts/'));
 });
