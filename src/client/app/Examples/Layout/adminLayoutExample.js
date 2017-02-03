@@ -11,6 +11,11 @@ var adminLayoutExample = {
             icon: "check",
             requiresLogin: false
         },{
+            state: "buttons",
+            linkText: "Buttons",
+            icon: "check",
+            requiresLogin: false
+        },{
             state: "firebase",
             linkText: "Firebase",
             icon: "check",

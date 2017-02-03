@@ -55,6 +55,76 @@ var cssClassService =  function () {
 };
 
 angular.module("my-angular-components").factory("cssClassService", cssClassService);
+var myButton1 = {
+    bindings: {
+        id: '@',
+        text: '@',
+        click: '&',
+        theme:'@'
+    },
+    controllerAs: 'vm',
+    controller: function(){
+        var vm = this;
+      
+        vm.$onInit = function () {
+            //default options
+            vm.id = 'create';
+            vm.buttonText = '';
+            vm.icon = 'bars';
+            vm.theme = 'success';
+        };  
+
+        vm.getClass = function(){
+             return 'btn btn-' + vm.theme;   
+        }    
+
+        vm.getIcon =function(){
+            return 'fa fa-' + vm.icon;   
+        } 
+    },
+    template:'<div ng-class="vm.getClass()" id="{{vm.id}}" ng-click="vm.click()">{{vm.text}}<i ng-class="vm.getIcon()"></i></div>'
+};
+
+angular.module('my-angular-components').component('myButton1', myButton1);
+
+
+
+
+var myButton = {
+    bindings: {
+        id: '@',
+        text: '@',
+        click: '&',
+        theme:'@'
+    },
+    controllerAs: 'vm',
+    controller: function(){
+        var vm = this;
+      
+        vm.$onInit = function () {
+            //default options
+            vm.id = 'create';
+            vm.buttonText = '';
+            vm.icon = 'bars';
+            vm.theme = 'success';
+        };  
+
+        vm.getClass = function(){
+             return 'btn btn-' + vm.theme;   
+        }    
+
+        vm.getIcon =function(){
+            return 'fa fa-' + vm.icon;   
+        } 
+    },
+    template:'<div ng-class="{{vm.getClass()}" id="{{vm.id}}" ng-click="vm.click()">{{vm.buttonText}}<i ng-class="ng-class=" {{vm.getIcon()}\'\'></i></div>'
+};
+
+angular.module('my-angular-components').component('myButton', myButton);
+
+
+
+
 var myCreateButton = {
     bindings: {
         id: '@',
@@ -370,7 +440,7 @@ var myInputField = {
 
 
     },
-    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n    \r\n    .input-group .form-control {\r\n        z-index: 100;\r\n    }\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}} {{vm.fieldName}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><input ng-if="vm.inputType===\'textbox\'" ng-model="vm.ngModel" type="text" class="form-control" id="{{vm.fieldName}}" placeholder="{{vm.placeholder}}" required><input ng-if="vm.inputType===\'number\'" ng-model="vm.ngModel" type="number" class="form-control" id="{{vm.fieldName}}" required><input ng-if="vm.inputType===\'email\'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"><textarea ng-if="vm.inputType===\'textarea\'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea><input ng-if="vm.inputType===\'checkbox\'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel"><input ng-if="vm.inputType===\'time\'" uib-timepicker ng-model="vm.ngModel" id="vm.fieldName" ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"><span ng-if="vm.inputType===\'datepopup\'"><input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"> <span class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></span></span><span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><p ng-if="vm.inputType!==\'checkbox\'">{{vm.ngModel}}</p><i ng-if="vm.inputType===\'checkbox\'" ng-show="vm.ngModel" class="fa fa-check fa-2x"></i></div><p class="help-block">{{vm.helpText}}</p></div></div>'
+    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n    \r\n    .input-group .form-control {\r\n        z-index: 100;\r\n    }\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><input ng-if="vm.inputType===\'textbox\'" ng-model="vm.ngModel" type="text" class="form-control" id="{{vm.fieldName}}" placeholder="{{vm.placeholder}}" required><input ng-if="vm.inputType===\'number\'" ng-model="vm.ngModel" type="number" class="form-control" id="{{vm.fieldName}}" required><input ng-if="vm.inputType===\'email\'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"><textarea ng-if="vm.inputType===\'textarea\'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea><input ng-if="vm.inputType===\'checkbox\'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel"><input ng-if="vm.inputType===\'time\'" uib-timepicker ng-model="vm.ngModel" id="vm.fieldName" ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"><span ng-if="vm.inputType===\'datepopup\'"><input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"> <span class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></span></span><span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><p ng-if="vm.inputType!==\'checkbox\'">{{vm.ngModel}}</p><i ng-if="vm.inputType===\'checkbox\'" ng-show="vm.ngModel" class="fa fa-check fa-2x"></i></div><p class="help-block">{{vm.helpText}}</p></div></div>'
 };
 
 myInputField.$inject = ['cssClassService'];
@@ -841,6 +911,56 @@ var myStatusAlert = {
 
 angular.module('my-angular-components').component('myStatusAlert', myStatusAlert);
 
+var adminLayout = {
+    transclude: true,
+    bindings: {
+        title: '@',
+        theme: '@',
+        sideMenuItems: '=',
+        userMenuItems: '=',
+        alertMenuItems: '=',
+        footerLinks: '=',
+        userName:'@'
+    },
+    controllerAs: 'vm',
+    controller: function ($scope) {
+        'use strict';
+
+        var vm = this;
+        vm.colapsed = false;
+     
+
+        vm.userName = "";
+    
+        var currentWidth = 992;
+        var mobileView = 992;
+
+        vm.getWidth = function () {
+            return window.innerWidth;
+        };
+      
+
+        //Css Class Helpers
+        vm.getState = function () {
+            if (vm.colapsed)
+                return "open";
+            else
+                return "";
+        };
+        vm.getViewCssClass= function(){
+            if (vm.colapsed == true)
+                return "uiViewColapsed";
+            else
+                return "uiView";
+        };
+    },
+    template:'<style>\r\n.uiViewColapsed{\r\n    margin-left:100px;\r\n}\r\n.uiView{\r\n    margin-left:20px;\r\n}\r\n</style><div id="page-wrapper" ng-cloak ng-class="vm.getState()"><div id="sidebar-wrapper"><admin-side-menu colapsed="vm.colapsed" footer-links="vm.footerLinks" side-menu-items="vm.sideMenuItems"></admin-side-menu></div><div id="content-wrapper"><div class="page-content"><admin-header-bar title="Timebanking" alert-menu-items="vm.alertMenuItems" user-menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></admin-header-bar><div ng-class="vm.getViewCssClass()"><ng-transclude></ng-transclude></div></div></div></div>'
+};
+
+adminLayout.$inject = ['$scope'];
+
+angular.module('my-angular-components').component('adminLayout', adminLayout);
+
 /**
  * Date field component with Field Label, Date Popup, Help Popup
  */
@@ -894,56 +1014,6 @@ myDateField.$inject = ['cssClassService'];
 
 var app = angular.module('my-angular-components')
     .component('myDateField', myDateField);
-
-var adminLayout = {
-    transclude: true,
-    bindings: {
-        title: '@',
-        theme: '@',
-        sideMenuItems: '=',
-        userMenuItems: '=',
-        alertMenuItems: '=',
-        footerLinks: '=',
-        userName:'@'
-    },
-    controllerAs: 'vm',
-    controller: function ($scope) {
-        'use strict';
-
-        var vm = this;
-        vm.colapsed = false;
-     
-
-        vm.userName = "";
-    
-        var currentWidth = 992;
-        var mobileView = 992;
-
-        vm.getWidth = function () {
-            return window.innerWidth;
-        };
-      
-
-        //Css Class Helpers
-        vm.getState = function () {
-            if (vm.colapsed)
-                return "open";
-            else
-                return "";
-        };
-        vm.getViewCssClass= function(){
-            if (vm.colapsed == true)
-                return "uiViewColapsed";
-            else
-                return "uiView";
-        };
-    },
-    template:'<style>\r\n.uiViewColapsed{\r\n    margin-left:100px;\r\n}\r\n.uiView{\r\n    margin-left:20px;\r\n}\r\n</style><div id="page-wrapper" ng-cloak ng-class="vm.getState()"><div id="sidebar-wrapper"><admin-side-menu colapsed="vm.colapsed" footer-links="vm.footerLinks" side-menu-items="vm.sideMenuItems"></admin-side-menu></div><div id="content-wrapper"><div class="page-content"><admin-header-bar title="Timebanking" alert-menu-items="vm.alertMenuItems" user-menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></admin-header-bar><div ng-class="vm.getViewCssClass()"><ng-transclude></ng-transclude></div></div></div></div>'
-};
-
-adminLayout.$inject = ['$scope'];
-
-angular.module('my-angular-components').component('adminLayout', adminLayout);
 
 var alertsDropDownMenu = {
     bindings: {

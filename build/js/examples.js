@@ -165,6 +165,12 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         controllerAs: "vm",
         template: '<home></home>'
     };
+    var buttonsState = {
+        name: 'buttons',
+        url: '/buttons',
+        controllerAs: "vm",
+        template: '<buttons></buttons>'
+    };
      var gridExamplesState = {
         name: 'grid',
         url: '/grid',
@@ -237,7 +243,7 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
 
     $locationProvider.html5Mode(true);
 
-    
+     $stateProvider.state(buttonsState);
     $stateProvider.state(datesExampleState);
     $stateProvider.state(selectListExamplesState);
     $stateProvider.state(gridExamplesState);
@@ -255,6 +261,13 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
 
     $urlRouterProvider.otherwise('/');
 });
+
+var buttons = {
+    templateUrl: "src/client/app/Examples/Buttons/buttonsTemplate.html"
+};
+
+angular.module('examples').component('buttons', buttons);
+
 
 var common = {
     templateUrl: "src/client/app/Examples/Common/commonTemplate.html"
@@ -419,6 +432,11 @@ var adminLayoutExample = {
         vm.sideMenuItems = [{
             state: "home",
             linkText: "Home",
+            icon: "check",
+            requiresLogin: false
+        },{
+            state: "buttons",
+            linkText: "Buttons",
             icon: "check",
             requiresLogin: false
         },{
@@ -622,6 +640,19 @@ var selectListExamples = {
 
 angular.module('examples').component('selectListExamples', selectListExamples);
 
+var statusAlerts = {
+    controllerAs: 'vm',
+    controller: function(){
+        var vm = this;
+
+ 
+    },
+    templateUrl: "src/client/app/Examples/StatusAlerts/statusAlertsTemplate.html"
+};
+
+angular.module('examples').component('statusAlertExamples', statusAlerts);
+
+
 var tags = {
     controllerAs: 'vm',
     controller: function () {
@@ -650,19 +681,6 @@ var tags = {
 };
 
 angular.module('examples').component('tagsExamples', tags);
-
-var statusAlerts = {
-    controllerAs: 'vm',
-    controller: function(){
-        var vm = this;
-
- 
-    },
-    templateUrl: "src/client/app/Examples/StatusAlerts/statusAlertsTemplate.html"
-};
-
-angular.module('examples').component('statusAlertExamples', statusAlerts);
-
 
 var textEditorExample = {
     controllerAs: 'vm',

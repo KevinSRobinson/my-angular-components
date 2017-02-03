@@ -6,6 +6,12 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         controllerAs: "vm",
         template: '<home></home>'
     };
+    var buttonsState = {
+        name: 'buttons',
+        url: '/buttons',
+        controllerAs: "vm",
+        template: '<buttons></buttons>'
+    };
      var gridExamplesState = {
         name: 'grid',
         url: '/grid',
@@ -78,7 +84,7 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
 
     $locationProvider.html5Mode(true);
 
-    
+     $stateProvider.state(buttonsState);
     $stateProvider.state(datesExampleState);
     $stateProvider.state(selectListExamplesState);
     $stateProvider.state(gridExamplesState);
