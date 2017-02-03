@@ -14,12 +14,9 @@
 <div class="form-group">
     <!--field label-->
     <label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}       
-        {{vm.fieldName}}
     </label>
     <div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)">
         <!--Input Types-->
-       
-
         <div ng-if="!vm.readOnly" class="input-group">
             <!--TextBox-->
             <input ng-if="vm.inputType==='textbox'" ng-model="vm.ngModel" type="text" class="form-control" id="{{vm.fieldName}}" placeholder="{{vm.placeholder}}"
