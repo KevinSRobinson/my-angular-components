@@ -75,10 +75,14 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         url: '/firebase',
         template: '<firebase-examples></firebase-examples>'
     };
-
-    $locationProvider.html5Mode(true);
-
+    var exampleButtonsState = {
+        name: 'exampleButtons',
+        url: '/exampleButtons',
+        template: '<button-examples></button-examples>'
+    };
     
+
+    $stateProvider.state(exampleButtonsState);
     $stateProvider.state(datesExampleState);
     $stateProvider.state(selectListExamplesState);
     $stateProvider.state(gridExamplesState);
@@ -94,5 +98,8 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
     $stateProvider.state(modalsState);
     $stateProvider.state(tagsState);
 
+
+
+    $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
 });
