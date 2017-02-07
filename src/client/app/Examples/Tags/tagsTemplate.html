@@ -39,6 +39,11 @@
         </table>
     </my-panel>
     <div class="well">
+        <h4>Simple Tags </h4>
+        {{vm.simpleTags}}
+        <my-simple-tags-field field-label="Languages" items="vm.simpleTags" tooltip="Please Select a Language" 
+        ng-model="vm.selectedSimpleTags">
+        </my-simple-tags-field>
         <h4>Tags </h4>
         <my-select-field field-label="Languages" items="vm.tags" tooltip="Please Select a Language" ng-model="vm.selectedTags">
         </my-select-field>

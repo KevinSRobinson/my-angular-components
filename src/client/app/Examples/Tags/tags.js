@@ -3,9 +3,10 @@ var tags = {
     controller: function () {
         var vm = this;
 
-        vm.selectedCats = {};
-        vm.selectedTags = {};
-        
+        vm.selectedCats = [];
+        vm.selectedTags = [];
+        vm.selectedSimpleTags = [];
+
         vm.cats = [{
             id: 1,
             name: "Cat 1"
@@ -21,6 +22,9 @@ var tags = {
             id: 2,
             name: "c# "
         }];
+
+        vm.simpleTags = ['Blue', 'Green'];
+        
     },
     templateUrl: "src/client/app/Examples/Tags/tagsTemplate.html"
 };

@@ -1,0 +1,42 @@
+<style>
+    .popover {
+        min-width: 200px;
+    }
+    
+    .input-group {
+        width: 100% !important;
+    }
+
+</style>
+<div class="form-group">
+    <!--field label-->
+    <label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label>
+    <div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)">
+        <!--Input-->
+        <div ng-if="!vm.readOnly" class="input-group">
+
+            <!--select-->
+            <ui-select multiple ng-model="vm.ngModel" theme="bootstrap">
+                <ui-select-match placeholder="Select a Tag...">{{$item}}</ui-select-match>
+                <ui-select-choices repeat="item in (vm.items | filter: $select.search) track by $index">
+                   {{item}}
+                </ui-select-choices>
+            </ui-select>
+          
+            <!--tooltip-->
+            <span ng-show="vm.tooltip!==''" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover"
+                popover-trigger="'mouseenter'"><i class="fa fa-info"></i>
+            </span>
+        </div>
+        <!--Read Only display-->
+        <div ng-show="vm.readOnly">
+            <span ng-repeat="tag in vm.items  track by $index" class="badge">
+                {{tag}}
+            <span>
+        </div>
+ 
+        <!--HelpText-->
+        <p class="help-block">{{vm.helpText}}</p>
+    </div>
+</div>
+

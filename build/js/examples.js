@@ -264,17 +264,19 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
 });
 
 var buttonExamples = {
-       controllerAs: 'vm',
+    controllerAs: 'vm',
     controller: function () {
         var vm = this;
 
-    
+        vm.showMessage = function () {
+            alert('You clicked me!');
+        }
+
     },
     templateUrl: "src/client/app/Examples/Buttons/buttonExamplesTemplate.html"
 };
 
 angular.module('examples').component('buttonExamples', buttonExamples);
-
 
 var common = {
     templateUrl: "src/client/app/Examples/Common/commonTemplate.html"
@@ -673,9 +675,10 @@ var tags = {
     controller: function () {
         var vm = this;
 
-        vm.selectedCats = {};
-        vm.selectedTags = {};
-        
+        vm.selectedCats = [];
+        vm.selectedTags = [];
+        vm.selectedSimpleTags = [];
+
         vm.cats = [{
             id: 1,
             name: "Cat 1"
@@ -691,6 +694,9 @@ var tags = {
             id: 2,
             name: "c# "
         }];
+
+        vm.simpleTags = ['Blue', 'Green'];
+        
     },
     templateUrl: "src/client/app/Examples/Tags/tagsTemplate.html"
 };
