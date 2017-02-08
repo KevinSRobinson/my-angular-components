@@ -638,19 +638,7 @@ var selectListExamples = {
     controller: function () {
         var vm = this;
 
-        vm.items = [
-        {
-            "firstName": "Cox",
-            "lastName": "Carney"
-        },
-        {
-            "firstName": "Kevin",
-            "lastName": "Robinons"
-        },
-        {
-            "firstName": "Sean",
-            "lastName": "Robinons"
-        }];
+        vm.items = ["Carney", "Robinons", "Sean", "Robinons"];
     },
     templateUrl: "src/client/app/Examples/SelectLists/selectListExamplesTemplate.html"
 };

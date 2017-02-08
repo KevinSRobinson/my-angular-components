@@ -40,9 +40,6 @@ var mySelectField = {
 
         };
 
-
-
-
     },
     templateUrl: 'selectFieldTemplate.html'
 };
@@ -50,4 +47,3 @@ var mySelectField = {
 mySelectField.$inject = ['cssClassService'];
 
 angular.module('my-angular-components').component('mySelectField', mySelectField);
-
