@@ -5,7 +5,8 @@ var exampleForm = {
         vm.simulateError = false;
         vm.customerForm = {};
         vm.age = 99;
-        
+        vm.date = new Date();
+
         vm.status = {
             message: "",
             isError: false,

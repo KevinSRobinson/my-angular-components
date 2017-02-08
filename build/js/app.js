@@ -131,45 +131,6 @@ angular.module('my-angular-components').component('mySpinnerButton', mySpinnerBu
 
 
 
-var myFilterTextbox = {
-    bindings: {
-        placeholder: '@',
-        ngModel: '=',
-        fieldName: '@'
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.$onInit = function () {
-            vm.fieldName = 'filterTextBox';
-            vm.placeholder = 'Filter';
-        };
-
-
-    },
-    template:'<div class="input-group" style="display: flex"><input type="text" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}" id="{{vm.fieldName}}" class="form-control"> <button class="btn btn-default" id="searchFilter"><i class="glyphicon glyphicon-search"></i></button></div>'
-};
-
-
-angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
-
-var myPageTitle = {
-    transclude: "true",
-    bindings: {
-        icon: "@"
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-        
-        
-    },
-    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><div ng-transclude></div></i></h1>'
-};
-
-angular.module('my-angular-components').component('myPageTitle', myPageTitle);
-
 /**
  * 
  * @type {
@@ -276,6 +237,45 @@ var buildList = function () {
 myCategorySelect.$inject = ['$scope'];
 
 angular.module('my-angular-components').component('myCategorySelect', myCategorySelect);
+var myFilterTextbox = {
+    bindings: {
+        placeholder: '@',
+        ngModel: '=',
+        fieldName: '@'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            vm.fieldName = 'filterTextBox';
+            vm.placeholder = 'Filter';
+        };
+
+
+    },
+    template:'<div class="input-group" style="display: flex"><input type="text" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}" id="{{vm.fieldName}}" class="form-control"> <button class="btn btn-default" id="searchFilter"><i class="glyphicon glyphicon-search"></i></button></div>'
+};
+
+
+angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
+
+var myPageTitle = {
+    transclude: "true",
+    bindings: {
+        icon: "@"
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+        
+        
+    },
+    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><div ng-transclude></div></i></h1>'
+};
+
+angular.module('my-angular-components').component('myPageTitle', myPageTitle);
+
 /**
  * Date field component with Field Label, Date Popup, Help Popup
  */
@@ -352,6 +352,12 @@ var myInputField = {
         vm.cssClassService = cssClassService;
 
 
+
+        vm.dateFormats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        vm.format = vm.dateFormats[0];
+        vm.altInputFormats = ['M!/d!/yyyy'];
+
+
         vm.$onInit = function () {
 
             //defaults
@@ -392,7 +398,7 @@ var myInputField = {
 
 
     },
-    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n    \r\n    .input-group .form-control {\r\n        z-index: 100;\r\n    }\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><input ng-if="vm.inputType===\'textbox\'" ng-model="vm.ngModel" type="text" class="form-control" id="{{vm.fieldName}}" placeholder="{{vm.placeholder}}" required><input ng-if="vm.inputType===\'number\'" ng-model="vm.ngModel" type="number" class="form-control" id="{{vm.fieldName}}" required><input ng-if="vm.inputType===\'email\'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"><textarea ng-if="vm.inputType===\'textarea\'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea><input ng-if="vm.inputType===\'checkbox\'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel"><select ng-if="vm.inputType===\'select\'" ng-model="vm.ngModel" ng-options="item for item in vm.items"></select><input ng-if="vm.inputType===\'time\'" uib-timepicker ng-model="vm.ngModel" id="vm.fieldName" ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"><span ng-if="vm.inputType===\'datepopup\'"><input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"> <span class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></span></span><span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><p ng-if="vm.inputType!==\'checkbox\'">{{vm.ngModel}}</p><i ng-if="vm.inputType===\'checkbox\'" ng-show="vm.ngModel" class="fa fa-check fa-2x"></i></div><p class="help-block">{{vm.helpText}}</p></div></div>'
+    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n    \r\n    .input-group .form-control {\r\n        z-index: 100;\r\n    }\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><input ng-if="vm.inputType===\'textbox\'" ng-model="vm.ngModel" type="text" class="form-control" id="{{vm.fieldName}}" placeholder="{{vm.placeholder}}" required><input ng-if="vm.inputType===\'number\'" ng-model="vm.ngModel" type="number" class="form-control" id="{{vm.fieldName}}" required><input ng-if="vm.inputType===\'email\'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"><textarea ng-if="vm.inputType===\'textarea\'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea><input ng-if="vm.inputType===\'checkbox\'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel"><select ng-if="vm.inputType===\'select\'" ng-model="vm.ngModel" ng-options="item for item in vm.items"></select><input ng-if="vm.inputType===\'time\'" uib-timepicker ng-model="vm.ngModel" id="vm.fieldName" ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"><span ng-if="vm.inputType===\'datepopup\'"><input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%" ng-required="true" close-text="Close"> <span class="btn btn-default glyphicon glyphicon-calendar" ng-click="vm.open()"></span></span> <span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><p ng-if="vm.inputType!==\'checkbox\'">{{vm.ngModel}}</p><i ng-if="vm.inputType===\'checkbox\'" ng-show="vm.ngModel" class="fa fa-check fa-2x"></i></div><p class="help-block">{{vm.helpText}}</p></div></div>'
 };
 
 myInputField.$inject = ['cssClassService'];
@@ -501,6 +507,22 @@ mySelectField.$inject = ['cssClassService'];
 angular.module('my-angular-components').component('mySimpleTagsField', mySimpleTagsField);
 
 
+angular.module('my-angular-components').directive('markdown', function () {
+    var converter = new Showdown.converter();
+
+
+    var link = function (scope, element, attrs) {
+        attrs.$observe('markdown', function (value) {
+            var markup = converter.makeHtml(value);
+            element.html(markup);
+        });
+    };
+
+    return {
+        restrict: 'A',
+        link: link
+    };
+});
 
 var myRichTextEditor = {
     bindings: {
@@ -735,6 +757,51 @@ var myMorelessPanel = {
 
 angular.module('my-angular-components').component("myMorelessPanel", myMorelessPanel);
 
+var myStatusAlert = {
+    bindings: {
+        message: "@",
+        isError: "@"
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+
+        vm.$onInit = function () {
+            vm.message = "";
+            vm.isError = false;
+        };
+
+        vm.getClass = function () {
+            if (vm.isError === 'true')
+                return "errorMessage";
+            else
+                return "successMessage";
+        };
+
+        vm.getIcon = function () {
+            if (vm.isError === 'true')
+                return "fa fa-warning fa-2x";
+            else
+                return "fa fa-check fa-2x";
+        };
+
+        vm.getId = function () {
+            if (vm.isError === 'true')
+                return "errorMessage";
+            else
+                return "successMessage";
+        };
+       
+
+
+    },
+    template:'<div ng-class="vm.getClass()" id="getId()"><i class="vm.getIcon()"></i>{{vm.message}}</div>'
+};
+
+
+angular.module('my-angular-components').component('myStatusAlert', myStatusAlert);
+
 var myPanel = {
     transclude: true,
     bindings: {
@@ -824,51 +891,6 @@ var myPanel = {
 
 
 angular.module('my-angular-components').component('myPanel', myPanel);
-var myStatusAlert = {
-    bindings: {
-        message: "@",
-        isError: "@"
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-
-        vm.$onInit = function () {
-            vm.message = "";
-            vm.isError = false;
-        };
-
-        vm.getClass = function () {
-            if (vm.isError === 'true')
-                return "errorMessage";
-            else
-                return "successMessage";
-        };
-
-        vm.getIcon = function () {
-            if (vm.isError === 'true')
-                return "fa fa-warning fa-2x";
-            else
-                return "fa fa-check fa-2x";
-        };
-
-        vm.getId = function () {
-            if (vm.isError === 'true')
-                return "errorMessage";
-            else
-                return "successMessage";
-        };
-       
-
-
-    },
-    template:'<div ng-class="vm.getClass()" id="getId()"><i class="vm.getIcon()"></i>{{vm.message}}</div>'
-};
-
-
-angular.module('my-angular-components').component('myStatusAlert', myStatusAlert);
-
 /**
  * Date field component with Field Label, Date Popup, Help Popup
  */
@@ -1049,6 +1071,17 @@ var adminSideMenu = {
 
 angular.module('my-angular-components').component('adminSideMenu', adminSideMenu);
 
+var sideMenuFooter = {
+    bindings: {
+        links: '='
+    },
+    controllerAs: 'vm',
+    template:'<div class="sidebar-footer"><div class="col-xs-4"><a state="vm.links[0].state">{{vm.links[0].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[1].state">{{vm.links[1].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[2].state">{{vm.links[2].linkText}}</a></div></div>'
+};
+
+
+angular.module('my-angular-components').component('sideMenuFooter', sideMenuFooter);
+
 var adminSideMenuItems = {
     bindings: {
         menuItems: '='
@@ -1075,15 +1108,4 @@ var adminSideMenuItems = {
 adminSideMenuItems.$inject = ['$rootScope'];
 
 angular.module('my-angular-components').component('adminSideMenuItems', adminSideMenuItems);
-
-var sideMenuFooter = {
-    bindings: {
-        links: '='
-    },
-    controllerAs: 'vm',
-    template:'<div class="sidebar-footer"><div class="col-xs-4"><a state="vm.links[0].state">{{vm.links[0].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[1].state">{{vm.links[1].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[2].state">{{vm.links[2].linkText}}</a></div></div>'
-};
-
-
-angular.module('my-angular-components').component('sideMenuFooter', sideMenuFooter);
 }());

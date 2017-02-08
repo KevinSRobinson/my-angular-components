@@ -30,6 +30,12 @@ var myInputField = {
         vm.cssClassService = cssClassService;
 
 
+
+        vm.dateFormats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        vm.format = vm.dateFormats[0];
+        vm.altInputFormats = ['M!/d!/yyyy'];
+
+
         vm.$onInit = function () {
 
             //defaults
