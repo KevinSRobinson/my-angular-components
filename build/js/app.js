@@ -131,6 +131,45 @@ angular.module('my-angular-components').component('mySpinnerButton', mySpinnerBu
 
 
 
+var myFilterTextbox = {
+    bindings: {
+        placeholder: '@',
+        ngModel: '=',
+        fieldName: '@'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            vm.fieldName = 'filterTextBox';
+            vm.placeholder = 'Filter';
+        };
+
+
+    },
+    template:'<div class="input-group" style="display: flex"><input type="text" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}" id="{{vm.fieldName}}" class="form-control"> <button class="btn btn-default" id="searchFilter"><i class="glyphicon glyphicon-search"></i></button></div>'
+};
+
+
+angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
+
+var myPageTitle = {
+    transclude: "true",
+    bindings: {
+        icon: "@"
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+        
+        
+    },
+    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><div ng-transclude></div></i></h1>'
+};
+
+angular.module('my-angular-components').component('myPageTitle', myPageTitle);
+
 /**
  * 
  * @type {
@@ -237,45 +276,6 @@ var buildList = function () {
 myCategorySelect.$inject = ['$scope'];
 
 angular.module('my-angular-components').component('myCategorySelect', myCategorySelect);
-var myFilterTextbox = {
-    bindings: {
-        placeholder: '@',
-        ngModel: '=',
-        fieldName: '@'
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.$onInit = function () {
-            vm.fieldName = 'filterTextBox';
-            vm.placeholder = 'Filter';
-        };
-
-
-    },
-    template:'<div class="input-group" style="display: flex"><input type="text" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}" id="{{vm.fieldName}}" class="form-control"> <button class="btn btn-default" id="searchFilter"><i class="glyphicon glyphicon-search"></i></button></div>'
-};
-
-
-angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
-
-var myPageTitle = {
-    transclude: "true",
-    bindings: {
-        icon: "@"
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-        
-        
-    },
-    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><div ng-transclude></div></i></h1>'
-};
-
-angular.module('my-angular-components').component('myPageTitle', myPageTitle);
-
 /**
  * Date field component with Field Label, Date Popup, Help Popup
  */
@@ -501,22 +501,6 @@ mySelectField.$inject = ['cssClassService'];
 angular.module('my-angular-components').component('mySimpleTagsField', mySimpleTagsField);
 
 
-angular.module('my-angular-components').directive('markdown', function () {
-    var converter = new Showdown.converter();
-
-
-    var link = function (scope, element, attrs) {
-        attrs.$observe('markdown', function (value) {
-            var markup = converter.makeHtml(value);
-            element.html(markup);
-        });
-    };
-
-    return {
-        restrict: 'A',
-        link: link
-    };
-});
 
 var myRichTextEditor = {
     bindings: {
@@ -1065,17 +1049,6 @@ var adminSideMenu = {
 
 angular.module('my-angular-components').component('adminSideMenu', adminSideMenu);
 
-var sideMenuFooter = {
-    bindings: {
-        links: '='
-    },
-    controllerAs: 'vm',
-    template:'<div class="sidebar-footer"><div class="col-xs-4"><a state="vm.links[0].state">{{vm.links[0].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[1].state">{{vm.links[1].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[2].state">{{vm.links[2].linkText}}</a></div></div>'
-};
-
-
-angular.module('my-angular-components').component('sideMenuFooter', sideMenuFooter);
-
 var adminSideMenuItems = {
     bindings: {
         menuItems: '='
@@ -1102,4 +1075,15 @@ var adminSideMenuItems = {
 adminSideMenuItems.$inject = ['$rootScope'];
 
 angular.module('my-angular-components').component('adminSideMenuItems', adminSideMenuItems);
+
+var sideMenuFooter = {
+    bindings: {
+        links: '='
+    },
+    controllerAs: 'vm',
+    template:'<div class="sidebar-footer"><div class="col-xs-4"><a state="vm.links[0].state">{{vm.links[0].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[1].state">{{vm.links[1].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[2].state">{{vm.links[2].linkText}}</a></div></div>'
+};
+
+
+angular.module('my-angular-components').component('sideMenuFooter', sideMenuFooter);
 }());
