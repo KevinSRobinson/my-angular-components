@@ -19,6 +19,9 @@ var myInputField = {
         fieldName: '@',
         labelWidth: '@',
         inputWidth: "@",
+
+        //select
+        items: '='
     },
     controllerAs: 'vm',
     controller: function (cssClassService) {

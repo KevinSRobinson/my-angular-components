@@ -20,9 +20,13 @@
                     <span ng-bind="item.name"></span>
                 </ui-select-choices>
             </ui-select>
-            <select ng-if="vm.inputType==='combobox'" size="vm.size" multiple="vm.multiSelect" ng-model='vm.ngModel' class='form-control'
+            <select ng-if="vm.inputType==='combobox'" size="vm.size" multiple="false" ng-model='vm.ngModel' class='form-control'
                 id='{{vm.fieldName}}'>
                 <option ng-repeat='option in vm.items' ng-value='{{option.id}}'>{{option.name}}</option>
+            </select>
+            <select  size="vm.size" multiple="false" ng-model='vm.ngModel' class='form-control'
+                id='{{vm.fieldName}}'>
+                <option ng-repeat='option in vm.items' ng-value='{{option}}'>{{option}}</option>
             </select>
             <span ng-show="vm.tooltip!==''" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover"
                 popover-trigger="'mouseenter'"><i class="fa fa-info"></i>

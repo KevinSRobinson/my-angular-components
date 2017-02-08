@@ -15,20 +15,6 @@ var app = angular.module('my-angular-components', [
 app.$inject = ['ngAnimate', 'ngSanitize', 'ui.ace', 'ui.bootstrap', 'ui.select', 'ui.grid'];
 
 
-var app = angular.module('my-angular-components', [
-    //angular
-    'ngAnimate',
-    'ngSanitize',
-
-    //angular ui
-    'ui.ace',
-    'ui.bootstrap',
-    'ui.select',
-    'ui.grid',  
-]);
-app.$inject = ['ngAnimate', 'ngSanitize', 'ui.ace', 'ui.bootstrap', 'ui.select', 'ui.grid'];
-
-
 var cssClassService =  function () {
     
 
@@ -55,188 +41,6 @@ var cssClassService =  function () {
 };
 
 angular.module("my-angular-components").factory("cssClassService", cssClassService);
-var app = angular.module('my-angular-components', [
-    //angular
-    'ngAnimate',
-    'ngSanitize',
-
-    //angular ui
-    'ui.ace',
-    'ui.bootstrap',
-    'ui.select',
-    'ui.grid',  
-]);
-app.$inject = ['ngAnimate', 'ngSanitize', 'ui.ace', 'ui.bootstrap', 'ui.select', 'ui.grid'];
-
-
-var cssClassService =  function () {
-    
-
-     var getlabelClass = function (horizontal, labelWidth) {
-            if (horizontal === "true") {
-                return "control-label col-sm-" + labelWidth;
-            } else {
-                return "";
-            }
-        };
-
-        var getInputClass = function (horizontal, inputWidth) {
-            if (horizontal)
-                return  "col-sm-" + inputWidth;
-            else
-                return "";
-        };
-
-
-    return {
-        getlabelClass: getlabelClass,
-        getInputClass: getInputClass
-    };
-};
-
-angular.module("my-angular-components").factory("cssClassService", cssClassService);
-var app = angular.module('examples', ['my-angular-components', 'ngFabForm',
-
-    'ui.router',
-    'auth0.lock', 'angular-jwt', 'firebase',
-]);
-
-app.run(function ($rootScope, authService, lock) {
-
-    run.$inject = ['$rootScope', 'authService', 'lock'];
-
-    function run($rootScope, authService, lock) {
-        // Put the authService on $rootScope so its methods
-        // can be accessed from the nav bar
-        $rootScope.authService = authService;
-
-        // Register the authentication listener that is
-        // set up in auth.service.js
-        authService.registerAuthenticationListener();
-
-        // Register the synchronous hash parser
-        // when using UI Router
-        lock.interceptHash();
-    }
-});
-
-angular.module("examples").config(function ($locationProvider, $stateProvider, $httpProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
-
-    
-    var login = {
-        name: 'login',
-        url: '/login',
-        controllerAs: 'vm',
-        template: '<login></login>',
-    };
-
-    var logout = {
-        name: 'logout',
-        url: '/logout',
-        controller: function (authService) {
-            authService.logout();
-        },
-        template: '<h1>You have logged Out</h1>',
-        controllerAs: 'vm'
-    };
-
-
-
-    lockProvider.init({
-        clientID: 'UY5BHrujRwp7y1TZQl1Bif88aeeVRkrU',
-        domain: 'volunteernow.auth0.com',
-        options: {
-            auth: {
-                params: {
-                    scope: 'openid'
-                }
-            }
-        }
-    });
-
-    // Configuration for angular-jwt
-    jwtOptionsProvider.config({
-        tokenGetter: function () {
-            return localStorage.getItem('id_token');
-        },
-        whiteListedDomains: ['localhost'],
-        unauthenticatedRedirectPath: '/login'
-    });
-
-    $locationProvider.html5Mode(true);
-
-    // Add the jwtInterceptor to the array of HTTP interceptors
-    // so that JWTs are attached as Authorization headers
-    $httpProvider.interceptors.push('jwtInterceptor');
-
-
-    $stateProvider.state(login);
-    $stateProvider.state(logout);
- 
-    $urlRouterProvider.otherwise('/');
-});
-
-(function () {
-
-    'use strict';
-
-    angular
-        .module('examples')
-        .service('authService', authService);
-
-    function authService(lock, authManager, $q) {
-
-      
-
-
-        function login() {
-            lock.show();
-        }
-
-
-
-        function getProfileDeferred() {            
-            var userProfile = JSON.parse(localStorage.getItem('profile')) || null;
-            var deferredProfile = $q.defer();
-            if (userProfile) {
-                deferredProfile.resolve(userProfile);
-            }
-            return deferredProfile.promise;
-        }
-
-
-        // Set up the logic for when a user authenticates
-        // This method is called from app.run.js
-        function registerAuthenticationListener() {
-            lock.on('authenticated', function (authResult) {
-                console.log('----------------------');
-                console.log('-----------authenticated-----------');
-                localStorage.setItem('id_token', authResult.idToken);
-                authManager.authenticate();
-            });
-
-            lock.on('authenticated', function (authResult) {
-
-                lock.getProfile(authResult.idToken, function (error, profile) {
-                    if (error) {
-                        return console.log(error);
-                    }
-
-                    localStorage.setItem('profile', JSON.stringify(profile));
-                    deferredProfile.resolve(profile);
-                });
-
-            });
-        }
-
-        return {
-            login: login,
-            registerAuthenticationListener: registerAuthenticationListener,
-            getProfileDeferred: getProfileDeferred
-        }
-    }
-})();
-
 var myButton = {    
      bindings: {
         id: '@',
@@ -537,6 +341,9 @@ var myInputField = {
         fieldName: '@',
         labelWidth: '@',
         inputWidth: "@",
+
+        //select
+        items: '='
     },
     controllerAs: 'vm',
     controller: function (cssClassService) {
@@ -585,65 +392,12 @@ var myInputField = {
 
 
     },
-    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n    \r\n    .input-group .form-control {\r\n        z-index: 100;\r\n    }\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><input ng-if="vm.inputType===\'textbox\'" ng-model="vm.ngModel" type="text" class="form-control" id="{{vm.fieldName}}" placeholder="{{vm.placeholder}}" required><input ng-if="vm.inputType===\'number\'" ng-model="vm.ngModel" type="number" class="form-control" id="{{vm.fieldName}}" required><input ng-if="vm.inputType===\'email\'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"><textarea ng-if="vm.inputType===\'textarea\'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea><input ng-if="vm.inputType===\'checkbox\'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel"><input ng-if="vm.inputType===\'time\'" uib-timepicker ng-model="vm.ngModel" id="vm.fieldName" ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"><span ng-if="vm.inputType===\'datepopup\'"><input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"> <span class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></span></span><span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><p ng-if="vm.inputType!==\'checkbox\'">{{vm.ngModel}}</p><i ng-if="vm.inputType===\'checkbox\'" ng-show="vm.ngModel" class="fa fa-check fa-2x"></i></div><p class="help-block">{{vm.helpText}}</p></div></div>'
+    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n    \r\n    .input-group .form-control {\r\n        z-index: 100;\r\n    }\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><input ng-if="vm.inputType===\'textbox\'" ng-model="vm.ngModel" type="text" class="form-control" id="{{vm.fieldName}}" placeholder="{{vm.placeholder}}" required><input ng-if="vm.inputType===\'number\'" ng-model="vm.ngModel" type="number" class="form-control" id="{{vm.fieldName}}" required><input ng-if="vm.inputType===\'email\'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"><textarea ng-if="vm.inputType===\'textarea\'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea><input ng-if="vm.inputType===\'checkbox\'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel"><select ng-if="vm.inputType===\'select\'" ng-model="vm.ngModel" ng-options="item for item in vm.items"></select><input ng-if="vm.inputType===\'time\'" uib-timepicker ng-model="vm.ngModel" id="vm.fieldName" ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"><span ng-if="vm.inputType===\'datepopup\'"><input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"> <span class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></span></span><span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><p ng-if="vm.inputType!==\'checkbox\'">{{vm.ngModel}}</p><i ng-if="vm.inputType===\'checkbox\'" ng-show="vm.ngModel" class="fa fa-check fa-2x"></i></div><p class="help-block">{{vm.helpText}}</p></div></div>'
 };
 
 myInputField.$inject = ['cssClassService'];
 
 angular.module('my-angular-components').component('myInputField', myInputField);
-
-var mySelectField = {
-    bindings: {
-        fieldLabel: '@',
-        fieldName: '@',
-        labelWidth: '@',
-        SelectWidth: "@",
-        ngModel: '=',
-        required: '@',
-        tooltip: '@',
-        helpText: '@',
-        readOnly: '@',
-        horizontal: '@',
-        items: '=',
-        inputType: '@',
-        size: "@",
-        multiSelect: "@"
-    },
-    controllerAs: 'vm',
-    controller: function (cssClassService) {
-        var vm = this;
-
-        vm.cssClassService = cssClassService;
-
-
-
-        vm.$onInit = function () {
-
-            //defaults
-            vm.inputType = "tags";
-            vm.required = false;
-            vm.horizontal = false;
-            vm.labelWidth = 3;
-            vm.inputWidth = 9;
-            vm.readOnly = false;
-            vm.horizontal = false;
-            vm.tooltip = "";
-            vm.placeholder = "";
-            vm.helpText = "";
-            vm.multiSelect = false;
-
-        };
-
-
-
-
-    },
-    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><ui-select ng-if="vm.inputType===\'tags\'" multiple ng-model="vm.ngModel" theme="bootstrap"><ui-select-match placeholder="Select a Tag...">{{$item.name}}</ui-select-match><ui-select-choices repeat="item in (vm.items | filter: $select.search) track by item.id"><span ng-bind="item.name"></span></ui-select-choices></ui-select><select ng-if="vm.inputType===\'combobox\'" size="vm.size" multiple="vm.multiSelect" ng-model="vm.ngModel" class="form-control" id="{{vm.fieldName}}"><option ng-repeat="option in vm.items" ng-value="{{option.id}}">{{option.name}}</option></select><span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><span ng-repeat="tag in vm.items" class="badge">{{tag.name}} <span></span></span></div><p class="help-block">{{vm.helpText}}</p></div></div>'
-};
-
-mySelectField.$inject = ['cssClassService'];
-
-angular.module('my-angular-components').component('mySelectField', mySelectField);
 
 
 var mySimpleTagsField = {
@@ -1037,32 +791,6 @@ var myPanel = {
 
 
 angular.module('my-angular-components').component('myPanel', myPanel);
-var mySelectList = {
-    bindings: {
-        ngModel: '=',
-        items: '=',
-        fieldLabel: '@',
-        fieldName: '@'
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.$onInit = function () {
-            vm.items = [];
-            vm.fieldLabel = 'You can set this text using field-label';
-            vm.fieldName = 'mySelectField';
-            vm.ngModel = 'null';
-        };
-
-    },
-    template:'<div class="form-group"><label class="control-label" style="min-width: 110px; text-align: left">{{vm.fieldLabel}}</label><select ng-model="vm.ngModel" class="form-control" id="{{vm.fieldName}}"><option ng-repeat="option in vm.items" value="{{option.Id}}">{{option.Id}}</option></select></div>'
-
-};
-
-
-angular.module('my-angular-components').component('mySelectList', mySelectList);
-
 var myStatusAlert = {
     bindings: {
         message: "@",

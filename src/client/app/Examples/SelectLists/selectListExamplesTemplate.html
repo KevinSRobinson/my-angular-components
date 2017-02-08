@@ -1,4 +1,7 @@
 <h1>Selected Items</h1>
-Selected : {{vm.selected}}
+Selected : {{vm.selected}}<br>
+Items : {{vm.items}}<br>
 
-<my-select-list field-label="Slect a option" items="vm.items" ng-model="vm.selected"><my-select-list>
+<my-input-field field-label="Slect a option" 
+        input-type="select"
+        items="vm.items" ng-model="vm.selected"><my-input-field>
