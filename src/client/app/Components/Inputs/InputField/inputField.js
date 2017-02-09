@@ -42,8 +42,11 @@ var myInputField = {
             if(!angular.isDefined(vm.fieldName)){
                vm.fieldName = vm.fieldLabel.replace(" ", "").toLowerCase();           
             }
-
-            vm.inputType = 'textbox';
+            
+            if(angular.isUndefined(vm.inputType)){
+               vm.inputType = 'textbox';       
+            }
+               
             
             vm.required = false;
             vm.horizontal = false;
@@ -61,16 +64,13 @@ var myInputField = {
             vm.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
             vm.format = vm.formats[0];
             vm.isOpened = false;
-            vm.dateOptions = {
-                formatYear: 'yy',
-                maxDate: new Date(2020, 5, 22),
-                minDate: new Date(),
-                startingDay: 1
-            };
-
+      
+            console.log(vm.inputType);
             //dates 
-            if(vm.inputType = 'datepopup'){
-                vm.ngModel = new Date(vm.ngModel);
+            if(vm.inputType === 'datepopup'){
+                console.log("This  is a date");
+
+                vm.ngModelDate = new Date(vm.ngModel);
             }
         };
 

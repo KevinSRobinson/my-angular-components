@@ -364,8 +364,11 @@ var myInputField = {
             if(!angular.isDefined(vm.fieldName)){
                vm.fieldName = vm.fieldLabel.replace(" ", "").toLowerCase();           
             }
-
-            vm.inputType = 'textbox';
+            
+            if(angular.isUndefined(vm.inputType)){
+               vm.inputType = 'textbox';       
+            }
+               
             
             vm.required = false;
             vm.horizontal = false;
@@ -383,16 +386,13 @@ var myInputField = {
             vm.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
             vm.format = vm.formats[0];
             vm.isOpened = false;
-            vm.dateOptions = {
-                formatYear: 'yy',
-                maxDate: new Date(2020, 5, 22),
-                minDate: new Date(),
-                startingDay: 1
-            };
-
+      
+            console.log(vm.inputType);
             //dates 
-            if(vm.inputType = 'datepopup'){
-                vm.ngModel = new Date(vm.ngModel);
+            if(vm.inputType === 'datepopup'){
+                console.log("This  is a date");
+
+                vm.ngModelDate = new Date(vm.ngModel);
             }
         };
 
@@ -403,7 +403,7 @@ var myInputField = {
 
 
     },
-    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n    \r\n    .input-group .form-control {\r\n        z-index: 100;\r\n    }\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><input ng-if="vm.inputType===\'textbox\'" ng-model="vm.ngModel" type="text" class="form-control" id="{{vm.fieldName}}" placeholder="{{vm.placeholder}}" required><input ng-if="vm.inputType===\'number\'" ng-model="vm.ngModel" type="number" class="form-control" id="{{vm.fieldName}}" required><input ng-if="vm.inputType===\'email\'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"><textarea ng-if="vm.inputType===\'textarea\'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea><input ng-if="vm.inputType===\'checkbox\'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel"><select ng-if="vm.inputType===\'select\'" ng-model="vm.ngModel" ng-options="item for item in vm.items"></select><input ng-if="vm.inputType===\'time\'" uib-timepicker ng-model="vm.ngModel" id="vm.fieldName" ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"><span ng-if="vm.inputType===\'datepopup\'"><input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%" ng-required="true" close-text="Close"> <span class="btn btn-default glyphicon glyphicon-calendar" ng-click="vm.open()"></span></span> <span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><p ng-if="vm.inputType!==\'checkbox\'">{{vm.ngModel}}</p><i ng-if="vm.inputType===\'checkbox\'" ng-show="vm.ngModel" class="fa fa-check fa-2x"></i></div><p class="help-block">{{vm.helpText}}</p></div></div>'
+    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n    \r\n    .input-group .form-control {\r\n        z-index: 100;\r\n    }\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><input ng-if="vm.inputType===\'textbox\'" ng-model="vm.ngModel" type="text" class="form-control" id="{{vm.fieldName}}" placeholder="{{vm.placeholder}}" required><input ng-if="vm.inputType===\'number\'" ng-model="vm.ngModel" type="number" class="form-control" id="{{vm.fieldName}}" required><input ng-if="vm.inputType===\'email\'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"><textarea ng-if="vm.inputType===\'textarea\'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea><input ng-if="vm.inputType===\'checkbox\'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel"><select ng-if="vm.inputType===\'select\'" ng-model="vm.ngModel" ng-options="item for item in vm.items"></select><input ng-if="vm.inputType===\'time\'" uib-timepicker ng-model="vm.ngModel" id="vm.fieldName" ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"><span ng-if="vm.inputType===\'datepopup\'"><input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModelDate" is-open="vm.isOpened" style="width: 82%" ng-required="true" close-text="Close"> <span class="btn btn-default glyphicon glyphicon-calendar" ng-click="vm.open()"></span></span> <span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><p ng-if="vm.inputType!==\'checkbox\'">{{vm.ngModel}}</p><i ng-if="vm.inputType===\'checkbox\'" ng-show="vm.ngModel" class="fa fa-check fa-2x"></i></div><p class="help-block">{{vm.helpText}}</p></div></div>'
 };
 
 myInputField.$inject = ['cssClassService'];
@@ -636,6 +636,46 @@ var myInfoPanel = {
 
 angular.module('my-angular-components').component('myInfoPanel', myInfoPanel);
 
+var myMoreLessButton = {
+    bindings: {
+        id: '@',
+        buttonText: '@',
+        click: '&',
+        cssClass: '@',
+        isCollapsed: '='
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        'use strict';
+        var vm = this;
+
+
+        vm.$onInit = function () {
+            //defaults
+            vm.buttonText = 'More Search Options';
+        };
+
+
+        vm.getButtonText = function () {
+            if (vm.isCollapsed) {
+                return 'More Search Options';
+            } else {
+                return 'Fewer Search Options';
+            }
+        };
+
+        vm.getButtonIcon = function () {
+            if (vm.isCollapsed) {
+                return 'fa fa-arrow-down';
+            } else {
+                return 'fa fa-arrow-up';
+            }
+        };
+    },
+    template:'<button type="button" class="{{vm.cssClass}" id="{{vm.id}}" ng-click="vm.isCollapsed = !vm.isCollapsed"><i ng-class="vm.getButtonIcon()" aria-hidden="true"></i>{{vm.getButtonText() }}</button>'
+};
+
+angular.module('my-angular-components').component('myMoreLessButton', myMoreLessButton);
 
 var myMorelessPanel = {
     transclude: true,
@@ -1006,36 +1046,6 @@ var userOptionsDropDownMenu = {
 
 angular.module('my-angular-components').component('userOptionsDropDownMenu', userOptionsDropDownMenu);
 
-var adminSideMenu = {
-    transclude: true,
-    bindings: {
-        colapsed: '=',
-        sideMenuItems:'=',
-        footerLinks: '='
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        'use strict';
-
-        var vm = this;
-        
-        vm.$onInit = function () {
-            vm.colapsed = true;
-        };
-
-        vm.toggleSidebar = function () {
-            vm.colapsed = !vm.colapsed;
-            //todo: Add to local storage
-            // $cookieStore.put('toggle', $scope.toggle);
-        };
-
-    },
-    template:'<ul class="sidebar"><li class="sidebar-main"><a ng-click="vm.toggleSidebar()">Dashboard <span class="fa fa-switch"></span></a></li><admin-side-menu-items menu-items="vm.sideMenuItems"></admin-side-menu-items></ul><side-menu-footer links="vm.footerLinks"></side-menu-footer>'
-};
-
-
-angular.module('my-angular-components').component('adminSideMenu', adminSideMenu);
-
 var sideMenuFooter = {
     bindings: {
         links: '='
@@ -1073,4 +1083,34 @@ var adminSideMenuItems = {
 adminSideMenuItems.$inject = ['$rootScope'];
 
 angular.module('my-angular-components').component('adminSideMenuItems', adminSideMenuItems);
+
+var adminSideMenu = {
+    transclude: true,
+    bindings: {
+        colapsed: '=',
+        sideMenuItems:'=',
+        footerLinks: '='
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        'use strict';
+
+        var vm = this;
+        
+        vm.$onInit = function () {
+            vm.colapsed = true;
+        };
+
+        vm.toggleSidebar = function () {
+            vm.colapsed = !vm.colapsed;
+            //todo: Add to local storage
+            // $cookieStore.put('toggle', $scope.toggle);
+        };
+
+    },
+    template:'<ul class="sidebar"><li class="sidebar-main"><a ng-click="vm.toggleSidebar()">Dashboard <span class="fa fa-switch"></span></a></li><admin-side-menu-items menu-items="vm.sideMenuItems"></admin-side-menu-items></ul><side-menu-footer links="vm.footerLinks"></side-menu-footer>'
+};
+
+
+angular.module('my-angular-components').component('adminSideMenu', adminSideMenu);
 }());

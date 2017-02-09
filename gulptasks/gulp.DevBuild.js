@@ -17,6 +17,8 @@ var inject = function(){
             //inject css files
             .pipe($.inject(gulp.src(config.css)))
 
+             .pipe($.inject(gulp.src(config.js)))
+
             //save in temp
             .pipe(gulp.dest(config.src));
 };
