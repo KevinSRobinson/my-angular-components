@@ -362,29 +362,6 @@ var exampleForm = {
 
 angular.module('examples').component('exampleForm', exampleForm);
 
-var firebaseExamples = {
-    controllerAs: 'vm',
-    controller: function ($scope, authService, $firebaseObject, $firebaseArray) {
-        var vm = this;
-        var ref = firebase.database().ref();
-        //var ref = new Firebase("https://quiz-fd4f2.firebaseio.com/");
-        vm.array = $firebaseObject(ref);
-        var ref = firebase.database().ref().child("Contacts");
-        $scope.messages = $firebaseArray(ref);
-        // add new items to the array
-        // the message is automatically added to our Firebase database!
-        $scope.addMessage = function (message) {
-            console.log(message);
-            $scope.messages.$add({
-                firstname: message
-            });
-        };
-    },
-    templateUrl: "src/client/app/Examples/Firebase/firebaseTemplate.html"
-};
-
-angular.module("examples").component('firebaseExamples', firebaseExamples);
-
 var gridExamples = {
     controllerAs: 'vm',
     controller: function () {
@@ -408,6 +385,29 @@ var gridExamples = {
 };
 
 angular.module('examples').component('gridExamples', gridExamples);
+
+var firebaseExamples = {
+    controllerAs: 'vm',
+    controller: function ($scope, authService, $firebaseObject, $firebaseArray) {
+        var vm = this;
+        var ref = firebase.database().ref();
+        //var ref = new Firebase("https://quiz-fd4f2.firebaseio.com/");
+        vm.array = $firebaseObject(ref);
+        var ref = firebase.database().ref().child("Contacts");
+        $scope.messages = $firebaseArray(ref);
+        // add new items to the array
+        // the message is automatically added to our Firebase database!
+        $scope.addMessage = function (message) {
+            console.log(message);
+            $scope.messages.$add({
+                firstname: message
+            });
+        };
+    },
+    templateUrl: "src/client/app/Examples/Firebase/firebaseTemplate.html"
+};
+
+angular.module("examples").component('firebaseExamples', firebaseExamples);
 
 var home = {
     templateUrl: "src/client/app/Examples/Home/homeTemplate.html"
@@ -659,21 +659,6 @@ var statusAlerts = {
 angular.module('examples').component('statusAlertExamples', statusAlerts);
 
 
-var textEditorExample = {
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.sampleText = "+ item      - subitem" +
-            "The HTML has a superfluous newline before this" +
-            "paragraph." +
-            "- subitem";
-    },
-    templateUrl: "src/client/app/Examples/TextEditor/textEditorExampleTemplate.html"
-};
-
-angular.module('examples').component('textEditorExample', textEditorExample);
-
 var tags = {
     controllerAs: 'vm',
     controller: function () {
@@ -706,6 +691,21 @@ var tags = {
 };
 
 angular.module('examples').component('tagsExamples', tags);
+
+var textEditorExample = {
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.sampleText = "+ item      - subitem" +
+            "The HTML has a superfluous newline before this" +
+            "paragraph." +
+            "- subitem";
+    },
+    templateUrl: "src/client/app/Examples/TextEditor/textEditorExampleTemplate.html"
+};
+
+angular.module('examples').component('textEditorExample', textEditorExample);
 
 var userProfileExample = {
     controllerAs: 'vm',

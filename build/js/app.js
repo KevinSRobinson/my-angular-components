@@ -41,34 +41,6 @@ var cssClassService =  function () {
 };
 
 angular.module("my-angular-components").factory("cssClassService", cssClassService);
-var myCreateButton = {
-    bindings: {
-        id: '@',
-        buttonText: '@',
-        click: '&',
-        cssClass:'@'
-    },
-    controllerAs: 'vm',
-    controller: function(){
-        var vm = this;
-      
-        vm.$onInit = function () {
-            //default options
-            vm.id = 'create';
-            vm.buttonText = 'Create';
-            vm.icon = 'plus';
-            vm.cssClass = 'btn btn-success';
-        };       
-    },
-    template:'<div class="{{vm.cssClass}" id="{{vm.id}}" ng-click="vm.click()">{{vm.buttonText}}<i class="fa fa-{{vm.icon}}"></i></div>'
-};
-
-
-angular.module('my-angular-components').component('myCreateButton', myCreateButton);
-
-
-
-
 var myButton = {    
      bindings: {
         id: '@',
@@ -102,6 +74,63 @@ var myButton = {
 }
 
 angular.module('my-angular-components').component('myButton', myButton);
+var myCreateButton = {
+    bindings: {
+        id: '@',
+        buttonText: '@',
+        click: '&',
+        cssClass:'@'
+    },
+    controllerAs: 'vm',
+    controller: function(){
+        var vm = this;
+      
+        vm.$onInit = function () {
+            //default options
+            vm.id = 'create';
+            vm.buttonText = 'Create';
+            vm.icon = 'plus';
+            vm.cssClass = 'btn btn-success';
+        };       
+    },
+    template:'<div class="{{vm.cssClass}" id="{{vm.id}}" ng-click="vm.click()">{{vm.buttonText}}<i class="fa fa-{{vm.icon}}"></i></div>'
+};
+
+
+angular.module('my-angular-components').component('myCreateButton', myCreateButton);
+
+
+
+
+var mySpinnerButton = {
+    bindings: {
+        buttonText:'@',
+        saving: '=',
+        isDisabled:'='
+    },
+    controllerAs: 'vm',
+    controller: function(){
+        var vm = this;
+      
+        vm.$onInit = function () {
+            //default options
+            // vm.id = 'spinnerButton';
+            // vm.ngModel = 'Cliock';
+            // vm.icon = 'fa fa-circle-o-notch';
+            // vm.cssClass = 'btn btn-success';
+             vm.saving = false;
+             vm.isDisabled = false;
+        };       
+    },
+    template:'<button id="{{vm.id}}" class="btn btn-success" ng-click="vm.click()" ng-disabled="vm.isDisabled">{{vm.buttonText}}<i class="fa fa-circle-o-notch fa-spin" ng-if="vm.saving"></i></button>'
+};
+
+
+angular.module('my-angular-components').component('mySpinnerButton', mySpinnerButton);
+
+
+
+
 /**
  * 
  * @type {
@@ -208,35 +237,6 @@ var buildList = function () {
 myCategorySelect.$inject = ['$scope'];
 
 angular.module('my-angular-components').component('myCategorySelect', myCategorySelect);
-var mySpinnerButton = {
-    bindings: {
-        buttonText:'@',
-        saving: '=',
-        isDisabled:'='
-    },
-    controllerAs: 'vm',
-    controller: function(){
-        var vm = this;
-      
-        vm.$onInit = function () {
-            //default options
-            // vm.id = 'spinnerButton';
-            // vm.ngModel = 'Cliock';
-            // vm.icon = 'fa fa-circle-o-notch';
-            // vm.cssClass = 'btn btn-success';
-             vm.saving = false;
-             vm.isDisabled = false;
-        };       
-    },
-    template:'<button id="{{vm.id}}" class="btn btn-success" ng-click="vm.click()" ng-disabled="vm.isDisabled">{{vm.buttonText}}<i class="fa fa-circle-o-notch fa-spin" ng-if="vm.saving"></i></button>'
-};
-
-
-angular.module('my-angular-components').component('mySpinnerButton', mySpinnerButton);
-
-
-
-
 var myFilterTextbox = {
     bindings: {
         placeholder: '@',
@@ -550,57 +550,6 @@ var myRichTextEditor = {
 
 angular.module('my-angular-components').component('myRichTextEditor', myRichTextEditor);
 
-var myModalButtons = {
-    bindings: {
-        save: '&',
-        close: '&',
-        saveText: '@',
-        saveVisible: '@',
-        closeVisible: '@',
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.$onInit = function () {
-            //defaults        
-            vm.saveText = 'Save';
-            vm.closeText = 'Close';
-
-            vm.saveVisible = true;
-            vm.closeVisible = true;
-        };
-
-    },
-    template:'<div class="modal-footer"><span><button class="btn btn-primary btn-large pull-left" ng-if="vm.saveVisible" id="save" ng-click="vm.save()" type="submit">{{vm.saveText}}</button><button class="btn btn-default pull-left" ng-if="vm.closeVisible" id="close" ng-click="vm.close()" type="button">{{vm.closeText}}</button></span></div>'
-};
-
-angular.module('my-angular-components').component('myModalButtons', myModalButtons);
-
-//Todo: Allow customize header size
-var myModalHeader = {
-    bindings: {
-        id: '@',
-        title: '@'
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.$onInit = function () {
-            //defaults
-            vm.title = 'Set this text using the title property';
-            vm.id = 'modalHeader';
-        };
-
-
-    },
-    template:'<div class="modal-header" id="vm.id"><h3 class="modal-title">{{vm.title}}</h3></div>'
-};
-
-
-var app = angular.module('my-angular-components').component('myModalHeader', myModalHeader);
-
 var myInfoPanel = {
     bindings: {
         infoText: '@',
@@ -851,6 +800,57 @@ var myPanel = {
 
 
 angular.module('my-angular-components').component('myPanel', myPanel);
+var myModalButtons = {
+    bindings: {
+        save: '&',
+        close: '&',
+        saveText: '@',
+        saveVisible: '@',
+        closeVisible: '@',
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            //defaults        
+            vm.saveText = 'Save';
+            vm.closeText = 'Close';
+
+            vm.saveVisible = true;
+            vm.closeVisible = true;
+        };
+
+    },
+    template:'<div class="modal-footer"><span><button class="btn btn-primary btn-large pull-left" ng-if="vm.saveVisible" id="save" ng-click="vm.save()" type="submit">{{vm.saveText}}</button><button class="btn btn-default pull-left" ng-if="vm.closeVisible" id="close" ng-click="vm.close()" type="button">{{vm.closeText}}</button></span></div>'
+};
+
+angular.module('my-angular-components').component('myModalButtons', myModalButtons);
+
+//Todo: Allow customize header size
+var myModalHeader = {
+    bindings: {
+        id: '@',
+        title: '@'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            //defaults
+            vm.title = 'Set this text using the title property';
+            vm.id = 'modalHeader';
+        };
+
+
+    },
+    template:'<div class="modal-header" id="vm.id"><h3 class="modal-title">{{vm.title}}</h3></div>'
+};
+
+
+var app = angular.module('my-angular-components').component('myModalHeader', myModalHeader);
+
 var myStatusAlert = {
     bindings: {
         message: "@",
@@ -1076,17 +1076,6 @@ var adminSideMenu = {
 
 angular.module('my-angular-components').component('adminSideMenu', adminSideMenu);
 
-var sideMenuFooter = {
-    bindings: {
-        links: '='
-    },
-    controllerAs: 'vm',
-    template:'<div class="sidebar-footer"><div class="col-xs-4"><a state="vm.links[0].state">{{vm.links[0].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[1].state">{{vm.links[1].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[2].state">{{vm.links[2].linkText}}</a></div></div>'
-};
-
-
-angular.module('my-angular-components').component('sideMenuFooter', sideMenuFooter);
-
 var adminSideMenuItems = {
     bindings: {
         menuItems: '='
@@ -1113,4 +1102,15 @@ var adminSideMenuItems = {
 adminSideMenuItems.$inject = ['$rootScope'];
 
 angular.module('my-angular-components').component('adminSideMenuItems', adminSideMenuItems);
+
+var sideMenuFooter = {
+    bindings: {
+        links: '='
+    },
+    controllerAs: 'vm',
+    template:'<div class="sidebar-footer"><div class="col-xs-4"><a state="vm.links[0].state">{{vm.links[0].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[1].state">{{vm.links[1].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[2].state">{{vm.links[2].linkText}}</a></div></div>'
+};
+
+
+angular.module('my-angular-components').component('sideMenuFooter', sideMenuFooter);
 }());
