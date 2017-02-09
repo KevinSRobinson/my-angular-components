@@ -30,17 +30,26 @@ var myInputField = {
         vm.cssClassService = cssClassService;
 
 
-
+        //Clean these or expose this as an option
         vm.dateFormats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
         vm.format = vm.dateFormats[0];
         vm.altInputFormats = ['M!/d!/yyyy'];
 
-        $scope.$watch("vm.ngModel", function () {
+
+
+        //Listen for chanes to ngModel 
+        
+        vm.unbind = $scope.$watch("vm.ngModel", function () {
             if (angular.isDefined(vm.ngModel)) {
                 if (vm.inputType === 'datepopup') {
+                    //convert to Date
+                    //this helps when binding javascript dates
                     vm.ngModel = new Date(vm.ngModel);
+
+                    //remove watch
+                    vm.unbind();
                 }
-            };
+            }
         })
 
         vm.$onInit = function () {
@@ -71,10 +80,6 @@ var myInputField = {
             vm.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
             vm.format = vm.formats[0];
             vm.isOpened = false;
-
-            console.log(vm.inputType);
-            //dates 
-
         };
 
         // open the date popup
