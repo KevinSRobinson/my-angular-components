@@ -24,11 +24,13 @@
                     required="vm.required">
         </my-input-field>
 
-                    <my-input-field field-label="About Me" input-type="textarea" ng-model="vm.aboutMe" placeholder="Enter a description about yourself">
-                    </my-input-field>
-                    <my-input-field field-label="Simulate Error" input-type="checkbox" ng-model="vm.simulateError" placeholder="Enter a description about yourself">
-                    </my-input-field>
-                    <!--<my-input-field field-label="Start Date" input-type="date" ng-model="vm.sampleDate" placeholder="Enter a description about yourself">
-        </my-input-field>-->
+        <my-input-field field-label="About Me" input-type="textarea" ng-model="vm.aboutMe" placeholder="Enter a description about yourself">
+        </my-input-field>
+
+        <my-input-field field-label="Simulate Error" input-type="checkbox" 
+        ng-model="vm.simulateError" placeholder="Enter a description about yourself">
+        </my-input-field>
+                   
+         <my-input-field input-type='select' items="vm.exampleOptions" field-label='Options' ng-model='vm.selectedOptions'></my-input-field>          
     </form>
 </div>

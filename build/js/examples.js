@@ -301,10 +301,11 @@ var exampleForm = {
     controllerAs: 'vm',
     controller: function (ngFabForm, $timeout) {
         var vm = this;
-        vm.simulateError = false;
+        vm.simulateError = true;
         vm.customerForm = {};
         vm.age = 99;
         vm.date = '2017-02-08T00:00:00.000Z';
+        vm.exampleOptions = ['Option 1', 'OPtion 2'];
 
         vm.status = {
             message: "",

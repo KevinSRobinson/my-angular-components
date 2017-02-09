@@ -30,7 +30,7 @@
             <!--CheckBox-->
             <input ng-if="vm.inputType==='checkbox'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel" />
             <!--Combobox-->            
-            <select ng-if="vm.inputType==='select'" ng-model="vm.ngModel" ng-options="item for item in vm.items"></select>
+            <select ng-if="vm.inputType==='select'" class="form-control" ng-model="vm.ngModel" ng-options="item for item in vm.items"></select>
             <!--Time-->
             <input ng-if="vm.inputType==='time'" uib-timepicker ng-model="vm.ngModel"  id="vm.fieldName"    ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian">
             <!--Date-->
