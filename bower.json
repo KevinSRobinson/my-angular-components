@@ -34,7 +34,8 @@
     "bootstrap": "^3.3.7",
     "angularfire": "^2.2.0",
     "firebase": "^3.6.5",
-    "bardjs": "^0.1.8"
+    "bardjs": "^0.1.8",
+    "angular-bootstrap-checkbox": "^0.5.0"
   },
   "resolutions": {
     "angular": "1.5.9"

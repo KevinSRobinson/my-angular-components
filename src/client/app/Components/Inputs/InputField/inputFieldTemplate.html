@@ -10,6 +10,67 @@
     .input-group .form-control {
         z-index: 100;
     }
+
+
+
+    .checkbox label:after, 
+.radio label:after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+.checkbox .cr,
+.radio .cr {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #a9a9a9;
+    border-radius: .25em;
+    width: 1.3em;
+    height: 1.3em;
+    float: left;
+    margin-right: .5em;
+}
+
+.radio .cr {
+    border-radius: 50%;
+}
+
+.checkbox .cr .cr-icon,
+.radio .cr .cr-icon {
+    position: absolute;
+    font-size: .8em;
+    line-height: 0;
+    top: 50%;
+    left: 20%;
+}
+
+.radio .cr .cr-icon {
+    margin-left: 0.04em;
+}
+
+.checkbox label input[type="checkbox"],
+.radio label input[type="radio"] {
+    display: none;
+}
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon,
+.radio label input[type="radio"] + .cr > .cr-icon {
+    transform: scale(3) rotateZ(-20deg);
+    opacity: 0;
+    transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+.radio label input[type="radio"]:checked + .cr > .cr-icon {
+    transform: scale(1) rotateZ(0deg);
+    opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .cr,
+.radio label input[type="radio"]:disabled + .cr {
+    opacity: .5;
+}
 </style>
 <div class="form-group">
     <!--field label-->
@@ -28,7 +89,7 @@
             <!--TextArea-->
             <textarea ng-if="vm.inputType==='textarea'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea>
             <!--CheckBox-->
-            <input ng-if="vm.inputType==='checkbox'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel" />
+            <checkbox large class="btn-default" ng-if="vm.inputType==='checkbox'" ng-model="vm.ngModel"></checkbox>
             <!--Combobox-->            
             <select ng-if="vm.inputType==='select'" class="form-control" ng-model="vm.ngModel" ng-options="item for item in vm.items"></select>
             <!--Time-->
