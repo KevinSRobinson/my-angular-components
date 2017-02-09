@@ -1,16 +1,31 @@
 var myStatusAlert = {
     bindings: {
         message: "@",
-        isError: "@"
+        isError: "@",
+        timeout: '@'
     },
     controllerAs: 'vm',
-    controller: function () {
+    controller: function ($scope, $timeout) {
         var vm = this;
+        vm.timeout = 2000,
 
+
+
+        $scope.$watch("vm.message", function (oldValue, newValue) {
+            console.log('old = ', oldValue);
+            console.log('new = ', newValue);
+              vm.show = true;
+            if (oldValue !== newValue) {
+                $timeout(function () {
+                    vm.show = false;
+                }, vm.timeout);
+            }
+        });
 
         vm.$onInit = function () {
             vm.message = "";
             vm.isError = false;
+            vm.show = false;
         };
 
         vm.getClass = function () {
@@ -33,12 +48,13 @@ var myStatusAlert = {
             else
                 return "successMessage";
         };
-       
+
 
 
     },
-    template:'<div ng-class="vm.getClass()" id="getId()"><i class="vm.getIcon()"></i>{{vm.message}}</div>'
+    template:'<div ng-class="vm.getClass()" id="getId()" ng-show="vm.show"><i class="vm.getIcon()"></i>{{vm.message}}</div>'
 };
 
+myStatusAlert.$inject = ['$scope', '$timeout'];
 
 angular.module('my-angular-components').component('myStatusAlert', myStatusAlert);

@@ -863,16 +863,25 @@ angular.module('my-angular-components').component('myPanel', myPanel);
 var myStatusAlert = {
     bindings: {
         message: "@",
-        isError: "@"
+        isError: "@",
     },
     controllerAs: 'vm',
-    controller: function () {
+    controller: function ($scope, $timeout) {
         var vm = this;
+        vm.timeout = 2000,
 
+            $scope.$watch("vm.message", function (oldValue, newValue) {
+                if (oldValue !== newValue) {
+                    $timeout(function () {
+                        vm.show = true;
+                    }, vm.timeout);
+                }
+            });
 
         vm.$onInit = function () {
             vm.message = "";
             vm.isError = false;
+            vm.show = false;
         };
 
         vm.getClass = function () {
@@ -895,13 +904,14 @@ var myStatusAlert = {
             else
                 return "successMessage";
         };
-       
+
 
 
     },
-    template:'<div ng-class="vm.getClass()" id="getId()"><i class="vm.getIcon()"></i>{{vm.message}}</div>'
+    template:'<div ng-class="vm.getClass()" id="getId()" ng-show="vm.show"><i class="vm.getIcon()"></i>{{vm.message}}</div>'
 };
 
+myStatusAlert.$inject = ['$scope', '$timeout'];
 
 angular.module('my-angular-components').component('myStatusAlert', myStatusAlert);
 
@@ -1020,21 +1030,6 @@ var alertsDropDownMenu = {
 
 angular.module('my-angular-components').component('alertsDropDownMenu', alertsDropDownMenu);
 
-var adminHeaderBar = {
-    transclude: true,
-    bindings: {
-        title: '@',
-        theme: '@',
-        userMenuItems: "=",
-        alertMenuItems: "=",
-        userName: '@'
-    },
-    controllerAs: 'vm',
-    template:'<div class="row header"><div class="col-xs-12"><div class="user pull-right"><div class="item dropdown" uib-dropdown><user-options-drop-down-menu menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></user-options-drop-down-menu></div><div class="item dropdown" uib-dropdown><alerts-drop-down-menu menu-items="vm.alertMenuItems"></alerts-drop-down-menu></div></div><div class="meta"><div class="page">{{vm.title}}</div></div></div></div>'
-};
-
-
-angular.module('my-angular-components').component('adminHeaderBar', adminHeaderBar);
 var userOptionsDropDownMenu = {
     bindings: {
         menuItems:'=',
@@ -1055,6 +1050,21 @@ var userOptionsDropDownMenu = {
 
 angular.module('my-angular-components').component('userOptionsDropDownMenu', userOptionsDropDownMenu);
 
+var adminHeaderBar = {
+    transclude: true,
+    bindings: {
+        title: '@',
+        theme: '@',
+        userMenuItems: "=",
+        alertMenuItems: "=",
+        userName: '@'
+    },
+    controllerAs: 'vm',
+    template:'<div class="row header"><div class="col-xs-12"><div class="user pull-right"><div class="item dropdown" uib-dropdown><user-options-drop-down-menu menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></user-options-drop-down-menu></div><div class="item dropdown" uib-dropdown><alerts-drop-down-menu menu-items="vm.alertMenuItems"></alerts-drop-down-menu></div></div><div class="meta"><div class="page">{{vm.title}}</div></div></div></div>'
+};
+
+
+angular.module('my-angular-components').component('adminHeaderBar', adminHeaderBar);
 var adminSideMenu = {
     transclude: true,
     bindings: {
