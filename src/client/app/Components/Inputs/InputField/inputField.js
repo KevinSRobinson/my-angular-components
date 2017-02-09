@@ -69,7 +69,7 @@ var myInputField = {
             };
 
             //dates 
-            if(inputType = 'datepopup'){
+            if(vm.inputType = 'datepopup'){
                 vm.ngModel = new Date(vm.ngModel);
             }
         };
