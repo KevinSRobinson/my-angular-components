@@ -41,6 +41,34 @@ var cssClassService =  function () {
 };
 
 angular.module("my-angular-components").factory("cssClassService", cssClassService);
+var myCreateButton = {
+    bindings: {
+        id: '@',
+        buttonText: '@',
+        click: '&',
+        cssClass:'@'
+    },
+    controllerAs: 'vm',
+    controller: function(){
+        var vm = this;
+      
+        vm.$onInit = function () {
+            //default options
+            vm.id = 'create';
+            vm.buttonText = 'Create';
+            vm.icon = 'plus';
+            vm.cssClass = 'btn btn-success';
+        };       
+    },
+    template:'<div class="{{vm.cssClass}" id="{{vm.id}}" ng-click="vm.click()">{{vm.buttonText}}<i class="fa fa-{{vm.icon}}"></i></div>'
+};
+
+
+angular.module('my-angular-components').component('myCreateButton', myCreateButton);
+
+
+
+
 var myButton = {    
      bindings: {
         id: '@',
@@ -74,63 +102,6 @@ var myButton = {
 }
 
 angular.module('my-angular-components').component('myButton', myButton);
-var myCreateButton = {
-    bindings: {
-        id: '@',
-        buttonText: '@',
-        click: '&',
-        cssClass:'@'
-    },
-    controllerAs: 'vm',
-    controller: function(){
-        var vm = this;
-      
-        vm.$onInit = function () {
-            //default options
-            vm.id = 'create';
-            vm.buttonText = 'Create';
-            vm.icon = 'plus';
-            vm.cssClass = 'btn btn-success';
-        };       
-    },
-    template:'<div class="{{vm.cssClass}" id="{{vm.id}}" ng-click="vm.click()">{{vm.buttonText}}<i class="fa fa-{{vm.icon}}"></i></div>'
-};
-
-
-angular.module('my-angular-components').component('myCreateButton', myCreateButton);
-
-
-
-
-var mySpinnerButton = {
-    bindings: {
-        buttonText:'@',
-        saving: '=',
-        isDisabled:'='
-    },
-    controllerAs: 'vm',
-    controller: function(){
-        var vm = this;
-      
-        vm.$onInit = function () {
-            //default options
-            // vm.id = 'spinnerButton';
-            // vm.ngModel = 'Cliock';
-            // vm.icon = 'fa fa-circle-o-notch';
-            // vm.cssClass = 'btn btn-success';
-             vm.saving = false;
-             vm.isDisabled = false;
-        };       
-    },
-    template:'<button id="{{vm.id}}" class="btn btn-success" ng-click="vm.click()" ng-disabled="vm.isDisabled">{{vm.buttonText}}<i class="fa fa-circle-o-notch fa-spin" ng-if="vm.saving"></i></button>'
-};
-
-
-angular.module('my-angular-components').component('mySpinnerButton', mySpinnerButton);
-
-
-
-
 /**
  * 
  * @type {
@@ -237,6 +208,35 @@ var buildList = function () {
 myCategorySelect.$inject = ['$scope'];
 
 angular.module('my-angular-components').component('myCategorySelect', myCategorySelect);
+var mySpinnerButton = {
+    bindings: {
+        buttonText:'@',
+        saving: '=',
+        isDisabled:'='
+    },
+    controllerAs: 'vm',
+    controller: function(){
+        var vm = this;
+      
+        vm.$onInit = function () {
+            //default options
+            // vm.id = 'spinnerButton';
+            // vm.ngModel = 'Cliock';
+            // vm.icon = 'fa fa-circle-o-notch';
+            // vm.cssClass = 'btn btn-success';
+             vm.saving = false;
+             vm.isDisabled = false;
+        };       
+    },
+    template:'<button id="{{vm.id}}" class="btn btn-success" ng-click="vm.click()" ng-disabled="vm.isDisabled">{{vm.buttonText}}<i class="fa fa-circle-o-notch fa-spin" ng-if="vm.saving"></i></button>'
+};
+
+
+angular.module('my-angular-components').component('mySpinnerButton', mySpinnerButton);
+
+
+
+
 var myFilterTextbox = {
     bindings: {
         placeholder: '@',
@@ -389,6 +389,11 @@ var myInputField = {
                 minDate: new Date(),
                 startingDay: 1
             };
+
+            //dates 
+            if(inputType = 'datepopup'){
+                vm.ngModel = new Date(vm.ngModel);
+            }
         };
 
         // open the date popup
@@ -757,51 +762,6 @@ var myMorelessPanel = {
 
 angular.module('my-angular-components').component("myMorelessPanel", myMorelessPanel);
 
-var myStatusAlert = {
-    bindings: {
-        message: "@",
-        isError: "@"
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-
-        vm.$onInit = function () {
-            vm.message = "";
-            vm.isError = false;
-        };
-
-        vm.getClass = function () {
-            if (vm.isError === 'true')
-                return "errorMessage";
-            else
-                return "successMessage";
-        };
-
-        vm.getIcon = function () {
-            if (vm.isError === 'true')
-                return "fa fa-warning fa-2x";
-            else
-                return "fa fa-check fa-2x";
-        };
-
-        vm.getId = function () {
-            if (vm.isError === 'true')
-                return "errorMessage";
-            else
-                return "successMessage";
-        };
-       
-
-
-    },
-    template:'<div ng-class="vm.getClass()" id="getId()"><i class="vm.getIcon()"></i>{{vm.message}}</div>'
-};
-
-
-angular.module('my-angular-components').component('myStatusAlert', myStatusAlert);
-
 var myPanel = {
     transclude: true,
     bindings: {
@@ -891,6 +851,51 @@ var myPanel = {
 
 
 angular.module('my-angular-components').component('myPanel', myPanel);
+var myStatusAlert = {
+    bindings: {
+        message: "@",
+        isError: "@"
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+
+        vm.$onInit = function () {
+            vm.message = "";
+            vm.isError = false;
+        };
+
+        vm.getClass = function () {
+            if (vm.isError === 'true')
+                return "errorMessage";
+            else
+                return "successMessage";
+        };
+
+        vm.getIcon = function () {
+            if (vm.isError === 'true')
+                return "fa fa-warning fa-2x";
+            else
+                return "fa fa-check fa-2x";
+        };
+
+        vm.getId = function () {
+            if (vm.isError === 'true')
+                return "errorMessage";
+            else
+                return "successMessage";
+        };
+       
+
+
+    },
+    template:'<div ng-class="vm.getClass()" id="getId()"><i class="vm.getIcon()"></i>{{vm.message}}</div>'
+};
+
+
+angular.module('my-angular-components').component('myStatusAlert', myStatusAlert);
+
 /**
  * Date field component with Field Label, Date Popup, Help Popup
  */

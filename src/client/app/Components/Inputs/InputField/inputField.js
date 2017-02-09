@@ -67,6 +67,11 @@ var myInputField = {
                 minDate: new Date(),
                 startingDay: 1
             };
+
+            //dates 
+            if(inputType = 'datepopup'){
+                vm.ngModel = new Date(vm.ngModel);
+            }
         };
 
         // open the date popup

@@ -304,7 +304,7 @@ var exampleForm = {
         vm.simulateError = false;
         vm.customerForm = {};
         vm.age = 99;
-        vm.date = new Date();
+        vm.date = '2017-02-08T00:00:00.000Z';
 
         vm.status = {
             message: "",
@@ -659,6 +659,21 @@ var statusAlerts = {
 angular.module('examples').component('statusAlertExamples', statusAlerts);
 
 
+var textEditorExample = {
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.sampleText = "+ item      - subitem" +
+            "The HTML has a superfluous newline before this" +
+            "paragraph." +
+            "- subitem";
+    },
+    templateUrl: "src/client/app/Examples/TextEditor/textEditorExampleTemplate.html"
+};
+
+angular.module('examples').component('textEditorExample', textEditorExample);
+
 var tags = {
     controllerAs: 'vm',
     controller: function () {
@@ -692,21 +707,6 @@ var tags = {
 
 angular.module('examples').component('tagsExamples', tags);
 
-var textEditorExample = {
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.sampleText = "+ item      - subitem" +
-            "The HTML has a superfluous newline before this" +
-            "paragraph." +
-            "- subitem";
-    },
-    templateUrl: "src/client/app/Examples/TextEditor/textEditorExampleTemplate.html"
-};
-
-angular.module('examples').component('textEditorExample', textEditorExample);
-
 var userProfileExample = {
     controllerAs: 'vm',
     controller: function (authService) {
@@ -730,34 +730,6 @@ var userProfileExample = {
 
 
 angular.module('examples').controller('userProfileExample', userProfileExample);
-
-var myCreateButton = {
-    bindings: {
-        id: '@',
-        buttonText: '@',
-        click: '&',
-        cssClass:'@'
-    },
-    controllerAs: 'vm',
-    controller: function(){
-        var vm = this;
-      
-        vm.$onInit = function () {
-            //default options
-            vm.id = 'create';
-            vm.buttonText = 'Create';
-            vm.icon = 'plus';
-            vm.cssClass = 'btn btn-success';
-        };       
-    },
-    templateUrl: 'src/client/app/Components/Buttons/CreateButton/createButtonTemplate.html'
-};
-
-
-angular.module('my-angular-components').component('myCreateButton', myCreateButton);
-
-
-
 
 //todo: allow customize height
 var mySpinner = {

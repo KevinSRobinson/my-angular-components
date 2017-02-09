@@ -5,7 +5,7 @@ var exampleForm = {
         vm.simulateError = false;
         vm.customerForm = {};
         vm.age = 99;
-        vm.date = new Date();
+        vm.date = '2017-02-08T00:00:00.000Z';
 
         vm.status = {
             message: "",
