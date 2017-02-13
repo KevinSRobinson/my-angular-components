@@ -89,7 +89,13 @@
             <!--TextArea-->
             <textarea ng-if="vm.inputType==='textarea'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea>
             <!--CheckBox-->
-            <checkbox large class="btn-default" ng-if="vm.inputType==='checkbox'" ng-model="vm.ngModel"></checkbox>
+            {{vm.hasIntermediateState}}<br>
+            {{vm.intermediateValue}}
+            <checkbox large class="btn-default"  indeterminate="{{vm.hasIntermediateState}}"     
+                                                 ng-indeterminate-value="{{vm.intermediateValue}}"
+                                                 ng-if="vm.inputType==='checkbox'" 
+                                                 ng-model="vm.ngModel">
+            </checkbox>
             <!--Combobox-->            
             <select ng-if="vm.inputType==='select'" class="form-control" ng-model="vm.ngModel" ng-options="item for item in vm.items"></select>
             <!--Time-->

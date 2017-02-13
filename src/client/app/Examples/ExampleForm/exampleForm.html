@@ -27,7 +27,11 @@
         <my-input-field field-label="About Me" input-type="textarea" ng-model="vm.aboutMe" placeholder="Enter a description about yourself">
         </my-input-field>
 
+
+        {{vm.simulateError}}
         <my-input-field field-label="Simulate Error" input-type="checkbox" 
+        has-intermediate-state="true"
+        intermediate-value="Non Sure"
         ng-model="vm.simulateError" placeholder="Enter a description about yourself">
         </my-input-field>
                    

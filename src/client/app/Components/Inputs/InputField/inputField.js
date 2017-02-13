@@ -21,7 +21,11 @@ var myInputField = {
         inputWidth: "@",
 
         //select
-        items: '='
+        items: '=',
+
+        //checkbox
+        hasIntermediateState: "=",
+        intermediateValue: "@",
     },
     controllerAs: 'vm',
     controller: function ($scope, cssClassService) {
@@ -35,6 +39,10 @@ var myInputField = {
         vm.format = vm.dateFormats[0];
         vm.altInputFormats = ['M!/d!/yyyy'];
 
+
+        //checkbox
+        vm.hasIntermediateState = false;
+        vm.intermediateValue = null;
 
 
         //Listen for chanes to ngModel 
