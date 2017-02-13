@@ -1,21 +1,21 @@
-var myButton = {    
-     bindings: {
+var myButton = {
+    bindings: {
         id: '@',
-        icon:'@',
+        icon: '@',
         text: '@',
         click: '&',
-        theme:'@'
+        theme: '@'
     },
     controllerAs: 'vm',
-    controller: function($scope){
+    controller: function ($scope) {
         var vm = this;
-        
 
-        $scope.$watch("vm.icon", function(){
+
+        $scope.$watch("vm.icon", function () {
             vm.buttonIcon = "fa fa-" + vm.icon;
         });
 
-         $scope.$watch("vm.cssClass", function(){
+        $scope.$watch("vm.cssClass", function () {
             vm.class = "btn btn-" + vm.theme;
         });
 
@@ -25,7 +25,7 @@ var myButton = {
             vm.buttonText = 'Click Here';
             vm.icon = 'bars';
             vm.cssClass = 'success';
-        };       
+        };
     },
     templateUrl: 'myButtonTemplate.html'
 }

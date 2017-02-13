@@ -1,8 +1,9 @@
 var adminSideMenu = {
     transclude: true,
     bindings: {
+        title: '@',
         colapsed: '=',
-        sideMenuItems:'=',
+        sideMenuItems: '=',
         footerLinks: '='
     },
     controllerAs: 'vm',
@@ -10,7 +11,8 @@ var adminSideMenu = {
         'use strict';
 
         var vm = this;
-        
+        vm.title = "Dashboard 1";
+
         vm.$onInit = function () {
             vm.colapsed = true;
         };
@@ -22,7 +24,7 @@ var adminSideMenu = {
         };
 
     },
-    template:'<ul class="sidebar"><li class="sidebar-main"><a ng-click="vm.toggleSidebar()">Dashboard <span class="fa fa-switch"></span></a></li><admin-side-menu-items menu-items="vm.sideMenuItems"></admin-side-menu-items></ul><side-menu-footer links="vm.footerLinks"></side-menu-footer>'
+    template:'<ul class="sidebar"><li class="sidebar-main"><a ng-click="vm.toggleSidebar()">{{vm.title}} <span class="fa fa-switch"></span></a></li><admin-side-menu-items menu-items="vm.sideMenuItems"></admin-side-menu-items></ul><side-menu-footer links="vm.footerLinks"></side-menu-footer>'
 };
 
 

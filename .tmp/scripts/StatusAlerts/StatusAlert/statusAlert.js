@@ -7,7 +7,7 @@ var myStatusAlert = {
     controllerAs: 'vm',
     controller: function ($scope, $timeout) {
         var vm = this;
-        vm.timeout = 2000,
+        vm.timeout = 2500,
 
 
 

@@ -1,8 +1,9 @@
 var adminSideMenu = {
     transclude: true,
     bindings: {
+        title: '@',
         colapsed: '=',
-        sideMenuItems:'=',
+        sideMenuItems: '=',
         footerLinks: '='
     },
     controllerAs: 'vm',
@@ -10,7 +11,8 @@ var adminSideMenu = {
         'use strict';
 
         var vm = this;
-        
+        vm.title = "Dashboard 1";
+
         vm.$onInit = function () {
             vm.colapsed = true;
         };

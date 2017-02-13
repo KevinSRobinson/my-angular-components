@@ -864,19 +864,25 @@ var myStatusAlert = {
     bindings: {
         message: "@",
         isError: "@",
+        timeout: '@'
     },
     controllerAs: 'vm',
     controller: function ($scope, $timeout) {
         var vm = this;
-        vm.timeout = 2000,
+        vm.timeout = 2500,
 
-            $scope.$watch("vm.message", function (oldValue, newValue) {
-                if (oldValue !== newValue) {
-                    $timeout(function () {
-                        vm.show = true;
-                    }, vm.timeout);
-                }
-            });
+
+
+        $scope.$watch("vm.message", function (oldValue, newValue) {
+            console.log('old = ', oldValue);
+            console.log('new = ', newValue);
+              vm.show = true;
+            if (oldValue !== newValue) {
+                $timeout(function () {
+                    vm.show = false;
+                }, vm.timeout);
+            }
+        });
 
         vm.$onInit = function () {
             vm.message = "";
@@ -1012,7 +1018,7 @@ var adminLayout = {
                 return "uiView";
         };
     },
-    template:'<style>\r\n.uiViewColapsed{\r\n    margin-left:100px;\r\n}\r\n.uiView{\r\n    margin-left:20px;\r\n}\r\n</style><div id="page-wrapper" ng-cloak ng-class="vm.getState()"><div id="sidebar-wrapper"><admin-side-menu colapsed="vm.colapsed" footer-links="vm.footerLinks" side-menu-items="vm.sideMenuItems"></admin-side-menu></div><div id="content-wrapper"><div class="page-content"><admin-header-bar title="Timebanking" alert-menu-items="vm.alertMenuItems" user-menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></admin-header-bar><div ng-class="vm.getViewCssClass()"><ng-transclude></ng-transclude></div></div></div></div>'
+    template:'<style>\r\n.uiViewColapsed{\r\n    margin-left:100px;\r\n}\r\n.uiView{\r\n    margin-left:20px;\r\n}\r\n</style><div id="page-wrapper" ng-cloak ng-class="vm.getState()"><div id="sidebar-wrapper"><admin-side-menu title="My Angular Components" colapsed="vm.colapsed" footer-links="vm.footerLinks" side-menu-items="vm.sideMenuItems"></admin-side-menu></div><div id="content-wrapper"><div class="page-content"><admin-header-bar alert-menu-items="vm.alertMenuItems" user-menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></admin-header-bar><div ng-class="vm.getViewCssClass()"><ng-transclude></ng-transclude></div></div></div></div>'
 };
 
 adminLayout.$inject = ['$scope'];
@@ -1030,6 +1036,21 @@ var alertsDropDownMenu = {
 
 angular.module('my-angular-components').component('alertsDropDownMenu', alertsDropDownMenu);
 
+var adminHeaderBar = {
+    transclude: true,
+    bindings: {
+        title: '@',
+        theme: '@',
+        userMenuItems: "=",
+        alertMenuItems: "=",
+        userName: '@'
+    },
+    controllerAs: 'vm',
+    template:'<div class="row header"><div class="col-xs-12"><div class="user pull-right"><div class="item dropdown" uib-dropdown><user-options-drop-down-menu menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></user-options-drop-down-menu></div><div class="item dropdown" uib-dropdown><alerts-drop-down-menu menu-items="vm.alertMenuItems"></alerts-drop-down-menu></div></div></div></div>'
+};
+
+
+angular.module('my-angular-components').component('adminHeaderBar', adminHeaderBar);
 var userOptionsDropDownMenu = {
     bindings: {
         menuItems:'=',
@@ -1050,26 +1071,12 @@ var userOptionsDropDownMenu = {
 
 angular.module('my-angular-components').component('userOptionsDropDownMenu', userOptionsDropDownMenu);
 
-var adminHeaderBar = {
-    transclude: true,
-    bindings: {
-        title: '@',
-        theme: '@',
-        userMenuItems: "=",
-        alertMenuItems: "=",
-        userName: '@'
-    },
-    controllerAs: 'vm',
-    template:'<div class="row header"><div class="col-xs-12"><div class="user pull-right"><div class="item dropdown" uib-dropdown><user-options-drop-down-menu menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></user-options-drop-down-menu></div><div class="item dropdown" uib-dropdown><alerts-drop-down-menu menu-items="vm.alertMenuItems"></alerts-drop-down-menu></div></div><div class="meta"><div class="page">{{vm.title}}</div></div></div></div>'
-};
-
-
-angular.module('my-angular-components').component('adminHeaderBar', adminHeaderBar);
 var adminSideMenu = {
     transclude: true,
     bindings: {
+        title: '@',
         colapsed: '=',
-        sideMenuItems:'=',
+        sideMenuItems: '=',
         footerLinks: '='
     },
     controllerAs: 'vm',
@@ -1077,7 +1084,8 @@ var adminSideMenu = {
         'use strict';
 
         var vm = this;
-        
+        vm.title = "Dashboard 1";
+
         vm.$onInit = function () {
             vm.colapsed = true;
         };
@@ -1089,7 +1097,7 @@ var adminSideMenu = {
         };
 
     },
-    template:'<ul class="sidebar"><li class="sidebar-main"><a ng-click="vm.toggleSidebar()">Dashboard <span class="fa fa-switch"></span></a></li><admin-side-menu-items menu-items="vm.sideMenuItems"></admin-side-menu-items></ul><side-menu-footer links="vm.footerLinks"></side-menu-footer>'
+    template:'<ul class="sidebar"><li class="sidebar-main"><a ng-click="vm.toggleSidebar()">{{vm.title}} <span class="fa fa-switch"></span></a></li><admin-side-menu-items menu-items="vm.sideMenuItems"></admin-side-menu-items></ul><side-menu-footer links="vm.footerLinks"></side-menu-footer>'
 };
 
 
