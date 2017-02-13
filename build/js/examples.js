@@ -239,7 +239,9 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
         url: '/exampleButtons',
         template: '<button-examples></button-examples>'
     };
-    
+
+
+    $locationProvider.html5Mode(true);    
 
     $stateProvider.state(exampleButtonsState);
     $stateProvider.state(datesExampleState);
@@ -258,8 +260,6 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
     $stateProvider.state(tagsState);
 
 
-
-    $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise('/');
 });
 

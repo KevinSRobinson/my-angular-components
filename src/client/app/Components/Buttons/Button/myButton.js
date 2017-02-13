@@ -4,19 +4,44 @@ var myButton = {
         icon: '@',
         text: '@',
         click: '&',
-        theme: '@'
+        theme: '@',
+        preset: '@'
     },
     controllerAs: 'vm',
     controller: function ($scope) {
         var vm = this;
-
+        vm.preset = "";
 
         $scope.$watch("vm.icon", function () {
             vm.buttonIcon = "fa fa-" + vm.icon;
+
         });
 
         $scope.$watch("vm.cssClass", function () {
             vm.class = "btn btn-" + vm.theme;
+        });
+
+        $scope.$watch("vm.preset", function () {
+            if (angular.isDefined(vm.preset) && (vm.preset != "")) {
+                switch (vm.preset) {
+                    case 'save':
+                        vm.buttonIcon = "fa fa-floppy-o fa-2x"
+                        vm.text = "Save";
+                        vm.class = "btn btn-info";
+                        break;
+                    case 'create':
+                        vm.buttonIcon = "fa fa-plus  fa-2x"
+                        vm.text = "Create";
+                        vm.class = "btn btn-success";
+                        break;
+                    case 'delete':
+                        vm.buttonIcon = "fa fa-times fa-2x"
+                        vm.text = "Delete";
+                        vm.class = "btn btn-danger";
+                    default:
+                        break;
+                }
+            }
         });
 
         vm.$onInit = function () {
@@ -24,8 +49,11 @@ var myButton = {
             vm.id = 'button';
             vm.buttonText = 'Click Here';
             vm.icon = 'bars';
-            vm.cssClass = 'success';
+            vm.theme = 'success';
         };
+
+
+
     },
     templateUrl: 'myButtonTemplate.html'
 }
