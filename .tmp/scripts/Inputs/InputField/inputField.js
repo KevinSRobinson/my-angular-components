@@ -24,7 +24,7 @@ var myInputField = {
         items: '=',
 
         //checkbox
-        hasIntermediateState: "=",
+        hasIntermediateState: "@",
         intermediateValue: "@",
     },
     controllerAs: 'vm',
