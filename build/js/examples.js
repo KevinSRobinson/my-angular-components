@@ -410,13 +410,6 @@ var gridExamples = {
 
 angular.module('examples').component('gridExamples', gridExamples);
 
-var home = {
-    templateUrl: "src/client/app/Examples/Home/homeTemplate.html"
-};
-
-angular.module('examples').component('home', home);
-
-
 var inputs = {
     controllerAs: 'vm',
     controller: function () {
@@ -585,6 +578,13 @@ var mapExample = {
 };
 
 angular.module('examples').component('mapExample', mapExample);
+
+var home = {
+    templateUrl: "src/client/app/Examples/Home/homeTemplate.html"
+};
+
+angular.module('examples').component('home', home);
+
 
 var modals = {
     controllerAs: 'vm',

@@ -45,7 +45,7 @@ var mySimpleTagsField = {
     templateUrl: 'simpleTagsTemplate.html'
 };
 
-mySelectField.$inject = ['cssClassService'];
+mySimpleTagsField.$inject = ['cssClassService'];
 
 angular.module('my-angular-components').component('mySimpleTagsField', mySimpleTagsField);
 
