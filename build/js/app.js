@@ -79,11 +79,10 @@ var myButton = {
             }
         });
 
-
         var getIconSize = function () {
             switch (vm.size) {
                 case 'large':
-                    return "fa-4x"
+                    return "fa-3x"
                 case 'small':
                     return "fa-1x"
                 default:
@@ -131,7 +130,7 @@ var myButton = {
 
 
     },
-    template:'<style>\r\n    .btn-large{\r\n        margin: 10px;\r\n        padding: 10px;\r\n        font-size: large;\r\n    }\r\n    .btn-small{\r\n        margin: 2px;\r\n        padding: 2px;\r\n        font-size: x-small;\r\n    }\r\n    \r\n</style><div ng-class="vm.class" id="{{vm.id}}" ng-click="vm.click()">{{vm.text}}<i style="margin-left:4px" ng-class="vm.buttonIcon"></i></div>'
+    template:'<style>\r\n    .btn-large{\r\n        margin: 7px;\r\n        padding: 7px;\r\n        font-size: large;\r\n    }\r\n    .btn-small{\r\n        margin: 4px;\r\n        padding: 4px;\r\n        font-size: small;\r\n    }\r\n    \r\n</style><div ng-class="vm.class" id="{{vm.id}}" ng-click="vm.click()">{{vm.text}}<i style="margin-left:4px" ng-class="vm.buttonIcon"></i></div>'
 }
 
 angular.module('my-angular-components').component('myButton', myButton);
@@ -333,7 +332,7 @@ var myPageTitle = {
         
         
     },
-    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><div ng-transclude></div></i></h1>'
+    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><span ng-transclude style="margin-left:12px !important"></span></i></h1>'
 };
 
 angular.module('my-angular-components').component('myPageTitle', myPageTitle);
@@ -1053,7 +1052,7 @@ var adminLayout = {
         userMenuItems: '=',
         alertMenuItems: '=',
         footerLinks: '=',
-        userName:'@'
+        userName: '@'
     },
     controllerAs: 'vm',
     controller: function ($scope) {
@@ -1061,17 +1060,17 @@ var adminLayout = {
 
         var vm = this;
         vm.colapsed = false;
-     
+        vm.showHeader = false;
 
         vm.userName = "";
-    
+
         var currentWidth = 992;
         var mobileView = 992;
 
         vm.getWidth = function () {
             return window.innerWidth;
         };
-      
+
 
         //Css Class Helpers
         vm.getState = function () {
@@ -1080,14 +1079,14 @@ var adminLayout = {
             else
                 return "";
         };
-        vm.getViewCssClass= function(){
+        vm.getViewCssClass = function () {
             if (vm.colapsed == true)
                 return "uiViewColapsed";
             else
                 return "uiView";
         };
     },
-    template:'<style>\r\n.uiViewColapsed{\r\n    margin-left:100px;\r\n}\r\n.uiView{\r\n    margin-left:20px;\r\n}\r\n</style><div id="page-wrapper" ng-cloak ng-class="vm.getState()"><div id="sidebar-wrapper"><admin-side-menu title="My Angular Components" colapsed="vm.colapsed" footer-links="vm.footerLinks" side-menu-items="vm.sideMenuItems"></admin-side-menu></div><div id="content-wrapper"><div class="page-content"><admin-header-bar alert-menu-items="vm.alertMenuItems" user-menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></admin-header-bar><div ng-class="vm.getViewCssClass()"><ng-transclude></ng-transclude></div></div></div></div>'
+    template:'<style>\r\n.uiViewColapsed{\r\n    margin-left:100px;\r\n}\r\n.uiView{\r\n    margin-left:20px;\r\n}\r\n</style><div id="page-wrapper" ng-cloak ng-class="vm.getState()"><div id="sidebar-wrapper"><admin-side-menu title="My Angular Components" colapsed="vm.colapsed" footer-links="vm.footerLinks" side-menu-items="vm.sideMenuItems"></admin-side-menu></div><div id="content-wrapper"><div class="page-content"><admin-header-bar ng-if="vm.showHeader" alert-menu-items="vm.alertMenuItems" user-menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></admin-header-bar><div ng-class="vm.getViewCssClass()"><ng-transclude></ng-transclude></div></div></div></div>'
 };
 
 adminLayout.$inject = ['$scope'];
@@ -1140,17 +1139,6 @@ var userOptionsDropDownMenu = {
 
 angular.module('my-angular-components').component('userOptionsDropDownMenu', userOptionsDropDownMenu);
 
-var sideMenuFooter = {
-    bindings: {
-        links: '='
-    },
-    controllerAs: 'vm',
-    template:'<div class="sidebar-footer"><div class="col-xs-4"><a state="vm.links[0].state">{{vm.links[0].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[1].state">{{vm.links[1].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[2].state">{{vm.links[2].linkText}}</a></div></div>'
-};
-
-
-angular.module('my-angular-components').component('sideMenuFooter', sideMenuFooter);
-
 var adminSideMenu = {
     transclude: true,
     bindings: {
@@ -1182,6 +1170,17 @@ var adminSideMenu = {
 
 
 angular.module('my-angular-components').component('adminSideMenu', adminSideMenu);
+
+var sideMenuFooter = {
+    bindings: {
+        links: '='
+    },
+    controllerAs: 'vm',
+    template:'<div class="sidebar-footer"><div class="col-xs-4"><a state="vm.links[0].state">{{vm.links[0].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[1].state">{{vm.links[1].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[2].state">{{vm.links[2].linkText}}</a></div></div>'
+};
+
+
+angular.module('my-angular-components').component('sideMenuFooter', sideMenuFooter);
 
 var adminSideMenuItems = {
     bindings: {

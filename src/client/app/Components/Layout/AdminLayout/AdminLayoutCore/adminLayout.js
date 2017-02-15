@@ -7,7 +7,7 @@ var adminLayout = {
         userMenuItems: '=',
         alertMenuItems: '=',
         footerLinks: '=',
-        userName:'@'
+        userName: '@'
     },
     controllerAs: 'vm',
     controller: function ($scope) {
@@ -15,17 +15,17 @@ var adminLayout = {
 
         var vm = this;
         vm.colapsed = false;
-     
+        vm.showHeader = false;
 
         vm.userName = "";
-    
+
         var currentWidth = 992;
         var mobileView = 992;
 
         vm.getWidth = function () {
             return window.innerWidth;
         };
-      
+
 
         //Css Class Helpers
         vm.getState = function () {
@@ -34,7 +34,7 @@ var adminLayout = {
             else
                 return "";
         };
-        vm.getViewCssClass= function(){
+        vm.getViewCssClass = function () {
             if (vm.colapsed == true)
                 return "uiViewColapsed";
             else

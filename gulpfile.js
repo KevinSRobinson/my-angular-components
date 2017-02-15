@@ -86,7 +86,7 @@ gulp.task('serve-build', ['embedTemplates', 'optimize', 'bump'], function () {
     myGulp_BrowserSync.serve(false, port);
 });
 
-gulp.task('serve-dev', ['wiredep', 'inject', 'embedTemplates'], function () {
+gulp.task('serve-dev', ['wiredep', 'inject', 'embedTemplates', 'watchTemplates'], function () {
     myGulp_BrowserSync.serve(true, port);
 });
 

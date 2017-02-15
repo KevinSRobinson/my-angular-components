@@ -259,8 +259,8 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
     $stateProvider.state(modalsState);
     $stateProvider.state(tagsState);
 
-$locationProvider.html5Mode(true);  
-    $urlRouterProvider.otherwise('/#');
+    //$locationProvider.html5Mode(true);  
+    //$urlRouterProvider.otherwise('/#');
 });
 
 var buttonExamples = {
