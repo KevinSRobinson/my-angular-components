@@ -34,6 +34,11 @@ var myButton = {
                         vm.text = "Create";
                         vm.class = "btn btn-success";
                         break;
+                    case 'details':
+                        vm.buttonIcon = "fa fa-info-circle fa-2x"
+                        vm.text = "Details";
+                        vm.class = "btn btn-info";
+                        break;
                     case 'delete':
                         vm.buttonIcon = "fa fa-times fa-2x"
                         vm.text = "Delete";
