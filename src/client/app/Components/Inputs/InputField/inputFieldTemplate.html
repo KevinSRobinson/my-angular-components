@@ -88,9 +88,7 @@
             <input ng-if="vm.inputType==='email'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}">
             <!--TextArea-->
             <textarea ng-if="vm.inputType==='textarea'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea>
-            <!--CheckBox-->
-            {{vm.hasIntermediateState}}<br>
-            {{vm.intermediateValue}}
+            <!--CheckBox-->   
             <checkbox large class="btn-default"  indeterminate="{{vm.hasIntermediateState}}"     
                                                  ng-indeterminate-value="{{vm.intermediateValue}}"
                                                  ng-if="vm.inputType==='checkbox'" 

@@ -290,22 +290,6 @@ var myFilterTextbox = {
 
 angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
 
-var myPageTitle = {
-    transclude: "true",
-    bindings: {
-        icon: "@"
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-        
-        
-    },
-    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><div ng-transclude></div></i></h1>'
-};
-
-angular.module('my-angular-components').component('myPageTitle', myPageTitle);
-
 /**
  * Date field component with Field Label, Date Popup, Help Popup
  */
@@ -349,6 +333,22 @@ var myDateTimeDifferenceField = {
 
 
 angular.module('my-angular-components').component('myDateTimeDifferenceField', myDateTimeDifferenceField);
+
+var myPageTitle = {
+    transclude: "true",
+    bindings: {
+        icon: "@"
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+        
+        
+    },
+    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><div ng-transclude></div></i></h1>'
+};
+
+angular.module('my-angular-components').component('myPageTitle', myPageTitle);
 
 var myInputField = {
     bindings: {
