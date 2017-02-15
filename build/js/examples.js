@@ -161,7 +161,7 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
 
     var homeState = {
         name: 'home',
-        url: '/',
+        url: '',
         controllerAs: "vm",
         template: '<home></home>'
     };
@@ -241,7 +241,7 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
     };
 
 
-    $locationProvider.html5Mode(true);    
+   //   
 
     $stateProvider.state(exampleButtonsState);
     $stateProvider.state(datesExampleState);
@@ -259,8 +259,8 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
     $stateProvider.state(modalsState);
     $stateProvider.state(tagsState);
 
-
-    $urlRouterProvider.otherwise('/');
+$locationProvider.html5Mode(true);  
+    $urlRouterProvider.otherwise('/#');
 });
 
 var buttonExamples = {

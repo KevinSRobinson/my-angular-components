@@ -32,7 +32,7 @@ module.exports = function (config) {
             // inject:js
             "src/Client/App/Components/app.js",
             "src/Client/App/Components/cssClassService.js",
-            "src/Client/App/Components/Buttons/CreateButton/createButton.js",
+            "src/Client/App/Components/Buttons/Button/myButton.js",
             "src/Client/App/Components/Buttons/SpinnerButton/spinnerButton.js",
             "src/Client/App/Components/ComboBoxes/CategorySelect/categorySelect.js",
             "src/Client/App/Components/Filters/FilterTextbox/filterTextbox.js",
@@ -40,13 +40,14 @@ module.exports = function (config) {
             "src/Client/App/Components/Inputs/DateTimeDifferenceField/dateTimeDifferenceField.js",
             "src/Client/App/Components/Inputs/InputField/inputField.js",
             "src/Client/App/Components/Inputs/SelectField/selectField.js",
+            "src/Client/App/Components/Inputs/SimpleTags/simpleTags.js",
             "src/Client/App/Components/Inputs/TextEditor/markdown.directive.js",
             "src/Client/App/Components/Inputs/TextEditor/textEditor.js",
             "src/Client/App/Components/Modals/ModalButtons/modalButtons.js",
             "src/Client/App/Components/Modals/ModalHeader/modalHeader.js",
             "src/Client/App/Components/Panels/InfoPanel/infoPanel.js",
-            "src/Client/App/Components/Panels/MoreLessPanel/moreLessPanel.js",
             "src/Client/App/Components/Panels/MoreLessButton/moreLessButton.js",
+            "src/Client/App/Components/Panels/MoreLessPanel/moreLessPanel.js",
             "src/Client/App/Components/Panels/Panel/panel.js",
             "src/Client/App/Components/StatusAlerts/StatusAlert/statusAlert.js",
             "src/Client/App/Components/Inputs/DatesField/DateField/dateField.js",
@@ -71,6 +72,8 @@ module.exports = function (config) {
 
             "src/Client/App/Examples/routes.js",
 
+            "src/Client/App/Examples/Buttons/buttonExamples.js",
+
             "src/Client/App/Examples/Common/common.js",
 
             "src/Client/App/Examples/Dates/dateExamples.js",
@@ -86,6 +89,8 @@ module.exports = function (config) {
             "src/Client/App/Examples/Inputs/inputs.js",
 
             "src/Client/App/Examples/Layout/adminLayoutExample.js",
+
+            "src/Client/App/Examples/Login/login.js",
 
             "src/Client/App/Examples/Map/mapExample.js",
 
@@ -103,8 +108,6 @@ module.exports = function (config) {
 
             "src/Client/App/Examples/UserProfile/userProfile.js",
 
-            "src/Client/App/Examples/ExampleForm/CreateButton/createButton.js",
-
             "src/Client/App/Examples/Other/Spinner/spinner.js",
 
             "src/Client/App/Examples/Other/TextEditor/markdown.directive.js",
@@ -114,6 +117,8 @@ module.exports = function (config) {
             // endinject
 
             // spec:js
+
+            "src/Client/tests/Components/Buttons/my-button.spec.js",
 
             "src/Client/tests/Components/Buttons/spinnerButton.spec.js",
 
@@ -251,8 +256,6 @@ module.exports = function (config) {
         //        browsers: ['Chrome', 'ChromeCanary', 'FirefoxAurora', 'Safari', 'PhantomJS'],
         browsers: ['PhantomJS'],
 
-        // Continuous Integration mode
-        // if true, Karma captures browsers, runs the tests and exits
-        singleRun: false
+       
     });
 };

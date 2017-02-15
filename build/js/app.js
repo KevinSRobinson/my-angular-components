@@ -49,40 +49,74 @@ var myButton = {
         text: '@',
         click: '&',
         theme: '@',
-        preset: '@'
+        preset: '@',
+        size: '@'
     },
     controllerAs: 'vm',
     controller: function ($scope) {
         var vm = this;
-        vm.preset = "";
+        vm.preset = '';
+        vm.class = 'btn ';
+        vm.buttonIcon = '';
+        vm.preset = '';
+        vm.text = '';
+        vm.icon = '';
+        vm.theme = '';
 
-        $scope.$watch("vm.icon", function () {
-            vm.buttonIcon = "fa fa-" + vm.icon;
-
+        $scope.$watch('vm.icon', function () {
+            vm.buttonIcon = 'fa fa-' + vm.icon;
         });
 
-        $scope.$watch("vm.cssClass", function () {
-            vm.class = "btn btn-" + vm.theme;
+        $scope.$watch('vm.size', function () {
+            switch (vm.size) {
+                case 'large':
+                    vm.class += ' btn-large ';
+                    break;
+                case 'small':
+                    vm.class += ' btn-small ';
+                default:
+                    break;
+            }
         });
 
-        $scope.$watch("vm.preset", function () {
-            if (angular.isDefined(vm.preset) && (vm.preset != "")) {
+
+        var getIconSize = function () {
+            switch (vm.size) {
+                case 'large':
+                    return "fa-4x"
+                case 'small':
+                    return "fa-1x"
+                default:
+                    return "fa-2x"
+            }
+        };
+
+        $scope.$watch('vm.preset', function () {
+            if (angular.isDefined(vm.preset) && (vm.preset != '')) {
                 switch (vm.preset) {
                     case 'save':
-                        vm.buttonIcon = "fa fa-floppy-o fa-2x"
-                        vm.text = "Save";
-                        vm.class = "btn btn-info";
+                        vm.buttonIcon = 'fa fa-floppy-o ' + getIconSize();
+                        vm.text = 'Save';
+                        vm.class += ' btn-default ';
                         break;
                     case 'create':
-                        vm.buttonIcon = "fa fa-plus  fa-2x"
-                        vm.text = "Create";
-                        vm.class = "btn btn-success";
+                        vm.buttonIcon = 'fa fa-plus ' + getIconSize();
+                        vm.text = 'Create';
+                        vm.class += ' btn-success ';
+                        break;
+                    case 'details':
+                        vm.buttonIcon = 'fa fa-info-circle ' + getIconSize();
+                        vm.text = 'Details';
+                        vm.class += ' btn-info ';
                         break;
                     case 'delete':
-                        vm.buttonIcon = "fa fa-times fa-2x"
-                        vm.text = "Delete";
-                        vm.class = "btn btn-danger";
+                        vm.buttonIcon = 'fa fa-times ' + getIconSize();
+                        vm.text = 'Delete';
+                        vm.class += ' btn-danger ';
+                        break;
                     default:
+                        vm.buttonIcon = ''
+                        vm.class += ' btn-default ';
                         break;
                 }
             }
@@ -91,15 +125,13 @@ var myButton = {
         vm.$onInit = function () {
             //default options
             vm.id = 'button';
-            vm.buttonText = 'Click Here';
-            vm.icon = 'bars';
-            vm.theme = 'success';
+            vm.text = '';
         };
 
 
 
     },
-    template:'<div ng-class="vm.class" id="{{vm.id}}" ng-click="vm.click()"><strong>{{vm.text}}</strong><i style="margin-left:4px" ng-class="vm.buttonIcon"></i></div>'
+    template:'<style>\r\n    .btn-large{\r\n        margin: 10px;\r\n        padding: 10px;\r\n        font-size: large;\r\n    }\r\n    .btn-small{\r\n        margin: 2px;\r\n        padding: 2px;\r\n        font-size: x-small;\r\n    }\r\n    \r\n</style><div ng-class="vm.class" id="{{vm.id}}" ng-click="vm.click()">{{vm.text}}<i style="margin-left:4px" ng-class="vm.buttonIcon"></i></div>'
 }
 
 angular.module('my-angular-components').component('myButton', myButton);
@@ -290,6 +322,22 @@ var myFilterTextbox = {
 
 angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
 
+var myPageTitle = {
+    transclude: "true",
+    bindings: {
+        icon: "@"
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+        
+        
+    },
+    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><div ng-transclude></div></i></h1>'
+};
+
+angular.module('my-angular-components').component('myPageTitle', myPageTitle);
+
 /**
  * Date field component with Field Label, Date Popup, Help Popup
  */
@@ -333,22 +381,6 @@ var myDateTimeDifferenceField = {
 
 
 angular.module('my-angular-components').component('myDateTimeDifferenceField', myDateTimeDifferenceField);
-
-var myPageTitle = {
-    transclude: "true",
-    bindings: {
-        icon: "@"
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-        
-        
-    },
-    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><div ng-transclude></div></i></h1>'
-};
-
-angular.module('my-angular-components').component('myPageTitle', myPageTitle);
 
 var myInputField = {
     bindings: {
@@ -449,7 +481,7 @@ var myInputField = {
 
 
     },
-    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n    \r\n    .input-group .form-control {\r\n        z-index: 100;\r\n    }\r\n\r\n\r\n\r\n    .checkbox label:after, \r\n.radio label:after {\r\n    content: \'\';\r\n    display: table;\r\n    clear: both;\r\n}\r\n\r\n.checkbox .cr,\r\n.radio .cr {\r\n    position: relative;\r\n    display: inline-block;\r\n    border: 1px solid #a9a9a9;\r\n    border-radius: .25em;\r\n    width: 1.3em;\r\n    height: 1.3em;\r\n    float: left;\r\n    margin-right: .5em;\r\n}\r\n\r\n.radio .cr {\r\n    border-radius: 50%;\r\n}\r\n\r\n.checkbox .cr .cr-icon,\r\n.radio .cr .cr-icon {\r\n    position: absolute;\r\n    font-size: .8em;\r\n    line-height: 0;\r\n    top: 50%;\r\n    left: 20%;\r\n}\r\n\r\n.radio .cr .cr-icon {\r\n    margin-left: 0.04em;\r\n}\r\n\r\n.checkbox label input[type="checkbox"],\r\n.radio label input[type="radio"] {\r\n    display: none;\r\n}\r\n\r\n.checkbox label input[type="checkbox"] + .cr > .cr-icon,\r\n.radio label input[type="radio"] + .cr > .cr-icon {\r\n    transform: scale(3) rotateZ(-20deg);\r\n    opacity: 0;\r\n    transition: all .3s ease-in;\r\n}\r\n\r\n.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,\r\n.radio label input[type="radio"]:checked + .cr > .cr-icon {\r\n    transform: scale(1) rotateZ(0deg);\r\n    opacity: 1;\r\n}\r\n\r\n.checkbox label input[type="checkbox"]:disabled + .cr,\r\n.radio label input[type="radio"]:disabled + .cr {\r\n    opacity: .5;\r\n}\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><input ng-if="vm.inputType===\'textbox\'" ng-model="vm.ngModel" type="text" class="form-control" id="{{vm.fieldName}}" placeholder="{{vm.placeholder}}" required><input ng-if="vm.inputType===\'number\'" ng-model="vm.ngModel" type="number" class="form-control" id="{{vm.fieldName}}" required><input ng-if="vm.inputType===\'email\'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"><textarea ng-if="vm.inputType===\'textarea\'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea>{{vm.hasIntermediateState}}<br>{{vm.intermediateValue}}<checkbox large class="btn-default" indeterminate="{{vm.hasIntermediateState}}" ng-indeterminate-value="{{vm.intermediateValue}}" ng-if="vm.inputType===\'checkbox\'" ng-model="vm.ngModel"></checkbox><select ng-if="vm.inputType===\'select\'" class="form-control" ng-model="vm.ngModel" ng-options="item for item in vm.items"></select><input ng-if="vm.inputType===\'time\'" uib-timepicker ng-model="vm.ngModel" id="vm.fieldName" ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"><span ng-if="vm.inputType===\'datepopup\'"><input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%" ng-required="true" close-text="Close"> <span class="btn btn-default glyphicon glyphicon-calendar" ng-click="vm.open()"></span></span> <span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><p ng-if="vm.inputType!==\'checkbox\'">{{vm.ngModel}}</p><i ng-if="vm.inputType===\'checkbox\'" ng-show="vm.ngModel" class="fa fa-check fa-2x"></i></div><p class="help-block">{{vm.helpText}}</p></div></div>'
+    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n    \r\n    .input-group .form-control {\r\n        z-index: 100;\r\n    }\r\n\r\n\r\n\r\n    .checkbox label:after, \r\n.radio label:after {\r\n    content: \'\';\r\n    display: table;\r\n    clear: both;\r\n}\r\n\r\n.checkbox .cr,\r\n.radio .cr {\r\n    position: relative;\r\n    display: inline-block;\r\n    border: 1px solid #a9a9a9;\r\n    border-radius: .25em;\r\n    width: 1.3em;\r\n    height: 1.3em;\r\n    float: left;\r\n    margin-right: .5em;\r\n}\r\n\r\n.radio .cr {\r\n    border-radius: 50%;\r\n}\r\n\r\n.checkbox .cr .cr-icon,\r\n.radio .cr .cr-icon {\r\n    position: absolute;\r\n    font-size: .8em;\r\n    line-height: 0;\r\n    top: 50%;\r\n    left: 20%;\r\n}\r\n\r\n.radio .cr .cr-icon {\r\n    margin-left: 0.04em;\r\n}\r\n\r\n.checkbox label input[type="checkbox"],\r\n.radio label input[type="radio"] {\r\n    display: none;\r\n}\r\n\r\n.checkbox label input[type="checkbox"] + .cr > .cr-icon,\r\n.radio label input[type="radio"] + .cr > .cr-icon {\r\n    transform: scale(3) rotateZ(-20deg);\r\n    opacity: 0;\r\n    transition: all .3s ease-in;\r\n}\r\n\r\n.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,\r\n.radio label input[type="radio"]:checked + .cr > .cr-icon {\r\n    transform: scale(1) rotateZ(0deg);\r\n    opacity: 1;\r\n}\r\n\r\n.checkbox label input[type="checkbox"]:disabled + .cr,\r\n.radio label input[type="radio"]:disabled + .cr {\r\n    opacity: .5;\r\n}\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><input ng-if="vm.inputType===\'textbox\'" ng-model="vm.ngModel" type="text" class="form-control" id="{{vm.fieldName}}" placeholder="{{vm.placeholder}}" required><input ng-if="vm.inputType===\'number\'" ng-model="vm.ngModel" type="number" class="form-control" id="{{vm.fieldName}}" required><input ng-if="vm.inputType===\'email\'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"><textarea ng-if="vm.inputType===\'textarea\'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea><checkbox large class="btn-default" indeterminate="{{vm.hasIntermediateState}}" ng-indeterminate-value="{{vm.intermediateValue}}" ng-if="vm.inputType===\'checkbox\'" ng-model="vm.ngModel"></checkbox><select ng-if="vm.inputType===\'select\'" class="form-control" ng-model="vm.ngModel" ng-options="item for item in vm.items"></select><input ng-if="vm.inputType===\'time\'" uib-timepicker ng-model="vm.ngModel" id="vm.fieldName" ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"><span ng-if="vm.inputType===\'datepopup\'"><input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%" ng-required="true" close-text="Close"> <span class="btn btn-default glyphicon glyphicon-calendar" ng-click="vm.open()"></span></span> <span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><p ng-if="vm.inputType!==\'checkbox\'">{{vm.ngModel}}</p><i ng-if="vm.inputType===\'checkbox\'" ng-show="vm.ngModel" class="fa fa-check fa-2x"></i></div><p class="help-block">{{vm.helpText}}</p></div></div>'
 };
 
 myInputField.$inject = ['$scope', 'cssClassService'];
@@ -1108,6 +1140,17 @@ var userOptionsDropDownMenu = {
 
 angular.module('my-angular-components').component('userOptionsDropDownMenu', userOptionsDropDownMenu);
 
+var sideMenuFooter = {
+    bindings: {
+        links: '='
+    },
+    controllerAs: 'vm',
+    template:'<div class="sidebar-footer"><div class="col-xs-4"><a state="vm.links[0].state">{{vm.links[0].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[1].state">{{vm.links[1].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[2].state">{{vm.links[2].linkText}}</a></div></div>'
+};
+
+
+angular.module('my-angular-components').component('sideMenuFooter', sideMenuFooter);
+
 var adminSideMenu = {
     transclude: true,
     bindings: {
@@ -1139,17 +1182,6 @@ var adminSideMenu = {
 
 
 angular.module('my-angular-components').component('adminSideMenu', adminSideMenu);
-
-var sideMenuFooter = {
-    bindings: {
-        links: '='
-    },
-    controllerAs: 'vm',
-    template:'<div class="sidebar-footer"><div class="col-xs-4"><a state="vm.links[0].state">{{vm.links[0].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[1].state">{{vm.links[1].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[2].state">{{vm.links[2].linkText}}</a></div></div>'
-};
-
-
-angular.module('my-angular-components').component('sideMenuFooter', sideMenuFooter);
 
 var adminSideMenuItems = {
     bindings: {

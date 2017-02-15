@@ -1,6 +1,20 @@
+<style>
+    .btn-large{
+        margin: 7px;
+        padding: 7px;
+        font-size: large;
+    }
+    .btn-small{
+        margin: 4px;
+        padding: 4px;
+        font-size: small;
+    }
+    
+</style>
+
 <div ng-class='vm.class' id='{{vm.id}}' ng-click='vm.click()'>
     <!--Button Inner Text-->
-    <strong>{{vm.text}}</strong>
+    {{vm.text}}
     <!--Font Awesome Icon-->
     <i style="margin-left:4px" ng-class='vm.buttonIcon'></i>
 </div>
