@@ -270,6 +270,22 @@ var buildList = function () {
 myCategorySelect.$inject = ['$scope'];
 
 angular.module('my-angular-components').component('myCategorySelect', myCategorySelect);
+var myPageTitle = {
+    transclude: "true",
+    bindings: {
+        icon: "@"
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+        
+        
+    },
+    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><span ng-transclude style="margin-left:12px !important"></span></i></h1>'
+};
+
+angular.module('my-angular-components').component('myPageTitle', myPageTitle);
+
 var myFilterTextbox = {
     bindings: {
         placeholder: '@',
@@ -292,22 +308,6 @@ var myFilterTextbox = {
 
 
 angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
-
-var myPageTitle = {
-    transclude: "true",
-    bindings: {
-        icon: "@"
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-        
-        
-    },
-    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><span ng-transclude style="margin-left:12px !important"></span></i></h1>'
-};
-
-angular.module('my-angular-components').component('myPageTitle', myPageTitle);
 
 /**
  * Date field component with Field Label, Date Popup, Help Popup
@@ -1058,7 +1058,7 @@ var adminLayout = {
                 return "uiView";
         };
     },
-    template:'<style>\r\n.uiViewColapsed{\r\n    margin-left:100px;\r\n}\r\n.uiView{\r\n    margin-left:20px;\r\n}\r\n</style><div id="page-wrapper" ng-cloak ng-class="vm.getState()"><div id="sidebar-wrapper"><admin-side-menu title="vm.title" colapsed="vm.colapsed" footer-links="vm.footerLinks" side-menu-items="vm.sideMenuItems"></admin-side-menu></div><div id="content-wrapper"><div class="page-content"><admin-header-bar ng-if="vm.showHeader" alert-menu-items="vm.alertMenuItems" user-menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></admin-header-bar><div ng-class="vm.getViewCssClass()"><ng-transclude></ng-transclude></div></div></div></div>'
+    template:'<style>\r\n.uiViewColapsed{\r\n    margin-left:100px;\r\n}\r\n.uiView{\r\n    margin-left:20px;\r\n}\r\n</style><div id="page-wrapper" ng-cloak ng-class="vm.getState()"><div id="sidebar-wrapper"><admin-side-menu title="{{vm.title}}" colapsed="vm.colapsed" footer-links="vm.footerLinks" side-menu-items="vm.sideMenuItems"></admin-side-menu></div><div id="content-wrapper"><div class="page-content"><admin-header-bar ng-if="vm.showHeader" alert-menu-items="vm.alertMenuItems" user-menu-items="vm.userMenuItems" user-name="{{vm.userName}}"></admin-header-bar><div ng-class="vm.getViewCssClass()"><ng-transclude></ng-transclude></div></div></div></div>'
 };
 
 adminLayout.$inject = ['$scope'];

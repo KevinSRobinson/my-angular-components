@@ -561,13 +561,6 @@ var adminLayoutExample = {
 
 angular.module("examples").component("adminLayoutExample", adminLayoutExample)
 
-var login = {
-    templateUrl: "src/client/app/Examples/Login/loginTemplate.html"
-};
-
-angular.module('examples').component('login', login);
-
-
 var mapExample = {
     controllerAs: 'vm',
     controller: function () {
@@ -585,6 +578,13 @@ var mapExample = {
 };
 
 angular.module('examples').component('mapExample', mapExample);
+
+var login = {
+    templateUrl: "src/client/app/Examples/Login/loginTemplate.html"
+};
+
+angular.module('examples').component('login', login);
+
 
 var modals = {
     controllerAs: 'vm',
