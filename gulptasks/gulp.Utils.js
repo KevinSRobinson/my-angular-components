@@ -1,3 +1,6 @@
+var config = require('../gulp.config')();
+var del = require('del');
+
 var $ = require('gulp-load-plugins')({
     lazy: true
 });
@@ -37,5 +40,5 @@ var clean = function(done){
 
 module.exports.errorLogger = errorLogger;
 module.exports.log = log;
-
+module.exports.clean = clean;
 

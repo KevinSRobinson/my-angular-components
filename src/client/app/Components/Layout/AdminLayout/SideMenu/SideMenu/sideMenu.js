@@ -11,7 +11,6 @@ var adminSideMenu = {
         'use strict';
 
         var vm = this;
-        vm.title = "Dashboard 1";
 
         vm.$onInit = function () {
             vm.colapsed = true;
