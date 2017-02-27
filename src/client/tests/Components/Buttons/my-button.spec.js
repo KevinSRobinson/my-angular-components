@@ -1,4 +1,4 @@
-fdescribe('Components', function () {
+describe('Components', function () {
 
     describe('Buttons', function () {
 

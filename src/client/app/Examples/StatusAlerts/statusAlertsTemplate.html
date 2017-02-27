@@ -1,10 +1,20 @@
 <div class="example">
     <h1>Status Alerts</h1>
     <hr>
-    <my-status-alert show="true" is-error="true" 
-    error-message="Something Went Wrong!!"></my-status-alert>
+    {{vm.message}}<br>
+    {{vm.show}}<br>
+    <br>
+    <my-input-field field-label="Message"  ng-model="vm.message"></my-input-field>
+    <my-status-alert is-error="vm.isError" 
+                     show="vm.show"
+                     timeout="6000"
+                     message="vm.message">
+    </my-status-alert>
+
+    <my-input-field input-type="checkbox" ng-model="vm.isError" 
+                    field-label="Simulate Error" ></my-input-field>
 
 
-    <my-status-alert show="true" is-success="true"
-    success-message="Everyginng is Great!!"></my-status-alert>
+
+    <my-button text="Submit" theme="success" click="vm.submit()"></my-button>
 </div>

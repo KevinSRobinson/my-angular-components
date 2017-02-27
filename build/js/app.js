@@ -270,22 +270,6 @@ var buildList = function () {
 myCategorySelect.$inject = ['$scope'];
 
 angular.module('my-angular-components').component('myCategorySelect', myCategorySelect);
-var myPageTitle = {
-    transclude: "true",
-    bindings: {
-        icon: "@"
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-        
-        
-    },
-    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><span ng-transclude style="margin-left:12px !important"></span></i></h1>'
-};
-
-angular.module('my-angular-components').component('myPageTitle', myPageTitle);
-
 var myFilterTextbox = {
     bindings: {
         placeholder: '@',
@@ -308,6 +292,22 @@ var myFilterTextbox = {
 
 
 angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
+
+var myPageTitle = {
+    transclude: "true",
+    bindings: {
+        icon: "@"
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+        
+        
+    },
+    template:'<h1 id="pageTitle"><i class="fa fa-{{vm.icon}}"><span ng-transclude style="margin-left:12px !important"></span></i></h1>'
+};
+
+angular.module('my-angular-components').component('myPageTitle', myPageTitle);
 
 /**
  * Date field component with Field Label, Date Popup, Help Popup
