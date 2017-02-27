@@ -259,8 +259,8 @@ angular.module("examples").config(function ($locationProvider, $stateProvider, $
     $stateProvider.state(modalsState);
     $stateProvider.state(tagsState);
 
-    //$locationProvider.html5Mode(true);  
-    //$urlRouterProvider.otherwise('/#');
+    $locationProvider.html5Mode(false);  
+    $urlRouterProvider.otherwise('/');
 });
 
 var buttonExamples = {
@@ -649,16 +649,29 @@ angular.module('examples').component('selectListExamples', selectListExamples);
 
 var statusAlerts = {
     controllerAs: 'vm',
-    controller: function(){
+    controller: function ($scope) {
         var vm = this;
+        vm.isError = false;
 
- 
+        vm.message = "Every this is great";
+
+        vm.submit = function () {
+            
+        };
+
+        $scope.$watch("vm.isError", function(){
+            if (vm.isError)
+                vm.message = "Something went wrong";
+            else
+                vm.message = "Everything is ok";
+        });
+        
+
     },
     templateUrl: "src/client/app/Examples/StatusAlerts/statusAlertsTemplate.html"
 };
 
 angular.module('examples').component('statusAlertExamples', statusAlerts);
-
 
 var tags = {
     controllerAs: 'vm',

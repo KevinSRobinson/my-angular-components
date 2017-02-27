@@ -164,6 +164,29 @@ angular.module('my-angular-components').component('mySpinnerButton', mySpinnerBu
 
 
 
+var myFilterTextbox = {
+    bindings: {
+        placeholder: '@',
+        ngModel: '=',
+        fieldName: '@'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            vm.fieldName = 'filterTextBox';
+            vm.placeholder = 'Filter';
+        };
+
+
+    },
+    template:'<div class="input-group" style="display: flex"><input type="text" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}" id="{{vm.fieldName}}" class="form-control"> <button class="btn btn-default" id="searchFilter"><i class="glyphicon glyphicon-search"></i></button></div>'
+};
+
+
+angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
+
 /**
  * 
  * @type {
@@ -270,29 +293,6 @@ var buildList = function () {
 myCategorySelect.$inject = ['$scope'];
 
 angular.module('my-angular-components').component('myCategorySelect', myCategorySelect);
-var myFilterTextbox = {
-    bindings: {
-        placeholder: '@',
-        ngModel: '=',
-        fieldName: '@'
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.$onInit = function () {
-            vm.fieldName = 'filterTextBox';
-            vm.placeholder = 'Filter';
-        };
-
-
-    },
-    template:'<div class="input-group" style="display: flex"><input type="text" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}" id="{{vm.fieldName}}" class="form-control"> <button class="btn btn-default" id="searchFilter"><i class="glyphicon glyphicon-search"></i></button></div>'
-};
-
-
-angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
-
 var myPageTitle = {
     transclude: "true",
     bindings: {
@@ -650,41 +650,6 @@ var myModalHeader = {
 
 var app = angular.module('my-angular-components').component('myModalHeader', myModalHeader);
 
-var myInfoPanel = {
-    bindings: {
-        infoText: '@',
-        icon: '@',
-        color: '@'
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.$onInit = function () {
-            //deafults
-            vm.ngModel = "Set this Text using ngModel";
-            vm.icon = 'fa fa-info fa-2x';
-            vm.color = '#64518A';
-        };
-
-
-        //TODO: Improve this
-        vm.getStyle = function () {
-            return ' border-left: 5px solid #64518A;' +
-                ' border-radius: 0 15px 15px 0; !important; ' +
-                ' padding: 1rem 1rem;   !important; ' +
-                ' background: ' + vm.color + ' !important;' +
-                ' font-size: 1.65rem; !important; margin: 0;  !important; ' +
-                ' color: ' + vm.color + ' !important;';
-        };
-
-    },
-    template:'<div class="well"><i class="fa fa-{{vm.icon}}"></i> {{vm.infoText}}<ul class="on-page-nav"></ul></div>'
-};
-
-
-angular.module('my-angular-components').component('myInfoPanel', myInfoPanel);
-
 var myMoreLessButton = {
     bindings: {
         id: '@',
@@ -725,6 +690,41 @@ var myMoreLessButton = {
 };
 
 angular.module('my-angular-components').component('myMoreLessButton', myMoreLessButton);
+
+var myInfoPanel = {
+    bindings: {
+        infoText: '@',
+        icon: '@',
+        color: '@'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            //deafults
+            vm.ngModel = "Set this Text using ngModel";
+            vm.icon = 'fa fa-info fa-2x';
+            vm.color = '#64518A';
+        };
+
+
+        //TODO: Improve this
+        vm.getStyle = function () {
+            return ' border-left: 5px solid #64518A;' +
+                ' border-radius: 0 15px 15px 0; !important; ' +
+                ' padding: 1rem 1rem;   !important; ' +
+                ' background: ' + vm.color + ' !important;' +
+                ' font-size: 1.65rem; !important; margin: 0;  !important; ' +
+                ' color: ' + vm.color + ' !important;';
+        };
+
+    },
+    template:'<div class="well"><i class="fa fa-{{vm.icon}}"></i> {{vm.infoText}}<ul class="on-page-nav"></ul></div>'
+};
+
+
+angular.module('my-angular-components').component('myInfoPanel', myInfoPanel);
 
 var myMorelessPanel = {
     transclude: true,
@@ -902,43 +902,53 @@ var myPanel = {
 angular.module('my-angular-components').component('myPanel', myPanel);
 var myStatusAlert = {
     bindings: {
-        message: "@",
-        isError: "@",
-        timeout: '@'
+        message: "<",
+        isError: '=?',
+        timeout: '=?',
+        show: '=?',
     },
     controllerAs: 'vm',
     controller: function ($scope, $timeout) {
         var vm = this;
-        vm.timeout = 2500,
 
 
+        //watch for changes
+        vm.$onChanges = function (args) {
 
-        $scope.$watch("vm.message", function (oldValue, newValue) {
-            console.log('old = ', oldValue);
-            console.log('new = ', newValue);
-              vm.show = true;
-            if (oldValue !== newValue) {
-                $timeout(function () {
-                    vm.show = false;
-                }, vm.timeout);
+            //if the message changes show the alert for the timeout period
+            if (args.message.currentValue !== args.message.previousValue) {
+                temporarlyShowAlert();
             }
-        });
+
+        }
+
+
+        // makes the alert visible for the specified timeout period
+        var temporarlyShowAlert = function () {
+            vm.show = true;
+            $timeout(function () {
+                vm.show = false;
+            }, vm.timeout);
+        };
 
         vm.$onInit = function () {
+            vm.timeout = 2500;
             vm.message = "";
             vm.isError = false;
             vm.show = false;
         };
 
+
+
         vm.getClass = function () {
-            if (vm.isError === 'true')
+            if (vm.isError === true)
                 return "errorMessage";
             else
                 return "successMessage";
         };
 
         vm.getIcon = function () {
-            if (vm.isError === 'true')
+            if (vm.isError === true)
                 return "fa fa-warning fa-2x";
             else
                 return "fa fa-check fa-2x";
