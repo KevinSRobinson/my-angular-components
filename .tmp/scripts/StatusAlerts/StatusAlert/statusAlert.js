@@ -15,9 +15,16 @@ var myStatusAlert = {
 
             //if the message changes show the alert for the timeout period
             if (args.message.currentValue !== args.message.previousValue) {
-                temporarlyShowAlert();
-            }
+                
+                if (!vm.isError) {
+                    temporarlyShowAlert();
+                } else {
+                    // if the message is an error just display 
+                    // the message without the timeout
+                    vm.show = true;
+                }
 
+            }
         }
 
 
@@ -28,6 +35,8 @@ var myStatusAlert = {
                 vm.show = false;
             }, vm.timeout);
         };
+
+
 
         vm.$onInit = function () {
             vm.timeout = 2500;

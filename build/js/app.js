@@ -164,29 +164,6 @@ angular.module('my-angular-components').component('mySpinnerButton', mySpinnerBu
 
 
 
-var myFilterTextbox = {
-    bindings: {
-        placeholder: '@',
-        ngModel: '=',
-        fieldName: '@'
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.$onInit = function () {
-            vm.fieldName = 'filterTextBox';
-            vm.placeholder = 'Filter';
-        };
-
-
-    },
-    template:'<div class="input-group" style="display: flex"><input type="text" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}" id="{{vm.fieldName}}" class="form-control"> <button class="btn btn-default" id="searchFilter"><i class="glyphicon glyphicon-search"></i></button></div>'
-};
-
-
-angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
-
 /**
  * 
  * @type {
@@ -293,6 +270,29 @@ var buildList = function () {
 myCategorySelect.$inject = ['$scope'];
 
 angular.module('my-angular-components').component('myCategorySelect', myCategorySelect);
+var myFilterTextbox = {
+    bindings: {
+        placeholder: '@',
+        ngModel: '=',
+        fieldName: '@'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            vm.fieldName = 'filterTextBox';
+            vm.placeholder = 'Filter';
+        };
+
+
+    },
+    template:'<div class="input-group" style="display: flex"><input type="text" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}" id="{{vm.fieldName}}" class="form-control"> <button class="btn btn-default" id="searchFilter"><i class="glyphicon glyphicon-search"></i></button></div>'
+};
+
+
+angular.module('my-angular-components').component('myFilterTextbox', myFilterTextbox);
+
 var myPageTitle = {
     transclude: "true",
     bindings: {
@@ -650,6 +650,41 @@ var myModalHeader = {
 
 var app = angular.module('my-angular-components').component('myModalHeader', myModalHeader);
 
+var myInfoPanel = {
+    bindings: {
+        infoText: '@',
+        icon: '@',
+        color: '@'
+    },
+    controllerAs: 'vm',
+    controller: function () {
+        var vm = this;
+
+        vm.$onInit = function () {
+            //deafults
+            vm.ngModel = "Set this Text using ngModel";
+            vm.icon = 'fa fa-info fa-2x';
+            vm.color = '#64518A';
+        };
+
+
+        //TODO: Improve this
+        vm.getStyle = function () {
+            return ' border-left: 5px solid #64518A;' +
+                ' border-radius: 0 15px 15px 0; !important; ' +
+                ' padding: 1rem 1rem;   !important; ' +
+                ' background: ' + vm.color + ' !important;' +
+                ' font-size: 1.65rem; !important; margin: 0;  !important; ' +
+                ' color: ' + vm.color + ' !important;';
+        };
+
+    },
+    template:'<div class="well"><i class="fa fa-{{vm.icon}}"></i> {{vm.infoText}}<ul class="on-page-nav"></ul></div>'
+};
+
+
+angular.module('my-angular-components').component('myInfoPanel', myInfoPanel);
+
 var myMoreLessButton = {
     bindings: {
         id: '@',
@@ -690,41 +725,6 @@ var myMoreLessButton = {
 };
 
 angular.module('my-angular-components').component('myMoreLessButton', myMoreLessButton);
-
-var myInfoPanel = {
-    bindings: {
-        infoText: '@',
-        icon: '@',
-        color: '@'
-    },
-    controllerAs: 'vm',
-    controller: function () {
-        var vm = this;
-
-        vm.$onInit = function () {
-            //deafults
-            vm.ngModel = "Set this Text using ngModel";
-            vm.icon = 'fa fa-info fa-2x';
-            vm.color = '#64518A';
-        };
-
-
-        //TODO: Improve this
-        vm.getStyle = function () {
-            return ' border-left: 5px solid #64518A;' +
-                ' border-radius: 0 15px 15px 0; !important; ' +
-                ' padding: 1rem 1rem;   !important; ' +
-                ' background: ' + vm.color + ' !important;' +
-                ' font-size: 1.65rem; !important; margin: 0;  !important; ' +
-                ' color: ' + vm.color + ' !important;';
-        };
-
-    },
-    template:'<div class="well"><i class="fa fa-{{vm.icon}}"></i> {{vm.infoText}}<ul class="on-page-nav"></ul></div>'
-};
-
-
-angular.module('my-angular-components').component('myInfoPanel', myInfoPanel);
 
 var myMorelessPanel = {
     transclude: true,
@@ -1121,6 +1121,17 @@ var userOptionsDropDownMenu = {
 
 angular.module('my-angular-components').component('userOptionsDropDownMenu', userOptionsDropDownMenu);
 
+var sideMenuFooter = {
+    bindings: {
+        links: '='
+    },
+    controllerAs: 'vm',
+    template:'<div class="sidebar-footer"><div class="col-xs-4"><a state="vm.links[0].state">{{vm.links[0].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[1].state">{{vm.links[1].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[2].state">{{vm.links[2].linkText}}</a></div></div>'
+};
+
+
+angular.module('my-angular-components').component('sideMenuFooter', sideMenuFooter);
+
 var adminSideMenu = {
     transclude: true,
     bindings: {
@@ -1151,17 +1162,6 @@ var adminSideMenu = {
 
 
 angular.module('my-angular-components').component('adminSideMenu', adminSideMenu);
-
-var sideMenuFooter = {
-    bindings: {
-        links: '='
-    },
-    controllerAs: 'vm',
-    template:'<div class="sidebar-footer"><div class="col-xs-4"><a state="vm.links[0].state">{{vm.links[0].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[1].state">{{vm.links[1].linkText}}</a></div><div class="col-xs-4"><a state="vm.links[2].state">{{vm.links[2].linkText}}</a></div></div>'
-};
-
-
-angular.module('my-angular-components').component('sideMenuFooter', sideMenuFooter);
 
 var adminSideMenuItems = {
     bindings: {
