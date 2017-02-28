@@ -6696,7 +6696,7 @@ button.close {
   padding: 19px;
   margin-bottom: 19px;
   color: white;
-  background: lightgreen !Important;
+  background: #00B200 !Important;
 }
 .strike {
   text-decoration: line-through;

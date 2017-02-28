@@ -86,7 +86,7 @@ gulp.task('serve-build', ['embedTemplates', 'optimize', 'bump'], function () {
     myGulp_BrowserSync.serve(false, port);
 });
 
-gulp.task('serve-dev', ['wiredep', 'inject', 'embedTemplates', 'watchTemplates'], function () {
+gulp.task('serve-dev', ['wiredep', 'inject', 'embedTemplates', 'watchTemplates', 'watchCode'], function () {
     myGulp_BrowserSync.serve(true, port);
 });
 
@@ -104,6 +104,12 @@ gulp.task('embedTemplates', function () {
     gulp.src('./src/client/app/components/**/*.js')
         .pipe(embedTemplates())
         .pipe(gulp.dest('./.tmp/scripts/'));
+});
+
+gulp.task('embedTemplates-build', function () {
+    gulp.src('./src/client/app/components/**/*.js')
+        .pipe(embedTemplates())
+        .pipe(gulp.dest('./build/js/'));
 });
 
 
@@ -130,12 +136,16 @@ gulp.task('inject', ['embedTemplates', 'wiredep', 'styles', 'watchTemplates'], f
 });
 
 gulp.task('watchTemplates', watchTemplates);
+gulp.task('watchCode', watchCode);
 
 var watchTemplates = function () {
     utils.log('..............Watching Templates');
-    gulp.watch(['./src/client/app/components/**/*.*'], ['embedTemplates']);
+    gulp.watch(['./src/client/app/components/**/*.html'], ['embedTemplates']);
 }
-
+var watchCode = function () {
+    utils.log('..............Watching Code');
+    gulp.watch(['./src/client/app/**/*.js', './src/client/app/Examples/**/*.js'], ['optimize', 'inject']);
+}
 
 gulp.task('gitadd', function () {
     return gulp.src(config.componentSourceFiles)

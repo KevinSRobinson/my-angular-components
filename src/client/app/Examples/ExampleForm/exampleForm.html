@@ -5,7 +5,7 @@
     </my-spinner-button>
    
     <form role="form" name="vm.customerForm" ng-submit="submit()" ng-fab-form-options="customFormOptions">
-        <my-status-alert message="{{vm.status.message}}" ng-show="vm.status.show" is-error="{{vm.status.isError}}"></my-status-alert>
+        <my-status-alert message="vm.status.message" ng-show="vm.status.show" is-error="{{vm.status.isError}}"></my-status-alert>
 
         <my-input-field input-type="textbox" field-label="First Name" ng-model="vm.firstName" placeholder="Enter Your First name"
             tooltip="We need your First Name" required="vm.required">

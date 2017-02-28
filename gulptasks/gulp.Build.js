@@ -1,6 +1,7 @@
 var utils = require('./gulp.Utils');
 var config = require('../gulp.config')();
 var gulp = require('gulp');
+var embedTemplates = require('gulp-angular-embed-templates');
 var $ = require('gulp-load-plugins')({
     lazy: true
 });
@@ -35,15 +36,8 @@ var optimize = function(){
         .pipe(jsLibFilter.restore)
 
 
-        //minify appr librarys
-       // .pipe(examplesFilter)
-        //.pipe($.iife())
-        //.pipe($.ngAnnotate()) //di helper
-        //.pipe($.uglify())
-        //.pipe(examplesFilter.restore)
-
-
         .pipe(appFilter)
+        .pipe(embedTemplates())
         .pipe($.iife())
         //.pipe($.ngAnnotate()) //di helper
         //.pipe($.uglify())

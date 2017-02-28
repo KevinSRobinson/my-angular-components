@@ -1,4 +1,3 @@
-<div ng-class="vm.getClass()" id="getId()" ng-show="vm.show">
-    <i class='vm.getIcon()'></i>{{vm.message}}
+<div ng-class="vm.cssClass" id="{{vm.getId()}}" ng-show="vm.show">
+    <i ng-class='{{vm.cssIconClass}}'></i>{{vm.message}}
 </div>
-

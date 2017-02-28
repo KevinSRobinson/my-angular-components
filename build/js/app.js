@@ -904,36 +904,20 @@ var myStatusAlert = {
     bindings: {
         message: "<",
         isError: '=?',
-        timeout: '=?',
+        timeout: '<',
         show: '=?',
     },
     controllerAs: 'vm',
     controller: function ($scope, $timeout) {
         var vm = this;
-
-
-        //watch for changes
-        vm.$onChanges = function (args) {
-
-            //if the message changes show the alert for the timeout period
-            if (args.message.currentValue !== args.message.previousValue) {
-                
-                if (!vm.isError) {
-                    temporarlyShowAlert();
-                } else {
-                    // if the message is an error just display 
-                    // the message without the timeout
-                    vm.show = true;
-                }
-
-            }
-        }
+        var time = {};
 
 
         // makes the alert visible for the specified timeout period
         var temporarlyShowAlert = function () {
             vm.show = true;
-            $timeout(function () {
+
+            time = $timeout(function () {
                 vm.show = false;
             }, vm.timeout);
         };
@@ -941,29 +925,65 @@ var myStatusAlert = {
 
 
         vm.$onInit = function () {
-            vm.timeout = 2500;
+            vm.timeout = 3500;
             vm.message = "";
             vm.isError = false;
             vm.show = false;
         };
 
 
+        vm.cssClass = "";
+        vm.iconClass = "";
+        vm.idClass = "";
+        vm.isErrorPre = false;
+        vm.isMessagePre = "";
 
-        vm.getClass = function () {
+        vm.$doCheck = function () {
+
+            var refresh = false;
+
+            if (vm.isErrorPre != vm.isError) {
+                vm.isErrorPre = vm.isError;
+                refresh = true;
+            }
+
+            if (vm.isMessagePre != vm.message) {
+                vm.isMessagePre = vm.message;
+                refresh = true;
+            }
+
+            if (refresh === true) {
+                vm.cssClass = getClass();
+                vm.iconClass = getIcon();
+                vm.idClass = getId();
+
+                if (!vm.isError) {
+                    temporarlyShowAlert();
+                } else {
+                    // if the message is an error just display 
+                    // the message without the timeout
+                    vm.show = true;
+                }
+            }
+
+
+        }
+
+        function getClass() {
             if (vm.isError === true)
                 return "errorMessage";
             else
                 return "successMessage";
         };
 
-        vm.getIcon = function () {
+        function getIcon() {
             if (vm.isError === true)
                 return "fa fa-warning fa-2x";
             else
                 return "fa fa-check fa-2x";
         };
 
-        vm.getId = function () {
+        function getId() {
             if (vm.isError === 'true')
                 return "errorMessage";
             else
@@ -973,7 +993,7 @@ var myStatusAlert = {
 
 
     },
-    template:'<div ng-class="vm.getClass()" id="getId()" ng-show="vm.show"><i class="vm.getIcon()"></i>{{vm.message}}</div>'
+    template:'<div ng-class="vm.cssClass" id="{{vm.getId()}}" ng-show="vm.show"><i ng-class="{{vm.cssIconClass}}"></i>{{vm.message}}</div>'
 };
 
 myStatusAlert.$inject = ['$scope', '$timeout'];
