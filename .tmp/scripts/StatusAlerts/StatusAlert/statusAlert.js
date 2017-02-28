@@ -17,6 +17,7 @@ var myStatusAlert = {
 
             time = $timeout(function () {
                 vm.show = false;
+                vm.message = "";
             }, vm.timeout);
         };
 
