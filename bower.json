@@ -1,6 +1,6 @@
 {
   "name": "my-angular-components",
-  "version": "0.7.27",
+  "version": "0.7.29",
   "description": "Angular components for business applicaitons",
   "authors": [
     "Kevin Robinson"
@@ -34,7 +34,8 @@
     "bootstrap": "^3.3.7",
     "angularfire": "^2.2.0",
     "firebase": "^3.6.5",
-    "bardjs": "^0.1.8"
+    "bardjs": "^0.1.8",
+    "angular-messages": "1.5.9"
   },
   "resolutions": {
     "angular": "1.5.9"

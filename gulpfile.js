@@ -15,61 +15,21 @@ var myGulp_CodeQuality = require('./gulptasks/gulp.CodeQuality');
 var port = 7205;
 
 gulp.task('default', ['help']);
-
 gulp.task('help', $.taskListing);
 
 gulp.task('test', ['inject-js-karma-conf'],  function(done){
     tests.startTests(true, done);
 })
-
-
-gulp.task("wiredep-karma-conf", function () {
-    var wiredep = require("wiredep").stream;
-    return gulp
-        .src("./karma.conf.js")
-        .pipe(wiredep())
-        .pipe(gulp.dest("./"));
-});
-gulp.task("inject-js-karma-conf", function () {
-    return gulp
-        .src("./karma.conf.js")
-        .pipe($.inject(gulp.src('./src/Client/App/Components/**/*.js'), {
-            starttag: "// inject:js",
-            endtag: "// endinject",
-            transform: function (filepath) {
-                return "\"" + filepath.substr(1) + "\",";
-            }
-        }))
-        .pipe($.inject(gulp.src('./src/Client/App/Examples/**/*.js'), {
-            starttag: "// inject:examplesjs",
-            endtag: "// endinject",
-            transform: function (filepath) {
-                return "\"" + filepath.substr(1) + "\",";
-            }
-        }))
-        .pipe($.inject(gulp.src('./src/Client/tests/Components/**/*.spec.js'), {
-            starttag: "// spec:js",
-            endtag: "// endinject",
-            transform: function (filepath, file, i, length) {
-                return "\"" + filepath.substr(1) + "\"" + (i < length - 1 ? "," : "");
-            }
-        }))
-         .pipe($.inject(gulp.src('./src/Client/tests/Examples/**/*.spec.js'), {
-            starttag: "// spec:examplesjs",
-            endtag: "// endinject",
-            transform: function (filepath, file, i, length) {
-                return "\"" + filepath.substr(1) + "\"" + (i < length - 1 ? "," : "");
-            }
-        }))
-        .pipe(gulp.dest("./"));
-});
-
-
-
-
 gulp.task('vet', myGulp_CodeQuality.analyze);
 
 
+
+
+
+
+//////////////////////////////////////////////
+// Builds
+//////////////////////////////////////////////
 gulp.task('serve-build', ['embedTemplates', 'optimize', 'bump'], function(){
    myGulp_BrowserSync.serve(false, port);
 });
@@ -88,9 +48,9 @@ gulp.task('optimize', ['inject', 'embedTemplates'], myGulp_Build.optimize);
 gulp.task('bump', ['optimize'], versioning.bump);
 
 gulp.task('embedTemplates', function () {
-    gulp.src('./src/client/app/**/*.js')
-        .pipe(embedTemplates())
-        .pipe(gulp.dest('./.tmp/scripts/'));
+    gulp.src('./src/client/app/**/**/*.js')
+      .pipe(embedTemplates())
+     .pipe(gulp.dest('./.tmp/scripts/'));
 });
 
 
@@ -98,6 +58,10 @@ gulp.task('wiredep',  function(){
 
     var options = config.getWiredepDefaultOptions();
 
+    console.log(config.componentSourceFiles);
+    
+    console.log(config.index);
+    
     return gulp
             .src(config.index)
             .pipe(wiredep(options))
@@ -106,7 +70,7 @@ gulp.task('wiredep',  function(){
             .pipe($.inject(gulp.src(config.examplesSourceFiles), {
                 starttag: '<!-- inject:examples:js -->'
             }))
-            .pipe(gulp.dest(config.client));
+          .pipe(gulp.dest(config.client));
 });
 
 gulp.task('inject', ['embedTemplates', 'wiredep', 'styles','watchTemplates'], function(){
@@ -120,7 +84,7 @@ gulp.task('watchTemplates', watchTemplates);
 
 var watchTemplates = function(){
     utils.log('..............Watching Templates');
-    gulp.watch(['./src/client/app/components/**/*.*'], ['embedTemplates']);
+    gulp.watch(['./src/client/app/**/*.*'], ['embedTemplates']);
 }
 
 
@@ -147,8 +111,6 @@ function inc(importance) {
 
 
 
-
-
 //////////////////////////////////////////////
 // fonts images and styles
 //////////////////////////////////////////////
@@ -159,9 +121,6 @@ gulp.task('styles-dev',  myGulp_Styles.stylesDev);
 gulp.task('less-watcher', myGulp_Styles.watchStyles);
 ////////////////////////////////////////
 
-
-
-
 ////////////////////////////////////////
 // Clean Tasks
 ////////////////////////////////////////
@@ -170,11 +129,3 @@ gulp.task('clean-images', fontsAndImageOptimizer.cleanImages);
 gulp.task('clean-fonts', fontsAndImageOptimizer.cleanFonts);
 gulp.task('clean-styles', myGulp_Styles.cleanStyles);
 gulp.task('clean-code', myGulp_Build.clean);
-
-
-
-
-
-
-
-

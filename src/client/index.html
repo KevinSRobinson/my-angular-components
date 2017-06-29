@@ -112,76 +112,39 @@
     <script src="/bower_components/firebase/firebase.js"></script>
     <script src="/bower_components/angularfire/dist/angularfire.js"></script>
     <script src="/bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src="/bower_components/sinon/index.js"></script>
     <script src="/bower_components/bardjs/dist/bard.js"></script>
     <script src="/bower_components/bardjs/dist/bard-ngRouteTester.js"></script>
     <!--endbower-->
     <!-- endbuild -->
     <!-- build:js js/app.js -->
-    <!-- inject:js -->
-    
-    <script src="/.tmp/scripts/app.js"></script>
-    
-    <script src="/.tmp/scripts/app.module.js"></script>
-    
-    <script src="/.tmp/scripts/cssClassService.js"></script>
-    
-    <script src="/.tmp/scripts/Buttons/Button/button.js"></script>
-    
-    <script src="/.tmp/scripts/Buttons/CreateButton/button.js"></script>
-    
-    <script src="/.tmp/scripts/Buttons/CreateButton/createButton.js"></script>
-    
-    <script src="/.tmp/scripts/Buttons/SpinnerButton/spinnerButton.js"></script>
-    
-    <script src="/.tmp/scripts/ComboBoxes/CategorySelect/categorySelect.js"></script>
-    
-    <script src="/.tmp/scripts/Filters/FilterTextbox/filterTextbox.js"></script>
-    
-    <script src="/.tmp/scripts/Headers/PageHeader/pageHeader.js"></script>
-    
-    <script src="/.tmp/scripts/Inputs/DateTimeDifferenceField/dateTimeDifferenceField.js"></script>
-    
-    <script src="/.tmp/scripts/Inputs/InputField/inputField.js"></script>
-    
-    <script src="/.tmp/scripts/Inputs/SelectField/selectField.js"></script>
-    
-    <script src="/.tmp/scripts/Inputs/TextEditor/markdown.directive.js"></script>
-    
-    <script src="/.tmp/scripts/Inputs/TextEditor/textEditor.js"></script>
-    
-    <script src="/.tmp/scripts/Modals/ModalButtons/modalButtons.js"></script>
-    
-    <script src="/.tmp/scripts/Modals/ModalHeader/modalHeader.js"></script>
-    
-    <script src="/.tmp/scripts/Panels/InfoPanel/infoPanel.js"></script>
-    
-    <script src="/.tmp/scripts/Panels/MoreLessButton/moreLessButton.js"></script>
-    
-    <script src="/.tmp/scripts/Panels/MoreLessPanel/moreLessPanel.js"></script>
-    
-    <script src="/.tmp/scripts/Panels/Panel/panel.js"></script>
-    
-    <script src="/.tmp/scripts/SelectLists/SelectList/selectList.js"></script>
-    
-    <script src="/.tmp/scripts/StatusAlerts/StatusAlert/statusAlert.js"></script>
-    
-    <script src="/.tmp/scripts/Inputs/DatesField/DateField/dateField.js"></script>
-    
-    <script src="/.tmp/scripts/Layout/AdminLayout/AdminLayoutCore/adminLayout.js"></script>
-    
-    <script src="/.tmp/scripts/Layout/AdminLayout/Header/AlertsDropDown/alertsDropDownMenu.js"></script>
-    
-    <script src="/.tmp/scripts/Layout/AdminLayout/Header/HeaderBar/headerBar.js"></script>
-    
-    <script src="/.tmp/scripts/Layout/AdminLayout/Header/UserOptionsDropDown/userOptionsDropDownMenu.js"></script>
-    
-    <script src="/.tmp/scripts/Layout/AdminLayout/SideMenu/SideMenu/sideMenu.js"></script>
-    
-    <script src="/.tmp/scripts/Layout/AdminLayout/SideMenu/SideMenuFooter/sideMenuFooter.js"></script>
-    
-    <script src="/.tmp/scripts/Layout/AdminLayout/SideMenu/SideMenuItems/sideMenuItems.js"></script>
-    
+    <!-- inject:js -->    
+    <script src="/src/client/app/Components/app.js"></script>    
+    <script src="/src/client/app/Components/cssClassService.js"></script>    
+    <script src="/src/client/app/Components/Buttons/Button/button.js"></script>    
+    <script src="/src/client/app/Components/Buttons/SpinnerButton/spinnerButton.js"></script>    
+    <script src="/src/client/app/Components/ComboBoxes/CategorySelect/categorySelect.js"></script>    
+    <script src="/src/client/app/Components/Filters/FilterTextbox/filterTextbox.js"></script>    
+    <script src="/src/client/app/Components/Headers/PageHeader/pageHeader.js"></script>    
+    <script src="/src/client/app/Components/Inputs/DateTimeDifferenceField/dateTimeDifferenceField.js"></script>    
+    <script src="/src/client/app/Components/Inputs/InputField/inputField.js"></script>    
+    <script src="/src/client/app/Components/Inputs/SelectField/selectField.js"></script>    
+    <script src="/src/client/app/Components/Inputs/TextEditor/markdown.directive.js"></script>    
+    <script src="/src/client/app/Components/Inputs/TextEditor/textEditor.js"></script>    
+    <script src="/src/client/app/Components/Modals/ModalButtons/modalButtons.js"></script>    
+    <script src="/src/client/app/Components/Modals/ModalHeader/modalHeader.js"></script>    
+    <script src="/src/client/app/Components/Panels/InfoPanel/infoPanel.js"></script>    
+    <script src="/src/client/app/Components/Panels/MoreLessButton/moreLessButton.js"></script>    
+    <script src="/src/client/app/Components/Panels/MoreLessPanel/moreLessPanel.js"></script>    
+    <script src="/src/client/app/Components/Panels/Panel/panel.js"></script>    
+    <script src="/src/client/app/Components/StatusAlerts/StatusAlert/statusAlert.js"></script>    
+    <script src="/src/client/app/Components/Inputs/DatesField/DateField/dateField.js"></script>    
+    <script src="/src/client/app/Components/Layout/AdminLayout/AdminLayoutCore/adminLayout.js"></script>    
+    <script src="/src/client/app/Components/Layout/AdminLayout/Header/AlertsDropDown/alertsDropDownMenu.js"></script>    
+    <script src="/src/client/app/Components/Layout/AdminLayout/Header/HeaderBar/headerBar.js"></script>    
+    <script src="/src/client/app/Components/Layout/AdminLayout/Header/UserOptionsDropDown/userOptionsDropDownMenu.js"></script>    
+    <script src="/src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenu/sideMenu.js"></script>    
+    <script src="/src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenuItems/sideMenuItems.js"></script>    
+    <script src="/src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenuFooter/sideMenuFooter.js"></script>    
     <!--endinject-->
     <!-- inject:templates:js -->
     <!--endinject-->
@@ -211,7 +174,7 @@
    
     <script src="/src/client/app/Examples/routes.js"></script>
    
-    <script src="/src/client/app/Examples/Buttons/buttons.js"></script>
+    <script src="/src/client/app/Examples/Buttons/buttonExamples.js"></script>
    
     <script src="/src/client/app/Examples/Common/common.js"></script>
    
@@ -228,6 +191,8 @@
     <script src="/src/client/app/Examples/Inputs/inputs.js"></script>
    
     <script src="/src/client/app/Examples/Layout/adminLayoutExample.js"></script>
+   
+    <script src="/src/client/app/Examples/Login/login.js"></script>
    
     <script src="/src/client/app/Examples/Map/mapExample.js"></script>
    

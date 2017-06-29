@@ -18,8 +18,9 @@ module.exports = function () {
     //var componetTemplates = clientFolderRoot + 'Components/**/*.html';
 
     var examplesSource = client + 'app/Examples/**/*.js';
+    var componentsSource = client + 'app/Components/**/*.js';
     var config = {
-
+        
         //all js to vet
         alljs: [
             './src/**/*.js',
@@ -30,14 +31,14 @@ module.exports = function () {
         fonts: './bower_components/font-awesome/fonts/**/*.*',
         images: client + './images/**/*.*',
         css: temp + 'styles.css',
-        index: client + 'index.html',
+        index:  './src/client/index.html',
         client: client,
         js: [
             client + '**/*.js',
             '!' + client + '**/*spec.js',
             '!' + './bower_components/**'
         ],
-        componentSourceFiles: './.tmp/scripts/**/*.js',
+        componentSourceFiles: componentsSource,
         examplesSourceFiles: examplesSource,
         html: client + "**/",
         less: client + 'styles/styles.less',
