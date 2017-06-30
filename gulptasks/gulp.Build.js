@@ -14,55 +14,55 @@ var optimize = function(){
     var cssFilter = $.filter('**/*.css', { restore: true });
     var jsLibFilter = $.filter('**/' + config.optimized.lib, { restore: true });
     var appFilter = $.filter('**/' + config.optimized.app, { restore: true });
-
+    var examplesFilter = $.filter('**/' + config.optimized.examples, { restore: true });
    
       return gulp
         .src(config.index)
-        //  .pipe($.inject(gulp.src(templateCache, { read: false}), {
-        //     starttag: '<!-- inject:templates:js -->'
-        // }))
-        .pipe(assets)
-        //css
-        .pipe(cssFilter)
-        .pipe($.csso())
-        .pipe(cssFilter.restore)
+    //     //  .pipe($.inject(gulp.src(templateCache, { read: false}), {
+    //     //     starttag: '<!-- inject:templates:js -->'
+    //     // }))
+    //     .pipe(assets)
+    //     //css
+    //     .pipe(cssFilter)
+    //     .pipe($.csso())
+    //     .pipe(cssFilter.restore)
         
 
-         //js
-         //minify vendor librarys 
-        .pipe(jsLibFilter)
-        //.pipe($.uglify())
-        .pipe(jsLibFilter.restore)
+    //      //js
+    //      //minify vendor librarys 
+    //     .pipe(jsLibFilter)
+    //     //.pipe($.uglify())
+    //     .pipe(jsLibFilter.restore)
 
 
-        //minify appr librarys
-       // .pipe(examplesFilter)
-        //.pipe($.iife())
-        //.pipe($.ngAnnotate()) //di helper
-        //.pipe($.uglify())
-        //.pipe(examplesFilter.restore)
+    //     //minify appr librarys
+    //     .pipe(examplesFilter)
+    //    .pipe($.iife())
+    //     .pipe($.ngAnnotate()) //di helper
+    //     //.pipe($.uglify())
+    //     .pipe(examplesFilter.restore)
 
 
-        .pipe(appFilter)
-        .pipe($.iife())
-        //.pipe($.ngAnnotate()) //di helper
-        //.pipe($.uglify())
-        .pipe(appFilter.restore)
-        //revisions npm install --save-dev gulp-iife
-       // .pipe($.rev())
+    //     .pipe(appFilter)
+    //     .pipe($.iife())
+    //     //.pipe($.ngAnnotate()) //di helper
+    //     //.pipe($.uglify())
+    //     .pipe(appFilter.restore)
+    //     //revisions npm install --save-dev gulp-iife
+    //    // .pipe($.rev())
 
-        //assets
-        .pipe(assets.restore())
-        .pipe($.useref())
+    //     //assets
+    //     .pipe(assets.restore())
+    //     .pipe($.useref())
 
-        //renameing
-        //.pipe($.revReplace())
+    //     //renameing
+    //     //.pipe($.revReplace())
 
-        //finish
-        .pipe(gulp.dest(config.build))
+    //     //finish
+    //     .pipe(gulp.dest(config.build))
 
-        //revision manifest
-        //.pipe($.rev.manifest())
+    //     //revision manifest
+    //     .pipe($.rev.manifest())
         .pipe(gulp.dest(config.build));
         
 

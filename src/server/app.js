@@ -40,7 +40,6 @@ switch (environment) {
         console.log('** BUILD **');
         app.use(express.static('./build/'));
           app.use(express.static('./'));
-        app.use(express.static('./tmp'));
         app.use('/*', express.static('./build/index.html'));
         break;
     default:

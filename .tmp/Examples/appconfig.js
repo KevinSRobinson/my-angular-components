@@ -1,6 +1,9 @@
-angular.module("examples").config(function ($locationProvider, $stateProvider, $httpProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
+angular.module("examples").config(function (hljsServiceProvider, $locationProvider, $stateProvider, $httpProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) {
 
-    
+    hljsServiceProvider.setOptions({
+    // replace tab with 4 spaces
+    tabReplace: '    '
+  });
     var login = {
         name: 'login',
         url: '/login',

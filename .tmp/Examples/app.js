@@ -1,4 +1,4 @@
-var app = angular.module('examples', ['my-angular-components', 'ngFabForm',
+var app = angular.module('examples', ['hljs', 'my-angular-components', 'ngFabForm',
 
     'ui.router',
     'auth0.lock', 'angular-jwt', 'firebase',

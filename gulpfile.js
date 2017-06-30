@@ -30,7 +30,7 @@ gulp.task('vet', myGulp_CodeQuality.analyze);
 //////////////////////////////////////////////
 // Builds
 //////////////////////////////////////////////
-gulp.task('serve-build', ['embedTemplates', 'optimize', 'bump'], function(){
+gulp.task('serve-build', ['embedTemplates', 'wiredepBuild', 'inject', 'optimize', 'bump'], function(){
    myGulp_BrowserSync.serve(false, port);
 });
 
@@ -43,7 +43,7 @@ gulp.task('serve-dev', ['watchTemplates','embedTemplates', 'wiredep', 'inject', 
 //////////////////////////////////////////////
 // optimize
 //////////////////////////////////////////////
-gulp.task('optimize', ['inject'], myGulp_Build.optimize);
+gulp.task('optimize', ['wiredepBuild', 'inject'], myGulp_Build.optimize);
 
 gulp.task('bump', ['optimize'], versioning.bump);
 
@@ -67,7 +67,19 @@ gulp.task('watchTemplates', watchTemplates);
 gulp.task('reload', function(){
     myGulp_BrowserSync.reload();
 })
+gulp.task('wiredepBuild',  function(){
 
+    var options = config.getWiredepDefaultOptions();
+  utils.log('...........................................');
+   utils.log('......embedTemplates........');
+    utils.log('.....................................');
+
+    
+    return gulp
+            .src(config.index)
+            .pipe(wiredep(options))
+            .pipe(gulp.dest(config.build));
+});
 gulp.task('wiredep',  function(){
 
     var options = config.getWiredepDefaultOptions();
@@ -79,7 +91,7 @@ gulp.task('wiredep',  function(){
     return gulp
             .src(config.index)
             .pipe(wiredep(options))
-          .pipe(gulp.dest(config.client));
+            .pipe(gulp.dest(config.client));
 });
 
 gulp.task('inject', function(){

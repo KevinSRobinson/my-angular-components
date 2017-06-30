@@ -6656,6 +6656,15 @@ button.close {
     display: none !important;
   }
 }
+.hljs-keyword,
+.hljs-attribute,
+.hljs-selector-tag,
+.hljs-meta-keyword,
+.hljs-doctag,
+.hljs-name {
+  font-weight: bold;
+  color: red;
+}
 .ace_editor {
   height: 200px;
 }
