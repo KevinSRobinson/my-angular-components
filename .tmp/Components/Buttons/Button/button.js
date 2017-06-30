@@ -26,7 +26,7 @@ var myButton1 = {
         })
 
     },
-    template:'<div ng-class="vm._theme" id="{{vm.id}}" ng-click="vm.click()">{{vm.text()}}<i ng-class="vm._icon"></i></div>'
+    template:'<div ng-class="vm._theme" id="{{vm.id}}" ng-click="vm.click()">Working<i ng-class="vm._icon"></i></div>jhj'
 };
 
 angular.module('my-angular-components').component('myButton1', myButton1);

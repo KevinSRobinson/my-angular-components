@@ -90,6 +90,10 @@ var serve = function (isDev, port){
         });
 }
 
+function reload(){
+    browserSync.reload()
+}
+
 function changeEvent(event){
     var srcPattern = new RegExp('./.*(?=/' + config.source + ')/');
 
@@ -98,7 +102,7 @@ function changeEvent(event){
 }
 
 
-
+module.exports.reload = reload;
 module.exports.startBrowserSync = startBrowserSync;
 module.exports.serve = serve;
 

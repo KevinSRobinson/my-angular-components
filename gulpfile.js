@@ -34,7 +34,7 @@ gulp.task('serve-build', ['embedTemplates', 'optimize', 'bump'], function(){
    myGulp_BrowserSync.serve(false, port);
 });
 
-gulp.task('serve-dev', ['wiredep', 'inject', 'embedTemplates'], function(){
+gulp.task('serve-dev', ['watchTemplates', 'embedTemplates', 'wiredep', 'inject', 'embedTemplates'], function(){
    myGulp_BrowserSync.serve(true, port);
 });
 
@@ -48,18 +48,36 @@ gulp.task('optimize', ['inject', 'embedTemplates'], myGulp_Build.optimize);
 gulp.task('bump', ['optimize'], versioning.bump);
 
 gulp.task('embedTemplates', function () {
+      utils.log('...........................................');
+        utils.log('......embedTemplates........');
+          utils.log('.....................................');
+
+
     gulp.src('./src/client/app/**/**/*.js')
       .pipe(embedTemplates({'basePath':'./'}))
      .pipe(gulp.dest('./.tmp/'));
+     
 });
+var watchTemplates = function(){
+    utils.log('..............Watching Templates');
+    gulp.watch(['./src/client/app/**/*.*'], ['embedTemplates', 'reload']);
+}
+gulp.task('watchTemplates', watchTemplates);
 
+gulp.task('reload', ['embedTemplates'], function(){
+    myGulp_BrowserSync.reload();
+})
 
 gulp.task('wiredep',  function(){
 
     var options = config.getWiredepDefaultOptions();
-
+  utils.log('...........................................');
+        utils.log('......embedTemplates........');
+          utils.log('.....................................');
     console.log(config.componentSourceFiles);
-    
+     gulp.src('./src/client/app/**/**/*.js')
+      .pipe(embedTemplates({'basePath':'./'}))
+     .pipe(gulp.dest('./.tmp/'));
     console.log(config.index);
     
     return gulp
@@ -83,12 +101,6 @@ gulp.task('inject', ['embedTemplates', 'wiredep', 'styles','watchTemplates'], fu
             .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('watchTemplates', watchTemplates);
-
-var watchTemplates = function(){
-    utils.log('..............Watching Templates');
-    gulp.watch(['./src/client/app/**/*.*'], ['embedTemplates']);
-}
 
 
 gulp.task('gitadd', function(){
