@@ -2,7 +2,7 @@ var myButton1 = {
     bindings: {
         id: '@',
         text: '@',
-        click: '&',
+        buttonclick: '&',
         theme: '@'
     },
     controllerAs: 'vm',
@@ -12,21 +12,21 @@ var myButton1 = {
         vm.$onInit = function () {
             //default options
             vm.id = 'create';
-            vm.buttonText = '';
+            vm.text = '';
             vm.icon = 'bars';
             vm.theme = 'success';
         };
 
         $scope.$watch('vm.theme', function () {
-            vm._theme += 'btn btn-' + vm.theme;
+            vm.theme += ' btn btn-' + vm.theme;
         })
 
         $scope.$watch('vm.icon', function () {
-            vm._icon += 'fa fa-' + vm.icon;
+            vm.icon += ' fa fa-' + vm.icon;
         })
 
     },
     templateUrl:'./src/client/app/Components/Buttons/Button/buttonTemplate.html'
 };
 
-angular.module('my-angular-components').component('myButton1', myButton1);
+angular.module('my-angular-components').component('myButton', myButton1);

@@ -3,9 +3,12 @@ var buttonExamples = {
     controller: function () {
         var vm = this;
 
-    
+        vm.doSomething = function() {
+            alert('You Clicked me!');
+        }   
+
     },
-    template:'<my-page-title icon="users">Buttons</my-page-title><my-button1 text="Click Here!" icon="check"></my-button1>'
+    templateUrl:'./src/client/app/Examples/Buttons/buttonExamplesTemplate.html'
 };
 
 angular.module('examples').component('buttonExamples', buttonExamples);

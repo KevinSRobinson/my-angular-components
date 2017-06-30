@@ -34,7 +34,7 @@ gulp.task('serve-build', ['embedTemplates', 'optimize', 'bump'], function(){
    myGulp_BrowserSync.serve(false, port);
 });
 
-gulp.task('serve-dev', ['watchTemplates', 'embedTemplates', 'wiredep', 'inject', 'embedTemplates'], function(){
+gulp.task('serve-dev', ['watchTemplates', 'embedTemplates', 'wiredep', 'inject', 'styles'], function(){
    myGulp_BrowserSync.serve(true, port);
 });
 
@@ -43,11 +43,11 @@ gulp.task('serve-dev', ['watchTemplates', 'embedTemplates', 'wiredep', 'inject',
 //////////////////////////////////////////////
 // optimize
 //////////////////////////////////////////////
-gulp.task('optimize', ['inject', 'embedTemplates'], myGulp_Build.optimize);
+gulp.task('optimize', ['inject'], myGulp_Build.optimize);
 
 gulp.task('bump', ['optimize'], versioning.bump);
 
-gulp.task('embedTemplates', function () {
+gulp.task('embedTemplates', ['wiredep', 'inject', 'styles'], function () {
       utils.log('...........................................');
         utils.log('......embedTemplates........');
           utils.log('.....................................');
@@ -60,11 +60,11 @@ gulp.task('embedTemplates', function () {
 });
 var watchTemplates = function(){
     utils.log('..............Watching Templates');
-    gulp.watch(['./src/client/app/**/*.*'], ['embedTemplates', 'reload']);
+    gulp.watch(['./src/client/app/**/*.*'], ['embedTemplates']);
 }
 gulp.task('watchTemplates', watchTemplates);
 
-gulp.task('reload', ['embedTemplates'], function(){
+gulp.task('reload', function(){
     myGulp_BrowserSync.reload();
 })
 
@@ -72,22 +72,17 @@ gulp.task('wiredep',  function(){
 
     var options = config.getWiredepDefaultOptions();
   utils.log('...........................................');
-        utils.log('......embedTemplates........');
-          utils.log('.....................................');
-    console.log(config.componentSourceFiles);
-     gulp.src('./src/client/app/**/**/*.js')
-      .pipe(embedTemplates({'basePath':'./'}))
-     .pipe(gulp.dest('./.tmp/'));
-    console.log(config.index);
+   utils.log('......embedTemplates........');
+    utils.log('.....................................');
+
     
     return gulp
             .src(config.index)
             .pipe(wiredep(options))
-           
           .pipe(gulp.dest(config.client));
 });
 
-gulp.task('inject', ['embedTemplates', 'wiredep', 'styles','watchTemplates'], function(){
+gulp.task('inject', function(){
   return gulp
             .src(config.index)
             .pipe($.inject(gulp.src(config.css)))
