@@ -30,7 +30,7 @@ gulp.task('vet', myGulp_CodeQuality.analyze);
 //////////////////////////////////////////////
 // Builds
 //////////////////////////////////////////////
-gulp.task('serve-build', ['embedTemplates', 'wiredepBuild', 'inject', 'optimize', 'bump'], function(){
+gulp.task('serve-build', ['optimize'], function(){
    myGulp_BrowserSync.serve(false, port);
 });
 

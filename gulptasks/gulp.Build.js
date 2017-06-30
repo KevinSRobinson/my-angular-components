@@ -6,10 +6,10 @@ var $ = require('gulp-load-plugins')({
 });
 
 var optimize = function(){
-
+  utils.log('------------------------');
     utils.log('Optimize the javascrtipt');
-    
-   var assets = $.useref.assets({searchPath: './'});
+      utils.log('-----------------------------');
+   //var assets = $.useref.assets({searchPath: './ass'});
     
     var cssFilter = $.filter('**/*.css', { restore: true });
     var jsLibFilter = $.filter('**/' + config.optimized.lib, { restore: true });
@@ -18,21 +18,21 @@ var optimize = function(){
    
       return gulp
         .src(config.index)
-    //     //  .pipe($.inject(gulp.src(templateCache, { read: false}), {
-    //     //     starttag: '<!-- inject:templates:js -->'
-    //     // }))
-    //     .pipe(assets)
+        //  .pipe($.inject(gulp.src(config.templateCache, { read: false}), {
+        //     starttag: '<!-- inject:templates:js -->'
+        // }))
+     //   .pipe(assets)
     //     //css
-    //     .pipe(cssFilter)
-    //     .pipe($.csso())
-    //     .pipe(cssFilter.restore)
+        .pipe(cssFilter)
+        .pipe($.csso())
+        .pipe(cssFilter.restore)
         
 
     //      //js
     //      //minify vendor librarys 
-    //     .pipe(jsLibFilter)
-    //     //.pipe($.uglify())
-    //     .pipe(jsLibFilter.restore)
+         .pipe(jsLibFilter)
+       .pipe($.uglify())
+       .pipe(jsLibFilter.restore)
 
 
     //     //minify appr librarys
