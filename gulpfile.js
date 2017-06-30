@@ -34,7 +34,7 @@ gulp.task('serve-build', ['embedTemplates', 'optimize', 'bump'], function(){
    myGulp_BrowserSync.serve(false, port);
 });
 
-gulp.task('serve-dev', ['watchTemplates', 'embedTemplates', 'wiredep', 'inject', 'styles'], function(){
+gulp.task('serve-dev', ['watchTemplates','embedTemplates', 'wiredep', 'inject', 'styles'], function(){
    myGulp_BrowserSync.serve(true, port);
 });
 
@@ -47,7 +47,7 @@ gulp.task('optimize', ['inject'], myGulp_Build.optimize);
 
 gulp.task('bump', ['optimize'], versioning.bump);
 
-gulp.task('embedTemplates', ['wiredep', 'inject', 'styles'], function () {
+gulp.task('embedTemplates', ['styles'], function () {
       utils.log('...........................................');
         utils.log('......embedTemplates........');
           utils.log('.....................................');

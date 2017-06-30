@@ -48,7 +48,7 @@ var myStatusAlert = {
 
 
     },
-    template:'<div class="{{vm.getClass()}}"><i class="{{vm.getIcon()}}"></i>{{vm.getMessage()}}</div>'
+    template:'<div class="{{vm.getClass()}}"><i class="{{vm.getIcon()}}"></i> {{vm.getMessage()}}</div>'
 };
 
 
