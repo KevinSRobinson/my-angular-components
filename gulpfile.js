@@ -49,8 +49,8 @@ gulp.task('bump', ['optimize'], versioning.bump);
 
 gulp.task('embedTemplates', function () {
     gulp.src('./src/client/app/**/**/*.js')
-      .pipe(embedTemplates())
-     .pipe(gulp.dest('./.tmp/scripts/'));
+      .pipe(embedTemplates({'basePath':'./'}))
+     .pipe(gulp.dest('./.tmp/'));
 });
 
 
@@ -65,11 +65,7 @@ gulp.task('wiredep',  function(){
     return gulp
             .src(config.index)
             .pipe(wiredep(options))
-            .pipe($.inject(gulp.src(config.componentSourceFiles)))
-            //inject the clientexamples js files
-            .pipe($.inject(gulp.src(config.examplesSourceFiles), {
-                starttag: '<!-- inject:examples:js -->'
-            }))
+           
           .pipe(gulp.dest(config.client));
 });
 
@@ -77,7 +73,14 @@ gulp.task('inject', ['embedTemplates', 'wiredep', 'styles','watchTemplates'], fu
   return gulp
             .src(config.index)
             .pipe($.inject(gulp.src(config.css)))
-            .pipe(gulp.dest(config.client));
+             .pipe($.inject(gulp.src(config.componentSourceFiles, {read: false, }), {relative: true, ignorePath: '/app', addRootSlash: true}))
+            //inject the clientexamples js files
+            .pipe($.inject(gulp.src(config.examplesSourceFiles, {read: false, }),      {
+                starttag: '<!-- inject:examples:js -->',
+                relative: true,
+                ignorePath: '/app', addRootSlash: true
+            }))          
+            .pipe(gulp.dest(config.temp));
 });
 
 gulp.task('watchTemplates', watchTemplates);

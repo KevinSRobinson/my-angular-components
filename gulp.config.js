@@ -16,11 +16,29 @@ module.exports = function () {
     //var componetsSource = clientFolderRoot + 'Components/**/*.js';
     //var builtComponetsSource = temp + 'scripts/**/*.js';
     //var componetTemplates = clientFolderRoot + 'Components/**/*.html';
+        var paths = {
+        src: 'src/**/*',
+        srcHTML: 'src/**/*.html',
+        srcCSS: 'src/**/*.css',
+        srcJS: 'src/**/*.js',
+        tmp: 'tmp', // tmp folder
+        tmpIndex: 'tmp/index.html', // index.html in tmp folder
+        tmpCSS: 'tmp/**/*.css', // css files in tmp folder
+        tmpJS: 'tmp/**/*.js', // js files in tmp folder
+        dist: 'dist',
+        distIndex: 'dist/index.html',
+        distCSS: 'dist/**/*.css',
+        distJS: 'dist/**/*.js'
+        };
+
+
+
+
 
     var examplesSource = client + 'app/Examples/**/*.js';
     var componentsSource = client + 'app/Components/**/*.js';
     var config = {
-        
+        paths: paths,
         //all js to vet
         alljs: [
             './src/**/*.js',
