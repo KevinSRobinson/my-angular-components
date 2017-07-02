@@ -57,7 +57,7 @@ var exampleForm = {
             name: "c# "
         }];
     },
-    template:'<div class="col-md-6 center-block"><h1>Example Form1</h1>{{ vm.customerForm.$valid }}<my-spinner-button button-text="Submit Form" saving="vm.saving" is-disabled="!vm.customerForm.$valid" ng-click="vm.submit()"></my-spinner-button><form role="form" name="vm.customerForm" ng-submit="submit()" ng-fab-form-options="customFormOptions"><my-status-alert message="{{vm.status.message}}" ng-show="vm.status.show" is-error="{{vm.status.isError}}"></my-status-alert><my-input-field input-type="textbox" field-label="First Name" ng-model="vm.firstName" placeholder="Enter Your First name" tooltip="We need your First Name" required="vm.required"></my-input-field><my-input-field input-type="textbox" field-label="Last Name" ng-model="vm.lastName" placeholder="Enter Your Last name" , tooltip="We need your Last Name"></my-input-field><my-input-field field-label="Age" input-type="number" ng-model="vm.age" placeholder="Enter Your Age" tooltip="We need your First Name" required="vm.required"></my-input-field><my-input-field field-label="About Me" input-type="textarea" ng-model="vm.aboutMe" placeholder="Enter a description about yourself"></my-input-field><my-input-field field-label="Simulate Error" input-type="checkbox" ng-model="vm.simulateError" placeholder="Enter a description about yourself"></my-input-field></form></div>'
+    templateUrl:'./src/client/app/Examples/ExampleForm/exampleForm.html'
 };
 
 angular.module('examples').component('exampleForm', exampleForm);
