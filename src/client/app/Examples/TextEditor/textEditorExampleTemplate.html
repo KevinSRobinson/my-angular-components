@@ -1,5 +1,11 @@
-<my-rich-text-editor ng-model="vm.sampleText"></my-rich-text-editor>
+<div class="example">
+    <h1>Text Editor</h1>
+    
+    <div class="well">
+        <my-rich-text-editor ng-model="vm.sampleText"></my-rich-text-editor>
+    </div>
 
-
-<div markdown="{{vm.sampleText}}"></div>
-
+    <div class="well">
+        <div markdown="{{vm.sampleText}}"></div>
+    </div>
+</div>
