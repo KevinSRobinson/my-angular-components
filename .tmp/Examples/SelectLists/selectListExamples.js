@@ -3,21 +3,21 @@ var selectListExamples = {
     controller: function () {
         var vm = this;
 
-        vm.items = [
-        {
-            "firstName": "Cox",
-            "lastName": "Carney"
-        },
-        {
-            "firstName": "Kevin",
-            "lastName": "Robinons"
-        },
-        {
-            "firstName": "Sean",
-            "lastName": "Robinons"
+         vm.selectedCats = {};
+        vm.selectedTags = {};
+
+        vm.cats = [{
+            id: 1,
+            name: "Cat 1"
+        }, {
+            id: 2,
+            name: "Cat 2"
         }];
+
+        vm.tags = [{id: 1, name: "VB.net" }, 
+                   { id: 2, name: "c# " }];
     },
-    template:'<h1>Selected Items</h1>Selected : {{vm.selected}}<my-select-list field-label="Slect a option" items="vm.items" ng-model="vm.selected"><my-select-list></my-select-list></my-select-list>'
+    template:'<div class="example"><h1>Select Lists</h1><hr><h3>Tags Field</h3><p><hljs><my-select-field field-label="Languages" items="vm.tags" tooltip="Please Select a Language" ng-model="vm.selectedTags"></my-select-field></hljs><my-select-field field-label="Languages" items="vm.tags" tooltip="Please Select a Language" ng-model="vm.selectedTags"></my-select-field></p><hr><h3>Select List Field</h3><p><hljs><my-select-field field-label="Languages" items="vm.cats" input-type="combobox" tooltip="Please Select a Language" ng-model="vm.selectedTags"></my-select-field></hljs><my-select-field field-label="Languages" items="vm.cats" input-type="combobox" tooltip="Please Select a Language" ng-model="vm.selectedTags"></my-select-field></p></div>'
 };
 
 angular.module('examples').component('selectListExamples', selectListExamples);

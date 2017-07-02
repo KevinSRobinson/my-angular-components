@@ -3,21 +3,21 @@ var selectListExamples = {
     controller: function () {
         var vm = this;
 
-        vm.items = [
-        {
-            "firstName": "Cox",
-            "lastName": "Carney"
-        },
-        {
-            "firstName": "Kevin",
-            "lastName": "Robinons"
-        },
-        {
-            "firstName": "Sean",
-            "lastName": "Robinons"
+         vm.selectedCats = {};
+        vm.selectedTags = {};
+
+        vm.cats = [{
+            id: 1,
+            name: "Cat 1"
+        }, {
+            id: 2,
+            name: "Cat 2"
         }];
+
+        vm.tags = [{id: 1, name: "VB.net" }, 
+                   { id: 2, name: "c# " }];
     },
-    template:'<h1>Selected Items</h1>Selected : {{vm.selected}}<my-select-list field-label="Slect a option" items="vm.items" ng-model="vm.selected"><my-select-list></my-select-list></my-select-list>'
+    templateUrl:'./src/client/app/Examples/SelectLists/selectListExamplesTemplate.html'
 };
 
 angular.module('examples').component('selectListExamples', selectListExamples);
