@@ -36,7 +36,7 @@ var myDateTimeDifferenceField = {
         }
 
     },
-    template:'<my-input-field input-type="time" field-label="From" ng-model="vm.fromDate" ng-change="vm.fromTimeChanged()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"></my-input-field><my-input-field input-type="time" field-label="To" ng-model="vm.toDate" ng-change="vm.toTimeChanged()" hour-step="vm.hourStep" " minute-step="vm.minStep" show-meridian="vm.showMeridian"></my-input-field>'
+    templateUrl:'./src/client/app/Components/Inputs/DateTimeDifferenceField/dateTimeDifferenceFieldTemplate.html'
 };
 
 

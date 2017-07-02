@@ -30,7 +30,7 @@
             <!--CheckBox-->
             <input ng-if="vm.inputType==='checkbox'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel" />
             <!--Time-->
-            <input ng-if="vm.inputType==='time'" uib-timepicker ng-model="vm.ngModel"  id="vm.fieldName"    ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian">
+            <div ng-if="vm.inputType==='time'" uib-timepicker ng-model="vm.ngModel"  id="vm.fieldName"    ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian">
             <!--Date-->
             <span ng-if="vm.inputType==='datepopup'">
                 <input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}"
