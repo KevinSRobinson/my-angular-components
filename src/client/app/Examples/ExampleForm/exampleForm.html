@@ -35,7 +35,7 @@
           <my-select-field field-label="Languages" items="vm.tags" tooltip="Please Select a Language" ng-model="vm.selectedTags">
         </my-select-field>
 
-
+        <div ng-click="vm.viewTermsAndConditions()" class="btn btn-success" >View Terms and Conditions</div>
         <!-- Submit -->
         <my-spinner-button button-text="Submit Form" saving="vm.saving" is-disabled="!vm.customerForm.$valid" ng-click="vm.submit()">
         </my-spinner-button>

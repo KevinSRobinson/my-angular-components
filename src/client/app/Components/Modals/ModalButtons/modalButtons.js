@@ -13,14 +13,18 @@ var myModalButtons = {
         vm.$onInit = function () {
             //defaults        
             vm.saveText = 'Save';
-            vm.closeText = 'Close';
+
+            if(!angular.isDefined(vm.closeText) && vm.closeText != ''){
+                vm.closeText = 'Close';
+            }
+            
 
             vm.saveVisible = true;
             vm.closeVisible = true;
         };
 
     },
-    template:'<div class="modal-footer"><span><button class="btn btn-primary btn-large pull-left" ng-if="vm.saveVisible" id="save" ng-click="vm.save()" type="submit">{{vm.saveText}}</button><button class="btn btn-default pull-left" ng-if="vm.closeVisible" id="close" ng-click="vm.close()" type="button">{{vm.closeText}}</button></span></div>'
+    templateUrl:'./src/client/app/Components/Modals/ModalButtons/modalButtonsTempalte.html'
 };
 
 angular.module('my-angular-components').component('myModalButtons', myModalButtons);

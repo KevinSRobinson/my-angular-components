@@ -13,7 +13,11 @@ var myModalButtons = {
         vm.$onInit = function () {
             //defaults        
             vm.saveText = 'Save';
-            vm.closeText = 'Close';
+
+            if(!angular.isDefined(vm.closeText) && vm.closeText != ''){
+                vm.closeText = 'Close';
+            }
+            
 
             vm.saveVisible = true;
             vm.closeVisible = true;

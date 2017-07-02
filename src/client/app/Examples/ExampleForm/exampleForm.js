@@ -1,6 +1,6 @@
 var exampleForm = {
     controllerAs: 'vm',
-    controller: function (ngFabForm, $timeout) {
+    controller: function (ngFabForm, $timeout, $uibModal) {
         var vm = this;
         vm.simulateError = false;
         vm.customerForm = {};
@@ -56,6 +56,25 @@ var exampleForm = {
             id: 2,
             name: "c# "
         }];
+
+
+        vm.viewTermsAndConditions = function () {
+            return $uibModal.open({
+                templateUrl:'./src/client/app/Examples/ExampleForm/termsandConditionsTemplate.html',
+                controllerAs: 'vm',
+                controller:function($uibModalInstance){
+                    var vm = this;
+                    vm.close = function () {
+                      $uibModalInstance.close();
+                    };
+                     vm.saveContact = function () {
+                      $uibModalInstance.close();
+                    };
+                }
+            });
+        };
+
+
     },
     templateUrl:'./src/client/app/Examples/ExampleForm/exampleForm.html'
 };
