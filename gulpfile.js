@@ -125,7 +125,7 @@ function inc(importance) {
         // save it back to filesystem 
         .pipe(gulp.dest('./'))
         // commit the changed version number 
-        .pipe($.git.commit('bumps package version'))
+        .pipe($.git.commit('build for release'))
  
         // **tag it in the repository** 
         .pipe($.tagVersion());

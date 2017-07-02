@@ -42,12 +42,6 @@ var adminLayoutExample = {
             requiresLogin: false
         },
         {
-            state: "tags",
-            linkText: "Tags",
-            icon: "users",
-            requiresLogin: false
-        },
-        {
             state: "status",
             linkText: "Status Alerts",
             icon: "users",
@@ -60,23 +54,11 @@ var adminLayoutExample = {
             requiresLogin: false
         },
         {
-            state: "selectlist",
-            linkText: "Select List",
-            icon: "check",
-            requiresLogin: false
-        },
-        {
             state: "grid",
             linkText: "Grid List",
             icon: "check",
             requiresLogin: false
-        },
-        {
-            state: "dates",
-            linkText: "Dates",
-            icon: "check",
-            requiresLogin: false
-        },
+        }
         ];
 
         vm.userMenuItems = [{
