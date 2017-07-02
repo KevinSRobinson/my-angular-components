@@ -26,6 +26,7 @@ var myInfoPanel = {
                 ' color: ' + vm.color + ' !important;';
         };
 
+        
     },
     template:'<div class="well"><i class="fa fa-{{vm.icon}}"></i> {{vm.infoText}}<ul class="on-page-nav"></ul></div>'
 };
