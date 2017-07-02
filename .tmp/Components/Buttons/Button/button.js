@@ -3,7 +3,9 @@ var myButton1 = {
         id: '@',
         text: '@',
         click: '&',
-        theme: '@'
+        theme: '@',
+        preset: '@',
+        size: '@'
     },
     controllerAs: 'vm',
     controller: function ($scope) {
@@ -11,29 +13,91 @@ var myButton1 = {
 
         vm.$onInit = function () {
             //default options
-            vm.id = 'create';
+            vm.id = '';
             vm.text = '';
-            vm.icon = 'bars';
+            vm.icon = '';
+            vm.size = '';
             vm.theme = 'btn btn-success';
         };
 
-        // $scope.$watch('vm.theme', function () {
-        //     vm.theme += ' btn btn-' + vm.theme;
-        // })
-
-        // $scope.$watch('vm.icon', function () {
-        //     vm.icon += ' fa fa-' + vm.icon;
-        // })
         vm.getClass = function () {
-            console.log('get class')
-              if (vm.theme === '')
-                return 'btn btn-success ' + vm.theme;
-            else
-                return 'btn btn-' + vm.theme;
+            var cssClass = 'btn ';
+
+            if (vm.preset !== '' & vm.text === '') {
+                switch (vm.preset) {
+                    case 'Create':
+                        cssClass += ' btn-success ';
+                        break;
+                    case 'Delete':
+                        cssClass += ' btn-danger '
+                        break;
+                    case 'Edit':
+                        cssClass += ' btn-primary '
+                        break;
+                    default:
+                        cssClass += ' btn-success '
+                        break;
+                }
+            }
+            else{
+                 cssClass += ' btn-success '
+            }
+
+
+            return cssClass;
+        }
+
+
+        vm.getSizeClass = function () {
+            var cssClass = 'btn ';
+
+            if (vm.size !== '') {
+                switch (vm.size) {
+                    case 'Small':
+                        cssClass += ' btn-sm ';
+                    case 'Large':
+                        cssClass += ' btn-lg ';
+
+                }
+            }
+
+            return cssClass;
+        }
+
+        vm.getText = function () {
+
+            if (vm.preset !== '' & vm.text === '') {
+                switch (vm.preset) {
+                    case 'Create':
+                        return ' Create ';
+                    case 'Delete':
+                        return ' Delete '
+                    case 'Edit':
+                        return ' Edit '
+                    default:
+                        ''
+                }
+            } else {
+                return vm.text;
+            }
         };
 
         vm.getIcon = function () {
-            return " fa fa-" + vm.icon;            
+
+            if (vm.preset !== '' & vm.icon === '') {
+                switch (vm.preset) {
+                    case 'Create':
+                        return ' fa fa-plus ';
+                    case 'Delete':
+                        return ' fa fa-times '
+                    case 'Edit':
+                        return ' fa fa-bars '
+                    default:
+                        ''
+                }
+            } else {
+                return 'fa fa-' + vm.icon + ' ';
+            }
         };
 
         vm.getId = function () {
@@ -43,8 +107,11 @@ var myButton1 = {
                 return "successMessage";
         };
 
+
+
+
     },
-    template:'<div class="{{vm.getClass()}}" id="{{vm.id}}" ng-click="vm.click()">{{vm.text}}<i class="{{vm.getIcon()}}"></i></div>'
+    template:'<div class="{{vm.getClass()}} {{vm.getSizeClass()}}" id="{{vm.id}}" ng-click="vm.click()">{{vm.getText()}}<i style="margin-left:15px" class="{{vm.getIcon()}}"></i></div>'
 };
 
 angular.module('my-angular-components').component('myButton', myButton1);

@@ -1,6 +1,6 @@
-<div class='{{vm.getClass()}}' id='{{vm.id}}' ng-click='vm.click()'>
+<div class='{{vm.getClass()}} {{vm.getSizeClass()}}' id='{{vm.id}}' ng-click='vm.click()'>
     <!--Button Inner Text-->
-    {{vm.text}}
+    {{vm.getText()}}
     <!--Font Awesome Icon-->
-    <i class='{{vm.getIcon()}}'></i>
+    <i style="margin-left:15px" class='{{vm.getIcon()}}'></i>
 </div>
