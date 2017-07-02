@@ -48,7 +48,7 @@ var startBrowserSync = function  (isDev, port){
             logLevel: 'debug',
             logPrefix: 'gulp-patterns',
             notify: true,
-            reloadDelay: 0
+            reloadDelay: 6000
             
     };
 
