@@ -5,7 +5,7 @@ var statusAlerts = {
 
  
     },
-    template:'<div class="example"><h1>Status Alerts</h1><hr><my-status-alert show="true" is-error="true" error-message="Something Went Wrong!!"></my-status-alert><my-status-alert show="true" is-success="true" success-message="Everyginng is Great!!"></my-status-alert></div>'
+    templateUrl:'./src/client/app/Examples/StatusAlerts/statusAlertsTemplate.html'
 };
 
 angular.module('examples').component('statusAlertExamples', statusAlerts);
