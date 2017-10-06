@@ -43,7 +43,67 @@ gulp.task('serve-dev', ['watchTemplates','embedTemplates', 'wiredep', 'inject', 
 //////////////////////////////////////////////
 // optimize
 //////////////////////////////////////////////
-gulp.task('optimize', ['wiredepBuild', 'inject'], myGulp_Build.optimize);
+//////////////////////////////////////////////
+// optimize
+//////////////////////////////////////////////
+gulp.task('optimize', ['inject'], function(){
+    
+    
+   var assets = $.useref.assets({searchPath: './'});
+    
+    var cssFilter = $.filter('**/*.css', { restore: true });
+    var jsLibFilter = $.filter('**/' + config.optimized.lib, { restore: true });
+    var jsAppFilter = $.filter('**/' + config.optimized.app, { restore: true });
+
+    var templateCache = config.temp + config.templateCache.file;
+    
+   
+      return gulp
+        .src(config.index)
+        .pipe($.inject(gulp.src(templateCache, { read: false}), {
+            starttag: '<!-- inject:templates:js -->'
+        }))
+        .pipe(assets)
+        //css
+        .pipe(cssFilter)
+        .pipe($.csso())
+        .pipe(cssFilter.restore)
+        
+
+         //js
+         //minify vendor librarys 
+        .pipe(jsLibFilter)
+        //.pipe($.uglify())
+        .pipe(jsLibFilter.restore)
+
+
+        //minify appr librarys
+        .pipe(jsAppFilter)
+        .pipe($.ngAnnotate()) //di helper
+       // .pipe($.uglify())
+        .pipe(jsAppFilter.restore)
+
+        //revisions
+       // .pipe($.rev())
+
+        //assets
+        .pipe(assets.restore())
+        .pipe($.useref())
+
+        //renameing
+       // .pipe($.revReplace())
+        
+        //finish
+        .pipe(gulp.dest(config.build))
+
+        //revision manifest
+        //.pipe($.rev.manifest())
+        .pipe(gulp.dest(config.build));
+        
+
+});
+
+
 
 gulp.task('bump', ['optimize'], versioning.bump);
 

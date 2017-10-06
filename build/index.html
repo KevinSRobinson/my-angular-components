@@ -18,19 +18,8 @@
     </style>
     
     <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.css" />
-    <!-- build:css /assets/styles/lib.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="/bower_components/angular-ui-select/dist/select.css" />
-    <link rel="stylesheet" href="/bower_components/angular-ui-grid/ui-grid.css" />
-    <link rel="stylesheet" href="/bower_components/highlightjs/styles/default.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
-    <!-- build:css /assets/styles/main.css -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="/.tmp/styles.css">
-    <link rel="stylesheet" href="https://docs.angularjs.org/css/prettify-theme.css">
-    <!-- endinject -->
-    <!-- endbuild -->
+    <link rel="stylesheet" href="/assets/styles/lib.css">
+    <link rel="stylesheet" href="/assets/styles/main.css">
     <style>
         .example {
             color: lightslategrey;
@@ -94,66 +83,8 @@
     </div>
     <script src="bower_components/ace-builds/src-noconflict/ace.js"></script>
     <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
-    <!-- build:js /lib.js -->
-    <!--bower:js -->
-    <script src="/bower_components/angular/angular.js"></script>
-    <script src="/bower_components/angular-animate/angular-animate.js"></script>
-    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="/bower_components/angular-ui-select/dist/select.js"></script>
-    <script src="/bower_components/angular-messages/angular-messages.js"></script>
-    <script src="/bower_components/ng-fab-form/dist/ng-fab-form.js"></script>
-    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="/bower_components/auth0-lock/build/lock.js"></script>
-    <script src="/bower_components/angular-lock/angular-lock.js"></script>
-    <script src="/bower_components/angular-jwt/dist/angular-jwt.js"></script>
-    <script src="/bower_components/angular-ui-ace/ui-ace.js"></script>
-    <script src="/bower_components/angular-showdown/showdown.js"></script>
-    <script src="/bower_components/angular-ui-grid/ui-grid.js"></script>
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="/bower_components/firebase/firebase.js"></script>
-    <script src="/bower_components/angularfire/dist/angularfire.js"></script>
-    <script src="/bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src="/bower_components/bardjs/dist/bard.js"></script>
-    <script src="/bower_components/bardjs/dist/bard-ngRouteTester.js"></script>
-    <script src="/bower_components/highlightjs/highlight.pack.js"></script>
-    <script src="/bower_components/angular-highlightjs/build/angular-highlightjs.js"></script>
-    <!--endbower-->
-    <!-- endbuild -->
-    <!-- build:js js/app.js -->
-    <!-- inject:js -->    
-    <script src="/src/client/app/Components/app.js"></script>    
-    <script src="/src/client/app/Components/cssClassService.js"></script>    
-    <script src="/src/client/app/Components/Buttons/Button/button.js"></script>    
-    <script src="/src/client/app/Components/Buttons/SpinnerButton/spinnerButton.js"></script>    
-    <script src="/src/client/app/Components/ComboBoxes/CategorySelect/categorySelect.js"></script>    
-    <script src="/src/client/app/Components/Filters/FilterTextbox/filterTextbox.js"></script>    
-    <script src="/src/client/app/Components/Headers/PageHeader/pageHeader.js"></script>    
-    <script src="/src/client/app/Components/Inputs/DateTimeDifferenceField/dateTimeDifferenceField.js"></script>    
-    <script src="/src/client/app/Components/Inputs/InputField/inputField.js"></script>    
-    <script src="/src/client/app/Components/Inputs/SelectField/selectField.js"></script>    
-    <script src="/src/client/app/Components/Inputs/TextEditor/markdown.directive.js"></script>    
-    <script src="/src/client/app/Components/Inputs/TextEditor/textEditor.js"></script>    
-    <script src="/src/client/app/Components/Modals/ModalButtons/modalButtons.js"></script>    
-    <script src="/src/client/app/Components/Modals/ModalHeader/modalHeader.js"></script>    
-    <script src="/src/client/app/Components/Panels/InfoPanel/infoPanel.js"></script>    
-    <script src="/src/client/app/Components/Panels/MoreLessButton/moreLessButton.js"></script>    
-    <script src="/src/client/app/Components/Panels/MoreLessPanel/moreLessPanel.js"></script>    
-    <script src="/src/client/app/Components/Panels/Panel/panel.js"></script>    
-    <script src="/src/client/app/Components/StatusAlerts/StatusAlert/statusAlert.js"></script>    
-    <script src="/src/client/app/Components/Inputs/DatesField/DateField/dateField.js"></script>    
-    <script src="/src/client/app/Components/Layout/AdminLayout/AdminLayoutCore/adminLayout.js"></script>    
-    <script src="/src/client/app/Components/Layout/AdminLayout/Header/AlertsDropDown/alertsDropDownMenu.js"></script>    
-    <script src="/src/client/app/Components/Layout/AdminLayout/Header/HeaderBar/headerBar.js"></script>    
-    <script src="/src/client/app/Components/Layout/AdminLayout/Header/UserOptionsDropDown/userOptionsDropDownMenu.js"></script>    
-    <script src="/src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenu/sideMenu.js"></script>    
-    <script src="/src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenuFooter/sideMenuFooter.js"></script>    
-    <script src="/src/client/app/Components/Layout/AdminLayout/SideMenu/SideMenuItems/sideMenuItems.js"></script>    
-    <!--endinject-->
-    <!-- inject:templates:js -->
-    <!--endinject-->
-    <!--endbuild-->
+    <script src="/lib.js"></script>
+    <script src="js/app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -166,67 +97,7 @@
   };
   firebase.initializeApp(config);
 </script>
-    <!-- build:js js/examples.js -->
-    <!-- inject:examples:js -->
-   
-    <script src="/src/client/app/Examples/app.js"></script>
-   
-    <script src="/src/client/app/Examples/appconfig.js"></script>
-   
-    <script src="/src/client/app/Examples/auth.service.js"></script>
-   
-    <script src="/src/client/app/Examples/login.controller.js"></script>
-   
-    <script src="/src/client/app/Examples/routes.js"></script>
-   
-    <script src="/src/client/app/Examples/Buttons/buttonExamples.js"></script>
-   
-    <script src="/src/client/app/Examples/Common/common.js"></script>
-   
-    <script src="/src/client/app/Examples/Dates/dateExamples.js"></script>
-   
-    <script src="/src/client/app/Examples/ExampleForm/exampleForm.js"></script>
-   
-    <script src="/src/client/app/Examples/Firebase/firebase.js"></script>
-   
-    <script src="/src/client/app/Examples/Grid/gridExample.js"></script>
-   
-    <script src="/src/client/app/Examples/Home/home.js"></script>
-   
-    <script src="/src/client/app/Examples/Layout/adminLayoutExample.js"></script>
-   
-    <script src="/src/client/app/Examples/Inputs/inputs.js"></script>
-   
-    <script src="/src/client/app/Examples/Login/login.js"></script>
-   
-    <script src="/src/client/app/Examples/Map/mapExample.js"></script>
-   
-    <script src="/src/client/app/Examples/Modals/modals.js"></script>
-   
-    <script src="/src/client/app/Examples/Panels/panels.js"></script>
-   
-    <script src="/src/client/app/Examples/SelectLists/selectListExamples.js"></script>
-   
-    <script src="/src/client/app/Examples/StatusAlerts/statusAlerts.js"></script>
-   
-    <script src="/src/client/app/Examples/Tags/tags.js"></script>
-   
-    <script src="/src/client/app/Examples/TextEditor/textEditorExample.js"></script>
-   
-    <script src="/src/client/app/Examples/UserProfile/userProfile.js"></script>
-   
-    <script src="/src/client/app/Examples/ExampleForm/CreateButton/createButton.js"></script>
-   
-    <script src="/src/client/app/Examples/Other/Spinner/spinner.js"></script>
-   
-    <script src="/src/client/app/Examples/Other/TextEditor/markdown.directive.js"></script>
-   
-    <script src="/src/client/app/Examples/Other/TextEditor/textEditor.js"></script>
-   
-    <!--endinject-->
-     <!-- inject:exampletemplates:js -->
-    <!--endinject-->
-    <!--endbuild-->
+    <script src="js/examples.js"></script>
 </body>
 
 </html>

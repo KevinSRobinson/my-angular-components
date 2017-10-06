@@ -50,6 +50,7 @@ module.exports = function () {
         images: client + './images/**/*.*',
         css: temp + 'styles.css',
         index:  './src/client/index.html',
+        buildindex:  './temp/index.html',
         client: client,
         js: [
             client + '**/*.js',
@@ -114,7 +115,12 @@ module.exports = function () {
                     "main": [
                         "./bower_components/ace-builds/src-noconflict/ace.js",
                     ]
-                }
+                },
+                "highlight-js": {
+                    "main": [
+                        "./bower_components/highlight-js/src/highlight.js",
+                    ]
+                },
             },
             onError: function (err) {
                 // If not overridden, an error will throw. 

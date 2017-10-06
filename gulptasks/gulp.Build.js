@@ -17,7 +17,7 @@ var optimize = function(){
     var examplesFilter = $.filter('**/' + config.optimized.examples, { restore: true });
    
       return gulp
-        .src(config.index)
+        .src(config.buildindex)
         //  .pipe($.inject(gulp.src(config.templateCache, { read: false}), {
         //     starttag: '<!-- inject:templates:js -->'
         // }))
