@@ -174,7 +174,7 @@ gulp.task('gitadd', function(){
   return gulp.src(config.componentSourceFiles)
     .pipe($.git.add());
 });
-gulp.task('patch', ['gitadd', 'embedTemplates', 'optimize', 'bump'], function() { return inc('patch'); })
+gulp.task('patch', ['gitadd', 'embedTemplates', 'bump'], function() { return inc('patch'); })
 gulp.task('feature', function() { return inc('minor'); })
 gulp.task('release', function() { return inc('major'); })
 function inc(importance) {
