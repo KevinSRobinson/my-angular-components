@@ -111,7 +111,7 @@ var myButton1 = {
 
 
     },
-    template:'<div class="{{vm.getClass()}} {{vm.getSizeClass()}}" id="{{vm.id}}" ng-click="vm.click()">{{vm.getText()}}<i style="margin-left:15px" class="{{vm.getIcon()}}"></i></div>'
+    template : 'buttonTemplate.html'
 };
 
 angular.module('my-angular-components').component('myButton', myButton1);

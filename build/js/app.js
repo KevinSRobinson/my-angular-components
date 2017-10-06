@@ -151,7 +151,7 @@ var myButton1 = {
 
 
     },
-    templateUrl: './src/client/app/Components/Buttons/Button/buttonTemplate.html'
+    template:'<div class="{{vm.getClass()}} {{vm.getSizeClass()}}" id="{{vm.id}}" ng-click="vm.click()">{{vm.getText()}}<i style="margin-left:15px" class="{{vm.getIcon()}}"></i></div>'
 };
 
 angular.module('my-angular-components').component('myButton', myButton1);
@@ -285,7 +285,9 @@ var buildList = function () {
         vm.init();
 
     },
-    template: 'categorySelectTemplate.html'
+    template:'<div class="form-group"><label class="control-label" style="min-width: 110px; text-align: left">{{vm.fieldLabel}}</label><select ng-model="vm.selected" class="form-control"><option ng-repeat="category in vm.cats" value="{{category}}">{{category}}</option></select></div>'
+
+    
 };
 
 myCategorySelect.$inject = ['$scope'];
@@ -368,7 +370,7 @@ var myDateTimeDifferenceField = {
         }
 
     },
-    templateUrl:'./src/client/app/Components/Inputs/DateTimeDifferenceField/dateTimeDifferenceFieldTemplate.html'
+    template:'<my-input-field input-type="time" field-label="From" ng-model="vm.fromDate" ng-change="vm.fromTimeChanged()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"></my-input-field><my-input-field input-type="time" field-label="To" ng-model="vm.toDate" ng-change="vm.toTimeChanged()" hour-step="vm.hourStep" " minute-step="vm.minStep" show-meridian="vm.showMeridian"></my-input-field>'
 };
 
 
@@ -448,7 +450,7 @@ var myInputField = {
 
 
     },
-    templateUrl: './src/client/app/Components/Inputs/InputField/inputFieldTemplate.html'
+    template:'<style>\r\n    .popover {\r\n        min-width: 200px;\r\n    }\r\n    \r\n    .input-group {\r\n        width: 100% !important;\r\n    }\r\n    \r\n    .input-group .form-control {\r\n        z-index: 100;\r\n    }\r\n</style><div class="form-group"><label ng-class="vm.cssClassService.getlabelClass(vm.horizontal, vm.labelWidth)" for="vm.fieldName">{{vm.fieldLabel}}</label><div ng-class="vm.cssClassService.getInputClass(vm.horizontal, vm.inputWidth)"><div ng-if="!vm.readOnly" class="input-group"><input ng-if="vm.inputType===\'textbox\'" ng-model="vm.ngModel" type="text" class="form-control" id="{{vm.fieldName}}" placeholder="{{vm.placeholder}}" required><input ng-if="vm.inputType===\'number\'" ng-model="vm.ngModel" type="number" class="form-control" id="{{vm.fieldName}}" required><input ng-if="vm.inputType===\'email\'" type="email" class="form-control" id="vm.fieldName" placeholder="{{vm.placeholder}}"><textarea ng-if="vm.inputType===\'textarea\'" class="form-control" id="vm.fieldName" ng-model="vm.ngModel" placeholder="{{vm.placeholder}}"></textarea><input ng-if="vm.inputType===\'checkbox\'" type="checkbox" id="vm.fieldName" ng-model="vm.ngModel"><div ng-if="vm.inputType===\'time\'" uib-timepicker ng-model="vm.ngModel" id="vm.fieldName" ng-change="vm.changed()" hour-step="vm.hourStep" minute-step="vm.minStep" show-meridian="vm.showMeridian"><span ng-if="vm.inputType===\'datepopup\'"><input type="text" class="form-control" uib-datepicker-popup="{{vm.format}}" ng-model="vm.ngModel" is-open="vm.isOpened" style="width: 82%" datepicker-options="vm.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats"> <span class="btn btn-default" ng-click="vm.open()"><i class="fa fa-bars"></i></span></span><span ng-show="vm.tooltip!==\'\'" class="input-group-addon" uib-popover="{{vm.tooltip}}" popover-title="Info" popover-class="popover" popover-trigger="\'mouseenter\'"><i class="fa fa-info"></i></span></div><div ng-show="vm.readOnly"><p ng-if="vm.inputType!==\'checkbox\'">{{vm.ngModel}}</p><i ng-if="vm.inputType===\'checkbox\'" ng-show="vm.ngModel" class="fa fa-check fa-2x"></i></div><p class="help-block">{{vm.helpText}}</p></div></div></div>'
 };
 
 myInputField.$inject = ['cssClassService'];
@@ -573,7 +575,7 @@ var myModalButtons = {
         };
 
     },
-    templateUrl:'./src/client/app/Components/Modals/ModalButtons/modalButtonsTempalte.html'
+    template:'<div class="modal-footer"><span><button class="btn btn-primary btn-large pull-left" ng-if="vm.saveVisible" id="save" ng-click="vm.save()" type="submit">{{vm.saveText}}</button><button class="btn btn-default pull-left" ng-if="vm.closeVisible" id="close" ng-click="vm.close()" type="button">{{vm.closeText}}</button></span></div>'
 };
 
 angular.module('my-angular-components').component('myModalButtons', myModalButtons);
@@ -903,7 +905,7 @@ var myStatusAlert = {
 
 
     },
-    templateUrl:'./src/client/app/Components/StatusAlerts/StatusAlert/statusAlertTemplate.html'
+    template:'<div class="{{vm.getClass()}}"><i class="{{vm.getIcon()}}"></i> {{vm.getMessage()}}</div>'
 };
 
 
@@ -1006,7 +1008,7 @@ var adminLayout = {
                 return "uiView";
         };
     },
-    templateUrl:'./src/client/app/Components/Layout/AdminLayout/AdminLayoutCore/adminLayoutTemplate.html'
+    template:'<style>\r\n.uiViewColapsed{\r\n    margin-left:100px;\r\n}\r\n.uiView{\r\n    margin-left:20px;\r\n}\r\n</style><div id="page-wrapper" ng-cloak ng-class="vm.getState()"><div id="sidebar-wrapper"><admin-side-menu colapsed="vm.colapsed" footer-links="vm.footerLinks" side-menu-items="vm.sideMenuItems"></admin-side-menu></div><div id="content-wrapper"><div class="page-content"><div ng-class="vm.getViewCssClass()"><ng-transclude></ng-transclude></div></div></div></div>'
 };
 
 adminLayout.$inject = ['$scope'];
@@ -1034,7 +1036,7 @@ var adminHeaderBar = {
         userName: '@'
     },
     controllerAs: 'vm',
-    templateUrl:'./src/Client/app/Components/Layout/AdminLayout/Header/HeaderBar/headerBarTemplate.html'
+    template:'<style>\r\n.uiViewColapsed{\r\n    margin-left:10px;\r\n}\r\n.uiView{\r\n    margin-left:120px;\r\n}\r\n</style><div class="row header"><div class="col-xs-12"></div>--><div class="meta"><div class="page">{{vm.title}}</div></div></div>'
 };
 
 

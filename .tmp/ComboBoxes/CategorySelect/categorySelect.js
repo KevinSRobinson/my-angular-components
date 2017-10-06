@@ -98,7 +98,9 @@ var buildList = function () {
         vm.init();
 
     },
-    template: 'categorySelectTemplate.html'
+    template:'<div class="form-group"><label class="control-label" style="min-width: 110px; text-align: left">{{vm.fieldLabel}}</label><select ng-model="vm.selected" class="form-control"><option ng-repeat="category in vm.cats" value="{{category}}">{{category}}</option></select></div>'
+
+    
 };
 
 myCategorySelect.$inject = ['$scope'];

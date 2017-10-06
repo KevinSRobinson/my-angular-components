@@ -111,7 +111,7 @@ var myButton1 = {
 
 
     },
-    templateUrl: './src/client/app/Components/Buttons/Button/buttonTemplate.html'
+    templateUrl : './src/client/app/Components/Buttons/Button/buttonTemplate.html'
 };
 
 angular.module('my-angular-components').component('myButton', myButton1);

@@ -98,7 +98,9 @@ var buildList = function () {
         vm.init();
 
     },
-    template: 'categorySelectTemplate.html'
+    templateUrl: './src/client/app/Components/ComboBoxes/CategorySelect/categorySelectTemplate.html'
+
+    
 };
 
 myCategorySelect.$inject = ['$scope'];
